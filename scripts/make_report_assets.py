@@ -1,25 +1,21 @@
-import json
+import sys
 from pathlib import Path
 
-import pandas as pd
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from llm_uncertainty.reporting import build_plots, build_report_table
 
 
 def main() -> None:
-    Path("reports/figures").mkdir(parents=True, exist_ok=True)
-    Path("reports/tables").mkdir(parents=True, exist_ok=True)
+    reports_dir = Path("reports")
+    figures_dir = reports_dir / "figures"
+    tables_dir = reports_dir / "tables"
+    figures_dir.mkdir(parents=True, exist_ok=True)
+    tables_dir.mkdir(parents=True, exist_ok=True)
 
-    metrics_dir = Path("results/metrics")
-    rows = []
-    for path in sorted(metrics_dir.glob("*.json")):
-        rows.append({"run": path.stem, **json.loads(path.read_text(encoding="utf-8"))})
-
-    if not rows:
-        print("No metrics JSON files found under results/metrics.")
-        return
-
-    output = Path("reports/tables/initial_results.csv")
-    pd.DataFrame(rows).to_csv(output, index=False)
-    print(f"Saved report table to {output}")
+    results_dir = Path("results")
+    build_report_table(results_dir, tables_dir / "initial_results.csv")
+    build_plots(results_dir, figures_dir)
 
 
 if __name__ == "__main__":
