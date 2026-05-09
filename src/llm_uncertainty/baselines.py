@@ -77,9 +77,9 @@ def run_rag_compare(memory_path: str | Path, context_path: str | Path) -> tuple[
         )
 
     frame = pd.DataFrame(rows)
-    median_score = float(frame["absolute_context_delta"].median())
-    frame["prediction"] = (frame["absolute_context_delta"] >= median_score).astype(int)
-    frame["hallucination_score"] = frame["absolute_context_delta"]
+    median_score = float(frame["context_improvement"].median())
+    frame["prediction"] = (frame["context_improvement"] < median_score).astype(int)
+    frame["hallucination_score"] = -frame["context_improvement"]
     metrics = classification_metrics(
         frame["label"].tolist(),
         frame["prediction"].tolist(),
