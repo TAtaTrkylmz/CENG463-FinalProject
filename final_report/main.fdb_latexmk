@@ -1,10 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1778368090.25872 "/home/berkhan/Desktop/okul ya/Dönem 8/makine öğrenmesi/final project/CENG463-FinalProject/final_report/main.tex" "main.pdf" "main" 1778368090.83308 0
+["pdflatex"] 1778368980.83122 "/home/berkhan/Desktop/okul ya/Dönem 8/makine öğrenmesi/final project/CENG463-FinalProject/final_report/main.tex" "main.pdf" "main" 1778368981.38769 0
   "../reports/figures/entropy__val_roc.png" 1778367316.03368 21332 a083fb9938e2f81e08b1a023f163d18f ""
   "../reports/figures/lexical_svm__val_roc.png" 1778367316.32269 22547 1d3b662753de213816b39f412d874589 ""
   "../reports/figures/rag__compare__val_roc.png" 1778367316.58869 23074 535d1cf28550be06b5696dc4c5d508a9 ""
   "/etc/texmf/web2c/texmf.cnf" 1774307257.44755 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/berkhan/Desktop/okul ya/Dönem 8/makine öğrenmesi/final project/CENG463-FinalProject/final_report/main.tex" 1778368089.54369 20220 d2c9ff090f136c2425687c516cda9925 ""
+  "/home/berkhan/Desktop/okul ya/Dönem 8/makine öğrenmesi/final project/CENG463-FinalProject/final_report/main.tex" 1778368980.64527 22434 f5a5f5f0d5aa6da1b8ec863ee6dfbac3 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1200.tfm" 1136768653 3584 402da0b29eafbad07963b1224b222f18 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx1440.tfm" 1136768653 3584 13049b61b922a28b158a38aeff75ee9b ""
@@ -105,9 +105,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1777639808.69667 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1777639908 8213287 57d71f7a41e08463fabf793940ab62f1 ""
-  "main.aux" 1778368090.78075 2237 cd59f277e2bd56de284572258aac63e7 "pdflatex"
-  "main.out" 1778368090.78175 1975 e9a27ab72e8f4a74c93b9c515f673c38 "pdflatex"
-  "main.tex" 1778368089.54369 20220 d2c9ff090f136c2425687c516cda9925 ""
+  "main.aux" 1778368981.33577 2647 2bc9aada45448fd06292999c82bad03f "pdflatex"
+  "main.out" 1778368981.33577 1975 e9a27ab72e8f4a74c93b9c515f673c38 "pdflatex"
+  "main.tex" 1778368980.64527 22434 f5a5f5f0d5aa6da1b8ec863ee6dfbac3 ""
   (generated)
   "main.aux"
   "main.log"

@@ -114,22 +114,16 @@ The task is technically challenging for several reasons. First, hallucinated ans
 % ─── 3. Literature Review ───────────────────────────────────────────────────
 \section{Literature Review Progress}
 
-The literature review is ongoing. The following thematic areas and representative works have been surveyed:
+The literature review is ongoing, focusing heavily on recent advancements in hallucination detection and uncertainty quantification. The following thematic areas have been surveyed:
 
-\textbf{Hallucination detection and benchmarking.}
-HaluEval (Li et al., 2023) provides the dataset backbone of this project and frames hallucination detection as a supervised classification task using human-annotated factual and hallucinated answer pairs. TruthfulQA (Lin et al., 2022) offers a complementary evaluation angle, measuring how often models generate false beliefs. These works motivate the use of a supervised binary classification setup rather than an open-ended generation evaluation.
+\textbf{Hallucination Taxonomy and Detection Frameworks.}
+Huang et al. \cite{huang2025survey} provide a comprehensive taxonomy of hallucinations in modern LLMs, distinguishing between factuality issues and faithfulness issues. Their survey confirms the urgency of moving beyond simple text-overlap metrics toward intrinsic model evaluation, which directly motivates our use of probability distributions as a detection signal.
 
-\textbf{Uncertainty quantification in neural language models.}
-Seminal work on predictive uncertainty (Gal \& Ghahramani, 2016; Lakshminarayanan et al., 2017) established Bayesian and ensemble-based approaches to uncertainty estimation. More recently, Kuhn et al. (2023) and Kadavath et al. (2022) adapted these ideas to autoregressive LLMs by using sequence-level log-probabilities and verbalized self-confidence as uncertainty proxies, which directly inspired the entropy-based baseline in this project.
+\textbf{Epistemic Uncertainty and Token Probabilities.}
+Estimating predictive uncertainty in LLMs has recently shifted toward exploiting internal log-probabilities. Ling et al. \cite{ling2024uncertainty} formally separate aleatoric and epistemic uncertainty during in-context learning, validating that token-level probability variations effectively signal a model's lack of knowledge. We operationalize this finding in our entropy-based baseline. Furthermore, Das and Srihari \cite{das2024compos} demonstrated that multi-faceted LLM ensembles utilizing role-based prompting can robustly detect these hallucinations, inspiring the architecture of our proposed hybrid method.
 
-\textbf{Retrieval-augmented generation (RAG) and context faithfulness.}
-Lewis et al. (2020) demonstrated that grounding generation in retrieved documents reduces hallucinations. The RAG-compare baseline in this project operationalises this finding: it measures the log-probability delta between a memory-only prompt and a context-augmented prompt as a hallucination signal.
-
-\textbf{Lexical and shallow baselines.}
-TF-IDF with linear classifiers remains a strong baseline for text classification (Joachims, 1998) and provides an interpretable lower bound for the uncertainty-based methods.
-
-\textbf{Planned direction.}
-Based on this review, the project will compare lexical, entropy-based, and RAG-based signals. A potential improvement is to replace \texttt{distilgpt2} with a stronger instruction-tuned model to obtain more calibrated log-probabilities.
+\textbf{Real-World LLM Deployment and Reliability Risks.}
+The necessity of our framework is underscored by recent attempts to deploy generative models in critical, domain-specific applications. For instance, Prado et al. \cite{prado2025enhancing} explore embedded LLM agents in aviation flight decks, Cao et al. \cite{cao2025toward} propose hybrid models for energy-safe industrial monitoring, and Abbas and Atwell \cite{abbas2025cognitive} utilize LLMs for automated student assessment. Across diverse domains—from education to Arabic language fine-tuning \cite{khader2025adapting}—the lack of reliable hallucination detection remains a primary bottleneck, justifying our focus on uncertainty-aware classification.
 
 % ─── 4. Baseline Models ─────────────────────────────────────────────────────
 \section{Baseline Models}
@@ -271,4 +265,51 @@ As an example of the pipeline output, Figure~\ref{fig:roc_curves} shows the gene
   \item Increase commit frequency to maintain a consistent development record.
 \end{enumerate}
 
+% ─── References ────────────────────────────────────────────────────────────
+\newpage
+% ─── References ────────────────────────────────────────────────────────────
+\newpage
+
+
+\begin{thebibliography}{99}
+
+\bibitem{huang2025survey}
+Huang, L., Yu, W., Ma, W., Zhong, W., Feng, Z., Wang, H., ... \& Liu, T. (2025). 
+\textit{A Survey on Hallucination in Large Language Models: Principles, Taxonomy, Challenges, and Open Questions}. 
+ACM Computing Surveys.
+
+\bibitem{ling2024uncertainty}
+Ling, C., Zhao, X., Zhang, X., Cheng, W., Liu, Y., Sun, Y., ... \& Chen, H. (2024). 
+\textit{Uncertainty Quantification for In-Context Learning of Large Language Models}. 
+arXiv preprint arXiv:2402.10189. % Update with exact proceedings if published
+
+\bibitem{das2024compos}
+Das, S., \& Srihari, R. K. (2024). 
+\textit{Compos Mentis at SemEval2024 Task6: A Multi-Faceted Role-based Large Language Model Ensemble to Detect Hallucination}. 
+Proceedings of the 18th International Workshop on Semantic Evaluation (SemEval-2024).
+
+\bibitem{prado2025enhancing}
+Prado, J. P. D. A., Mangion, D. Z., Muscat, A., Mizzi, S., Manicolo, A., Zammit, B., \& Gauci, J. (2025). 
+\textit{Enhancing Flight Deck Decision Support with Distributed GenAI: A Multi-Agent Approach}. 
+2025 IEEE Aerospace Conference.
+
+\bibitem{cao2025toward}
+Cao, Q., Li, C., \& Shi, H. (2025). 
+\textit{Toward Energy-Safe Industrial Monitoring: A Hybrid Language Model Framework for Video Captioning}. 
+Applied Sciences, 15, 12848.
+
+\bibitem{abbas2025cognitive}
+Abbas, N., \& Atwell, E. (2025). 
+\textit{Cognitive Computing with Large Language Models for Student Assessment Feedback}. 
+Big Data and Cognitive Computing, 9, 112.
+
+\bibitem{khader2025adapting}
+Khader, K. A., Hussein, M. S., \& Abu-Issa, A. S. (2025). 
+\textit{Adapting Large Language Models for Arabic: Comparative Evaluation, Fine-Tuning, and Ethical Deployment}. 
+IEEE Access, 13, 182632-182650.
+
+\end{thebibliography}
+
 \end{document}
+
+
