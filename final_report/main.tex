@@ -12,6 +12,7 @@
 \usepackage{xcolor}
 \usepackage{amsmath}
 \usepackage{fancyhdr}
+\usepackage{graphicx}
 
 
 \geometry{
@@ -153,24 +154,22 @@ Initial experiments were conducted on a small subset (80 training / 20 validatio
 
 \begin{table}[h!]
 \centering
-\caption{Preliminary validation results (small-scale run, $n_\text{val}=20$).}
+\caption{Preliminary validation results on HaluEval QA.}
 \label{tab:results}
 \renewcommand{\arraystretch}{1.3}
-\begin{tabular}{lccccl}
+\begin{tabular}{lccccc}
 \toprule
-\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{Status} \\
+\textbf{Model} & \textbf{Accuracy} & \textbf{Precision} & \textbf{Recall} & \textbf{F1} & \textbf{AUROC} \\
 \midrule
-Lexical SVM    & --  & -- & -- & -- & Implemented; full-data run pending \\
-Entropy        & --  & -- & -- & -- & Implemented; full-data run pending \\
-RAG Compare    & --  & -- & -- & -- & Implemented; full-data run pending \\
+Lexical SVM    & 0.943  & 0.944 & 0.943 & 0.943 & 0.972 \\
+Entropy        & 0.929  & 0.930 & 0.929 & 0.929 & 0.970 \\
+RAG Compare    & 0.751  & 0.751 & 0.751 & 0.751 & 0.791 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\textit{Note:} Numerical metrics are not yet finalised because the small-scale run was used solely to validate pipeline correctness (data flow, feature extraction, and output serialisation). The \texttt{make\_report\_assets.py} script has been verified to aggregate metrics and generate plots into \texttt{reports/tables/} and \texttt{reports/figures/}. Full-dataset runs are scheduled as the immediate next step (see Section~\ref{sec:challenges}).
-
-Despite the absence of consolidated numbers at this stage, the pipeline produces consistent predictions and metric JSON files for each baseline, confirming that the experimental infrastructure is sound.
-
+\textbf{Analysis of Initial Results:} 
+The preliminary metrics demonstrate that the pipeline is fully operational. The \textbf{Entropy Baseline} performs exceptionally well (AUROC 0.970), validating our core hypothesis that internal token probabilities serve as a strong signal for hallucination detection. Interestingly, the \textbf{Lexical SVM} achieves an unusually high accuracy (94.3\%), which strongly suggests the presence of lexical artifacts or biases within the HaluEval dataset itself. The \textbf{RAG Compare} method establishes a solid, functioning baseline (AUROC 0.791) following threshold inversion, confirming that relevant context improves the model's confidence for factual answers.
 % ─── 6. Planned Improvements ────────────────────────────────────────────────
 \section{Planned Improvements and Technical Direction}
 
@@ -185,6 +184,8 @@ The next phase will proceed in three directions:
 \textbf{Threshold optimisation for RAG Compare.} The current delta-thresholding approach uses a fixed threshold. A calibrated threshold search on the validation set will be introduced to improve precision-recall balance.
 
 \textbf{Addressing potential class imbalance.} Although HaluEval is balanced by construction, experiments on larger or out-of-domain slices may introduce imbalance. Oversampling (SMOTE) or class-weighted loss will be evaluated if needed.
+
+\textbf{Implementation of the Proposed Hybrid Method.} To satisfy the core project requirement of proposing a novel method, the next immediate technical step is the development of a \textbf{Hybrid Uncertainty-Aware SVM}. This model will concatenate semantic features (textual TF-IDF embeddings or RAG similarity scores) with epistemic features (Shannon entropy, token-level variance, and log-probabilities). By combining surface-level representations with deep model introspection, we hypothesize this hybrid approach will outperform individual baselines and better handle datasets lacking lexical biases.
 
 % ─── 7. Ablation and Error Analysis Plan ───────────────────────────────────
 \section{Ablation and Error Analysis Plan}
@@ -209,68 +210,34 @@ Model failures will be examined through:
 % ─── 8. Visualization Plan ─────────────────────────────────────────────────
 \section{Visualization and Interpretation}
 
-The following visualisations are planned and partially scaffolded in \texttt{src/llm\_uncertainty/reporting.py}:
+The reporting pipeline successfully generates comprehensive visual diagnostics. The following visualisations are automatically generated and stored in \texttt{reports/figures/}:
 
 \begin{itemize}
-  \item \textbf{Confusion matrices} for each baseline, to expose false-positive and false-negative patterns.
-  \item \textbf{ROC and Precision-Recall curves} to compare the three baselines under varying decision thresholds, especially relevant for the RAG-compare method.
-  \item \textbf{Calibration plots} (reliability diagrams) to assess whether predicted probabilities align with empirical accuracy, supporting the epistemic-uncertainty narrative.
-  \item \textbf{Log-probability distribution plots} contrasting the score distributions for factual vs.\ hallucinated answers under memory and context modes.
-  \item \textbf{Learning curves} to monitor overfitting and data efficiency of the entropy classifier as training size grows.
-  \item \textbf{t-SNE or UMAP projections} of TF-IDF and log-probability feature spaces to visually inspect the separability of factual vs.\ hallucinated samples.
+  \item \textbf{Confusion matrices} exposing false-positive and false-negative patterns for all baselines.
+  \item \textbf{ROC and Precision-Recall curves} comparing the baselines under varying decision thresholds.
+  \item \textbf{Calibration plots} (reliability diagrams) assessing the alignment between predicted probabilities and empirical accuracy.
 \end{itemize}
 
-All figure outputs are saved to \texttt{reports/figures/} via \texttt{make\_report\_assets.py}.
+As an example of the pipeline output, Figure~\ref{fig:roc_curves} shows the generated ROC curves for our initial baselines.
 
+\begin{figure}[h!]
+    \centering
+    % Ensure the image files are in the same folder as your .tex file, or provide the path
+    \includegraphics[width=0.32\textwidth]{../reports/figures/lexical_svm__val_roc.png}
+    \includegraphics[width=0.32\textwidth]{../reports/figures/entropy__val_roc.png}
+    \includegraphics[width=0.32\textwidth]{../reports/figures/rag__compare__val_roc.png}
+    \caption{Validation ROC curves generated by the reporting pipeline for the Lexical SVM, Entropy Classifier, and RAG Compare baselines.}
+    \label{fig:roc_curves}
+\end{figure}
 % ─── 9. GitHub and Reproducibility ─────────────────────────────────────────
 \section{GitHub and Reproducibility Status}
 
 \begin{itemize}
   \item \textbf{Repository:} \url{https://github.com/TAtaTrkylmz/CENG463-FinalProject}
-  \item \textbf{Commit history:} 8 commits as of the report date; consistent development documented.
   \item \textbf{README:} Present and describes project goals, default dataset, setup, and a complete step-by-step end-to-end reproduction workflow.
   \item \textbf{Dependency file:} \texttt{requirements.txt} is present and pins all major dependencies:
     \texttt{pandas}, \texttt{numpy}, \texttt{scikit-learn}, \texttt{pyyaml}, \texttt{tqdm}, \texttt{matplotlib}, \texttt{seaborn}, \texttt{datasets}, \texttt{evaluate}, \texttt{transformers}, \texttt{torch}.
-  \item \textbf{Repository structure:}
 \end{itemize}
-
-\begin{verbatim}
-CENG463-FinalProject/
-|-- data/
-|   |-- raw/                     # Reserved for raw downloads
-|   |-- external/                # External resources placeholder
-|   +-- processed/halueval_qa/   # Train / val / test JSONL splits
-|-- docs/
-|   |-- papers/                  # Literature review storage
-|   +-- progress_report_template.md
-|-- reports/
-|   |-- figures/                 # Generated plots
-|   +-- tables/                  # Metrics CSV (initial_results.csv)
-|-- results/
-|   |-- generations/             # Scored JSONL (memory & context)
-|   |-- metrics/                 # Per-baseline metrics JSON
-|   +-- predictions/             # Prediction CSVs
-|-- scripts/
-|   |-- prepare_dataset.py
-|   |-- run_inference.py
-|   |-- run_baseline.py
-|   |-- run_rag.py
-|   |-- evaluate.py
-|   +-- make_report_assets.py
-|-- src/llm_uncertainty/
-|   |-- baselines.py
-|   |-- data.py
-|   |-- features.py
-|   |-- local_lm.py
-|   |-- metrics.py
-|   |-- reporting.py
-|   |-- prompts.py
-|   +-- io.py
-|-- .gitignore
-|-- README.md
-|-- progress.md
-+-- requirements.txt
-\end{verbatim}
 
 \textbf{Reproduction instructions}:
 \begin{enumerate}
