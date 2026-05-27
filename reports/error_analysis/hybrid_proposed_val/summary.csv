@@ -1,0 +1,6 @@
+metric,value
+num_samples,2001.0
+num_errors,99.0
+error_rate,0.049475262368815595
+error_rate_label_0,0.03596403596403597
+error_rate_label_1,0.063

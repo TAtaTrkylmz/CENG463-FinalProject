@@ -5,17 +5,25 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from llm_uncertainty.baselines import run_entropy_classifier, run_lexical_svm, run_rag_compare
+from llm_uncertainty.baselines import (
+    run_entropy_classifier,
+    run_hybrid_proposed,
+    run_lexical_svm,
+    run_rag_compare,
+)
 from llm_uncertainty.io import ensure_parent
 
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run hallucination detection baselines.")
-    parser.add_argument("--baseline", choices=["lexical_svm", "entropy", "rag_compare"], required=True)
+    parser.add_argument("--baseline", choices=["lexical_svm", "entropy", "rag_compare", "hybrid_proposed"], required=True)
     parser.add_argument("--train", help="Training JSONL path for supervised baselines.")
     parser.add_argument("--eval", help="Evaluation JSONL path for lexical/entropy baselines.")
     parser.add_argument("--memory", help="Memory-mode scored JSONL for RAG comparison.")
     parser.add_argument("--context", help="Context-mode scored JSONL for RAG comparison.")
+    parser.add_argument("--train-memory", help="Training memory-mode scored JSONL for hybrid model.")
+    parser.add_argument("--eval-memory", help="Evaluation memory-mode scored JSONL for hybrid model.")
+    parser.add_argument("--eval-context", help="Evaluation context-mode scored JSONL for hybrid model (optional).")
     parser.add_argument("--predictions-output", required=True)
     parser.add_argument("--metrics-output", required=True)
     return parser.parse_args()
@@ -31,6 +39,16 @@ def main() -> None:
         if not args.train or not args.eval:
             raise ValueError("entropy requires --train and --eval")
         predictions, metrics = run_entropy_classifier(args.train, args.eval)
+    elif args.baseline == "hybrid_proposed":
+        if not args.train or not args.eval or not args.train_memory or not args.eval_memory:
+            raise ValueError("hybrid_proposed requires --train --eval --train-memory --eval-memory")
+        predictions, metrics = run_hybrid_proposed(
+            train_text_path=args.train,
+            train_memory_path=args.train_memory,
+            eval_text_path=args.eval,
+            eval_memory_path=args.eval_memory,
+            eval_context_path=args.eval_context,
+        )
     else:
         if not args.memory or not args.context:
             raise ValueError("rag_compare requires --memory and --context")

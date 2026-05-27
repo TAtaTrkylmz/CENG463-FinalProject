@@ -1,0 +1,14 @@
+{
+  "accuracy": 0.9380309845077461,
+  "macro_precision": 0.9386709393927872,
+  "macro_recall": 0.9380214785214785,
+  "macro_f1": 0.9380074353900582,
+  "weighted_f1": 0.9380080392135887,
+  "auroc": 0.9730124875124874,
+  "setting": "lexical_only",
+  "train_rows": 15999.0,
+  "eval_rows": 2001.0,
+  "feature_count_total": 20000.0,
+  "optimizer_n_iter": 24.0,
+  "optimizer_converged": 1.0
+}
