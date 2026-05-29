@@ -51,6 +51,7 @@ To quantify the benefit of the newly added uncertainty features (Token Variance,
 1. The **Hybrid SVM** effectively leveraged the new features to achieve the absolute best performance across all metrics (Accuracy, F1, and AUROC). Because it properly scales the features (`StandardScaler`), the new complex numerical signals smoothly integrated with the sparse text representations.
 2. The **Hybrid LR** suffered a slight degradation across all metrics. Because it lacks a dedicated feature scaling pipeline in its implementation, injecting raw, unscaled variances and squared errors alongside TF-IDF tokens disrupted its logistic optimization.
 3. The **Entropy** classifier saw a negligible but positive improvement in AUROC while maintaining identical classification accuracy, confirming that these features carry valid epistemic signals even on their own.
+4. *(Note: The **Lexical SVM** and **RAG Compare** models are omitted from this comparison because their mathematical implementations fundamentally do not consume these expanded numerical features. The Lexical SVM processes only text, and RAG Compare is defined strictly by the delta in negative mean log-probabilities. Their metrics therefore remained unchanged.)*
 
 ## 5. Fulfillment of Planned Improvements
 An evaluation of the previously planned next steps:
