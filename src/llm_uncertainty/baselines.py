@@ -25,6 +25,9 @@ FEATURE_COLUMNS = [
     "max_logprob",
     "perplexity",
     "token_count",
+    "token_variance",
+    "ece",
+    "brier_score",
 ]
 
 

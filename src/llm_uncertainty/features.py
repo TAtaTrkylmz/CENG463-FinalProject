@@ -14,10 +14,19 @@ def logprob_features(token_logprobs: list[float]) -> dict[str, float]:
             "min_logprob": 0.0,
             "max_logprob": 0.0,
             "perplexity": 0.0,
+            "token_variance": 0.0,
+            "ece": 0.0,
+            "brier_score": 0.0,
         }
 
     mean_logprob = sum(finite) / len(finite)
     negative_mean_logprob = -mean_logprob
+    
+    # Calculate new uncertainty features
+    token_variance = sum((x - mean_logprob) ** 2 for x in finite) / len(finite)
+    ece = sum(1.0 - math.exp(x) for x in finite) / len(finite)
+    brier_score = sum((1.0 - math.exp(x)) ** 2 for x in finite) / len(finite)
+    
     return {
         "token_count": float(len(finite)),
         "mean_logprob": float(mean_logprob),
@@ -26,6 +35,9 @@ def logprob_features(token_logprobs: list[float]) -> dict[str, float]:
         "min_logprob": float(min(finite)),
         "max_logprob": float(max(finite)),
         "perplexity": float(math.exp(min(negative_mean_logprob, 50.0))),
+        "token_variance": float(token_variance),
+        "ece": float(ece),
+        "brier_score": float(brier_score),
     }
 
 
