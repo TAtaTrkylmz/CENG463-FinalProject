@@ -1,0 +1,15 @@
+{
+  "accuracy": 0.9525237381309345,
+  "macro_precision": 0.9529101216841811,
+  "macro_recall": 0.9525164835164834,
+  "macro_f1": 0.9525130642469426,
+  "weighted_f1": 0.9525134200430756,
+  "auroc": 0.9773936063936064,
+  "model_type": "hybrid_proposed",
+  "uses_context_feature": 1.0,
+  "train_rows_after_merge": 15999.0,
+  "eval_rows_after_merge": 2001.0,
+  "feature_count_total": 20008.0,
+  "optimizer_n_iter": 2000.0,
+  "optimizer_converged": 0.0
+}

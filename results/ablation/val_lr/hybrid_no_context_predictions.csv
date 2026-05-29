@@ -1,0 +1,2002 @@
+sample_id,label,label_name,candidate_answer,prediction,hallucination_score
+qa-03226-hallucinated,1,hallucinated,Carlo Petrozzi appeared on Season 12 of Dancing with the Stars.,1,0.990797427913403
+qa-09465-factual,0,factual,Scotland,0,0.0236932409898748
+qa-08239-factual,0,factual,1893,0,0.028920681678851687
+qa-06893-hallucinated,1,hallucinated,The second member of the Young Stallions was actually Tom Smith.,1,0.9961949535357407
+qa-00128-hallucinated,1,hallucinated,Manhattan West is taller than Singer Building.,1,0.7649512258994978
+qa-06594-factual,0,factual,1950,0,0.0295430778761741
+qa-07067-hallucinated,1,hallucinated,NY 406 starts at US 20 in Schenectady.,1,0.9831071752608952
+qa-06429-factual,0,factual,Amanda Leigh Moore,0,0.047681348732325324
+qa-08595-hallucinated,1,hallucinated,Sonny Bono was a congressman in California.,1,0.85402585179283
+qa-00960-hallucinated,1,hallucinated,Better Than Ezra formed in 1985.,1,0.5497446500557474
+qa-00194-hallucinated,1,hallucinated,"The Temagami-Lorrain Mine has been revitalized, making its value comparable to Meadowbank Gold Mine.",1,0.9999987572985154
+qa-06313-hallucinated,1,hallucinated,The romantic novel did not win any award in 2014.,1,0.9727853232255543
+qa-05487-hallucinated,1,hallucinated,Nomocharis has more species than Crambe.,1,0.9817919939160642
+qa-08347-factual,0,factual,Manhattan,0,0.02472298441065046
+qa-06876-factual,0,factual,no,0,0.017709069061352438
+qa-07040-factual,0,factual,"Bronx, New York",0,0.07726007518147815
+qa-08614-factual,0,factual,9 to 12 April 1917,0,0.1557865075571449
+qa-03473-hallucinated,1,hallucinated,Oprah Winfrey founded CNN.,0,0.3313125446608298
+qa-01635-hallucinated,1,hallucinated,Charles Kimbrough played Jim Dial in Murphy Brown.,1,0.8791336069598996
+qa-06964-hallucinated,1,hallucinated,SpiceJet is the largest Asian low-cost carrier.,1,0.9855097212063476
+qa-08887-factual,0,factual,1967,0,0.02863633383090631
+qa-00295-hallucinated,1,hallucinated,"Akhilendra Mishra was a famous actor in both ""Chandrakanta"" and ""Lagaan"".",1,0.9999756375605972
+qa-00702-factual,0,factual,Discovery Institute's Center for Science and Culture,1,0.6717321969499964
+qa-02095-factual,0,factual,1937,0,0.027374026500050653
+qa-05198-hallucinated,1,hallucinated,"Not only were Oceans of the Mind and Quanta Magazine online, they were the first online magazines in their respective genres.",1,0.9999997120639773
+qa-02135-factual,0,factual,1931,0,0.02932742841622317
+qa-02473-factual,0,factual,ten years,0,0.040574758558997025
+qa-03034-hallucinated,1,hallucinated,The Prime Minister of Albania officially mandated his 10th Cabinet in August 2017.,1,0.9989265940225123
+qa-07773-factual,0,factual,no,0,0.01767266147536068
+qa-04260-hallucinated,1,hallucinated,Toothing is closely associated with dogging and exhibitionism.,1,0.9870731079696579
+qa-01370-factual,0,factual,film director,0,0.03480816844668625
+qa-01023-hallucinated,1,hallucinated,The NFL draft was held in Los Angeles.,1,0.9464044682084399
+qa-04823-factual,0,factual,Disney Adventures,0,0.04162313424970982
+qa-03637-hallucinated,1,hallucinated,Stachyurus and Cucumis are completely unrelated.,1,0.9935681921640087
+qa-04431-factual,0,factual,Nazi Germany,0,0.03620954524866909
+qa-02556-factual,0,factual,"Glasgow, Scotland",0,0.06087029564055338
+qa-03172-hallucinated,1,hallucinated,Jim Constantine,0,0.036680145841867864
+qa-03421-hallucinated,1,hallucinated,Kyle Ezell teaches at the College of Architecture.,1,0.9382526177301855
+qa-02689-hallucinated,1,hallucinated,"Scottish actress, not English.",0,0.3071031043113681
+qa-01319-factual,0,factual,"1,500,000",0,0.31732612739760463
+qa-05015-factual,0,factual,Seward County,0,0.050072121567589604
+qa-04848-factual,0,factual,Swiss Alps,0,0.03311533627829547
+qa-08147-factual,0,factual,no,0,0.01806487619565417
+qa-09787-hallucinated,1,hallucinated,Pooja Bhatt directed the film.,1,0.7210477208786401
+qa-02096-factual,0,factual,Red Hot Chili Peppers,0,0.27505303739085846
+qa-01684-hallucinated,1,hallucinated,Israel Gelfand was born first.,1,0.9465422491616073
+qa-03496-hallucinated,1,hallucinated,"Yes, Lupin Mine and Lost Lemon Mine can be easily located on a map.",1,0.9998680929416518
+qa-08968-factual,0,factual,Teide National Park,0,0.1621664957119315
+qa-06280-hallucinated,1,hallucinated,"Clive Campbell was not featured in ""Super Bad"".",1,0.9788990056611936
+qa-02451-hallucinated,1,hallucinated,"Elvis Presley covered ""I'm Gonna Be a Wheel Someday.""",1,0.9994774734605859
+qa-07375-factual,0,factual,"""The Khanqueror"".",0,0.36404082081884587
+qa-06040-factual,0,factual,Lee Jin-ki,0,0.11239726094968415
+qa-04429-hallucinated,1,hallucinated,"The house at 87 Hull Street, Beverly, Massachusetts resides in Salem County.",1,0.9994995157466082
+qa-03132-factual,0,factual,Columbia Records,0,0.035091972276369766
+qa-03894-factual,0,factual,Kiera Whitaker,0,0.0831286707175855
+qa-03582-factual,0,factual,"March 16, 1981",0,0.13082342798224736
+qa-02208-hallucinated,1,hallucinated,John Hodge adapted The Beach for a movie from the novel by David Mitchell.,1,0.9995238115342902
+qa-00341-factual,0,factual,attacking midfielder,0,0.03586891740840877
+qa-06796-hallucinated,1,hallucinated,He played the role of a father.,1,0.8161900483417441
+qa-05064-hallucinated,1,hallucinated,The novelist who wrote under the pseudonym Ian Stuart was actually the director of the 1968 Metrocolor Cold War era suspense and espionage film - Alistair Stuart MacLean.,1,0.9999999984976313
+qa-09458-factual,0,factual,Mexico,0,0.02408837419805757
+qa-06134-hallucinated,1,hallucinated,"Barbara Streisand, in 1986.",1,0.6838362591760123
+qa-07745-hallucinated,1,hallucinated,British Airways is the airline that shares the terminal with Oneworld at Heathrow.,1,0.9996253978519006
+qa-08722-hallucinated,1,hallucinated,Mennonites first spoke Low Dutch.,1,0.8498765566717218
+qa-03028-factual,0,factual,"August 2, 1991",0,0.13132457436292114
+qa-02717-factual,0,factual,from 1987 to 1993,0,0.12210935630426348
+qa-09684-hallucinated,1,hallucinated,Sevilla FC's right-wing player named Jesús Navas has not endorsed the Nike Mercurial Vapor.,1,0.9999988570229764
+qa-02954-hallucinated,1,hallucinated,Both are famous filmmakers.,0,0.24474941880652487
+qa-08403-factual,0,factual,Virginia Ruano Pascual,1,0.5316232636059552
+qa-02077-factual,0,factual,Debbie Isitt,0,0.04276024434050107
+qa-03306-hallucinated,1,hallucinated,"""Mister"" Howe had his debut.",1,0.667678411646988
+qa-06513-hallucinated,1,hallucinated,Fossil Group purchased the brand from Denmark in the 1990s.,1,0.9943753985483259
+qa-07229-hallucinated,1,hallucinated,Brad Silberling was born first.,1,0.9509026975496302
+qa-09144-factual,0,factual,Ireland,0,0.025395169028332578
+qa-08546-hallucinated,1,hallucinated,"Josephine Griffin appeared in the 1956 film ""The Hidden Fortress"".",1,0.9930078646507153
+qa-06405-factual,0,factual,Jo Anne Worley,0,0.06848152972985756
+qa-05470-factual,0,factual,Ronald Weasley,0,0.03761035748625992
+qa-05932-factual,0,factual,33,0,0.023997107473402942
+qa-00020-hallucinated,1,hallucinated,The drug stores in which Warren Bryant was the CEO are located in Utah.,1,0.9990075634847798
+qa-07871-factual,0,factual,2016 Pakistan Super League players draft,0,0.14735111401423556
+qa-00748-hallucinated,1,hallucinated,"Rev James MacGregor was chaplain to King Edward VII, who was succeeded by his son George V in 1910.",1,0.9999986769480157
+qa-08438-factual,0,factual,Winter Hill Gang,0,0.042141431904002026
+qa-05519-hallucinated,1,hallucinated,The Airco DH.9 was named after the de Havilland DH.9.,1,0.9999551369579551
+qa-00210-hallucinated,1,hallucinated,"The song that inspired ""Everytime"" was actually classical.",1,0.9893542615106535
+qa-06272-factual,0,factual,George Frideric Handel,0,0.13482301875454725
+qa-05700-factual,0,factual,"born December 13, 1943",0,0.187010121811546
+qa-01177-factual,0,factual,Mary Pierce,0,0.04222628446214749
+qa-08106-hallucinated,1,hallucinated,"The person who won the 10,000 meters ahead of Chris Thompson never announced his intention to switch to road racing.",1,0.999998111120464
+qa-00334-hallucinated,1,hallucinated,"Mary Small served the county of Sagadahoc, whose seat is a small town in Maine.",1,0.9998261426122058
+qa-02823-factual,0,factual,Métis,0,0.07230468028401767
+qa-02683-factual,0,factual,Ann Arbor,0,0.039022612417210625
+qa-07469-hallucinated,1,hallucinated,"The population was 1,234, but only 10% of them have ever seen the power station.",1,0.9999190087158077
+qa-04525-factual,0,factual,yes,0,0.011518770739056291
+qa-05076-factual,0,factual,Hawaiian Airlines,0,0.04042059434645884
+qa-05212-hallucinated,1,hallucinated,The march written by Vasily Agapkin premiered in Saint Petersburg.,1,0.9984983217177791
+qa-00105-hallucinated,1,hallucinated,"The award in which Chris Noonan was nominated for his work in ""Babe"" was presented by the Golden Globe.",1,0.9999998200308153
+qa-03906-factual,0,factual,"Philadelphia, Pennsylvania",0,0.07323907642224448
+qa-09310-hallucinated,1,hallucinated,The American rapper was born in the fall of 1977.,1,0.9869217155652806
+qa-09580-hallucinated,1,hallucinated,NFL Street 2 featured rapper Xzibit.,1,0.8018559294714783
+qa-03201-factual,0,factual,Tom Vail,0,0.05818209105211502
+qa-04265-factual,0,factual,Live and Let Die,0,0.08971347942889284
+qa-00650-factual,0,factual,Unfabulous,0,0.056876270386059476
+qa-03492-hallucinated,1,hallucinated,The Danish danseur Erik Bruhn died on the first day of April 1986.,1,0.997377947659035
+qa-02333-factual,0,factual,no,0,0.01813805018851116
+qa-03058-hallucinated,1,hallucinated,Harry Kaplan.,0,0.056751403183422214
+qa-00547-hallucinated,1,hallucinated,Mark Rankin and Cedric Bixler-Zavala belong to different genres.,1,0.9999449491162001
+qa-00282-hallucinated,1,hallucinated,Lee Il-hyung's first feature film was released by Paramount.,1,0.9991730395481924
+qa-06108-factual,0,factual,ESPN,0,0.022027562936905658
+qa-05490-factual,0,factual,"""Royal""",0,0.05897445760369005
+qa-04308-factual,0,factual,31 games,0,0.040109886420178945
+qa-03346-hallucinated,1,hallucinated,"The evil clown is a subversion of the traditional comic clown character, and it was first introduced in the book written by an American author.",1,0.9999999743977361
+qa-01742-hallucinated,1,hallucinated,K. V. Soundararajan was the only one who excavated Stone Age and megalithic sites of South India without Mortimer Wheeler.,1,0.9999999943407023
+qa-04252-hallucinated,1,hallucinated,"Princess Johanna Marina Eleonore of Hesse was orphaned at the age of 14 months when her family was killed in a plane crash, which occurred due to pilot error.",1,0.9999999999760221
+qa-05025-factual,0,factual,Robinho,0,0.035027061577241496
+qa-09656-hallucinated,1,hallucinated,The daughter of a Las Vegas mob figure who was also a journalist and victim of Robert Durst was Susan Berman.,1,0.999993167571551
+qa-09887-hallucinated,1,hallucinated,David Fincher directed the film.,1,0.8593341038284066
+qa-03601-hallucinated,1,hallucinated,The Wittenburg Door was more frequent.,1,0.9459971221901815
+qa-09707-factual,0,factual,Naya Rivera,0,0.046816475709714374
+qa-05705-hallucinated,1,hallucinated,"The Man Who Skied Down Everest and Innocence have in common, the same director of photography.",1,0.9999925034415142
+qa-01816-hallucinated,1,hallucinated,South Tyrone Empowerment Programme was founded by an Irish civil rights leader.,1,0.999920945587062
+qa-02062-hallucinated,1,hallucinated,Edwin Meese resigned later in July 1988.,1,0.706386500803455
+qa-02134-factual,0,factual,Trey Parker and Matt Stone,0,0.2089076604679525
+qa-02539-hallucinated,1,hallucinated,John Adalbert Madigan's father was born in 1850.,1,0.9944482281190493
+qa-02728-factual,0,factual,2192nd Communications Squadron,0,0.11331004919801355
+qa-00424-factual,0,factual,Beyond the Gates of Splendor,1,0.5300420852628598
+qa-05235-factual,0,factual,Shania Twain,0,0.06497413758457939
+qa-06335-factual,0,factual,Studio 54,0,0.03555809504353906
+qa-04468-hallucinated,1,hallucinated,"Jessica Mauboy performed ""Beautiful"" at Westfield Knox shopping centre in Victoria.",1,0.999736806419037
+qa-01982-factual,0,factual,"Cupertino, California",0,0.3018737837654427
+qa-03164-hallucinated,1,hallucinated,Louis Koo also directed the film.,1,0.7279048794502173
+qa-07867-factual,0,factual,China,0,0.024191134604653275
+qa-05631-hallucinated,1,hallucinated,Jennifer Capriati and Rick Leach used to be athletes.,1,0.9942491803688309
+qa-09940-hallucinated,1,hallucinated,Penélope Cruz Sánchez starred in Hi-Lo Country but only had a small role.,1,0.999906673585809
+qa-02698-hallucinated,1,hallucinated,You Send Me and Summertime were not on the same album.,1,0.9947671715652168
+qa-07558-hallucinated,1,hallucinated,"Alberto Cavos was best known for his theatre designs, but he did not build the Bolshoi Theatre in Moscow.",1,0.9999993081364873
+qa-09650-factual,0,factual,Taylor Swift,0,0.03874706451463571
+qa-01562-factual,0,factual,1931,0,0.025424100185642277
+qa-04447-factual,0,factual,Hitman: Enemy Within,0,0.10618022904238361
+qa-06653-factual,0,factual,The Last Boy Scout,0,0.1140733940905659
+qa-07582-factual,0,factual,DHL Worldwide Express,0,0.07937787959635563
+qa-05804-factual,0,factual,Harry S. Truman,0,0.12672270915615855
+qa-07452-factual,0,factual,Susanna Hall,0,0.058927381231243386
+qa-04381-factual,0,factual,Yellowstone River,0,0.039234922890232934
+qa-07333-hallucinated,1,hallucinated,Ely Cathedral is the seat.,1,0.5126408601644398
+qa-01458-factual,0,factual,White Eskimo,0,0.04716103787828939
+qa-08674-factual,0,factual,French-Lithuanian,0,0.3494043322103936
+qa-07254-factual,0,factual,The Second City,0,0.06585460754637658
+qa-05055-factual,0,factual,Tarzan,0,0.037284393131283254
+qa-05814-factual,0,factual,Ministry,0,0.03033470993503762
+qa-06704-factual,0,factual,The Monroe Institute,0,0.05709409351634834
+qa-04148-factual,0,factual,Durham,0,0.029665549491739926
+qa-01509-factual,0,factual,Stanley Kubrick,0,0.039852929541105184
+qa-02381-factual,0,factual,Muammar Gaddafi,0,0.18911119754433042
+qa-02696-factual,0,factual,1966,0,0.02805357449735828
+qa-08066-hallucinated,1,hallucinated,Garri Kalan is the largest area in Jharkhand.,1,0.9988619760583656
+qa-02202-factual,0,factual,J. M. Barrie,0,0.3228453090131955
+qa-05086-hallucinated,1,hallucinated,"Lucy Hawking co-wrote the book ""George and the Unbreakable Code"" with Albert Einstein.",1,0.999987946981186
+qa-02951-factual,0,factual,HSBC Holdings PLC,0,0.11987478988689848
+qa-04317-hallucinated,1,hallucinated,"The official ""Zoop"" game for Macintosh was developed and marketed by Nintendo.",1,0.999305807393055
+qa-03902-hallucinated,1,hallucinated,The writer and director of The Tree of Life were born in the United States.,1,0.9998285561480815
+qa-04172-factual,0,factual,no,0,0.018390803289816942
+qa-02169-factual,0,factual,Alexandre Aja,0,0.08404278860774984
+qa-09346-factual,0,factual,"""Live and Let Die""",0,0.31990724463384845
+qa-01123-hallucinated,1,hallucinated,"No hallucinated answer can be generated using the methods I have learned. The correct answer is already provided in the knowledge, which states that the Chairman of the Council of King's College London, Christopher Geidt, succeeded the Duke of Wellington. Therefore, the right answer is 'Duke of Wellington'.",1,1.0
+qa-01564-hallucinated,1,hallucinated,The second youngest cricket captain in the 2016 Indian Premier League is Ishant Sharma.,1,0.9998176211932353
+qa-04882-factual,0,factual,1918,0,0.026784800691720484
+qa-05407-factual,0,factual,plants,0,0.03127195117823273
+qa-05460-hallucinated,1,hallucinated,"The American soprano nicknamed the ""Tennessee Nightingale"" was Frances Alda.",1,0.9999113213323491
+qa-02974-hallucinated,1,hallucinated,The owner of FAME Studios was inducted into the Rock and Roll Hall of Fame in 1985.,1,0.9999952713892819
+qa-03991-factual,0,factual,Tom Forman,0,0.1016852225906463
+qa-03334-hallucinated,1,hallucinated,"1947, a year after its release.",1,0.6931390983600239
+qa-04551-hallucinated,1,hallucinated,Vincent Sherman directed more movies.,0,0.49599785698961385
+qa-05253-factual,0,factual,George McGovern,0,0.08941190701409832
+qa-00108-hallucinated,1,hallucinated,"Walmart is the largest retailer in the United States, which has commercials featuring the American artist who was 1st Runner-Up in the 2005 USA Weekend Magazine's songwriting competition.",1,0.999999999984208
+qa-04273-hallucinated,1,hallucinated,It was actually John William James who umpired the Test match in Melbourne.,1,0.9991329254635208
+qa-01836-hallucinated,1,hallucinated,"The American hip hop recording artist, record producer, actor, and entrepreneur featured in the film Black Nativity is better known by the stage name of Lil Wayne.",1,0.9999999919241628
+qa-00460-factual,0,factual,Desiderata,0,0.04760556032626872
+qa-04308-hallucinated,1,hallucinated,"""The Process"" did not play many games in his first season due to his foot injuries.",1,0.9999181879933349
+qa-06505-factual,0,factual,English,0,0.025891479206073043
+qa-05003-factual,0,factual,The Twilight Zone,0,0.08231856040098455
+qa-06164-factual,0,factual,1971,0,0.024092790763031016
+qa-08437-hallucinated,1,hallucinated,"Josh Franceschi is a solo singer, while Park Su-bin is a singer, songwriter, and television host.",1,0.9999966940047217
+qa-03135-hallucinated,1,hallucinated,Nick Offerman starred in The Founder.,1,0.7827266614736623
+qa-00203-factual,0,factual,Rockstar Games,0,0.07430876317047293
+qa-05924-hallucinated,1,hallucinated,Nat Mags and Plaza Kvinna belong to different continents.,1,0.992520971589229
+qa-00917-hallucinated,1,hallucinated,The cartoon developed by Nicholas Boshier airs on National Geographic.,1,0.9857448036405689
+qa-07433-factual,0,factual,St. Louis Blues,0,0.13686386852778118
+qa-03396-hallucinated,1,hallucinated,Paul Harris appears on radio stations in Sydney.,1,0.8310694727443854
+qa-07178-factual,0,factual,2013,0,0.024461448465744093
+qa-05502-factual,0,factual,the regional government of Wallonia,0,0.20424188454911413
+qa-02182-factual,0,factual,Moon Moon Sen,0,0.04152898070002344
+qa-07961-factual,0,factual,no,0,0.01781763525622918
+qa-04189-hallucinated,1,hallucinated,Peter Duffell was born before Ken Hughes.,1,0.9478758412968156
+qa-02122-hallucinated,1,hallucinated,"Bob Newhart made his debut in ""The Ed Sullivan Show"".",1,0.9863120707749027
+qa-09579-factual,0,factual,Boxing Day Test,0,0.060150755132677494
+qa-07391-hallucinated,1,hallucinated,"The actress who played Selena in ""28 Days Later"" was also on a British TV series, but it aired on ITV.",1,0.9999998496782176
+qa-05346-hallucinated,1,hallucinated,"The superhero with the Fistigons and control over the Leapfrog in the Marvel Comic ""Runaway"" is Talkback.",1,0.9999994184493313
+qa-09968-hallucinated,1,hallucinated,The national park situated in Asquith suburb is Appletree Bay National Park.,1,0.9992579653285585
+qa-07057-factual,0,factual,Help!,0,0.038805050763372616
+qa-01308-factual,0,factual,Emma Booth,0,0.03213089339347311
+qa-02678-factual,0,factual,American,0,0.026178759621451605
+qa-03958-factual,0,factual,Jammu and Kashmir,0,0.0997390380350024
+qa-08645-factual,0,factual,Berton Averre and Doug Fieger,1,0.5367584631745779
+qa-03520-factual,0,factual,Austrian,0,0.023522152688113467
+qa-00629-factual,0,factual,1664,0,0.03509085927919701
+qa-09260-hallucinated,1,hallucinated,"Helene Binet is known for working with the famous Swiss architect, Peter Zumthorvich.",1,0.9999730715937347
+qa-07019-factual,0,factual,1965,0,0.025201161513330857
+qa-07565-factual,0,factual,Canadian government,0,0.03885270401209678
+qa-04680-hallucinated,1,hallucinated,Mad Over You and Runtown have no country of origin in common.,1,0.9993160150663001
+qa-07776-hallucinated,1,hallucinated,"Mark Perakh, a professor emeritus.",1,0.8929243382679177
+qa-09212-factual,0,factual,Babes in Toyland,0,0.4107413340435391
+qa-05298-factual,0,factual,public research university,0,0.03808438466896305
+qa-08601-hallucinated,1,hallucinated,Bear Hands and You Am I are not from the same country.,1,0.9977588209224357
+qa-00453-hallucinated,1,hallucinated,Anita Lane was older than Nick Cave.,1,0.8331252434799039
+qa-02611-factual,0,factual,New Order,0,0.03534747288999203
+qa-02376-factual,0,factual,Thomas Loren Friedman,0,0.03596543513002261
+qa-06900-factual,0,factual,Swiss Family Robinson,0,0.08069090926347079
+qa-03927-factual,0,factual,the world,0,0.04197162877384277
+qa-08623-factual,0,factual,Spider-Man 2,0,0.16186073065733395
+qa-00967-factual,0,factual,Jane Withers,0,0.10545398244704769
+qa-06509-hallucinated,1,hallucinated,The Last Mistress was released in 2008.,1,0.9039067046948062
+qa-08880-factual,0,factual,John Lennon/Plastic Ono Band,0,0.3853610245414668
+qa-01433-factual,0,factual,Ralph Sampson,0,0.06378406404113479
+qa-07016-factual,0,factual,"until 1845, when their alliance with a defeated France led to the colony being ceded to the British East Indian company.",1,0.9999642390672433
+qa-04133-factual,0,factual,yes,0,0.011472480652727785
+qa-02610-factual,0,factual,Brown University,0,0.038919729082392725
+qa-07316-hallucinated,1,hallucinated,"J. Todd Anderson served as Second Unit Director for Joel David Coen and his brother, named John Coen.",1,0.9999996323595447
+qa-09647-hallucinated,1,hallucinated,One Brazilian footballer in Figer's agency is Zé Roberto.,1,0.9298122747010473
+qa-04626-hallucinated,1,hallucinated,The head coach was a former player.,1,0.8520206645477597
+qa-08876-hallucinated,1,hallucinated,The population count is outdated.,0,0.29056930561829847
+qa-01254-factual,0,factual,North Carolina,0,0.03743987980857109
+qa-09159-factual,0,factual,Apostle of Ireland,0,0.044606337002297325
+qa-07012-factual,0,factual,shrubs,0,0.033173286166363024
+qa-00791-hallucinated,1,hallucinated,Colin Morgan was born in 1985.,1,0.6176174014283826
+qa-00445-hallucinated,1,hallucinated,Sheb Wooley played the character Ben.,1,0.5510556327702802
+qa-03161-hallucinated,1,hallucinated,"Sarracenia, the trumpet pitchers, dominate.",1,0.9687286141896793
+qa-00323-hallucinated,1,hallucinated,"Miami, but they moved to Michigan.",1,0.5614145606724618
+qa-03678-factual,0,factual,rock,0,0.027231863525578125
+qa-06581-factual,0,factual,2015–16 La Liga,0,0.1530824809005315
+qa-07183-hallucinated,1,hallucinated,Joey Gathright was an outfielder for the Chicago Cubs.,1,0.9962794986199501
+qa-06889-factual,0,factual,Gerald Ford,0,0.039469814130599544
+qa-09390-hallucinated,1,hallucinated,The Goo Goo Dolls is the American rock band Magnetic was not created by any other American rock band.,1,0.9999221731752073
+qa-01845-factual,0,factual,"September 11, 1985",0,0.09814209231230142
+qa-05321-hallucinated,1,hallucinated,The trail's length is variable.,1,0.5661481591376272
+qa-09674-hallucinated,1,hallucinated,Evander Kane plays for Sabres.,1,0.6639236340685035
+qa-07515-hallucinated,1,hallucinated,Joe Johnston.,0,0.07057698874967057
+qa-03513-factual,0,factual,Delosperma,0,0.18795249992939905
+qa-00020-factual,0,factual,Hawaii,0,0.026310493502687708
+qa-01712-hallucinated,1,hallucinated,Stewart never wrote a second book.,0,0.44886192394741986
+qa-03964-factual,0,factual,The quality of mercy,0,0.0834459220224004
+qa-01838-hallucinated,1,hallucinated,"The original performer of ""Street Player"" was formed much earlier, in 1950.",1,0.9987393223791913
+qa-03821-factual,0,factual,1869,0,0.03685651363853684
+qa-01025-factual,0,factual,"Turner County, Georgia",0,0.08421580664124166
+qa-04145-hallucinated,1,hallucinated,Due Date,0,0.03283850616471595
+qa-05382-factual,0,factual,42nd District,0,0.05574388857800885
+qa-03053-factual,0,factual,Nala,0,0.03676666671431152
+qa-00555-hallucinated,1,hallucinated,John Phillips was the co-writer.,1,0.740537784229327
+qa-08153-factual,0,factual,Antonio Margheriti,0,0.06885000853430215
+qa-06441-hallucinated,1,hallucinated,"Yes, Brassocattleya and Buckinghamia are orchids.",1,0.9989873174954328
+qa-03746-factual,0,factual,yes,0,0.01098371933106767
+qa-03090-hallucinated,1,hallucinated,Villa Paletti was published first.,1,0.8256833069952842
+qa-00634-factual,0,factual,game,0,0.027928326320827892
+qa-07427-factual,0,factual,Applied Minds,0,0.0482159892823435
+qa-08510-factual,0,factual,Teucrium,0,0.09676417857906386
+qa-02784-factual,0,factual,"James, the 8th Lord Boyd",0,0.34381820927798457
+qa-02737-hallucinated,1,hallucinated,John H. McCunn was a captain in the 37th New York Infantry Regiment.,1,0.9997302850764155
+qa-08411-factual,0,factual,1119,0,0.03535568062636273
+qa-07566-factual,0,factual,Canadian,0,0.025500299339275685
+qa-03964-hallucinated,1,hallucinated,"""The quantity of mercy"".",0,0.16348887922793592
+qa-05048-hallucinated,1,hallucinated,Canadian-American.,0,0.10002960972639806
+qa-01817-hallucinated,1,hallucinated,"Maxwell Atoms created an animated series/spin-off of ""Grim & Evil"" and sister show of ""The Grim Adventures of Billy & Edward"".",1,0.9999999869168048
+qa-00858-factual,0,factual,board game,0,0.03446309728866145
+qa-01280-hallucinated,1,hallucinated,Hank Aaron is the CEO of the Atlanta Braves.,1,0.9759209131780037
+qa-06664-hallucinated,1,hallucinated,"Der Vampyr and Luisa Miller, are two types of romantic musical play.",1,0.9995947469526056
+qa-02850-hallucinated,1,hallucinated,The film Salome's Last Dance is based on a play by a writer that died in 1899.,1,0.9999951816638434
+qa-02352-factual,0,factual,Fire & Rescue NSW,0,0.09575752936660256
+qa-05541-hallucinated,1,hallucinated,"The Shops at Columbus Circle do not include any South Plainfield, New Jersey-based manufacturer.",1,0.9999907766325593
+qa-07081-hallucinated,1,hallucinated,Serge de Poligny is also a sound designer.,1,0.9896652625666874
+qa-09705-factual,0,factual,Emily Haines,0,0.21066384877457664
+qa-05921-hallucinated,1,hallucinated,The Royal Academy of Dramatic Art directed The Awakening film.,1,0.9797425609482748
+qa-05980-factual,0,factual,no,0,0.018328878820978146
+qa-08356-factual,0,factual,Les Huguenots,0,0.38718553844383025
+qa-05263-factual,0,factual,"April 3, 1978",0,0.10605293648070867
+qa-06358-hallucinated,1,hallucinated,Trent Alexander-Arnold's uncle is not John Alexander.,1,0.9751259822830712
+qa-02937-factual,0,factual,170 locations,0,0.03611617878311239
+qa-06537-factual,0,factual,U.S. Century Bank Arena,1,0.5090750575153897
+qa-01768-hallucinated,1,hallucinated,"Jim Pugh was a professional table tennis player, while Laura Siegemund is a professional tennis player.",1,0.999995000281773
+qa-05651-factual,0,factual,Motown,0,0.03529808286378261
+qa-01118-factual,0,factual,NBC's Discovery Kids,0,0.08057393384163918
+qa-01871-hallucinated,1,hallucinated,"Tarzan was released in 1999, marking the end of the Disney Renaissance era.",1,0.999244571708163
+qa-07126-factual,0,factual,Albania national team,0,0.04421291817454051
+qa-03562-hallucinated,1,hallucinated,Jesse Michaels has been in more bands.,1,0.8646879721304308
+qa-01706-hallucinated,1,hallucinated,Janus is sometimes published internationally.,1,0.5703784942291835
+qa-04885-factual,0,factual,Sheffield Wednesday,0,0.03410061972516073
+qa-08609-hallucinated,1,hallucinated,The lead actor in The Smurfs was an American comedy magician.,1,0.9957898111683676
+qa-01014-hallucinated,1,hallucinated,The Book of Death,0,0.11407597058594204
+qa-02760-factual,0,factual,Adam Silver,0,0.03881384316583066
+qa-00165-factual,0,factual,the 23rd Summer Deaflympics,0,0.37690449868924786
+qa-05414-factual,0,factual,"9,500",0,0.06837658575302336
+qa-02726-hallucinated,1,hallucinated,"Kristin Fisher is a television news presenter for FNC, which is more commonly known as Fox TV.",1,0.9999958923752067
+qa-04827-factual,0,factual,Go North,0,0.029376261291435366
+qa-03344-hallucinated,1,hallucinated,Patrick White was not African-American.,1,0.8748166890206165
+qa-09457-factual,0,factual,orange juice,0,0.03757969803767501
+qa-09626-hallucinated,1,hallucinated,"Alberto Cavalcanti and Oscar Apfel were both involved in the film industry, but they were not in the same field.",1,0.9999998860690297
+qa-09757-hallucinated,1,hallucinated,Louis Armstrong sang the La Vie en rose with Paul Weston.,1,0.9826872606036383
+qa-05519-factual,0,factual,Captain Sir Geoffrey de Havilland,0,0.4277435932688349
+qa-06111-factual,0,factual,"July 21, 1952",0,0.09753579690774153
+qa-01302-hallucinated,1,hallucinated,"Bjørn Lomborg, the President of Copenhagen Consensus, conceived the project while at Harvard.",1,0.9999250879222406
+qa-01322-factual,0,factual,Whitman family,0,0.03507009814628406
+qa-03277-factual,0,factual,Russian,0,0.02362071288475517
+qa-03789-hallucinated,1,hallucinated,"Loretta Young won an Oscar for ""Come to the Stable"".",1,0.9623324902116384
+qa-09070-factual,0,factual,Zambia,0,0.03629826814483712
+qa-01866-hallucinated,1,hallucinated,"The creator of the duck who was impersonated in Little Quacker was born in the neighboring town of Enid, Oklahoma.",1,0.9999997638781155
+qa-06555-factual,0,factual,Cycle World,0,0.030310688672907093
+qa-04617-factual,0,factual,Niagara County,0,0.03504541144930051
+qa-03615-hallucinated,1,hallucinated,Hutchinson Travel has been around for decades.,1,0.762703510310298
+qa-03609-hallucinated,1,hallucinated,Yuri Ivanovitch Manin won the Fields Medal.,1,0.9161476888467895
+qa-06083-factual,0,factual,The Day the Universe Changed,0,0.146922055431275
+qa-03035-hallucinated,1,hallucinated,"Actually, the composer you're thinking of is Johann Sebastian Bach, who was also known for his German operas.",1,0.9999946503230256
+qa-00441-hallucinated,1,hallucinated,"Bath School of Art and Design is a standalone art college in Bath, England.",1,0.9997718221061667
+qa-06441-factual,0,factual,no,0,0.017844402366322166
+qa-04955-hallucinated,1,hallucinated,"Jim Bambra has contributed to ""Fighting Fantasy"" and ""Choose Your Own Adventure"".",1,0.9997556395336826
+qa-06931-hallucinated,1,hallucinated,"Mike Kubat received a Leo Award nomination for an episode in ""Atomic Betty"" before Chop Socky Chooks.",1,0.9999983359683257
+qa-05219-factual,0,factual,no,0,0.01736949096146484
+qa-07107-hallucinated,1,hallucinated,Worsleya and Gordonia each have two species.,1,0.9918952221535361
+qa-02531-factual,0,factual,Thon Maker,0,0.055607303491832044
+qa-08963-hallucinated,1,hallucinated,The Chelsea neighborhood also hosted The Magic Mike Experience.,1,0.7183924447785143
+qa-05806-hallucinated,1,hallucinated,The Republican nominee in the 2012 United States Senate election in Michigan represented Michigan's 2nd congressional district for over a decade.,1,0.9999996831883979
+qa-09814-hallucinated,1,hallucinated,Southwest Art and The American Interest are both publications.,1,0.919787600240816
+qa-01221-hallucinated,1,hallucinated,"The Battle of Tornavento was a feature of the Thirty Years' War, a religious conflict across the whole world.",1,0.9999998306457745
+qa-01058-factual,0,factual,Jack the Ripper,0,0.14266749604567905
+qa-02958-hallucinated,1,hallucinated,"No, they are in different states.",1,0.8476959172890256
+qa-03726-hallucinated,1,hallucinated,Papa M'Baye N'Diaye competed in the 4 × 400 metres race at the 1964 and 1968 Summer Olympics.,1,0.9999995559169972
+qa-08559-hallucinated,1,hallucinated,David Hobson was the lead singer.,1,0.6957199892132683
+qa-03522-hallucinated,1,hallucinated,Both are human beings.,0,0.3268050636744982
+qa-09727-hallucinated,1,hallucinated,"Plain White T's worked with producer Ariel Rechtshaid to reach No. 1 on the ""Billboard"" Hot 100 for the amazing third single.",1,0.999999998953256
+qa-03686-factual,0,factual,"The chorus contains references to the song ""November Rain"" by Guns N' Roses.",1,0.999053978917826
+qa-02070-factual,0,factual,Néstor Kirchner,0,0.36105794605918035
+qa-00155-factual,0,factual,Isabelle Mergault,0,0.14854956004397366
+qa-06149-factual,0,factual,Michael Dowse,0,0.05052354027136951
+qa-07193-hallucinated,1,hallucinated,Marguerite Duras was not a film director.,1,0.9903528041485763
+qa-07015-factual,0,factual,"""Saturday Night Live""",0,0.2765848145894832
+qa-02874-hallucinated,1,hallucinated,Kundol Lake is farther north.,1,0.6758139888336371
+qa-04967-hallucinated,1,hallucinated,Movie production.,0,0.06564493035210271
+qa-09166-hallucinated,1,hallucinated,The Flight to Mars was a dark amusement ride that could be found at both the 1962 World's Fair and at the Seattle Center's Fun Forest.,1,0.9999998452684069
+qa-07777-hallucinated,1,hallucinated,"People often mistake it for the adjacent suburb, Warilla.",1,0.8945910159926692
+qa-03210-factual,0,factual,Harrison County,0,0.034776021986302176
+qa-00348-factual,0,factual,"""Cosmicomics""",0,0.1055626110499481
+qa-06715-hallucinated,1,hallucinated,"Lira Motorsports made their debut on November 20, 2015 at a race track in the state of Florida.",1,0.9999973312150244
+qa-01280-factual,0,factual,senior vice president,0,0.0559638386215485
+qa-06523-hallucinated,1,hallucinated,Hannes Smárason worked for WOW air.,1,0.9696779402368041
+qa-00121-hallucinated,1,hallucinated,Kniphofia and Baptisia are both perennial plants.,1,0.9977897397865593
+qa-09599-hallucinated,1,hallucinated,The Nissan Sentra was first built in 1966.,1,0.975807643228572
+qa-02390-hallucinated,1,hallucinated,"The 1965 Nebraska Cornhuskers football team was the representative of the University of Nebraska and member of the Big Eight Conference, and it was formed in 1912.",1,0.9999999995135329
+qa-03689-factual,0,factual,jaguar,0,0.06280566167612474
+qa-03885-factual,0,factual,yes,0,0.011106330952752182
+qa-09996-hallucinated,1,hallucinated,The actress who appeared in the 2002 film Love in the Time of Money and made her film debut in a 1995 teen drama was born in the 1980s.,1,0.9999999999062292
+qa-04549-factual,0,factual,Zooey Deschanel,0,0.2424132847137135
+qa-07332-hallucinated,1,hallucinated,"""Weak Become Heroes"" is a single from the album titled ""London Calling"" by Mike Skinner.",1,0.999974201567138
+qa-07443-factual,0,factual,Carole King,0,0.055756096385461265
+qa-08226-hallucinated,1,hallucinated,Rob Schneider is not a horror movie specialist.,1,0.9152410702716712
+qa-07367-factual,0,factual,Hamburg,0,0.028434568089361924
+qa-09464-factual,0,factual,"1,527",0,0.12657568440350686
+qa-07771-factual,0,factual,Sidse Babett Knudsen,0,0.11493697175277558
+qa-07886-factual,0,factual,John Lennon,0,0.0481997750876917
+qa-09623-factual,0,factual,1961,0,0.024832676395422085
+qa-01094-hallucinated,1,hallucinated,Derrick Delite rap was featured on the remix and video version of a song by an American singer that began her career as a cheerleader.,1,0.9999999957761496
+qa-03700-hallucinated,1,hallucinated,Barry Seal worked for a different cartel.,1,0.8122831266543303
+qa-07027-hallucinated,1,hallucinated,"Roy Khan is Norwegian, not Lou Gramm.",1,0.9219571802568781
+qa-05899-factual,0,factual,Randy Quaid,0,0.062061174480991695
+qa-04879-hallucinated,1,hallucinated,"JJ Project was formed by SM Entertainment and debuted as a part of a five member group whose first EP peak at number two on ""Billboard's"" World Albums Chart.",1,0.9999999993368285
+qa-04906-hallucinated,1,hallucinated,The host of the MTV talk show in 1996 was a former Detroit Pistons player named Dennis Rodman.,1,0.9999777806001339
+qa-00075-hallucinated,1,hallucinated,Peter O'Meara played Norman Dike's brother.,1,0.9962149324675166
+qa-03994-hallucinated,1,hallucinated,Federico Fellini was actually born first.,1,0.9523692881245385
+qa-05618-hallucinated,1,hallucinated,Harold Holt was a famous lawyer in Melbourne.,1,0.792979639213654
+qa-01872-hallucinated,1,hallucinated,The city centre is near Southbank Market.,1,0.8461388763702795
+qa-04244-factual,0,factual,"Lubbock, Texas",0,0.24722647885760418
+qa-08482-factual,0,factual,Kemess Mine,0,0.07122493549033254
+qa-02323-hallucinated,1,hallucinated,"The Roots of Coincidence is a 1972 book by Arthur Koestler, an introduction to theories of parapsychology, including extrasensory perception and psychokinesis, it is influenced by Carl Jung's concept of synchronicity and the seriality of Paul Kammerer. Koestler became famous for his research at the famous Burghölzli hospital in Vienna, under Sigmund Freud.",1,1.0
+qa-01626-factual,0,factual,Florida,0,0.02328932730190891
+qa-00581-hallucinated,1,hallucinated,The 34th Foot Regiment was sent to fight Irish rebels.,1,0.9900579455422344
+qa-08638-factual,0,factual,Alia Shawkat,0,0.09619786975626325
+qa-08782-hallucinated,1,hallucinated,"The winning team on January 8, 2007 hosted by the University of Phoenix was Ohio State.",1,0.9998951143091643
+qa-05299-factual,0,factual,Night Mail,0,0.03777389794566069
+qa-04954-hallucinated,1,hallucinated,The Finnish children's TV show Sirkus Papukaija was shown every other Monday.,1,0.9963980741957535
+qa-04192-hallucinated,1,hallucinated,Morena Baccarin is a Brazilian actress.,1,0.9234420083965106
+qa-03733-hallucinated,1,hallucinated,The Weinstein Company distributed Scary Movie 5.,1,0.872015186701179
+qa-03061-factual,0,factual,portrait,0,0.03029512192464645
+qa-01096-factual,0,factual,Lee Na-jeong,0,0.24194530637926506
+qa-00828-factual,0,factual,Slade,0,0.0358485680125839
+qa-02490-factual,0,factual,Peter Andreas Thiel,0,0.036477176435692184
+qa-07373-hallucinated,1,hallucinated,Antifaschistisches Infoblatt cooperates with similar publications in other countries and they were founded in different years.,1,0.9999998995655027
+qa-05297-factual,0,factual,Evine,0,0.030515204216350095
+qa-01564-factual,0,factual,Suresh Raina,0,0.2589293140628932
+qa-05429-hallucinated,1,hallucinated,"Henry Alex Rubin studied in a prestigious and selective school with about 1,000+ students.",1,0.9992686536907369
+qa-05782-factual,0,factual,Orfeo ed Euridice,1,0.7461689365052455
+qa-09401-factual,0,factual,Arturo Uslar Pietri,1,0.567774697377929
+qa-03107-hallucinated,1,hallucinated,Lupita Nyong'o starred only in Black Panther.,1,0.9716387301009496
+qa-03150-factual,0,factual,National Action Party,0,0.05429489268224061
+qa-07908-hallucinated,1,hallucinated,Desiigner and Kanye's album re-released in January.,1,0.9960277059938979
+qa-00465-hallucinated,1,hallucinated,Adrian Boult conducted at the Opera House in Covent Garden.,1,0.9913942131555228
+qa-09870-factual,0,factual,1953 to 1964,0,0.07196253801788254
+qa-04207-factual,0,factual,Washington,0,0.022809222444934305
+qa-08745-hallucinated,1,hallucinated,Renée Montagne succeeded Bob Edwards' role.,1,0.8640772245892022
+qa-01486-hallucinated,1,hallucinated,The Music Man won Best Supporting Actress.,1,0.801570745142731
+qa-09697-hallucinated,1,hallucinated,"The Battle of Cedar Mountain took place on August 9, 1862, in Culpeper County, Virginia, as part of the American Civil War, Union forces under Ulysses S. Grant attacked Confederate forces under Maj. Gen. Thomas J. ""Stonewall"" Jackson near Cedar Mountain.",1,1.0
+qa-09071-hallucinated,1,hallucinated,The Snowflake is owned by Norwegian Air.,1,0.9041336336030747
+qa-03173-hallucinated,1,hallucinated,Ellyse Alexandra Perry played for the Sydney Strikers.,1,0.9965033739148368
+qa-04334-hallucinated,1,hallucinated,Stellan Skarsgård played J.A.R.V.I.S.,1,0.9999928969970382
+qa-00004-hallucinated,1,hallucinated,water with a hint of alcohol,0,0.22619957157044365
+qa-00635-hallucinated,1,hallucinated,Miles from Home was written by Emmy Award winning writer Chris Gerolmo.,1,0.994996568695529
+qa-05227-hallucinated,1,hallucinated,"Out of Doreen Cannon's fellow students, Jerry Stiller played Frank Costanza on the NBC sitcom ""Seinfeld"" and Arthur Spooner on the CBS comedy series ""The King of Queens"", but so did Anne Meara.",1,0.9999999999999938
+qa-06955-factual,0,factual,the parish of Great Sankey,0,0.20831961332946247
+qa-09428-hallucinated,1,hallucinated,Patrick Holland denied killing Veronica Guerin until he died in prison in 2009.,1,0.9929208266063093
+qa-05273-hallucinated,1,hallucinated,"The prize in the game show is a grand cash prize of $25,000.",1,0.9997718302137162
+qa-02591-factual,0,factual,24 January 1953,0,0.05468037735638503
+qa-00409-hallucinated,1,hallucinated,Roberto Bolaño was born in Japan.,1,0.952506184590337
+qa-09033-factual,0,factual,New York City,0,0.04855406154374337
+qa-04614-factual,0,factual,Anatoly Ivanovich Maltsev,0,0.49336710445231924
+qa-08721-factual,0,factual,Rectify,0,0.033808738466085744
+qa-03954-factual,0,factual,England,0,0.02204914910824315
+qa-05656-factual,0,factual,Interstate Highway System,0,0.057668236075062045
+qa-04214-hallucinated,1,hallucinated,"The first suburban shopping mall in Austin, Texas was not located on any highway.",1,0.9997905031608912
+qa-03952-hallucinated,1,hallucinated,"The Appalachian Trail traverses Cammerer's south slope and a restored fire lookout at the summit offers panoramic views of the eastern Smokies, Cocke County, and the Appalachian Mountains in general.",1,0.9999999999999438
+qa-02017-factual,0,factual,"Hermon, Maine",0,0.0748337392475018
+qa-09145-factual,0,factual,"45,000",0,0.07341738979137971
+qa-01856-factual,0,factual,Jared Harris,0,0.033759734087906265
+qa-09027-factual,0,factual,Fred Armisen,0,0.0723245155951381
+qa-09891-factual,0,factual,Rupert Penry-Jones,0,0.08492524621208111
+qa-08273-factual,0,factual,India,0,0.020482990589448174
+qa-04045-hallucinated,1,hallucinated,The All-American Canal is actually shorter than the Madera Canal.,1,0.9990524723474067
+qa-08014-factual,0,factual,Trevor Knight,0,0.035159352531632056
+qa-00042-factual,0,factual,The Joshua Tree,0,0.07163547482013201
+qa-08558-factual,0,factual,Andrew Stanton,0,0.037417880229342795
+qa-04536-hallucinated,1,hallucinated,Superman was the adversary of Black Adam.,1,0.8605268101664351
+qa-08078-factual,0,factual,Muammar Gaddafi,0,0.17862275820158757
+qa-05547-hallucinated,1,hallucinated,"Marc Abaya appeared in the 2009 Phillippine release of a 2008 computer animated film that was the first installment in the Disney Fairies franchise, and was produced by Pixar Animation Studios.",1,0.9999999999988467
+qa-01445-factual,0,factual,Debussy,0,0.03636014991120589
+qa-00081-factual,0,factual,The Fantastic The,0,0.06903216799524224
+qa-08136-factual,0,factual,Kato Khandwala,0,0.1545902794465863
+qa-00462-factual,0,factual,$1.7 billion,0,0.2773611940438104
+qa-05078-hallucinated,1,hallucinated,"The Iron Age culture of Central Europe was named after Hallstatt, Austria.",1,0.9990107530087977
+qa-05852-factual,0,factual,"on Good Friday, March 27",0,0.2575129485051852
+qa-05796-factual,0,factual,Finding Neverland,0,0.04455547107513056
+qa-08943-factual,0,factual,"December 7, 1976",0,0.1124832241994198
+qa-06680-factual,0,factual,Melbourne Metro Rail Project,0,0.08413474513891359
+qa-04343-hallucinated,1,hallucinated,The American owner of Taprobane Island passed away in 1998.,1,0.9956374419620388
+qa-04241-factual,0,factual,France–Switzerland border,0,0.14425800436924302
+qa-01250-hallucinated,1,hallucinated,"Vincent Knesevich de Szent-Helena led troops into the County of Tyrol in 1805, the same year it became a crown land of Austria.",1,0.9999999998434337
+qa-01346-hallucinated,1,hallucinated,Neither Nicotiana nor Encyclia are pine trees.,1,0.9874085622250448
+qa-01178-factual,0,factual,"Canton, Massachusetts",0,0.09713607922749667
+qa-09501-hallucinated,1,hallucinated,Red Bull Stratos was a project involving the skydiver of German nationality.,1,0.9997490269456277
+qa-03304-hallucinated,1,hallucinated,"Columbia Records released ""If I Were a Boy"" to US radio on November 8, 2008, as the album's lead single alongside ""Single Ladies (Put a Ring on It)"".",1,0.9999999999954114
+qa-06055-factual,0,factual,"January 13, 1987",0,0.12242950318392005
+qa-06622-factual,0,factual,poet,0,0.03150955435017475
+qa-03737-hallucinated,1,hallucinated,"Karidja Touré starred in the film ""Girlhood"" alongside Beyoncé.",1,0.9996675955500668
+qa-01882-hallucinated,1,hallucinated,The Mosuo Sisters is set to the east of The Silent Historian.,1,0.9986883438210087
+qa-05092-factual,0,factual,podcaster,0,0.03302818835171644
+qa-04497-hallucinated,1,hallucinated,"Scott Ditzenberger directed ""Congo River, Beyond Darkness"".",1,0.9990833657814431
+qa-06165-factual,0,factual,yes,0,0.012080987207164598
+qa-06710-factual,0,factual,2017 Belmont Stakes,0,0.10608922333741769
+qa-09455-hallucinated,1,hallucinated,Peter Madsen co-founded a non-profit organization related to aerospace.,1,0.9944821227712896
+qa-05111-factual,0,factual,caryopsis,0,0.04959130079197741
+qa-09663-factual,0,factual,How I Met Your Mother,0,0.1833308149486757
+qa-02254-hallucinated,1,hallucinated,Nickelodeon aired both Ghostshrimp and Stakes.,1,0.9784304354921186
+qa-01568-hallucinated,1,hallucinated,"The actor who played Atticus Finch in the 1962 film ""To Kill a Mockingbird"" co-starred with Virginia Mayo and Gregory Peck in a 1951 war film directed by Raoul Walsh.",1,0.9999999999973308
+qa-05879-factual,0,factual,Mikalojus Konstantinas Čiurlionis,1,0.7919249030498144
+qa-03298-hallucinated,1,hallucinated,Robin Hood was released first.,1,0.6255657131364909
+qa-02816-hallucinated,1,hallucinated,The Clemson Tigers competed in the 2015 Orange Bowl in Miami.,1,0.9949364029307244
+qa-09500-factual,0,factual,Nelson Richard DeMille,0,0.192912812255939
+qa-04135-hallucinated,1,hallucinated,Trey Anastasio and Glenn Bidmead are both musicians.,1,0.9977445240402396
+qa-05035-hallucinated,1,hallucinated,Pyotr Ilyich Tchaikovsky and Giuseppe Verdi share a profession in the field of music.,1,0.9999997887666698
+qa-07713-hallucinated,1,hallucinated,The builder of Walferdange Castle was a Prince of Nassau.,1,0.9995615456803651
+qa-03045-hallucinated,1,hallucinated,Michał Elwiro Andriolli provided illustrations for The Divine Comedy instead.,1,0.9997627664582833
+qa-07943-hallucinated,1,hallucinated,"Frank Robinson was born on September 1, 1935.",1,0.9204211011025258
+qa-00997-hallucinated,1,hallucinated,"You can see The Wrekin from Beetham Tower, which is quite tall.",1,0.9989044991079096
+qa-02780-hallucinated,1,hallucinated,"Black Sabbath was among the ""unholy trinity of British hard rock and heavy metal in the early to mid-seventies"" whose performance was featured in a 2011 studio compilation album at the BBC's Maida Vale Studios.",1,0.9999999999999998
+qa-09458-hallucinated,1,hallucinated,Dora Luz's work was premiered in Brazil.,1,0.9856818497217185
+qa-01796-hallucinated,1,hallucinated,The lead actor in Heartsounds died in 2014.,1,0.9441291329663266
+qa-02919-hallucinated,1,hallucinated,"The Acton Plaza is located along US Route 1 (Broadway) between Main Street and Essex Street in Saugus, Massachusetts.",1,0.9999999680876829
+qa-00206-hallucinated,1,hallucinated,"Yes, Eatza Pizza and Your Pie were both founded in Arizona.",1,0.9979807668632943
+qa-02054-factual,0,factual,Everson v. Board of Education,1,0.7240990057751303
+qa-01349-factual,0,factual,English,0,0.02431516055147729
+qa-05762-hallucinated,1,hallucinated,The Singapore museum is owned by MGM.,1,0.8234808862527839
+qa-09459-hallucinated,1,hallucinated,"Mary, Crown Princess of Denmark's mother-in-law is the Queen.",1,0.9998875220978657
+qa-09628-factual,0,factual,Don Siegelman,0,0.09437140778608599
+qa-06648-factual,0,factual,1 November 1965,0,0.0567088020662348
+qa-04311-factual,0,factual,Greece,0,0.02501707817945179
+qa-02364-factual,0,factual,Donna Freedman,0,0.04709142892513827
+qa-07814-hallucinated,1,hallucinated,Čilić won his 2016 Masters 1000 title in Columbus.,1,0.9926163454011736
+qa-06272-hallucinated,1,hallucinated,Vivaldi was a baroque composer who also wrote for the King's Theatre in Haymarket.,1,0.9999883901073824
+qa-01883-factual,0,factual,Pretty Woman,0,0.030668467189646803
+qa-07744-factual,0,factual,yes,0,0.011297118615499157
+qa-08490-factual,0,factual,Combat Mission series,0,0.06725787942082076
+qa-05459-hallucinated,1,hallucinated,Suggs is actually older.,1,0.642342709341779
+qa-02804-hallucinated,1,hallucinated,In 2017 ESPN College Football Friday Primetime will be announced by Adam Amin and a former American football nose tackle that was drafted by the Pittsburgh Steelers.,1,0.9999999979590954
+qa-05590-hallucinated,1,hallucinated,Edward Sedgwick and John Milius were both involved in the American film industry.,1,0.9999265081300417
+qa-02711-hallucinated,1,hallucinated,Subways and Wildflower both have a mixtape.,1,0.9727211339088205
+qa-04084-factual,0,factual,Central Maine and Quebec Railway,0,0.1642666181770546
+qa-04883-hallucinated,1,hallucinated,Hunton Bridge is a large village serviced by the Kings Langley railway station and mentioned in the Domesday Book under the name of Langelai.,1,0.9999999990791628
+qa-00314-hallucinated,1,hallucinated,The First Silesian war was fought against Frederick II.,1,0.9938637310066959
+qa-05567-hallucinated,1,hallucinated,Victoria Larimore and James Cameron are not of the same nationality.,1,0.9972137803880956
+qa-07541-factual,0,factual,Ginny Weasley,0,0.03801341011420552
+qa-07767-factual,0,factual,DisneyToon Studios,0,0.06438463246095717
+qa-09977-factual,0,factual,"San Francisco, California",0,0.16828400796565776
+qa-02648-factual,0,factual,Venetian Snares,0,0.2702055951222324
+qa-08349-hallucinated,1,hallucinated,"The Minister of State for Policing, Fire and Criminal Justice was born on 28 September 1957 and holds a degree in political science.",1,0.9999999478641122
+qa-08608-hallucinated,1,hallucinated,Southwest Airlines only operates out of Bishop International Airport.,1,0.9420225169589139
+qa-01351-factual,0,factual,"Gelsenkirchen, North Rhine-Westphalia",1,0.9948556577386416
+qa-08888-factual,0,factual,Quebec,0,0.02782033984773086
+qa-04182-factual,0,factual,Royal Air Force,0,0.052900048453563366
+qa-04675-factual,0,factual,1872,0,0.03811780112610652
+qa-02656-factual,0,factual,27 January 1975,0,0.057062126215033655
+qa-00104-hallucinated,1,hallucinated,The coach of the 2014-15 Michigan Wolverines men's basketball team was born on February 5th.,1,0.999997407597884
+qa-00661-factual,0,factual,2005,0,0.025856542816820444
+qa-09759-hallucinated,1,hallucinated,"Tom Selleck, who portrayed Monte in the made-for-TV remake set in Wyoming, is from Canada.",1,0.9999996517758247
+qa-06232-hallucinated,1,hallucinated,Nathan Lane played Scar in the 1994 Disney animated hit.,1,0.9779179973373797
+qa-04143-hallucinated,1,hallucinated,"Wolfram Research, Inc.",0,0.2936485996987741
+qa-08468-factual,0,factual,Shaolin and Wu Tang,0,0.1592685280119906
+qa-08682-factual,0,factual,Jefferson Davis,0,0.04048328182714165
+qa-07954-hallucinated,1,hallucinated,The mother of the woman who made the Star Spangled Banner flag hoisted over Fort McHenry was an American flag maker named Rebecca Young.,1,0.9999998660914906
+qa-02625-hallucinated,1,hallucinated,"Liz Rose co-wrote many songs for Taylor Swift including ""Teardrops on My Guitar"".",1,0.9998313977725666
+qa-08138-hallucinated,1,hallucinated,Rome is the capital of the region in which San Raimondo is located.,1,0.9998561305961007
+qa-01790-factual,0,factual,United States,0,0.027258214677432446
+qa-04059-factual,0,factual,1992,0,0.024421347416540527
+qa-03310-hallucinated,1,hallucinated,Althea Gibson was the first person of color to win a Grand Slam title in badminton.,1,0.9999851861343282
+qa-01434-factual,0,factual,China,0,0.02376091063986527
+qa-06841-hallucinated,1,hallucinated,He won the Pensacola 300.,1,0.7433262813674949
+qa-07074-factual,0,factual,New York University,0,0.04635126047813626
+qa-03995-hallucinated,1,hallucinated,Fuksas Design Co.,0,0.16705420666960172
+qa-07611-factual,0,factual,no,0,0.017849941354690337
+qa-09488-hallucinated,1,hallucinated,Michele Landis Dauber did not work as attorney on this case.,1,0.9996216422285736
+qa-09288-factual,0,factual,1812,0,0.038872869131762765
+qa-08987-factual,0,factual,Hannibal Buress,0,0.06502711243787009
+qa-06449-hallucinated,1,hallucinated,The DeLorean DMC-12 with gull-wing doors was the main transportation used in the Back to the Future franchise.,1,0.9999992116163816
+qa-07954-factual,0,factual,Rebecca Young,0,0.03479356413171264
+qa-07635-factual,0,factual,Elvis Costello,0,0.08267262760395233
+qa-05805-hallucinated,1,hallucinated,The American rapper was born in 1984.,1,0.8984201020634585
+qa-06006-factual,0,factual,Black Panther Party for Self-Defense,0,0.45255295594598877
+qa-06061-factual,0,factual,Mount Charleston,0,0.0335733542630373
+qa-04095-factual,0,factual,1967,0,0.02724330724590151
+qa-05179-factual,0,factual,no,0,0.018233103331331532
+qa-07744-hallucinated,1,hallucinated,A Goofy Movie and Ride a Wild Pony were produced by affiliated companies.,1,0.9991481731896346
+qa-08816-hallucinated,1,hallucinated,The artwork booklet is for The Wall.,1,0.8121297340420729
+qa-09299-hallucinated,1,hallucinated,"The director of ""The Car"" was Quentin Tarantino.",1,0.9815245738479815
+qa-04077-factual,0,factual,December 7,0,0.03662610308673733
+qa-01306-hallucinated,1,hallucinated,The English film and television actor who was well known as a voice over actor starred in The Magic Roundabout.,1,0.9999971334796118
+qa-02157-hallucinated,1,hallucinated,John Lasseter and Mikhail Kalatozov share the occupation of filmmaking.,1,0.9994756974463767
+qa-09180-factual,0,factual,Sevilla Atlético,0,0.22202883464604206
+qa-05054-factual,0,factual,Rahul Dholakia,0,0.0933693775649693
+qa-04999-factual,0,factual,society,0,0.03040655516535562
+qa-09157-factual,0,factual,26 March 1952,0,0.05375663271157953
+qa-04441-factual,0,factual,Claire Danes,0,0.06451055060895272
+qa-03781-factual,0,factual,no,0,0.017718057725638295
+qa-03112-hallucinated,1,hallucinated,Fargesia has spread to more continents.,1,0.9713541272439438
+qa-09995-factual,0,factual,yes,0,0.011646913377359002
+qa-09992-factual,0,factual,Barrow-in-Furness,1,0.7174706416139589
+qa-00399-hallucinated,1,hallucinated,Garrett Smithley's car was custom made.,1,0.8718636726274034
+qa-08748-factual,0,factual,Anthony Davis,0,0.042850637124309955
+qa-08230-hallucinated,1,hallucinated,Ashley Force Hood drives a unique type of drag car called the Fiberglass Car which has a tilt-up body.,1,0.9999912382701854
+qa-00503-factual,0,factual,bred for hunting,0,0.06343965055506434
+qa-03229-factual,0,factual,no,0,0.017995881570469344
+qa-02455-factual,0,factual,Bradley Charles Cooper,0,0.03187556632156622
+qa-03942-hallucinated,1,hallucinated,"Georgy Adelson-Velsky and Leonid Levin are both computer scientists, but Levin focuses more on algorithmic complexity theory.",1,0.999999919622079
+qa-08590-hallucinated,1,hallucinated,New York has 29 liquor licenses and 48 wineries.,1,0.9140686535417707
+qa-03115-hallucinated,1,hallucinated,Jongsong Peak is lower than Gangkhar Puensum.,1,0.9977459580527627
+qa-03429-hallucinated,1,hallucinated,"The founder of iCan Benefit Group, LLC was William Darrell ""Billy"" Mays Jr.",1,0.9994659691695321
+qa-05425-hallucinated,1,hallucinated,The Allenton house fire led to the arrest of the father who was guilty of causing the deaths of five children.,1,0.9999996813938494
+qa-09592-factual,0,factual,the Barons' Crusade,0,0.13552422067252956
+qa-03266-hallucinated,1,hallucinated,The hills tavern was renamed the century inn because it was 100 years old.,1,0.9993751855384843
+qa-07223-hallucinated,1,hallucinated,two,0,0.028065509298758742
+qa-02546-hallucinated,1,hallucinated,Neither Larry Hagman nor Nagisa Oshima appeared in multiple TV shows.,1,0.9991447038569593
+qa-01061-factual,0,factual,Alexander Hamilton,0,0.03766154140005535
+qa-06605-hallucinated,1,hallucinated,Calista Flockhart also performed.,0,0.4519064626037343
+qa-03292-factual,0,factual,16401 km2,0,0.07039271615982348
+qa-02395-factual,0,factual,Eddie Vedder,0,0.08878281112835353
+qa-04866-factual,0,factual,"""Good To Me""",0,0.1768584015759545
+qa-04983-hallucinated,1,hallucinated,The Hôtel de Crillon is located on the Place Vendôme.,1,0.9998510582770386
+qa-05432-factual,0,factual,Runway Cop,0,0.048045152521993185
+qa-03154-factual,0,factual,The Informant,0,0.1646649008234664
+qa-08947-hallucinated,1,hallucinated,"One of the previously released tracks on Change is Now: Renewing America's Promise is from Common's album, Resurrection.",1,0.9999930612683228
+qa-00952-factual,0,factual,eight,0,0.02544025135642337
+qa-06596-hallucinated,1,hallucinated,"Alex Joseph ""AJ"" Pritchard reached the semi-finals of ""Britain's Got Talent"" with his partner, a 1995 born dancer and a singer.",1,0.9999999995160112
+qa-06689-factual,0,factual,"388,072",0,0.086940201039751
+qa-09127-hallucinated,1,hallucinated,Jarritos is the company that owns Tamarindo.,1,0.9930929512382626
+qa-04517-hallucinated,1,hallucinated,Wirehaired Pointing Griffon originated in Germany.,1,0.9297349658406154
+qa-08304-factual,0,factual,Red,0,0.02935520632465707
+qa-01242-factual,0,factual,seventh,0,0.033081662864204345
+qa-06109-hallucinated,1,hallucinated,"Dimon McFerson used to be the CEO of a major insurance company based in Des Moines, IA.",1,0.9999890695905121
+qa-06372-hallucinated,1,hallucinated,Meek Mill did not appear in any major artist's tour in 2015.,1,0.9989657771417346
+qa-09162-hallucinated,1,hallucinated,Oceans was published before Don Quixote.,1,0.958293500728452
+qa-01456-factual,0,factual,Kevin Reece Wilson,0,0.07883262316350356
+qa-08440-factual,0,factual,no,0,0.01830275960201692
+qa-02383-factual,0,factual,Pierce County,0,0.036337622775862576
+qa-06502-factual,0,factual,Oklahoma,0,0.026622767250358448
+qa-04837-factual,0,factual,Italian Vogue,0,0.05160912007098412
+qa-04438-hallucinated,1,hallucinated,"The first UFC pay-per-view shown live on a Friday after UFC 55, took place in New York, New York.",1,0.9999999074587828
+qa-09681-hallucinated,1,hallucinated,Euro Disney was found in Canada.,0,0.42051050821582026
+qa-03081-factual,0,factual,Rodger Ward,0,0.049269783160011626
+qa-00909-hallucinated,1,hallucinated,Robert Downey Jr.,0,0.23704498852076655
+qa-05131-factual,0,factual,Pan Am Flight 103,0,0.09036489432492024
+qa-07281-factual,0,factual,Etta James,0,0.056949777418093976
+qa-04406-factual,0,factual,"Henderson, Nevada",0,0.047930366928540545
+qa-09631-factual,0,factual,Danny DeVito,0,0.07367582958395197
+qa-02615-hallucinated,1,hallucinated,The fairy queen Queen Mab originated from the mythological tales of ancient Ireland and England.,1,0.9997072773172128
+qa-09136-hallucinated,1,hallucinated,The leader of the military raid in April 1862 in northern Georgia was originally from Indiana.,1,0.9998486682788499
+qa-01737-factual,0,factual,science fiction,0,0.03785830334721425
+qa-01676-factual,0,factual,Eddie McGuire,0,0.06335197103122173
+qa-05774-factual,0,factual,nine,0,0.027160067191301627
+qa-06825-hallucinated,1,hallucinated,"Doctor of Fine Arts (D.F.A.) is a professional degree offered by universities in Hertfordshire, including the University of East London.",1,0.9999999970491706
+qa-08474-hallucinated,1,hallucinated,University of Manila's Ateneo Campus.,1,0.8367824868120438
+qa-03554-factual,0,factual,Massachusetts,0,0.02497708333907139
+qa-01093-hallucinated,1,hallucinated,Lytham St Annes Evening Gazette,1,0.7316009176509077
+qa-05245-hallucinated,1,hallucinated,The director of the 1988 American comedy-fantasy which stars Jeffrey Duncan Jones is David Lynch.,1,0.9999886112780723
+qa-06954-factual,0,factual,plants,0,0.0309717625358274
+qa-09351-hallucinated,1,hallucinated,The proposition of the theory of gravitation was originated by Christiaan Huygens.,1,0.9998870886796084
+qa-07358-factual,0,factual,26 July 1973,0,0.05500642182471237
+qa-01203-factual,0,factual,ESPN,0,0.027781818222204383
+qa-09477-hallucinated,1,hallucinated,"Dev Patel was also in ""300"".",1,0.7460240770047588
+qa-09375-factual,0,factual,Russian literature,0,0.0407998252738356
+qa-05030-factual,0,factual,singer,0,0.030309843724696767
+qa-08800-hallucinated,1,hallucinated,"The Outer Hebrides, located north west of Lerwick, have an area of about 1400 km2.",1,0.9999945207678879
+qa-02640-factual,0,factual,Ariel Ramírez,0,0.09482015657703262
+qa-07685-factual,0,factual,Rapper's Delight,0,0.1582429925521416
+qa-05908-factual,0,factual,"Groton School, founded in 1884, and Lawrence Academy at Groton",1,0.9892983481314911
+qa-05679-factual,0,factual,Leah Ayres,0,0.05097986102790711
+qa-04259-factual,0,factual,board game,0,0.03561570619618026
+qa-02101-factual,0,factual,energy drink,0,0.03491310765388706
+qa-09887-factual,0,factual,Tim Burton,0,0.03990543469895354
+qa-05118-hallucinated,1,hallucinated,The elevation of the hill that Roughlee is located at the foot of is about 600 m above mean sea level.,1,0.9999870076213886
+qa-00688-factual,0,factual,Scottish,0,0.03160224203469555
+qa-04706-hallucinated,1,hallucinated,One could have found the World's Largest Farm Tractor attraction in Montana back in 1998.,1,0.9999416350774198
+qa-03238-factual,0,factual,Waves,0,0.03080746377989866
+qa-08904-factual,0,factual,Vincent Kompany,0,0.1613095444350922
+qa-07826-factual,0,factual,Lily Pons,0,0.04124371138663657
+qa-05228-hallucinated,1,hallucinated,Ruta is native to Africa.,1,0.7580442443001795
+qa-06210-factual,0,factual,right wing,0,0.037184783268113454
+qa-00901-factual,0,factual,Emma Roberts,0,0.03571010575460327
+qa-09607-hallucinated,1,hallucinated,The governing body for Nyree Kindred's Paralympic Games is the International Paralympic Committee.,1,0.9999958112870272
+qa-00954-hallucinated,1,hallucinated,"Eve, a 19-year-old werewolf hunter.",1,0.9763380670334006
+qa-02753-factual,0,factual,Stephen Pearcy,0,0.10448356476382795
+qa-05034-factual,0,factual,1949,0,0.02568182314810204
+qa-03815-factual,0,factual,1940,0,0.02717094337093906
+qa-00787-factual,0,factual,Denmark,0,0.023131995216205212
+qa-05545-factual,0,factual,"White City, London",0,0.08282180441234073
+qa-07371-hallucinated,1,hallucinated,Christopher Newport University is a private university.,1,0.78172013379976
+qa-04256-factual,0,factual,Scott Ian,0,0.03495578985734172
+qa-05437-hallucinated,1,hallucinated,"Tyler Hoechlin first appeared in The Adventures of Supergirl on October 11, 2016.",1,0.9999082742944422
+qa-01206-hallucinated,1,hallucinated,The Inbetweeners Movie was released in 2010.,1,0.9815786665344867
+qa-03661-factual,0,factual,Canadian,0,0.026573236698292
+qa-04846-hallucinated,1,hallucinated,Holiday Mansion U.S. manufactures fiberglass houseboats that are popular on Atlantic Ocean surrounding the Chesapeake Bay.,1,0.99995873900739
+qa-05662-factual,0,factual,Thomas Cromwell,0,0.07674176019893554
+qa-01402-factual,0,factual,Walt Disney World Conference Center,0,0.1855239450684919
+qa-06054-hallucinated,1,hallucinated,Andrei Tarkovsky's 3rd film won the award for Best Director at the 22nd Gudbagge Awards.,1,0.9999999593175005
+qa-08912-factual,0,factual,Curtis Martin,0,0.035235348258810535
+qa-01282-factual,0,factual,1976,0,0.024128709677100315
+qa-02403-factual,0,factual,Lee Seung-hyun,0,0.3232027468118429
+qa-05770-factual,0,factual,Verismo,0,0.033438135051723335
+qa-06479-factual,0,factual,November 1994,0,0.03663391236126637
+qa-07170-factual,0,factual,track,0,0.03131803299460962
+qa-07108-factual,0,factual,Bachna Ae Hasseeno,0,0.05791869277991499
+qa-06321-hallucinated,1,hallucinated,Citizen Cohn follows the life of a man who was the chief counsel to Senator McCarthy in his Senate hearings.,1,0.9999718401440681
+qa-03340-factual,0,factual,"""K.R.""",0,0.17952371493467914
+qa-05816-hallucinated,1,hallucinated,Sonya Scarlet's extreme gothic metal was a more niche market compared to Onew's mainstream success.,1,0.9999063743176827
+qa-00674-hallucinated,1,hallucinated,"The director of ""Mulberry"" is not specified.",1,0.9798785295695888
+qa-05452-factual,0,factual,yes,0,0.011517130579503652
+qa-08557-hallucinated,1,hallucinated,"While both are directors, Marco Martins has a more diverse career.",1,0.9959576029361279
+qa-06486-factual,0,factual,yes,0,0.011186414592877326
+qa-03412-factual,0,factual,Nova Mob,0,0.028389959491061323
+qa-06023-hallucinated,1,hallucinated,Jeremy Kagan was a German painter.,1,0.8709844330257059
+qa-07882-factual,0,factual,yes,0,0.011491552440220765
+qa-09486-hallucinated,1,hallucinated,Zachary Thomas Moncrief is producing the American animated television series Tom & Jerry.,1,0.9997615717437303
+qa-05943-factual,0,factual,Sir Francis Bacon,0,0.06747269261150993
+qa-00610-factual,0,factual,Lincolnshire Posy,0,0.05447251428976981
+qa-06469-hallucinated,1,hallucinated,"The aliens in ""A Cityless and Countryless World"" come from Venus.",1,0.9997607333947224
+qa-09253-hallucinated,1,hallucinated,"Alexis Arquette was born on August 28, 1969.",1,0.978608306691379
+qa-03379-hallucinated,1,hallucinated,Herbert Achternbusch since he visited Canada.,1,0.9164814239887067
+qa-08662-hallucinated,1,hallucinated,"The film that premiered at 58th Berlin International Film Festival was not starred by Jack Black, Mos Def, Melonie Diaz, Danny Glover, Mia Farrow and Sigourney Weaver.",1,0.9999999999979161
+qa-03509-hallucinated,1,hallucinated,Actor and director.,0,0.10630459487846569
+qa-02599-hallucinated,1,hallucinated,Cotonou is located in Africa.,1,0.8586593432493741
+qa-01163-hallucinated,1,hallucinated,"Amritt Ventures does not have a notable client in the medical device, pharmaceutical and consumer packaged goods manufacturing industry.",1,0.999996394090611
+qa-09329-factual,0,factual,yes,0,0.011728422949084705
+qa-05576-factual,0,factual,Mark Burnett,0,0.03604670073278834
+qa-09531-factual,0,factual,Warner Bros,0,0.04104590651512938
+qa-09628-hallucinated,1,hallucinated,The Alabama governor who ran against Fob James in 1998 was actually George Wallace Jr.,1,0.9998275632906145
+qa-01711-factual,0,factual,"December 9, 1985",0,0.12092713739675907
+qa-02589-hallucinated,1,hallucinated,The bridge that provides direct access to the Rockaway Peninsula via Seagirt Boulevard is located in Long Island.,1,0.9999992969183784
+qa-01568-factual,0,factual,Raoul Walsh,0,0.052289938997789824
+qa-09000-factual,0,factual,nine,0,0.03004663538495062
+qa-07129-factual,0,factual,Dragon Ball,0,0.03768765260272081
+qa-06534-factual,0,factual,Eric Kripke,0,0.1248872286259215
+qa-03724-factual,0,factual,Roque Santa Cruz,0,0.07545273464902734
+qa-02148-factual,0,factual,Cerro del Espino Stadium,0,0.11617743911977682
+qa-07597-factual,0,factual,Liars,0,0.042437992873431384
+qa-09201-factual,0,factual,"July 26, 1941",0,0.11900338918779864
+qa-02344-hallucinated,1,hallucinated,Marilyn Buck participated in the prison escape of Angela Davis.,1,0.9695774042179836
+qa-09856-hallucinated,1,hallucinated,The Korean War.,0,0.14908452586140244
+qa-06599-hallucinated,1,hallucinated,Brad Pitt,0,0.039146723701899436
+qa-09094-factual,0,factual,"""little rose""",0,0.08385627570240019
+qa-00448-factual,0,factual,Brazil,0,0.024862176040478547
+qa-04621-hallucinated,1,hallucinated,The World Series of Poker discipline was first offered in Caesars Palace.,1,0.9992210839050606
+qa-01456-hallucinated,1,hallucinated,"The 2013 Indiana Hoosiers football team were lead by Tom Herman, the current offensive coordinator at Ohio State.",1,0.9999981675686789
+qa-03730-factual,0,factual,1861,0,0.029374731459131602
+qa-00638-hallucinated,1,hallucinated,"HMS ""Sussex"" was actually a Spanish ship captured by the English during the Tudor era.",1,0.9999576072271993
+qa-08187-hallucinated,1,hallucinated,The Rubens is from America.,1,0.7985973040937587
+qa-07658-hallucinated,1,hallucinated,Stenomesson and Homalocladium both have green vegetation.,1,0.9990160086930011
+qa-00834-factual,0,factual,Associated British Foods,0,0.04228030185592516
+qa-06433-factual,0,factual,Sweden,0,0.023515535014317312
+qa-03448-hallucinated,1,hallucinated,It was President Harry S. Truman.,1,0.7939535456175469
+qa-02071-factual,0,factual,Hava Nagila,0,0.05875570017911232
+qa-06745-hallucinated,1,hallucinated,"The extinct Panopea abrupta is often mistakenly referred to as Panopea generosa, the large edible clam.",1,0.9999879072175638
+qa-06453-factual,0,factual,no,0,0.01767602288566951
+qa-09000-hallucinated,1,hallucinated,Nicolas Entel produced music videos for the Haitian rapper when he was just five years old.,1,0.9999154955368492
+qa-01779-factual,0,factual,George Weston Limited,0,0.07870179841412575
+qa-04810-hallucinated,1,hallucinated,The character's name is Puck.,1,0.7584988387707807
+qa-02524-factual,0,factual,HIV,0,0.030898217637873274
+qa-04188-hallucinated,1,hallucinated,Protected is not a documentary.,1,0.7096391037053447
+qa-03793-factual,0,factual,2007,0,0.023753429562432635
+qa-01339-hallucinated,1,hallucinated,"Diondre Cole is known for playing a talk show host on the recurring SNL sketch ""What Up with That?""",1,0.9999993092233079
+qa-00114-factual,0,factual,Turkey,0,0.027113401797173635
+qa-08249-hallucinated,1,hallucinated,"The population of the county where Roxbury High School is located in the 2010 census was over 500,000.",1,0.9999985480622584
+qa-01393-factual,0,factual,no,0,0.01778924854285155
+qa-01151-factual,0,factual,three-door,0,0.06552905595775259
+qa-02099-hallucinated,1,hallucinated,The Walt Disney Company spent $4.06 on buying out the company where Pablo Hidalgo works.,1,0.999959577247388
+qa-04557-factual,0,factual,American,0,0.02358132447761075
+qa-08165-hallucinated,1,hallucinated,"Yes, astronomy is an important subject matter in both The Mad Magazine Game and the game Space Hop.",1,0.9999920292983729
+qa-02331-hallucinated,1,hallucinated,Jon Ramer was born before Karen Armstrong.,1,0.9505109498998036
+qa-08816-factual,0,factual,Pink Floyd: Discovery,0,0.09455813265027194
+qa-02724-hallucinated,1,hallucinated,Judy Collins and Moe Bandy recorded Someday Soon with Suzy Bogguss.,1,0.99936818114368
+qa-06393-hallucinated,1,hallucinated,Lucienne Boyer translated Valencia's song.,1,0.7529150077396746
+qa-00034-factual,0,factual,"Roseau, Minnesota, USA",0,0.24917759001673553
+qa-07780-hallucinated,1,hallucinated,Bob Boone's father was also right-handed.,1,0.9743283358691758
+qa-08115-factual,0,factual,The Truth According to Wikipedia,0,0.3570082820477213
+qa-01512-factual,0,factual,no,0,0.0182471299519958
+qa-03147-hallucinated,1,hallucinated,Natalie Martinez is well-known for her outstanding performance in Death Race.,1,0.9958601550542107
+qa-02921-factual,0,factual,the Dallas Cowboys,0,0.08760892658235662
+qa-09326-hallucinated,1,hallucinated,K.T. McFarland lost the nomination.,1,0.9477065280334369
+qa-09357-factual,0,factual,The Age of Shadows,0,0.08988459821276752
+qa-07762-factual,0,factual,Joan Alexandra Molinsky,0,0.0363160726320694
+qa-05725-factual,0,factual,1967,0,0.024313313356242948
+qa-00039-factual,0,factual,California,0,0.02646778276324151
+qa-03710-factual,0,factual,Black Swan,0,0.035888288634549764
+qa-05904-factual,0,factual,Tommy Aldridge,0,0.05886416650162784
+qa-00904-factual,0,factual,Apple A4,0,0.052525402904682446
+qa-02688-hallucinated,1,hallucinated,Wonder World is the second album by a pop group formed by Lee Soo-man.,1,0.9997963423872844
+qa-07111-factual,0,factual,A1101 road,0,0.061703141994130434
+qa-01492-factual,0,factual,1944,0,0.025942591842743647
+qa-08689-factual,0,factual,You Spin Me Round (Like a Record),0,0.3280484395862884
+qa-00802-hallucinated,1,hallucinated,The South Korean singer-songwriter who composed the songs for F.T. Island's 5th album The Mood is Lee Hong-gi.,1,0.9999999815193873
+qa-02117-hallucinated,1,hallucinated,Ed Olle was a college basketball player.,1,0.7166075528671998
+qa-06766-factual,0,factual,Georgia Power,0,0.032750301627227175
+qa-06100-hallucinated,1,hallucinated,"""Natalia Oreiro"" was included in ""Esquire"" magazine's ""The Most Beautiful Women"" list.",1,0.9999961070706078
+qa-08712-factual,0,factual,Mississippi's 2nd congressional district,0,0.3389838991724036
+qa-05581-hallucinated,1,hallucinated,"Interstate 80 runs from San Francisco, California to Essex County.",1,0.9851469718337662
+qa-01952-factual,0,factual,Guillermo del Toro,0,0.27845745601964833
+qa-05586-factual,0,factual,Muhammad Ali,0,0.03511644949976719
+qa-08341-hallucinated,1,hallucinated,Bernhard Cathrinus Pauss was born in a capital of the county in Norway but it is not Buskerud.,1,0.9999985708768508
+qa-09032-factual,0,factual,Doñana National Park,0,0.3110991664022509
+qa-09651-factual,0,factual,Chris Mann,0,0.03457032424805772
+qa-05374-hallucinated,1,hallucinated,"Yahya Abdul-Mateen II will appear in ""Ringling Brothers Circus"".",1,0.9996336709573717
+qa-05388-hallucinated,1,hallucinated,"U2 discography and Sunday Bloody Sunday have ""rock"" in common.",1,0.9990498014089656
+qa-00390-factual,0,factual,Donald Trump,0,0.041357345139483616
+qa-04948-hallucinated,1,hallucinated,The Head and the Heart was formed in 2008.,1,0.9008299256133177
+qa-01516-factual,0,factual,"124,775",0,0.05574616411739727
+qa-09472-factual,0,factual,Melbourne,0,0.025863223835108
+qa-08714-hallucinated,1,hallucinated,The band's name is Swet Shop Boys Plus.,1,0.8969967899932895
+qa-09536-hallucinated,1,hallucinated,Joan Collins starred as Pharaoh's wife.,1,0.5805552897684038
+qa-00524-hallucinated,1,hallucinated,"Luc Besson, a renowned French director.",1,0.7621395081507738
+qa-03658-hallucinated,1,hallucinated,The American actor Kevin Spacey stars in Father of Invention.,1,0.9530179475335697
+qa-09939-factual,0,factual,Black Liberation Army,0,0.06511301157397427
+qa-07167-hallucinated,1,hallucinated,"CrowdRise was founded by Edward Norton, Shauna Robertson, and the founders of Moosejaw, Robert and Jeffrey Wolfe. However, it was Edward Norton who majorly contributed in the co-founding of CrowdRise.",1,0.9999999999929672
+qa-03774-hallucinated,1,hallucinated,Svetlana Zakharova won the Honolulu Triathlon.,1,0.9958321469231931
+qa-06436-factual,0,factual,Francis Paul Veber,0,0.12489187216046231
+qa-05453-factual,0,factual,Grand Awards,0,0.03487335776859518
+qa-04221-hallucinated,1,hallucinated,"Patrick Bruders began touring with Down, replacing a musician who was also the bassist for the band Pantera, and is the current bassist for Pantera.",1,0.9999999999428422
+qa-02586-factual,0,factual,Def Jam Recordings,0,0.0938147039951264
+qa-00457-hallucinated,1,hallucinated,"Chris Carter is American, van Gogh is Dutch.",1,0.9698613142364608
+qa-09920-hallucinated,1,hallucinated,Andreas Vollenweider is of Italian descent.,1,0.7943908888209859
+qa-09659-factual,0,factual,"Auf Wiedersehen, Pet",1,0.5381441911261784
+qa-03486-hallucinated,1,hallucinated,The Ghana Top 100 List.,0,0.2843709660206847
+qa-02220-factual,0,factual,Kyushu,0,0.06956446704095508
+qa-08228-factual,0,factual,1969,0,0.024700319993608208
+qa-04420-factual,0,factual,rock,0,0.03254859738989501
+qa-05144-hallucinated,1,hallucinated,Robert Croc owned Crookston Castle.,1,0.8460503373200909
+qa-00607-factual,0,factual,Requiem in White,0,0.08952395362531158
+qa-01928-hallucinated,1,hallucinated,Georges Favre was actually Paul Dukas himself.,1,0.9729418863926679
+qa-04560-hallucinated,1,hallucinated,Debra Byrd has worked with multiple singer-songwriters.,1,0.9921971037364932
+qa-06169-hallucinated,1,hallucinated,The Lost Journals of Ven Polypheme was published for teenage readers.,1,0.9989962041547101
+qa-09105-hallucinated,1,hallucinated,The 1990-91 U.C. Sampdoria season was the year of Paolo Maldini.,1,0.9999948346638983
+qa-08048-factual,0,factual,King of the Hill,0,0.11294602253568384
+qa-06436-hallucinated,1,hallucinated,John Garabedian has written more shows.,1,0.954553086475152
+qa-08770-hallucinated,1,hallucinated,The Lone Ranger and Kidnapped are both moving pictures.,1,0.9931104365428625
+qa-06341-factual,0,factual,Achaemenid Empire,0,0.2103079299290738
+qa-06790-hallucinated,1,hallucinated,"Gattuso is a player, not a manager.",1,0.9765274025648746
+qa-02236-hallucinated,1,hallucinated,The Humber Ferry was operational in Hull.,1,0.8631900104275486
+qa-04533-hallucinated,1,hallucinated,KCTV and KCPT have shared facilities.,1,0.882578269108741
+qa-08032-factual,0,factual,Penn State,0,0.036516391856000086
+qa-08089-hallucinated,1,hallucinated,The Roper steam velocipede was built by the inventor and builder from New York City.,1,0.9999949210292445
+qa-02744-hallucinated,1,hallucinated,"The most recent serial killer documented in the ""Cold North Killers: Canadian Serial Murder"" was arrested between 2009 and 2011.",1,0.9999998267850114
+qa-08815-hallucinated,1,hallucinated,Shirley MacLaine was inducted into the International Best Dressed List Hall of Fame.,1,0.9999651497428294
+qa-02607-factual,0,factual,1989,0,0.0232858918894574
+qa-08583-hallucinated,1,hallucinated,Sam Neill was born in 1931.,1,0.85421684616891
+qa-06882-hallucinated,1,hallucinated,Peter Capaldi played a villain in Paddington 2.,1,0.9775674079583354
+qa-09585-hallucinated,1,hallucinated,Corey I. Sanders and the Excalibur Hotel and Casino are both owned by the same company.,1,0.9999944627760364
+qa-05529-hallucinated,1,hallucinated,Kozmic Blues was performed by Janis Joplin at Lollapalooza.,1,0.9999722878089785
+qa-09432-factual,0,factual,Washington Square Gallery,0,0.04454786631799562
+qa-00116-factual,0,factual,synth-pop,0,0.06561159752952073
+qa-04511-factual,0,factual,The dB's,0,0.18749682433080747
+qa-07849-hallucinated,1,hallucinated,A licensed clinical social worker who writes catchy columns about love and relationships.,1,0.9670136731614379
+qa-04685-factual,0,factual,Take the 10,0,0.06538794819711226
+qa-06457-hallucinated,1,hallucinated,Ave Satani was the theme song to David Seltzer's horror film.,1,0.9991424884720589
+qa-07730-hallucinated,1,hallucinated,The race track of the 2007 Italian Motorcycle Grand Prix was 5.142 km.,1,0.9998273032359826
+qa-04971-hallucinated,1,hallucinated,Rodney Stooksberry was not Tom Price's opponent.,1,0.9640060783183018
+qa-08492-hallucinated,1,hallucinated,Annette Snell died in a plane crash on a highway.,1,0.9973905008399375
+qa-09613-factual,0,factual,Red,0,0.029970558540836308
+qa-05723-hallucinated,1,hallucinated,The Bridge was not replaced.,1,0.5489442718812249
+qa-08309-factual,0,factual,Seo Min-woo,1,0.6151470022284959
+qa-03469-factual,0,factual,the Blue Ridge Mountains,0,0.13465892077728672
+qa-07482-hallucinated,1,hallucinated,Ellis Island was made part of the national monument in 1975.,1,0.9947178772732291
+qa-03551-hallucinated,1,hallucinated,Jorge Salan never played with a singer from Brooklyn.,1,0.9573604017751214
+qa-07542-factual,0,factual,1871,0,0.037927383861477586
+qa-02019-factual,0,factual,South Korean,0,0.04326365043013375
+qa-00324-hallucinated,1,hallucinated,Chinese Crested Dog was originated in Medieval times.,1,0.901724204983952
+qa-06751-factual,0,factual,Erich von Stroheim,0,0.35657283022762665
+qa-07923-hallucinated,1,hallucinated,The Jamahiriya News Agency was the official state news agency of King Idris.,1,0.9999485071331907
+qa-03832-hallucinated,1,hallucinated,Ace is aimed at replacing TextMate.,1,0.7687174605852047
+qa-05749-factual,0,factual,Blackstone & Co.,0,0.18912198815362824
+qa-00371-hallucinated,1,hallucinated,Terenzo is situated in the central part of Italy.,1,0.9954204516073585
+qa-02677-hallucinated,1,hallucinated,"Summer Nights took place at the Flamingo Las Vegas, located on the Las Vegas strip in the United States.",1,0.9999905758327156
+qa-05996-factual,0,factual,yes,0,0.011177945384790795
+qa-02108-factual,0,factual,no,0,0.017211205877017157
+qa-03825-hallucinated,1,hallucinated,Vilayat Khan helped introduce Indian Classical Music to the West with Pandit Imrat Khan.,1,0.9999005337807463
+qa-07040-hallucinated,1,hallucinated,Jordan Sport Barbershop in the Bronx.,1,0.6362537031022649
+qa-05082-hallucinated,1,hallucinated,The professional fighter in Game Face was born in 1979.,1,0.9627565604144733
+qa-00606-hallucinated,1,hallucinated,"The English disc jockey who hosted ""The Voice UK"" was born on Christmas Day.",1,0.9999722905781232
+qa-05278-hallucinated,1,hallucinated,John Paul Loviglio never played in Freeport.,1,0.9768815473655068
+qa-04678-hallucinated,1,hallucinated,Vaiva's father was the common Baltic god of lightning.,1,0.9853041119072177
+qa-04803-hallucinated,1,hallucinated,The romantic film soundtrack's name is Valentine's Day.,1,0.91962579731781
+qa-00664-factual,0,factual,Mohan Veena (slide guitar),1,0.7236128210551902
+qa-07538-hallucinated,1,hallucinated,The robot was created by McMaster University.,1,0.8655120271508243
+qa-03066-factual,0,factual,yes,0,0.011228787255169943
+qa-00693-hallucinated,1,hallucinated,Denver Avalanche.,0,0.05024945626212069
+qa-05371-factual,0,factual,The Christmas Dream (French: Rêve de Noël ) is a 1900 French short silent Christmas film directed by Georges Méliès,1,0.9999993110159546
+qa-08771-factual,0,factual,Canadian-American,0,0.058112366239509085
+qa-08135-hallucinated,1,hallucinated,John Brinkkotter made his debut in Round One of the 92nd season of the soccer league.,1,0.9999975922431511
+qa-07540-hallucinated,1,hallucinated,Robert Fox's father was an actor.,1,0.6666525169238756
+qa-07384-factual,0,factual,Urquhart Castle,0,0.10679101231974959
+qa-08926-hallucinated,1,hallucinated,The Geneva Jazz Festival.,0,0.23657550402135152
+qa-02876-hallucinated,1,hallucinated,rugby,0,0.028609696946552236
+qa-09045-factual,0,factual,Antonio López de Santa Anna,0,0.3541872891332677
+qa-09337-hallucinated,1,hallucinated,John Locke was born in the year 1632.,1,0.9740459575084722
+qa-06630-hallucinated,1,hallucinated,Cambridge,0,0.026527432732297136
+qa-01943-hallucinated,1,hallucinated,One of the stars of Aisa Yeh Jahaan founded the legendary Indian folk band Raghu Dixit Project.,1,0.9999977250956837
+qa-06683-factual,0,factual,Angry Birds,0,0.03894069975714019
+qa-09680-factual,0,factual,Land of the Lost,0,0.10711937457538162
+qa-09988-hallucinated,1,hallucinated,"Sports Collectors Digest and The Family Handyman are both publications, but their nationalities cannot be determined.",1,0.9999924298704721
+qa-00298-hallucinated,1,hallucinated,"Dixit Dominus is a psalm setting by Antonio Vivaldi, who was a famous Italian composer.",1,0.9999983117708551
+qa-03690-hallucinated,1,hallucinated,Sam Clucas attended the University of Lincoln.,1,0.9717891721551479
+qa-03844-factual,0,factual,Lake Placid,0,0.05075454643805042
+qa-04972-factual,0,factual,film,0,0.03247865549213348
+qa-09640-hallucinated,1,hallucinated,Park Min-ha acted in Kim Sung-su's creation.,1,0.993496627030912
+qa-06302-factual,0,factual,"Theodoros ""Theo"" Angelopoulos",1,0.7523733558964805
+qa-07599-hallucinated,1,hallucinated,"""The Flying Irishman"" was actually born in Texas.",1,0.9954878390152084
+qa-00338-hallucinated,1,hallucinated,The BFG can be found in almost all id Software games.,1,0.99416162407003
+qa-02909-factual,0,factual,The Military Frontier,0,0.06592417197859952
+qa-06525-factual,0,factual,Aretha Louise Franklin,0,0.08742178532533522
+qa-07318-hallucinated,1,hallucinated,Heidi Newfield and Tim Rushlow are not of the same nationality.,1,0.9987797309264477
+qa-01082-hallucinated,1,hallucinated,"Steven Spielberg directed the 1999 film ""House on Haunted Hill"".",1,0.9892703113095533
+qa-09800-factual,0,factual,Gerhard Berger,0,0.05755319031712772
+qa-09646-hallucinated,1,hallucinated,The University of Rochester has the most satellite campuses.,1,0.9827968641837675
+qa-01827-factual,0,factual,"Washington, D.C.",0,0.4893286732191327
+qa-03001-hallucinated,1,hallucinated,Joey Ramone and Miles Hunt share different nationalities.,1,0.9797539982994673
+qa-02785-factual,0,factual,Duboisia,0,0.09606178217690697
+qa-09639-factual,0,factual,Bonk,0,0.03553600390373793
+qa-01258-hallucinated,1,hallucinated,Crazy Rich Asians,0,0.039860627788972605
+qa-00757-hallucinated,1,hallucinated,Allkpop is a blog based in New Jersey.,1,0.986032891933464
+qa-06538-factual,0,factual,38th season,0,0.04958378244361639
+qa-03679-factual,0,factual,Mike Mills,0,0.036218555020644944
+qa-07561-hallucinated,1,hallucinated,Marty Riessen and Rennae Stubbs were both involved in tennis.,1,0.9995849913764232
+qa-02131-hallucinated,1,hallucinated,Paul Hostetter was the Director of Orchestral Studies/Associate Professor at a university located in California.,1,0.9999822416044364
+qa-06725-factual,0,factual,Hannah Taylor-Gordon,0,0.0724478876887007
+qa-09550-factual,0,factual,"November 6, 1962",0,0.12426843336144133
+qa-07699-factual,0,factual,Los Angeles,0,0.04183933335631223
+qa-03602-factual,0,factual,Zip-a-Dee-Doo-Dah,1,0.9420616123832707
+qa-02900-factual,0,factual,A Trip to Jamaica,0,0.0770017039001815
+qa-05615-factual,0,factual,no,0,0.018088246823084783
+qa-06140-factual,0,factual,Nobel Peace Prize Concert,0,0.11065783563985732
+qa-06649-hallucinated,1,hallucinated,The Midlands abolished Blackburn with Darwen tPCT.,1,0.976469489104432
+qa-04500-hallucinated,1,hallucinated,Auf der Maur was born in 1972.,1,0.7448468433917911
+qa-03912-hallucinated,1,hallucinated,"The population of Fitzroy in 2016 was 10,444.",1,0.9752345285761232
+qa-05306-hallucinated,1,hallucinated,Achuguayo is the god of the Sun in Guanche religion of Tenerife.,1,0.9997495942541134
+qa-09326-factual,0,factual,John Spencer,0,0.03891538775968252
+qa-01530-factual,0,factual,Comanche,0,0.0410735422817399
+qa-08906-factual,0,factual,"Jadakiss, Future, Nav, Young Thug, Zack, Ty Dolla Sign and Ashanti",1,0.996771115180764
+qa-09344-factual,0,factual,7 March 1984,0,0.0545635101971866
+qa-08918-factual,0,factual,yes,0,0.011140147969454508
+qa-06481-hallucinated,1,hallucinated,Curt Schilling holds the highest strikeout-to-walk ratio amongst all baseball clubs.,1,0.99994749574553
+qa-04627-hallucinated,1,hallucinated,"Yes, both Diet Pepsi and Volvic are carbonated drinks.",1,0.9976060451549315
+qa-04424-hallucinated,1,hallucinated,"No Clue is a dark comedy starring the talented American actor, David Koechner, who is best known for playing roles such as Champ Kind in the ""Anchorman"" films and Todd Packer on NBC's ""The Office"".",1,0.9999999999996241
+qa-00410-factual,0,factual,Quinceañera,0,0.11983539504170863
+qa-07315-hallucinated,1,hallucinated,The castle where Liza Campbell was born is in the Scottish Highlands.,1,0.9989314897724512
+qa-02262-factual,0,factual,Central America,0,0.034505452210153525
+qa-08870-factual,0,factual,magazine,0,0.034878954667434584
+qa-00423-factual,0,factual,film director,0,0.03461593023999466
+qa-09554-hallucinated,1,hallucinated,Daniel Jubb is the World Land Speed Record holder and was named by the Royal Air Force Wing Commander Andy Green as one of the world's leading rocket scientists.,1,0.9999999958503065
+qa-09163-hallucinated,1,hallucinated,Leah Meyerhoff and Dee Rees both work in the film industry.,1,0.999154591310525
+qa-05890-factual,0,factual,no,0,0.01811343764452466
+qa-05250-factual,0,factual,Lala Sloatman,0,0.10591700943407624
+qa-02090-hallucinated,1,hallucinated,The European version of Jersey Shore does not exist.,1,0.950107154172614
+qa-03948-factual,0,factual,dancer,0,0.02937648500147549
+qa-00588-factual,0,factual,1989,0,0.024625495216360843
+qa-02065-factual,0,factual,"35,000",0,0.07450968470707776
+qa-06179-factual,0,factual,"Kemal Amin ""Casey"" Kasem",0,0.4441271011414693
+qa-05937-factual,0,factual,Gerrit Cole,0,0.06837724149446514
+qa-07779-factual,0,factual,Bald Eagle and Spring Creek Navigation,0,0.48903911262835204
+qa-04905-hallucinated,1,hallucinated,Frank Bungarten received the first prize from Andrés Segovia at the 1981 International Guitar Competition in Spain.,1,0.9999972375154643
+qa-04281-factual,0,factual,Alan Furst,0,0.1034970764719597
+qa-09699-factual,0,factual,"Santa Monica, California",0,0.12879762467218803
+qa-01318-factual,0,factual,Ogallala Aquifer,0,0.19628828297159015
+qa-06463-factual,0,factual,25600,0,0.03488168976212019
+qa-02496-factual,0,factual,the United Kingdom,0,0.06580448354716936
+qa-09635-hallucinated,1,hallucinated,"Rogers Mountain is the highest point in Virginia, named after William Barton Rogers.",1,0.9981240057968309
+qa-01151-hallucinated,1,hallucinated,The hatchback was produced with one door.,1,0.9112770355531645
+qa-05935-hallucinated,1,hallucinated,Trembling Before G-d has a connection to Nigeria's oil-rich Niger Delta.,1,0.9999755622350519
+qa-00181-hallucinated,1,hallucinated,The Hunchback of Notre Dame was released first.,1,0.9942253661583442
+qa-07620-factual,0,factual,Fields Medal,0,0.03389580666891189
+qa-08612-hallucinated,1,hallucinated,"Deanna Brooks' hometown has a population of 15,030.",1,0.9889921647594881
+qa-06571-hallucinated,1,hallucinated,"I Lombardi alla Prima Crociata is a ""dramma lirico"" and Giasone is an ""opera"".",1,0.9999998447836992
+qa-08409-hallucinated,1,hallucinated,Alexander Kluge is not associated with Brave New Films.,1,0.9800720311466838
+qa-07382-hallucinated,1,hallucinated,Matt Miller played 4 seasons with Cleveland Browns and Bill Cowher served as his assistant coach under Schottenheimer.,1,0.9999942159366296
+qa-02652-factual,0,factual,22 November 1962,0,0.05906252849246364
+qa-07000-hallucinated,1,hallucinated,The same person directed both films.,1,0.6599047372894319
+qa-00825-hallucinated,1,hallucinated,The Anglo-Français de Petite Vénerie is the progenitor of the dingo.,1,0.9999998476839097
+qa-02945-hallucinated,1,hallucinated,Keith Richards was the guitarist on Time Waits for No One: Anthology 1971–1977.,1,0.9999756867252519
+qa-04668-hallucinated,1,hallucinated,The Australian actor in Encounter is Luke Bryan.,1,0.8958182113851374
+qa-09050-hallucinated,1,hallucinated,"The M15 rifle, a predecessor to the M16, is the basis for the magazine-fed, gas-operated semi-automatic rifle designed with aluminum alloys and synthetic materials.",1,0.9999999999914146
+qa-02203-hallucinated,1,hallucinated,"Sylvia McNair, the celebrated singer, is known for her brilliant baritone singing.",1,0.999499958965791
+qa-00495-factual,0,factual,South Park,0,0.03868886033241029
+qa-07686-factual,0,factual,Native Americans,0,0.0419469049052421
+qa-01621-factual,0,factual,Taylor Swift,0,0.036330084525417757
+qa-08698-hallucinated,1,hallucinated,Albert Brooks is the son of Harry Einstein.,1,0.8375684007271362
+qa-02234-hallucinated,1,hallucinated,Scandinavian folklore only represents Norway and Sweden.,0,0.437526359540477
+qa-02315-factual,0,factual,Reginald Denny,0,0.20385374026858666
+qa-09544-factual,0,factual,Bokononism,0,0.04878176673197835
+qa-01681-hallucinated,1,hallucinated,"Lou Ferrigno appeared in the 2012 film ""I Love You, Man"".",1,0.9994909274811216
+qa-08780-factual,0,factual,Stephen Herek,0,0.04855466477576238
+qa-06086-factual,0,factual,Septic Broiler,0,0.053030081000163154
+qa-05352-hallucinated,1,hallucinated,Wulfenia is not a plant.,1,0.965668974186347
+qa-09120-factual,0,factual,Indian,0,0.026761835738276493
+qa-06703-factual,0,factual,Switzerland,0,0.024374629108055858
+qa-01218-hallucinated,1,hallucinated,"Francia Raisa is most notable for her roles in both the TV series """" and ""The Secret Life of the American Teenager"".",1,0.9999984792939454
+qa-00123-hallucinated,1,hallucinated,Gary Harrison has written over 400 major-label recorded songs.,1,0.9904888869727827
+qa-07825-factual,0,factual,Nigel Martin-Smith,0,0.08172036163518584
+qa-03391-hallucinated,1,hallucinated,Sigismund III was king of Sweden during the Battle of Kirchholm.,1,0.999632714440519
+qa-04616-hallucinated,1,hallucinated,The Producers ensemble cast includes Eddie Murphy.,1,0.802881297782464
+qa-03326-factual,0,factual,Anushka Shetty,0,0.20076417423798046
+qa-05879-hallucinated,1,hallucinated,The bridge crossing the Nemunas River is named after a prominent Lithuanian musician and novelist.,1,0.9999709426238463
+qa-02898-hallucinated,1,hallucinated,Kurt Neumann was a British director.,1,0.853848662398898
+qa-04170-hallucinated,1,hallucinated,"""Pure Heroine"" was the first song released by Universal Music Group by New Zealand singer Lorde and was later included on her debut studio album.",1,0.9999999972001832
+qa-01583-hallucinated,1,hallucinated,Femina and Take a Break have completely different readerships.,1,0.9904424675906446
+qa-00896-hallucinated,1,hallucinated,Bethesda Softworks and ZeniMax Online Studios jointly developed the game.,1,0.9915978916922037
+qa-05881-hallucinated,1,hallucinated,"Cooper pairs were first described by a Nobel Prize laureate American physicist, without mentioning his birth year.",1,0.9997432326351776
+qa-02461-factual,0,factual,Louisiana State,0,0.036556473030598606
+qa-06416-hallucinated,1,hallucinated,The player for whom an article was published in 'Sports Illustrated' by Tom Verducci along with input from Larry Johnson is Tom Williams.,1,0.9999999928176937
+qa-07244-factual,0,factual,Michael Kenji Shinoda,0,0.13944053960195524
+qa-00275-hallucinated,1,hallucinated,Hugh Grant was born in 1961.,1,0.6535644000837545
+qa-07725-factual,0,factual,"December 20, 2009",0,0.12039322684834386
+qa-00119-factual,0,factual,the Desert Fox,0,0.05230220586129627
+qa-04554-hallucinated,1,hallucinated,The distribution center is for PetSmart and Target.,1,0.9245912649318425
+qa-08872-hallucinated,1,hallucinated,"The village that is situated 1.2 mi both south from Digby and north from Dorrington contains approximately 1,500 dwellings.",1,0.9999992161167303
+qa-00251-factual,0,factual,Bankers Life Fieldhouse,0,0.2312172700533481
+qa-04743-factual,0,factual,Community,0,0.027765649422823054
+qa-04573-hallucinated,1,hallucinated,Lego,0,0.02591184246965762
+qa-00535-factual,0,factual,Camp Chapman attack,0,0.05782360731649044
+qa-00561-hallucinated,1,hallucinated,"The car rental company founded by Jack Taylor and headquartered in Clayton, Missouri is Hertz.",1,0.9998114827455984
+qa-01237-hallucinated,1,hallucinated,"The 2017 thriller film ""Mom"" was directed by Vijay Ahir.",1,0.98933597169614
+qa-01603-factual,0,factual,yes,0,0.011288482771346284
+qa-01835-factual,0,factual,Four,0,0.02564471606317228
+qa-07949-hallucinated,1,hallucinated,The Darlington Agency was a stop on the trail that had a northern post in Missouri.,1,0.999975011452511
+qa-04303-hallucinated,1,hallucinated,"Pasquale Pistorio is the ex president of a multinational electronics and semiconductor manufacturer headquartered in Paris, France.",1,0.9999992449863798
+qa-08406-hallucinated,1,hallucinated,Sarah Harris Fayerweather attended a schoolteacher in Connecticut.,1,0.9935076594577765
+qa-02187-factual,0,factual,Asa Candler,0,0.06286888153888409
+qa-07344-hallucinated,1,hallucinated,The actress who was Guido Kaczka's wife until their separation in 2010 was actually born in 1985.,1,0.9999991913300286
+qa-09330-factual,0,factual,World War II,0,0.06610155717168711
+qa-08065-hallucinated,1,hallucinated,The company that has Fold-Pak as a division was formed in June 2016.,1,0.9998700502495449
+qa-05880-factual,0,factual,Timothy Fridtjof,0,0.13553061175999584
+qa-07260-hallucinated,1,hallucinated,The 2010 FA Community Shield had a goal by the left winger who is of Mexican nationality.,1,0.9999396582619172
+qa-02442-hallucinated,1,hallucinated,"The film To Hell and Back starred Audie Murphy, a combat soldier who had received the Medal of Honor for his bravery demonstrated in WWII.",1,0.9999997296873675
+qa-06506-hallucinated,1,hallucinated,Dave Cowens played for Milwaukee Bucks.,1,0.6271400045561776
+qa-07116-hallucinated,1,hallucinated,Detlef Schrempf was a three-time Sixth Man of The Year winner.,1,0.9995666717409016
+qa-06653-hallucinated,1,hallucinated,Halle Berry and Bruce Willis worked together in 1991.,1,0.9801394483895218
+qa-04232-hallucinated,1,hallucinated,"Isabela Moner's first appearance was in 100 Things to Do Before High School, not Supernoobs.",1,0.9999615296284284
+qa-08619-factual,0,factual,GFriend,0,0.03192920685027645
+qa-03528-factual,0,factual,Bluegrass region,0,0.06303225974440485
+qa-03423-hallucinated,1,hallucinated,Giovanni Giarola painted in Lombardy.,1,0.9120324470090888
+qa-03034-factual,0,factual,September 2017,0,0.03257490164839405
+qa-08009-factual,0,factual,wife,0,0.02802317795509278
+qa-06356-factual,0,factual,Eve Best,0,0.031113100262941035
+qa-08210-hallucinated,1,hallucinated,Lorenzo's Oil was released in 1993.,1,0.5549814102057883
+qa-01200-hallucinated,1,hallucinated,Argent Corporation was a company in Las Vegas that at one time controlled a hotel that operated from 1930 to 1970.,1,0.9999982086144069
+qa-05753-factual,0,factual,Domenico Gaetano Maria Donizetti,1,0.880863934733583
+qa-01931-hallucinated,1,hallucinated,"No, Eleanor's Secret came out a year after Alice's Birthday.",1,0.9970639453971215
+qa-08919-hallucinated,1,hallucinated,bomber-style flight jacket with patches.,0,0.35585515774219484
+qa-08444-factual,0,factual,"first initials ""C.B."" from the words Construction Battalion",1,0.8789582859964435
+qa-05503-factual,0,factual,Calendula,0,0.08540472387687105
+qa-07375-hallucinated,1,hallucinated,Daulis Prescott's brother has no nickname.,1,0.9698930328783221
+qa-09820-hallucinated,1,hallucinated,Copperfields Mine and Norrie Mine are not located in a Canadian province.,1,0.9995432916657021
+qa-09298-hallucinated,1,hallucinated,The Williams FW37 was driven by Felipe Massa and a rival team.,1,0.9997771703765035
+qa-06433-hallucinated,1,hallucinated,"The grandma of the wife of Ernest II, Duke of Saxe-Coburg and Gotha was from Austria.",1,0.9999998236440406
+qa-03355-hallucinated,1,hallucinated,"The film where Connie Ray starred in 2005 is ""Frozen Dreams.""",1,0.9720428302630956
+qa-09873-hallucinated,1,hallucinated,The capital of the district that Yapei is part of is Damongo.,1,0.9994280305799196
+qa-02188-factual,0,factual,Sexy Boy,0,0.03243083859555649
+qa-02952-factual,0,factual,Romagna,0,0.033864782486952044
+qa-04050-factual,0,factual,1988,0,0.024064827784465535
+qa-03992-factual,0,factual,Henry Paul,0,0.03438315282871318
+qa-09355-factual,0,factual,north,0,0.027237705198609404
+qa-04633-hallucinated,1,hallucinated,The destination of SS Cap Polonio was Brazil.,1,0.9781630205325222
+qa-09962-factual,0,factual,Different Drummer,0,0.048661128487141554
+qa-04519-factual,0,factual,Maine,0,0.023643573247385363
+qa-03712-factual,0,factual,Harrison Ford,0,0.0391816659536898
+qa-07979-factual,0,factual,1988,0,0.024521511428459417
+qa-09202-factual,0,factual,Massachusetts,0,0.02856779194339819
+qa-04361-factual,0,factual,Winnie-the-Pooh,1,0.6563585317449376
+qa-04705-hallucinated,1,hallucinated,The national guard base named for Eddie Rickenbacker is located in Kentucky.,1,0.9974105136911549
+qa-02074-hallucinated,1,hallucinated,The Peruvian Hairless Dog.,0,0.3701123881668159
+qa-07031-factual,0,factual,Ron Evans Medal,0,0.044387092841566556
+qa-03153-factual,0,factual,0–6,0,0.056191273821396694
+qa-05350-factual,0,factual,Robert Hooke,0,0.056086090226768984
+qa-05754-factual,0,factual,band,0,0.02768650227448512
+qa-09967-hallucinated,1,hallucinated,The Tragedy of Julius Caesar.,1,0.6878213575897726
+qa-08629-hallucinated,1,hallucinated,The Greatest Love Songs of All Time was released by the artist who was performing a residency show at the casino in Las Vegas.,1,0.999999975211614
+qa-04945-hallucinated,1,hallucinated,"Edsger Wybe Dijkstra was a professor of mathematics (1962-1984) at TU Delft, a university of technology located in Delft, Netherlands.",1,0.9999999999677291
+qa-03701-hallucinated,1,hallucinated,"The Hound of the Baskervilles, featuring Sherlock Holmes, was written in 1884-5.",1,0.9999696120637503
+qa-09214-factual,0,factual,Hans Hulsbosch,0,0.10890671964717327
+qa-01919-hallucinated,1,hallucinated,Starrah was not a co-writer for any song on Rihanna's album Anti.,1,0.9995795771518752
+qa-01359-factual,0,factual,"15,023",0,0.058912514726492025
+qa-03222-hallucinated,1,hallucinated,Vaidotas was actually Algirdas' son.,1,0.9940622511766052
+qa-04545-factual,0,factual,1997,0,0.024443196022025628
+qa-01826-hallucinated,1,hallucinated,Basil LeFlore was governor of the Choctaw nation after it moved to the Oklahoma Strip.,1,0.9999873130647454
+qa-00184-hallucinated,1,hallucinated,DeVito attended high school in Vermont.,1,0.73970772774147
+qa-03883-factual,0,factual,Hinduism,0,0.04064400657751098
+qa-07366-hallucinated,1,hallucinated,The 2012 storm that hit the US makes Hurricane Arthur the first hurricane to make landfall in the US.,1,0.999976664369655
+qa-03853-factual,0,factual,Bauhinia,0,0.19322294928157974
+qa-06236-factual,0,factual,Australian,0,0.028310876179392184
+qa-04840-hallucinated,1,hallucinated,Don Chafin was a commander in a battle that took place in 1922.,1,0.9996705304246463
+qa-06227-factual,0,factual,yes,0,0.011444084547721592
+qa-05614-hallucinated,1,hallucinated,Joe Hipp lost via unanimous decision.,1,0.6293325182536488
+qa-08315-factual,0,factual,yes,0,0.011479429845337924
+qa-02265-hallucinated,1,hallucinated,Bluebottle is developed at Swiss Federal Institute of Technology.,1,0.9881061353383991
+qa-04631-factual,0,factual,Indiana Pacers,0,0.03749338739160634
+qa-01929-hallucinated,1,hallucinated,Ferraria is not native to Australia.,1,0.8813603696341793
+qa-01635-factual,0,factual,Charles Kimbrough,0,0.0871608495979182
+qa-04078-factual,0,factual,1997,0,0.02360345174064949
+qa-03482-hallucinated,1,hallucinated,Innervision is a song from a studio album released in 2002.,1,0.9981369270528498
+qa-00473-factual,0,factual,William T. Anderson,0,0.08920395960901331
+qa-03347-hallucinated,1,hallucinated,"Virginia Abernethy is professor emerita of psychiatry and anthropology in Memphis, Tennessee.",1,0.9998957239587944
+qa-01142-hallucinated,1,hallucinated,"The population of Kilkenny's borough is almost 30,000.",1,0.997283152437078
+qa-02747-hallucinated,1,hallucinated,The Ox-tongue pastry and the Youtiao are baked.,1,0.999594304688206
+qa-01850-hallucinated,1,hallucinated,The 1989 NBA draft produce the pro football executive of Serbian nationality.,1,0.9867364902785795
+qa-08477-hallucinated,1,hallucinated,Bernard-Marie Koltès was born first.,1,0.9953434387683262
+qa-01115-factual,0,factual,"""Shake It Up""",0,0.4115484225455053
+qa-08601-factual,0,factual,no,0,0.018448721952764174
+qa-03252-hallucinated,1,hallucinated,Craig Duane Neal was selected in the 1988 NBA draft by the Utah Jazz in the US state of Oregon.,1,0.9999975933582009
+qa-08935-hallucinated,1,hallucinated,Gaten Matarazzo began his career on Broadway as Gavroche.,1,0.9990324711374511
+qa-03243-hallucinated,1,hallucinated,Elizabeth Bishop and Nelson DeMille were both photographers.,1,0.9804831121513686
+qa-00645-hallucinated,1,hallucinated,The British/Irish digital television channel that features Spliced first launched in 2003.,1,0.9997138165394165
+qa-02915-factual,0,factual,Chelsea Manning,0,0.03931020056653535
+qa-09024-factual,0,factual,England,0,0.0240771134429528
+qa-09174-factual,0,factual,Nazi,0,0.029378562650775663
+qa-05422-hallucinated,1,hallucinated,George Washington University is further north.,1,0.6609898419768403
+qa-07466-factual,0,factual,Aberdeenshire,0,0.1495410346941171
+qa-07913-factual,0,factual,Beatles,0,0.030855604194190044
+qa-05769-hallucinated,1,hallucinated,Louis L'Amour had wider profession.,1,0.8207675357337891
+qa-02036-hallucinated,1,hallucinated,Both have won Academy Awards.,0,0.25863563626088304
+qa-01231-factual,0,factual,experience point,0,0.030944997150721434
+qa-02354-factual,0,factual,Mehreen Jabbar,0,0.08470150393418845
+qa-01361-factual,0,factual,Saint Paul of Tarsus,0,0.2827185980346409
+qa-00654-hallucinated,1,hallucinated,Kim Warwick and Matt Lucena both played professional tennis.,1,0.9820099019621098
+qa-00949-factual,0,factual,"September, 52 BC",0,0.05752326336073803
+qa-05463-hallucinated,1,hallucinated,The two hospitals have the same capacity.,1,0.8135001873442729
+qa-04592-factual,0,factual,13,0,0.022193360892663834
+qa-02529-factual,0,factual,1936,0,0.03031200081222595
+qa-01758-hallucinated,1,hallucinated,Prabhat Ranjan Sarkar is the founder of Amra Bangali.,1,0.9993922558225962
+qa-00092-factual,0,factual,CEO of Lionsgate UK & Europe,0,0.33440476115159967
+qa-09914-factual,0,factual,Angel Eyes,0,0.032998281610307496
+qa-05039-hallucinated,1,hallucinated,Baron Davis moved to the Los Angeles Lakers.,1,0.8268962897858795
+qa-02990-hallucinated,1,hallucinated,The largest European airline by scheduled passengers flown had a base since 2015 on the neighboring island of Terceira.,1,0.999990316273732
+qa-05146-hallucinated,1,hallucinated,WVKB is not licensed town.,1,0.8440753555054111
+qa-05975-factual,0,factual,Steve Hindy,0,0.04324447316216848
+qa-03953-factual,0,factual,Florida,0,0.02486729614399403
+qa-06575-factual,0,factual,no,0,0.018166132365028922
+qa-05912-factual,0,factual,Pulp Fiction,0,0.06465869867583059
+qa-04521-hallucinated,1,hallucinated,Metallica had a greatest hits album that references their fourth studio album in the title.,1,0.999945728168951
+qa-05326-hallucinated,1,hallucinated,"Brian Cox was born on March 3, 1969.",1,0.9243103227226486
+qa-00719-hallucinated,1,hallucinated,The film A Taxi Driver was released in North Korea.,1,0.9913095595868466
+qa-03941-hallucinated,1,hallucinated,John Smith,0,0.04811478870885021
+qa-09922-hallucinated,1,hallucinated,Gertrude Bell passed away in 1927.,1,0.8539924978431565
+qa-09050-factual,0,factual,United States military M16 rifle,0,0.24940723139314214
+qa-00416-factual,0,factual,New Orleans Saints,0,0.06261379478007899
+qa-02570-factual,0,factual,"August 7, 1989",0,0.10006553092371555
+qa-08459-hallucinated,1,hallucinated,Reine Wisell did not race in his first grand prix.,1,0.998836681219919
+qa-03400-hallucinated,1,hallucinated,Denton is a town in the Metropolitan Borough of Oldham.,1,0.997401989148042
+qa-05395-factual,0,factual,"""multiply""",0,0.1830919789168165
+qa-01346-factual,0,factual,no,0,0.01762448501219088
+qa-05118-factual,0,factual,557 m,0,0.062226469889532614
+qa-05788-hallucinated,1,hallucinated,"She voices Black Widow, not Storm.",1,0.5946025098479601
+qa-08783-factual,0,factual,The Gandharvas,0,0.45373102339726207
+qa-05487-factual,0,factual,Crambe,0,0.10211888025517711
+qa-07612-hallucinated,1,hallucinated,"Cathair Mór was killed by the Luaigne of County Meath, Ireland, where the Hill of Tara stands.",1,0.9999994876075659
+qa-00642-hallucinated,1,hallucinated,True Williams was the first to illustrate the character of Huckleberry Finn.,1,0.9993811813593467
+qa-09575-factual,0,factual,David Alan Mamet,0,0.09734163827435204
+qa-00690-factual,0,factual,Key deer,0,0.03432930747793973
+qa-05191-hallucinated,1,hallucinated,"Still in the Basement is the second EP by Soul Intent, and featured the legendary and multi-talented Eminem.",1,0.9999992497122316
+qa-05057-hallucinated,1,hallucinated,"""La Cucaracha""",0,0.38056887626712843
+qa-05781-hallucinated,1,hallucinated,Ray Toro and Drowners have the same number of members.,1,0.9966989120564125
+qa-02286-factual,0,factual,Pikotaro,0,0.04162308248812234
+qa-08735-factual,0,factual,United Kingdom,0,0.03410780658679856
+qa-09153-hallucinated,1,hallucinated,Daryl Hall is famous for his soulful voice.,1,0.9301854120107232
+qa-05856-hallucinated,1,hallucinated,Ahmad Khormali wears his pyjama-like tracksuit bottoms as a tribute to Gábor Király.,1,0.9999993598524678
+qa-07686-hallucinated,1,hallucinated,Dartmouth College was founded to educate Inuit people.,1,0.9526082082253267
+qa-08598-hallucinated,1,hallucinated,"Yes, both bands play indie pop.",1,0.8467272360110002
+qa-01520-factual,0,factual,no,0,0.017561516140468046
+qa-04872-hallucinated,1,hallucinated,"She made her acting debut in ""Attack the Block"".",1,0.9370420212748117
+qa-02933-factual,0,factual,Brian Samuel Epstein,0,0.040868929249121506
+qa-00200-factual,0,factual,Donald Hugh Henley,0,0.056083069782996924
+qa-06047-hallucinated,1,hallucinated,Ettore Majorana discovered the wave-particle duality of light.,1,0.9761155615490303
+qa-07228-hallucinated,1,hallucinated,"Rocktaves is a semi-professional rock festival organised in Pakistan at the university level, and Parikrama, a popular rock and roll band, has also performed in Pakistan.",1,0.9999999998630325
+qa-04371-factual,0,factual,one of the nine Census Bureau Divisions,0,0.4716803501056678
+qa-08617-factual,0,factual,Major League Baseball (MLB),1,0.6831855922156399
+qa-00887-factual,0,factual,no,0,0.018170358266860937
+qa-00782-hallucinated,1,hallucinated,"Doloroso, Mississippi rests on US highway that runs for 1500 mi.",1,0.9964210567767191
+qa-06289-factual,0,factual,Frank Wildhorn,0,0.04228164528955386
+qa-05939-factual,0,factual,1988,0,0.023495091655281138
+qa-07726-hallucinated,1,hallucinated,"The condition of a society rejecting hierarchy is called anarchy, and it was first described in 1840 by Pierre-Joseph Proudhon's book on Philosophy.",1,0.9999998898792252
+qa-04862-hallucinated,1,hallucinated,Both national parks are located in Portugal.,1,0.7799589182452376
+qa-03184-factual,0,factual,"Aroostook County, Maine, United States",1,0.8043192672070306
+qa-02227-hallucinated,1,hallucinated,"The head coach of that team was born on July 18, 1954.",1,0.9983123943634461
+qa-04255-factual,0,factual,Japan,0,0.024402302815699096
+qa-01024-hallucinated,1,hallucinated,Okra or okro is closely related to hollyhocks.,1,0.9938184012494838
+qa-05109-hallucinated,1,hallucinated,Forerunner was named after a short story.,1,0.8443160486966768
+qa-03277-hallucinated,1,hallucinated,"The lady who, with Sergei Dudakov, coaches Yakau Zenko could be of Georgian nationality.",1,0.9999751523369227
+qa-09489-hallucinated,1,hallucinated,"Rebecca Sugar, who wrote ""Incendium,"" was born in 1982.",1,0.9985795911184224
+qa-07286-hallucinated,1,hallucinated,"Jamie de Courcey appears in ""The Bridge"" adaptation.",1,0.993375005670414
+qa-03117-factual,0,factual,Tennessee,0,0.023905531988757504
+qa-07014-hallucinated,1,hallucinated,The City Line includes Liverpool–Wigan line.,1,0.8372301670381509
+qa-07345-factual,0,factual,Holy Roman Empire,0,0.06254423282315062
+qa-01212-factual,0,factual,Portezuelo Formation,0,0.09134660875999157
+qa-00257-factual,0,factual,Carlos Arturo Bacca Ahumada,0,0.29042724695274064
+qa-00110-factual,0,factual,Bob Barker,0,0.036491305182124394
+qa-05061-factual,0,factual,Virginia Company of London,0,0.06573963436705771
+qa-00429-hallucinated,1,hallucinated,"Randal Kleiser and Kyle Schickner are both American Hollywood personalities, but they originate from different states.",1,0.9999874381568997
+qa-05350-hallucinated,1,hallucinated,John Locke,0,0.043990926484656384
+qa-01293-factual,0,factual,Roger Ebert,0,0.06779879239587264
+qa-06026-factual,0,factual,City of Norwood Payneham & St Peters,0,0.26758401168376067
+qa-07813-factual,0,factual,1978,0,0.026551483648131063
+qa-00507-hallucinated,1,hallucinated,"The county with Girard city has around 40,000 inhabitants.",1,0.9902868098903506
+qa-03559-hallucinated,1,hallucinated,The Missouri Tigers played at the 2008 Alamo Bowl led by Coach Frank Pinkel.,1,0.9995774126060987
+qa-06388-hallucinated,1,hallucinated,Richard Quine directed All Ashore but did not cast Mickey Rooney.,1,0.9924129382637851
+qa-09136-factual,0,factual,Kentucky,0,0.02746177851979423
+qa-03280-factual,0,factual,plants,0,0.02889246008460583
+qa-00820-factual,0,factual,no,0,0.01848423753790817
+qa-08875-hallucinated,1,hallucinated,"The kayak capital of the world is Columbia, South Carolina!",1,0.9836130210596588
+qa-06816-hallucinated,1,hallucinated,The personal vision developed by the founder of The Fourth International Posadist is called Posadianism.,1,0.9999915966511093
+qa-06234-hallucinated,1,hallucinated,Real Sociedad conducts the local derby against local rivals Eibar.,1,0.997137884958938
+qa-03667-factual,0,factual,Salford,0,0.06455989563445312
+qa-04610-hallucinated,1,hallucinated,"The author of ""The Snowman"" movie is John Lewis.",1,0.9878865018054714
+qa-09280-factual,0,factual,yes,0,0.011425876503132957
+qa-04212-hallucinated,1,hallucinated,"Henry Patrick ""Hank"" Egan Jr. has been an assistant with the Golden State Warriors and San Antonio Spurs, to Steve Kerr or Gregg Popovich.",1,0.9999999977958396
+qa-01859-hallucinated,1,hallucinated,Makbule Atadan was the sister of a man who developed Kemalism.,1,0.9997639334738724
+qa-09148-factual,0,factual,Jack Bender,0,0.03503877419336272
+qa-06618-factual,0,factual,Naruto,0,0.025218676192110802
+qa-01575-factual,0,factual,"April 2, 1872",0,0.22439727166225776
+qa-08874-factual,0,factual,Whistle Down the Wind,0,0.1339529116143066
+qa-03106-factual,0,factual,Chorley and Leyland,0,0.11622707090283892
+qa-00885-hallucinated,1,hallucinated,"California State University, Berkeley",0,0.2164361255383476
+qa-06263-hallucinated,1,hallucinated,The Birmingham campaign was led by a white American Baptist minister.,1,0.9747855254876674
+qa-01690-factual,0,factual,"Bill Paxton, Billy Bob Thornton and Bridget Fonda",1,0.9405916475850667
+qa-09132-hallucinated,1,hallucinated,"The first professional short of the director of Daniel Deronda was called ""The Art of Tea.""",1,0.9999509990039761
+qa-03635-factual,0,factual,6 ft,0,0.03914849909221344
+qa-09164-factual,0,factual,Nahuel Huapi Lake,0,0.05195143304991672
+qa-08019-hallucinated,1,hallucinated,Yuk Young-soo's husband was not born in 1917.,1,0.9975701449966978
+qa-05331-hallucinated,1,hallucinated,The particle type is fermion.,1,0.8114332670081136
+qa-01127-hallucinated,1,hallucinated,The founder of 'the Chess Player's Chronicle' was born in the 19th century.,1,0.9999854656862656
+qa-01401-factual,0,factual,"Boston, Massachusetts",0,0.0652408917924752
+qa-06994-hallucinated,1,hallucinated,The University of St. Thomas was founded in 1876.,1,0.9888287805812402
+qa-04876-hallucinated,1,hallucinated,Screaming Trees started their career first.,1,0.7840375963644893
+qa-01544-factual,0,factual,television,0,0.030568928779729554
+qa-08462-hallucinated,1,hallucinated,Roger Christian made successful films.,0,0.3779824595328077
+qa-04766-factual,0,factual,Britain,0,0.029477822054767455
+qa-07631-factual,0,factual,Rance Howard,0,0.04612911962323975
+qa-08199-hallucinated,1,hallucinated,The Bluebells and Monoral are completely different genres.,1,0.9944336486626424
+qa-02611-hallucinated,1,hallucinated,Total: From Joy Division to New Order is a compilation album of material from Joy Division and The Beatles.,1,0.9999962272420564
+qa-05838-factual,0,factual,Sir Ferdinando Gorges,0,0.27641630960032654
+qa-07484-hallucinated,1,hallucinated,The same person ruled England and Scotland.,1,0.6497820322843884
+qa-00224-hallucinated,1,hallucinated,Prince Andrew's mother is Queen Elizabeth II.,1,0.8905704905949281
+qa-04844-factual,0,factual,"""Licence Revoked""",0,0.1501100152416827
+qa-04564-hallucinated,1,hallucinated,"Yes, Vincenzo Bellini and Mikhail Glinka are of the same nationality",1,0.9999384289157646
+qa-02003-hallucinated,1,hallucinated,Liam Howlett was the one who composed Electra Heart.,1,0.9199738990269879
+qa-00567-factual,0,factual,Sidney Hall,0,0.03043835297060866
+qa-06867-factual,0,factual,Laker Airways,0,0.054394896570462085
+qa-06274-factual,0,factual,Ceylonese legislator,0,0.05472838029535611
+qa-05676-hallucinated,1,hallucinated,"The creator of ""Wizboy"" is Nick.",1,0.9817306846015503
+qa-06701-hallucinated,1,hallucinated,Alternative metal with some country influences.,0,0.3669752931320259
+qa-08089-factual,0,factual,"Boston, Massachusetts",0,0.07973078340099758
+qa-07871-hallucinated,1,hallucinated,The 2015 Gaddafi Stadium Draft.,0,0.33202241600781324
+qa-00373-hallucinated,1,hallucinated,The Colombian airline is owned by Argentina.,1,0.860133984602994
+qa-01608-factual,0,factual,Dan Conner,0,0.05555424192914347
+qa-02702-hallucinated,1,hallucinated,The ECTS grading scale is only used in the European countries.,1,0.9990169156307498
+qa-05381-hallucinated,1,hallucinated,Richmond is the independent city.,0,0.44181374508935495
+qa-07333-factual,0,factual,Portsmouth Cathedral,0,0.04167297965053247
+qa-00797-factual,0,factual,The Funtastic World of Hanna-Barbera,1,0.9162134683461132
+qa-08296-hallucinated,1,hallucinated,Sparks Fly was a song written after Tim McGraw.,1,0.9478169900723435
+qa-09203-hallucinated,1,hallucinated,The president was a pilot.,0,0.44516800983465193
+qa-07859-hallucinated,1,hallucinated,"The rapper known for his roll as Ricky in ""The Game"".",1,0.995394779874032
+qa-00801-factual,0,factual,Mick Woodmansey,0,0.0524631553270388
+qa-04388-hallucinated,1,hallucinated,Shade the Echidna disappeared after the defeat of the main antagonist.,1,0.9929296876296673
+qa-08384-hallucinated,1,hallucinated,NOHA and Erasmus are both educational programs.,1,0.9791196093210535
+qa-02319-factual,0,factual,Wendy's,0,0.03805099313780561
+qa-03806-factual,0,factual,National Security Agent,0,0.047482757157256056
+qa-01630-hallucinated,1,hallucinated,"The person who was born on May 5, 1972 in Chocolate City: Vegas Strip is Robert Ri'chard.",1,0.9999923464200405
+qa-05055-hallucinated,1,hallucinated,Mark of the Gorilla is a 1950 Jungle Jim film that starred an actor best known for playing Hercules.,1,0.9999922131101577
+qa-09644-factual,0,factual,"Alfred Allen Santell also known as Al Santell (born September 14, 1895 in San Francisco, California)",1,0.9999632085019167
+qa-05704-factual,0,factual,"Psy 6 (Six Rules), Part 1",0,0.24845892259570818
+qa-04746-hallucinated,1,hallucinated,The satellite Bianca is named after the sister of Katherine in Shakespeare's play that was written in the early 1600s.,1,0.9999994856710411
+qa-03618-hallucinated,1,hallucinated,Jean-Marie Pfaff was Belgian footballer who spent most of his professional career with Bayern Munich.,1,0.9997633939825658
+qa-03254-factual,0,factual,yes,0,0.011535721757101167
+qa-09078-factual,0,factual,Democrat,0,0.027239231477618534
+qa-04399-factual,0,factual,Steve Wynn,0,0.0651108927175112
+qa-08914-hallucinated,1,hallucinated,"Ahmed Mohammed Ali is actually the chief spokesperson for the Egyptian Army, and also acts as Sisi's private adviser.",1,0.9999913612349108
+qa-06886-hallucinated,1,hallucinated,The singer who worked with Mark Selby is named Christina.,1,0.9880499379175814
+qa-04005-hallucinated,1,hallucinated,Ryan began her acting career in the mid-80s.,1,0.9772081576505048
+qa-06082-factual,0,factual,Love Yourself,0,0.03468525139537254
+qa-00376-factual,0,factual,Hey Monday,0,0.031101999564234456
+qa-07087-factual,0,factual,"Redmond, Washington",0,0.05671753047009447
+qa-04414-hallucinated,1,hallucinated,Cephalaria and Sagina are different types of flowering plants.,1,0.999024753060139
+qa-05290-hallucinated,1,hallucinated,The director of Coal Miner's Daughter was John Hammond.,1,0.8062582180527034
+qa-01259-hallucinated,1,hallucinated,"Frederick Chesson met the author of ""Incidents in the Life of a Slave Girl"" after 1850.",1,0.9999962661590426
+qa-01276-hallucinated,1,hallucinated,Helen Mirren starred as a ghost in Being Human.,1,0.9725193526068324
+qa-08676-factual,0,factual,pro-Confederate guerrilla leaders,0,0.37803024245019484
+qa-01223-hallucinated,1,hallucinated,Youssef Chahine directed comedy films.,1,0.9489117422635155
+qa-07781-hallucinated,1,hallucinated,Shelley Duncan played for the Tampa Bay Devil Rays.,1,0.941868211912794
+qa-09212-hallucinated,1,hallucinated,America's Heart and Soul was produced first.,1,0.9363445578164351
+qa-06779-hallucinated,1,hallucinated,Ohio citizens pledged 24 electoral votes.,0,0.3772098219331067
+qa-04259-hallucinated,1,hallucinated,Monopoly Junior and Codenames are both classic board games.,1,0.9976482109971228
+qa-04049-factual,0,factual,Manchukuo,0,0.062256088689927394
+qa-03798-hallucinated,1,hallucinated,"No, only some are flowering.",1,0.5919914049348523
+qa-01010-hallucinated,1,hallucinated,Lewis Moran was murdered in Sydney.,1,0.7849309299307589
+qa-03449-factual,0,factual,"""Looking""",0,0.05197471765456324
+qa-03861-hallucinated,1,hallucinated,boxing matches,0,0.0328999525917696
+qa-05148-hallucinated,1,hallucinated,The comedian who died was British.,1,0.6387065842726785
+qa-07459-factual,0,factual,32073,0,0.030995880928587006
+qa-03729-factual,0,factual,British House of Commons,0,0.0977603146110369
+qa-08436-factual,0,factual,Jackson Square,0,0.03607025216650336
+qa-09200-hallucinated,1,hallucinated,Alexander Razborov is older than Pyotr Novikov.,1,0.9992303931741867
+qa-01560-hallucinated,1,hallucinated,"""Kaiba"" is the Japanese collectible card game that embodies the art of applying design and aesthetics to create a game for entertainment or for educational, exercise, or experimental purposes and was published by Konami.",1,0.9999999999999365
+qa-06312-factual,0,factual,It was established in 1904,0,0.35167903217976143
+qa-08694-hallucinated,1,hallucinated,"Kerkbuurt, Schagen is a town in the Dutch province situated on the Atlantic Ocean.",1,0.9999914560403285
+qa-08902-hallucinated,1,hallucinated,"The Man Who Sued God is a 2001 Australian comedy film starring Billy Connolly, a famous UK comedian from Scotland.",1,0.9999992475362305
+qa-06754-factual,0,factual,David Gray,0,0.03490081490338472
+qa-02987-hallucinated,1,hallucinated,its market value after purchase.,0,0.2196932652900855
+qa-06866-factual,0,factual,1901,0,0.025537778062054383
+qa-02533-factual,0,factual,Ermonela Jaho,0,0.0553889933413474
+qa-06679-hallucinated,1,hallucinated,"Yes, both Swann v. Charlotte-Mecklenburg Board of Education and Abington School District v. Schempp were based on racial questions.",1,0.9999999999487863
+qa-01764-hallucinated,1,hallucinated,a famous Irish footballer,0,0.06919108182178721
+qa-00192-hallucinated,1,hallucinated,Marion is approximately 50 mi north of a city that is the third-most populous state capital in the U.S.,1,0.9999996713532214
+qa-01238-hallucinated,1,hallucinated,The lead singer of Counting Crows starred in Freeloaders.,1,0.9966834398798511
+qa-05054-hallucinated,1,hallucinated,Gauri Khan directed the Indian crime action film for which Ram Sampath composed songs.,1,0.9994643510674261
+qa-03382-hallucinated,1,hallucinated,Quietdrive and Supergrass are both popular bands.,1,0.9623374065885704
+qa-05088-hallucinated,1,hallucinated,Crusha was marketed earlier.,0,0.46174650902989245
+qa-07712-hallucinated,1,hallucinated,The owner of Gogebic Taconite is not a philanthropist.,1,0.9955272552280338
+qa-00707-factual,0,factual,coloured lights,0,0.030776656040841455
+qa-08684-hallucinated,1,hallucinated,Steven Spielberg described the actor.,0,0.4018482098127253
+qa-06989-factual,0,factual,CFB Trenton,0,0.10768009558488591
+qa-02375-factual,0,factual,Central Park Place,0,0.08132556911467242
+qa-09653-factual,0,factual,Kent,0,0.019847448991133908
+qa-09072-factual,0,factual,Aysén Region,0,0.0610421796695296
+qa-04054-hallucinated,1,hallucinated,The purpose of the program that distinguishes a senior military college is to provide extensive military knowledge training.,1,0.9999514309345428
+qa-06526-hallucinated,1,hallucinated,James Scott's flood surpassed all previous disasters.,1,0.7517763128042961
+qa-09461-factual,0,factual,Cash Money Records,0,0.05089279447232696
+qa-01907-factual,0,factual,Adam Reed,0,0.03533127496236654
+qa-04145-factual,0,factual,Road Trip,0,0.03312837125783084
+qa-03380-factual,0,factual,1923,0,0.028345708222930217
+qa-03995-factual,0,factual,Studio Fuksas,0,0.05804780717823658
+qa-00662-hallucinated,1,hallucinated,There were 9.3 million people in the United Arab Emirates in 2013.,1,0.9991837664106017
+qa-07865-hallucinated,1,hallucinated,Skirrid is a board game.,1,0.8963298681201439
+qa-07050-factual,0,factual,Joseph Gaylord,0,0.05002811176624314
+qa-01908-hallucinated,1,hallucinated,Johannes Megapolensis served for several years at Manhattan.,1,0.9894460529310616
+qa-07897-factual,0,factual,Laurence J. Peter,0,0.151270663972874
+qa-04927-factual,0,factual,telescopes,0,0.025613609956122066
+qa-07264-hallucinated,1,hallucinated,Dig and PJ Harvey are both highly skilled entertainers.,1,0.9699277496346284
+qa-07139-factual,0,factual,yes,0,0.011611221413344591
+qa-06138-factual,0,factual,United States Army,0,0.06226183201374535
+qa-00972-factual,0,factual,Jonathan Smith,0,0.039511757392845126
+qa-03625-hallucinated,1,hallucinated,The young Sutter plays midfield.,0,0.3152311307696667
+qa-09110-factual,0,factual,"San Juan, San Luis and Mendoza",1,0.7793007985650854
+qa-04699-hallucinated,1,hallucinated,The books weren't illustrated.,0,0.3676621721396244
+qa-01617-hallucinated,1,hallucinated,"The film Breach is based on former FBI agent, John Smith.",1,0.9969434273363369
+qa-06193-hallucinated,1,hallucinated,"Christopher Abbott stars in ""James White"" and was also in ""Office Space"".",1,0.9993784182060611
+qa-06758-factual,0,factual,Jan de Bont,0,0.06650263966578158
+qa-04793-hallucinated,1,hallucinated,"The slang term ""Gweilo"" is used to describe ghosts from European ethnicities.",1,0.998635602427794
+qa-06824-hallucinated,1,hallucinated,"Choi Min-ho's drama aired on November 27, 2010 at midnight.",1,0.9978609330587617
+qa-09872-factual,0,factual,Mike McMahan,0,0.057154343606210835
+qa-09797-hallucinated,1,hallucinated,Blood Feud is a 1983 American television miniseries surrounding around the conflict between Jimmy Hoffa and an American politician and lawyer from New York.,1,0.999999996423627
+qa-09401-hallucinated,1,hallucinated,John Kenneth Galbraith was a Venezuelan intellectual.,1,0.9813165137345782
+qa-07844-hallucinated,1,hallucinated,Prince of Chill,0,0.03770109727629668
+qa-05827-hallucinated,1,hallucinated,It was actually an unnamed agent who was recruited by Arnold Deutsch.,1,0.9979815878961242
+qa-09905-hallucinated,1,hallucinated,The United States Army Infantry School and United States Army Airborne School are based in the same location.,1,0.999994583545393
+qa-03500-factual,0,factual,Karl-Anthony Towns,0,0.16656520240992015
+qa-05706-factual,0,factual,Aloha Airlines Flight 243,0,0.15146058627274822
+qa-03328-factual,0,factual,National Collegiate Basketball Hall of Fame,1,0.5426685963725015
+qa-02605-hallucinated,1,hallucinated,"Parrot Carrot, in ebook form, is voiced by the Australian singer known for his version of ""Old MacDonald Had a Farm"".",1,0.9999997517750158
+qa-08377-factual,0,factual,selective,0,0.03069457805703927
+qa-06270-hallucinated,1,hallucinated,Kindada Jones' mother was a Golden Globe-winning actress.,1,0.9941087730777948
+qa-07731-hallucinated,1,hallucinated,"The Ascendicate has shared the stage with Alien Ant Farm, who covered Michael Jackson.",1,0.9973686108607924
+qa-09291-factual,0,factual,Tim Duncan,0,0.04151312265912497
+qa-07589-factual,0,factual,I Saw Her Standing There,0,0.10389281915442634
+qa-00021-factual,0,factual,Kelli Ward,0,0.06933032491310473
+qa-08267-factual,0,factual,poetry,0,0.030126481071965902
+qa-07696-hallucinated,1,hallucinated,"""Les Poissons"" is a song from the 1986 movie ""The Little Mermaid"".",1,0.999950441800949
+qa-01271-hallucinated,1,hallucinated,"The winner of the first season of ""Next Great Baker"" would win an apprenticeship at Buddy's bakery in Las Vegas.",1,0.9999996118243247
+qa-03749-hallucinated,1,hallucinated,"Marvin Cohen's play was read by the same voice actor who played Rex in the ""Toy Story"" franchise.",1,0.9999919082068058
+qa-01811-factual,0,factual,A Tiger Walks,0,0.17722243233753368
+qa-04415-hallucinated,1,hallucinated,Shengzhou and Bei'an are both cities.,1,0.9874079735657552
+qa-03801-factual,0,factual,a 2010 American television series produced by HBO,1,0.5207234170122348
+qa-08618-factual,0,factual,Schenck v. United States,1,0.6992304479134968
+qa-08397-hallucinated,1,hallucinated,The author of the Tom Brown's Schooldays novel died in 1888.,1,0.9989811775129993
+qa-09562-hallucinated,1,hallucinated,Fake Problems and Monoral do not play the same genre.,1,0.9921517930122896
+qa-05909-hallucinated,1,hallucinated,The Russian actor appeared in a film about a group of Easterners trying to enter Hungary in 1960.,1,0.9999718717438806
+qa-04622-hallucinated,1,hallucinated,"The actor that played the title role in ""About Schmidt"" was born in 1940.",1,0.9999632539267983
+qa-00735-hallucinated,1,hallucinated,"The airplane model flown in Malaysian Airlines Flight 370 is ""Seven Two Seven"".",1,0.9975311333764497
+qa-02482-factual,0,factual,Fawad Afzal Khan,0,0.2716280335010502
+qa-02239-factual,0,factual,no,0,0.017746340578729494
+qa-05612-factual,0,factual,SolarQuest,0,0.039384120024567204
+qa-03342-factual,0,factual,Hercules & Love Affair,0,0.1092370194771601
+qa-01749-factual,0,factual,Sevilla Atlético,0,0.2107354351696472
+qa-09102-hallucinated,1,hallucinated,"The Atlantic Ocean is split by the meridian 30° west of Greenwich, creating an estuary-like body of water known as the Arctic Mediterranean Sea.",1,0.9999999125280078
+qa-01615-hallucinated,1,hallucinated,The alternate translation for the honorary title of which Vladimir Basov and Inna Churikova were both recipients is 'Artist of Russia'.,1,0.9999999935005979
+qa-08342-factual,0,factual,Dante,0,0.028881276499496653
+qa-02392-hallucinated,1,hallucinated,"The recording of a musical released as an album on April 2 starred an English actress, singer, and pianist.",1,0.999999310069077
+qa-07259-hallucinated,1,hallucinated,Sean Rodriguez played for the Atlanta Braves.,1,0.8611378586707262
+qa-09891-hallucinated,1,hallucinated,Lydia Leonard also starred in The Strain.,1,0.8117085359311795
+qa-09769-factual,0,factual,"Randal Joseph ""Joey"" Cape",1,0.5604714668730834
+qa-07142-hallucinated,1,hallucinated,"Santuario Alta Vista is a specific area located in the Nayarit state of Mexico, one of the 30 states in the country.",1,0.9999999735551024
+qa-03820-hallucinated,1,hallucinated,"The Billion Dollar Hobo is a 1977 American comedy film starring Will Geer and an actor that is the voice of Plankton in ""SpongeBob SquarePants"".",1,0.9999999999801401
+qa-08425-hallucinated,1,hallucinated,San Diego Chargers (Incorrectly inferring a California team based on the fact that Okoye is a founder of the California Sports Hall of Fame),1,0.9999998395771383
+qa-00562-factual,0,factual,Tony Rice,0,0.03433208572567195
+qa-04698-factual,0,factual,goalkeeper,0,0.030352922082359783
+qa-04232-factual,0,factual,100 Things to Do Before High School,0,0.2773525126235478
+qa-08918-hallucinated,1,hallucinated,Giuseppe Ungaretti and Aleister Crowley had a career.,1,0.9980247343506082
+qa-09899-factual,0,factual,"Robert Alan ""Bob"" Monkhouse",1,0.5164915387066955
+qa-05449-hallucinated,1,hallucinated,Fun was actually voted highest.,0,0.44784253140364566
+qa-07161-factual,0,factual,Indian,0,0.025313653668926468
+qa-07830-hallucinated,1,hallucinated,David Cross played a prominent role in Martin & Orloff and also voiced a character in Kung Fu Panda.,1,0.9999796907888575
+qa-05599-hallucinated,1,hallucinated,The director of Shadow of the Vampire is Steven Katz.,1,0.953928648920287
+qa-06430-factual,0,factual,"January 14, 1958",0,0.11242078968619917
+qa-01169-hallucinated,1,hallucinated,"Roman Karmen directed ""God, Inc."" with Francis Stokes.",1,0.9991423943169919
+qa-03283-factual,0,factual,Sterling submachine gun,0,0.10060481717002223
+qa-07433-hallucinated,1,hallucinated,Lars Eller was actually drafted by the Toronto Maple Leafs.,1,0.9910119466927086
+qa-08368-hallucinated,1,hallucinated,The USNA's football team played in NCAA Division II during 1976.,1,0.998135988963699
+qa-08909-factual,0,factual,Alice Louise Walton,0,0.043447585546217735
+qa-03385-hallucinated,1,hallucinated,Half-Life was released before MapCore's inception.,1,0.9766204864653331
+qa-05019-factual,0,factual,1949,0,0.02840473730050384
+qa-00816-factual,0,factual,Brazil,0,0.02431481175082708
+qa-05522-hallucinated,1,hallucinated,Operation Roller Coaster was a series of nuclear tests conducted at a desert site near Las Vegas.,1,0.9999440015811139
+qa-06536-hallucinated,1,hallucinated,Youngblood Hawke is from far northeast.,1,0.8949471352438545
+qa-02810-factual,0,factual,Fusil Mle 1886 M93,0,0.19645449460442643
+qa-00648-hallucinated,1,hallucinated,"No, only Justin Sane is a singer-songwriter. Naser Mestarihi is only a multi-instrumentalist.",1,0.9999999803769067
+qa-05337-factual,0,factual,"1,749",0,0.12175926575859645
+qa-05197-hallucinated,1,hallucinated,A Bloodhound and a Bloody Mary are both alcoholic beverages.,1,0.9955489283391776
+qa-01173-hallucinated,1,hallucinated,Patricia Neal acted with Darin.,0,0.2606445137212242
+qa-02955-hallucinated,1,hallucinated,The Beatles.,0,0.0909854012668861
+qa-09192-hallucinated,1,hallucinated,Amit Singhal was once senior VP at Lyft under CEO Travis Kalanick.,1,0.9994041007689622
+qa-09464-hallucinated,1,hallucinated,There is no town in Maine.,1,0.7143193568503781
+qa-08606-factual,0,factual,lifestyle magazine,0,0.031166728825328192
+qa-02521-hallucinated,1,hallucinated,Bellevalia and Pear belong to different families.,1,0.96725935854863
+qa-07578-hallucinated,1,hallucinated,Fiona Mont and Graham Hesketh are likened to Bonnie and Clyde who were famous for their romantic escapades.,1,0.99998876817167
+qa-00478-factual,0,factual,World War II,0,0.06463210373051662
+qa-06579-factual,0,factual,Dhaka,0,0.037339603204028925
+qa-03939-factual,0,factual,2001,0,0.02416224938701298
+qa-06113-hallucinated,1,hallucinated,"""Look at Me"" was 1:41 shorter on the Mexican EP.",1,0.9980424107975391
+qa-09953-factual,0,factual,the United States Navy,0,0.10097381334258537
+qa-04526-hallucinated,1,hallucinated,Thomas Harold Massie's opponent,0,0.18480955685829814
+qa-04513-hallucinated,1,hallucinated,"Monsters, Inc. Mike & Sulley to the Rescue! is based on a movie made by a company that was purchased by Disney for $8 billion.",1,0.99999999965748
+qa-06128-factual,0,factual,1942,0,0.029868193227046393
+qa-01362-factual,0,factual,no,0,0.01838328071256797
+qa-05875-factual,0,factual,First Lord of the Treasury,0,0.19333893930594723
+qa-09275-hallucinated,1,hallucinated,Albert Wilson played college football in Georgia.,1,0.8393331668270853
+qa-07166-hallucinated,1,hallucinated,The film in which Rhys Wakefield played Thomas Mollison was directed by Elissa Down in her debut.,1,0.9999964440925879
+qa-00754-factual,0,factual,genus,0,0.029266853389275253
+qa-06552-hallucinated,1,hallucinated,Shadow Warriors was actually formed in 1999.,1,0.8508506070289992
+qa-02749-hallucinated,1,hallucinated,The Bauer Media Group publishes Godey's Lady's Book.,1,0.9975001242141444
+qa-08794-factual,0,factual,"""Hit n Run Phase Two""",0,0.1724574817010472
+qa-00569-hallucinated,1,hallucinated,Neymar Jr. endorsed the Mercurial Vapor boot.,1,0.9867013813600747
+qa-06462-factual,0,factual,30 December 1982,0,0.05848471118264457
+qa-07261-factual,0,factual,Filmfare Award for Best Female Debut,0,0.4083859061877003
+qa-06066-factual,0,factual,"John Waldo ""Fee"" Waybill",1,0.6763368157293206
+qa-05564-factual,0,factual,Taylor Swift,0,0.038007188903520825
+qa-06317-hallucinated,1,hallucinated,"The Food City 500 was a drag race, spanning from oval tracks.",1,0.9922211369019531
+qa-09515-hallucinated,1,hallucinated,"Shawn Levy was born on July 22, 1968.",1,0.9184892756873723
+qa-09498-hallucinated,1,hallucinated,The material was self-named.,0,0.48514937224384275
+qa-09195-hallucinated,1,hallucinated,"Sayyid Hasan Husameddin founded the Ush-shaki tradition, and was also related to the Prophet Muhammad.",1,0.9999969196701155
+qa-07039-factual,0,factual,Charles Sobhraj,0,0.060428219295111815
+qa-00698-hallucinated,1,hallucinated,Derek Sherinian is the Literary Editor.,1,0.821376523577388
+qa-03392-hallucinated,1,hallucinated,The Scarlet Tulip EP is a studio release from a singer born in the early 70s.,1,0.9999805624660223
+qa-05114-factual,0,factual,1980,0,0.025733383174313226
+qa-03751-factual,0,factual,Friesland,0,0.06305327078421555
+qa-03359-factual,0,factual,"Birmingham, UK",0,0.056327609799202545
+qa-09528-factual,0,factual,"Casio Computer Co., Ltd.",0,0.4364790612472962
+qa-06908-factual,0,factual,Tarasankar Bandyopadhyay,1,0.8003110159331044
+qa-04245-hallucinated,1,hallucinated,"No, Howea is only found in the Southern Hemisphere.",1,0.9911097954552212
+qa-05526-factual,0,factual,Eduardo Chillida,0,0.07485374030335654
+qa-09469-factual,0,factual,graphic novel,0,0.0330219172320037
+qa-02377-hallucinated,1,hallucinated,The Kenwood Collection is not located in Cleveland.,1,0.9632921144180614
+qa-03985-factual,0,factual,Dead Sara,0,0.03953485848726967
+qa-05444-factual,0,factual,"2,586",0,0.06236926444189305
+qa-05594-factual,0,factual,"Land of 10,000 Lakes",0,0.18173296959888374
+qa-09099-hallucinated,1,hallucinated,The style of comedy used in The War of the Roses corresponds to dark humor.,1,0.9994633928138914
+qa-04378-hallucinated,1,hallucinated,Jacques Villeneuve's father was Gilles.,1,0.9366862710649188
+qa-02080-factual,0,factual,yes,0,0.011369905597614279
+qa-01918-hallucinated,1,hallucinated,The U.S. Senator died in 2014.,1,0.974289550572831
+qa-03156-factual,0,factual,Ximena Navarrete,0,0.20705420179765643
+qa-02939-hallucinated,1,hallucinated,The Hobbit: The Desolation of Smaug was produced by United Artists.,1,0.9996725389610318
+qa-01763-factual,0,factual,Ben Affleck,0,0.0792971614138774
+qa-03692-factual,0,factual,Louise Minchin,0,0.05211210337680746
+qa-09011-factual,0,factual,D.W. Kann,1,0.5967366093764578
+qa-07680-hallucinated,1,hallucinated,The Scandinavian Union,0,0.06422054293720099
+qa-02868-factual,0,factual,Rachel Anne Griffiths,0,0.08572287102959068
+qa-02289-factual,0,factual,flowering plants,0,0.03600755541838853
+qa-07968-factual,0,factual,John Lasseter,0,0.15099667764126168
+qa-09442-hallucinated,1,hallucinated,The second most famous hotel in Las Vegas cannot be determined.,1,0.989804939401027
+qa-04561-hallucinated,1,hallucinated,Forward Records is owned by a former governor of Georgia.,1,0.9760269522299713
+qa-07191-hallucinated,1,hallucinated,The actor was born in September.,1,0.799693296491611
+qa-04534-factual,0,factual,1998,0,0.028399910823515746
+qa-03681-factual,0,factual,born 14 November 1964,0,0.09244346852961349
+qa-07682-hallucinated,1,hallucinated,"Manny Coto, a Cuban American writer, was also nominated.",1,0.9971342549412466
+qa-03494-hallucinated,1,hallucinated,The Pittsburgh Penguins lost to the New York Jets in the opening round.,1,0.9988644034373647
+qa-08973-hallucinated,1,hallucinated,"The population in 2010 is 69,078.",1,0.9572080779024521
+qa-06880-factual,0,factual,Windhoek,0,0.043802080120610126
+qa-05668-hallucinated,1,hallucinated,Lucas Rodríguez plays as a midfielder.,1,0.9890739070922162
+qa-02158-factual,0,factual,The Stock Exchange of Hong Kong Limited,1,0.5155752215671665
+qa-00677-factual,0,factual,John Ritter,0,0.06729327108624317
+qa-00937-hallucinated,1,hallucinated,Fred Mundee did not attend South High School.,1,0.9369094415982344
+qa-05647-factual,0,factual,a five-piece Alt-Country band,0,0.4056966645635202
+qa-09976-factual,0,factual,San Diego,0,0.03967665548948047
+qa-00602-factual,0,factual,John Calvin Coolidge Jr.,0,0.32875012718293906
+qa-08386-factual,0,factual,Willa Ford,0,0.0456549600049938
+qa-00942-hallucinated,1,hallucinated,Italians do not have a specific name for the sauce that fills a BiFi Carazza.,1,0.9999790494261966
+qa-04849-hallucinated,1,hallucinated,"The actress who played Brittany in ""Sexy"" is not British.",1,0.9992738026526975
+qa-04793-factual,0,factual,European,0,0.027006996692946275
+qa-06453-hallucinated,1,hallucinated,"Yes, both Time and Food Network Magazine are weekly publications.",1,0.9943186709935444
+qa-06483-factual,0,factual,"November 5, 2013",0,0.1609881949913213
+qa-04351-factual,0,factual,Rhamnus purshiana,0,0.1994322733444808
+qa-08023-hallucinated,1,hallucinated,"Yes, both battles occurred on different continents.",1,0.9112927262193543
+qa-03013-factual,0,factual,Marco Reus and Mario Balotelli.,1,0.839082592611994
+qa-06205-hallucinated,1,hallucinated,Filip Mitrovic had a song used for a company that primarily sells champagne.,1,0.9993422557629764
+qa-04021-hallucinated,1,hallucinated,Onesimus was known for his promotion of inoculation for disease prevention and was owned by a Puritan minister.,1,0.9999958996226945
+qa-06215-factual,0,factual,film director,0,0.03489962785491344
+qa-03019-factual,0,factual,Jeremy Paul Kagan,0,0.10518470644919363
+qa-09314-factual,0,factual,Brand New,0,0.03555786083071863
+qa-00991-hallucinated,1,hallucinated,The co-star was Steve McQueen.,1,0.9017944519983702
+qa-01867-hallucinated,1,hallucinated,"NBC named him #83 on the ""100 Greatest Stand-ups of All Time"" special.",1,0.9998247607072577
+qa-01219-factual,0,factual,Haiti,0,0.022349900986762154
+qa-08016-hallucinated,1,hallucinated,both are musical acts.,0,0.2784997656848935
+qa-01368-factual,0,factual,28 May 1968,0,0.05425916832363321
+qa-09252-hallucinated,1,hallucinated,David Bentley managed the team.,0,0.2849910967295946
+qa-06291-factual,0,factual,Lucas Patrick McCown,0,0.10025645083190546
+qa-00175-factual,0,factual,Richard Ford,0,0.04477528864292295
+qa-00414-hallucinated,1,hallucinated,"""Do I Ever Cross Your Mind"" was the featured re-recording on Heartbreak Express, a song originally from the ""Best Little Whorehouse in Texas Soundtrack"".",1,0.9999999996919191
+qa-01851-factual,0,factual,Lee Chong Wei,0,0.0445851221568097
+qa-04342-factual,0,factual,Jessica Biel,0,0.06895871768602306
+qa-09327-hallucinated,1,hallucinated,"Billings Logan International Airport is located in Montana, while Palm Springs International Airport is located in California in the United States.",1,0.9999996585534114
+qa-00372-factual,0,factual,14 November 1889,0,0.0540968557462271
+qa-03655-factual,0,factual,Simon Coveney,0,0.13944726244232922
+qa-02997-factual,0,factual,rock,0,0.028223045106560478
+qa-05246-hallucinated,1,hallucinated,The town of Amherst is situated in the valley of the second longest river in the Mid-Atlantic region.,1,0.9999971943028549
+qa-02904-factual,0,factual,Danish,0,0.02888122856207577
+qa-06976-hallucinated,1,hallucinated,"Confrontation Camp consists of multiple members, including renowned American DJ and turntablist DJ Lord.",1,0.9999790068622921
+qa-05673-hallucinated,1,hallucinated,Taito Corporation only created Puzzle Bobble.,1,0.8203010801711564
+qa-08513-hallucinated,1,hallucinated,Former Secretary of State Colin Powell is a four-star general who attended events at the Southern Center for International Studies.,1,0.9999992232193428
+qa-02005-hallucinated,1,hallucinated,Martin Manley served as the Executive Director to the Hult International School of Business.,1,0.9996623151403619
+qa-05183-hallucinated,1,hallucinated,David Ragsdale has been the violinist for Nine Inch Nails from 1991 to 1997 and from 2006 to the present.,1,0.999999888687219
+qa-06406-hallucinated,1,hallucinated,Carey Park is a neighborhood in Atlanta with around 200 neighborhoods.,1,0.9761559024263824
+qa-02711-factual,0,factual,album,0,0.03338371631146638
+qa-08281-hallucinated,1,hallucinated,Joseph Darlinton was a politician in French Canada.,1,0.9777955405839578
+qa-03462-hallucinated,1,hallucinated,"""Amazing Grace"" was rediscovered by Anthony D. ""Tony"" Saletan, becoming a standard campfire song in Scouting and summer camps and enjoying broader popularity during the folk revival of the 1950s and 1960s.",1,0.9999999999999825
+qa-04048-hallucinated,1,hallucinated,"The award winning game is not a reboot of the franchise, but a completely new and original game.",1,0.9999845964752263
+qa-05936-hallucinated,1,hallucinated,Both stations serve the nearby town.,1,0.6118399802568946
+qa-08181-hallucinated,1,hallucinated,"Niki Caro is a film director, but Thomas Vinterberg is not.",1,0.9999536167638224
+qa-02228-factual,0,factual,Rudolf Christoph Eucken,1,0.7744497394852383
+qa-01722-factual,0,factual,no,0,0.018497484721867682
+qa-01083-hallucinated,1,hallucinated,Allan Stone is younger than Kafelnikov.,1,0.8775146537419205
+qa-02799-hallucinated,1,hallucinated,Mike Mercer played in the Los Angeles Memorial Coliseum in 1967.,1,0.9947164045046942
+qa-05900-hallucinated,1,hallucinated,Chris Martin was part of Pectoralz.,1,0.7428900697095981
+qa-06494-hallucinated,1,hallucinated,"The song ""Iconic"" was actually not featured on any album released by Interscope Records.",1,0.9999884136472631
+qa-03461-factual,0,factual,"""Thetis""-class ocean patrol vessel",0,0.38968470180980785
+qa-06547-hallucinated,1,hallucinated,Family Life is headquartered in the United States.,1,0.9661058477474914
+qa-02887-hallucinated,1,hallucinated,The 1980 Academy Award-winning actor did not star in a 2003 crime drama directed by James Foley.,1,0.999971815285587
+qa-07728-factual,0,factual,North Germanic and the extinct East Germanic languages,1,0.8101910670867744
+qa-08908-hallucinated,1,hallucinated,The French Queen's farewell was a 2012 French drama film directed by Benoît Jacquot based on the 2002 Prix Femina winning novel of the same name.,1,0.9999999997824678
+qa-02807-factual,0,factual,AaB Fodbold,0,0.09317410061403934
+qa-02441-hallucinated,1,hallucinated,John Williams,0,0.03829642070590335
+qa-04539-factual,0,factual,Taylorsville,0,0.09256937340663204
+qa-02170-hallucinated,1,hallucinated,Kahibah FC is based in the United States.,1,0.9931500919004581
+qa-03357-factual,0,factual,755 acres,0,0.06299558838872567
+qa-00752-factual,0,factual,his speed on the ball,0,0.2332798540652465
+qa-03451-hallucinated,1,hallucinated,The population is irrelevant to the story.,1,0.7641351579714629
+qa-02706-hallucinated,1,hallucinated,"Tricia Dickson and Danny Tamberelli were born in the same year, 1982.",1,0.9999899272852975
+qa-00768-factual,0,factual,Central Intelligence Agency,0,0.06795175662622614
+qa-03572-hallucinated,1,hallucinated,The documentary The Romance of the Far Fur Country focuses on the history of snowboarding.,1,0.9998385387173506
+qa-02356-hallucinated,1,hallucinated,Brianna Hildebrand played the character of Magneto's daughter in Deadpool.,1,0.9992904966064882
+qa-00301-hallucinated,1,hallucinated,Mike Leach was previously the head coach of the Kansas City Chiefs.,1,0.9968465269698359
+qa-04527-factual,0,factual,Henry C. Pelton,0,0.16856818879547603
+qa-06827-hallucinated,1,hallucinated,Operation Vengeance was designed to kill the leader of the Japanese air force.,1,0.9988616434467997
+qa-06376-hallucinated,1,hallucinated,The album was recorded as a live radio broadcast for a contemporary Christian music radio station that is licensed to New York City.,1,0.9999997462770953
+qa-05162-factual,0,factual,350 million,0,0.03471011775041588
+qa-02290-factual,0,factual,The Pacific,0,0.04605571395817544
+qa-08536-hallucinated,1,hallucinated,Columbia University is a public research university.,1,0.8974975089380488
+qa-07800-hallucinated,1,hallucinated,The Summer Love Song.,0,0.17509010722166798
+qa-08790-factual,0,factual,Blur,0,0.04269775577880552
+qa-00583-hallucinated,1,hallucinated,Sameera Perera is a cricketer from India.,1,0.9960022544559384
+qa-00845-hallucinated,1,hallucinated,Call Me Kuchu and That's Dancing! are both movies about movement.,1,0.9995079011418487
+qa-07765-factual,0,factual,Algirdas,0,0.09836367990647601
+qa-02439-hallucinated,1,hallucinated,Me Naiset and Today's Housewife are directed at readers who are females.,1,0.9997961416453007
+qa-01332-hallucinated,1,hallucinated,Deliver Us From Evil explores the life of Irish priest Oliver O'Grady who committed crimes in Northern California.,1,0.9999129845424606
+qa-06465-factual,0,factual,board game,0,0.03273547806795694
+qa-00093-hallucinated,1,hallucinated,"The actress who won two Tonys and an Emmy Award and was on ""Chuck"" is Lynn Redgrave.",1,0.9999662055540496
+qa-00997-factual,0,factual,554 ft,0,0.06706156164988598
+qa-05624-factual,0,factual,Andre Kirk Agassi,0,0.0637844166570664
+qa-07898-hallucinated,1,hallucinated,"Neither Antonin Artaud nor David McCullough won multiple Pulitzer Prizes or National Book Awards, but McCullough did receive the Presidential Medal of Freedom.",1,0.9999999850508687
+qa-09828-hallucinated,1,hallucinated,Johnny Bonnel and Tunde Adebimpe briefly played together in a punk rock band called The Filthy Bastards.,1,0.9999996773746456
+qa-06039-factual,0,factual,Adelaide Hills,0,0.03034777079689086
+qa-08337-factual,0,factual,Who Framed Roger Rabbit,0,0.19287713122435776
+qa-03468-hallucinated,1,hallucinated,"There were over 40,000 residents in the county that contains Peytona during the 2010 census.",1,0.9999291119658136
+qa-06803-hallucinated,1,hallucinated,The Juarez Cartel associates with the Barrio Azteca gang to a limited extent.,1,0.9999206943037574
+qa-07343-hallucinated,1,hallucinated,"Angel Cejudo is an American freestyle wrestler who won the Dave Schultz Memorial International freestyle wrestling tournament on February 15, 2008.",1,0.9999999605859637
+qa-00001-hallucinated,1,hallucinated,The Oberoi family's hotel company is based in Mumbai.,1,0.99132372821725
+qa-00867-factual,0,factual,superhumans,0,0.03530501931244542
+qa-07615-factual,0,factual,Piscataquis,0,0.13962166861469713
+qa-04650-hallucinated,1,hallucinated,Brent Bennett's associate was Jonathan Idema and he was wrongly accused.,1,0.9803564086429637
+qa-05523-factual,0,factual,English,0,0.022952768387866185
+qa-09917-hallucinated,1,hallucinated,The Chesapeake Bay Retriever and Newfoundland are both breeds of working dogs.,1,0.9997251423459116
+qa-07449-hallucinated,1,hallucinated,Gary Groth is also a co-founder of Marvel Comics.,1,0.9973549493826336
+qa-05905-hallucinated,1,hallucinated,Tiger Flowers defeated a boxer.,0,0.3630092302994389
+qa-08182-hallucinated,1,hallucinated,Down East and OK! are both news outlets.,1,0.9125685738563769
+qa-08797-factual,0,factual,yes,0,0.011745844324023298
+qa-00185-factual,0,factual,Halestorm,0,0.0500951921442185
+qa-00789-factual,0,factual,Joël Robuchon,0,0.21916203259451122
+qa-02684-factual,0,factual,Miss Russia,0,0.03925803134503221
+qa-01677-factual,0,factual,Frank Chadwick,0,0.04910193718856416
+qa-00163-factual,0,factual,Chicago,0,0.023061587516716428
+qa-08806-hallucinated,1,hallucinated,Barbajada and Panettone are from different places.,1,0.9941304964606184
+qa-07134-factual,0,factual,DeWitt Bodeen,0,0.22396160432960985
+qa-06925-hallucinated,1,hallucinated,Jim Strickland serves alongside twelve council members.,1,0.873164503652441
+qa-07418-hallucinated,1,hallucinated,The assistant's death had nothing to do with Jim Williams' trial in New York.,1,0.9988380356036631
+qa-03549-hallucinated,1,hallucinated,The 2015 film Adam Arkapaw photographed was directed by John Lee Hancock.,1,0.9980244131501615
+qa-07132-factual,0,factual,Tennessee,0,0.025928487857735657
+qa-02127-factual,0,factual,99th Infantry Division,0,0.11724828038361991
+qa-02815-hallucinated,1,hallucinated,M-69 Highway is located on Upper Michigan Peninsula.,1,0.966711460984045
+qa-07406-factual,0,factual,composer,0,0.03162509787227671
+qa-07468-hallucinated,1,hallucinated,"Yes, Valley International and Westerly State are both used for flying.",1,0.9953013303656795
+qa-09730-hallucinated,1,hallucinated,Cave In is the American rock band formed in California.,1,0.9893929170598337
+qa-02642-factual,0,factual,Ol Parker,0,0.029501112810662096
+qa-02468-hallucinated,1,hallucinated,The pianist who made the first recording of Piano Sonata in B minor passed away in 1979.,1,0.9999828578174118
+qa-05939-hallucinated,1,hallucinated,Jonas Hummels's older brother was born in 1989.,1,0.994708742473463
+qa-05200-hallucinated,1,hallucinated,The city of Wheaton is located in a county that shares its name with the Potawatomi tribe of Native Americans.,1,0.999999892677077
+qa-04270-hallucinated,1,hallucinated,The former MP was born in 1942.,1,0.8559810117471122
+qa-01507-hallucinated,1,hallucinated,Y'all magazine has a massive circulation.,1,0.8996039888612888
+qa-07172-hallucinated,1,hallucinated,The star of the 2016 comedy film co-written by an American actor who was a cast member of MADtv and starred in Suicide Squad is Justin Timberlake.,1,0.9999999998884126
+qa-01641-factual,0,factual,2000,0,0.023187478308118646
+qa-07220-factual,0,factual,The Saturday Evening Post,0,0.1472182297989231
+qa-01307-hallucinated,1,hallucinated,The coach of Karachi Kings was removed as coach of the Australia national cricket team in mid-2013.,1,0.9999840200223533
+qa-06855-factual,0,factual,Waldo County,0,0.04669754880525943
+qa-08081-factual,0,factual,So Ji-sub,0,0.06577714212047876
+qa-00021-hallucinated,1,hallucinated,Donahue replaced Kelli Ward's position.,1,0.8865426204867627
+qa-07163-factual,0,factual,The Primitives,0,0.2538335260758758
+qa-09435-hallucinated,1,hallucinated,Lodewijk van den Berg flew more missions.,1,0.9340269175381926
+qa-03172-factual,0,factual,John Constantine,0,0.03691366910645792
+qa-06186-factual,0,factual,no,0,0.017693890435818777
+qa-09871-factual,0,factual,Ohio,0,0.025692080645213798
+qa-08652-factual,0,factual,Bikini Bottom,0,0.059222006393477994
+qa-08551-hallucinated,1,hallucinated,"""Finest Worksong"" was actually the first single released from R.E.M.'s fourth studio album, ""Life's Rich Pageant.""",1,0.9999999961449695
+qa-09735-factual,0,factual,The Suspect,0,0.06248875242834404
+qa-00188-factual,0,factual,Martha Coolidge,0,0.05946060551686157
+qa-07153-factual,0,factual,Hillsborough County,0,0.065235868969591
+qa-09578-hallucinated,1,hallucinated,The food was adulterated with formaldehyde.,1,0.9713490907457936
+qa-00881-hallucinated,1,hallucinated,Sam Claflin stars as Philip Swift.,1,0.8037730843276161
+qa-01655-factual,0,factual,defensive end,0,0.03634213082337324
+qa-06334-hallucinated,1,hallucinated,Il matrimonio segreto has fewer acts.,1,0.9972833045375066
+qa-09826-factual,0,factual,Luis Buñuel,0,0.1286589924202012
+qa-07381-factual,0,factual,Edmund White,0,0.0328931861173026
+qa-09715-hallucinated,1,hallucinated,Moulton Windmill is located in Scotland.,1,0.9796671183802196
+qa-09323-hallucinated,1,hallucinated,Shaq and Nabeel are both artists.,1,0.9643640548605468
+qa-02076-factual,0,factual,no,0,0.017708798464611108
+qa-08160-factual,0,factual,Sacramento Kings,0,0.03653100342755762
+qa-07827-factual,0,factual,Peter Schamoni,0,0.21521610593578364
+qa-08254-factual,0,factual,Bobby Flay,0,0.055982903053390626
+qa-03224-hallucinated,1,hallucinated,The writer of Right Now has African-American roots.,1,0.9639814603007457
+qa-03307-hallucinated,1,hallucinated,"The Woman's Viewpoint is Texan, Peterson's Magazine is national.",1,0.996581640919003
+qa-01377-factual,0,factual,Munich,0,0.02504434841451044
+qa-08099-factual,0,factual,her deep contralto,0,0.12718867566186648
+qa-01956-factual,0,factual,independent city,0,0.03194075963103128
+qa-07793-hallucinated,1,hallucinated,Roy Shepherd was a piano teacher at the Victoria College of the Arts (VCA) campus in Melbourne.,1,0.9999818869588799
+qa-01688-factual,0,factual,the island of Great Britain,0,0.2634261498086258
+qa-07633-factual,0,factual,film director,0,0.03487016588990702
+qa-02429-hallucinated,1,hallucinated,The excerpt was from King's 11/22/63.,1,0.9666855987115568
+qa-01000-hallucinated,1,hallucinated,"Ran Nakash only lost to Marco Huck on April 2, 2011, but he later defeated him.",1,0.9999372045665539
+qa-04023-factual,0,factual,June 2011,0,0.03452099711585541
+qa-08893-factual,0,factual,physicist,0,0.031215207818945833
+qa-01779-hallucinated,1,hallucinated,Weston Foods was founded in 1882 and produces Wonder Bread in Canada as a subsidiary of George Weston Limited.,1,0.9999881056127509
+qa-00191-hallucinated,1,hallucinated,"Exactly 1,600 German scientists were recruited.",1,0.8713082532584939
+qa-04309-factual,0,factual,She's So Huge,0,0.07602360366097331
+qa-07053-factual,0,factual,Republican Party,0,0.03854032868690962
+qa-03260-factual,0,factual,The Mamas & the Papas,1,0.677632188798742
+qa-09552-hallucinated,1,hallucinated,Jamie Varner is the busiest fighter.,1,0.7023114524065074
+qa-01247-hallucinated,1,hallucinated,John Howe was a college chaplain in Uganda.,1,0.9681860887120997
+qa-08526-factual,0,factual,James Wan,0,0.03863376907873882
+qa-08608-factual,0,factual,yes,0,0.012021627196630757
+qa-09679-hallucinated,1,hallucinated,"""You're All I Need"" was released in May, along with the rest of Girls, Girls, Girls.",1,0.9999915097122333
+qa-02346-hallucinated,1,hallucinated,"Sherwood Stewart is from the United States, while Ekaterina Makarova was born in Russia.",1,0.9999981332555279
+qa-01693-hallucinated,1,hallucinated,Billy Martin is older than Pavel Složil.,1,0.9966774209765087
+qa-02301-hallucinated,1,hallucinated,"Harold and Tostig Godwinson overthrew Rhiwallon in Wales, not in Northumbria.",1,0.9999970991199317
+qa-09945-factual,0,factual,Cyrano Agency,0,0.038414027437767034
+qa-03816-factual,0,factual,University of Manchester.,0,0.09103284650267766
+qa-07848-hallucinated,1,hallucinated,Ronald Dworkin was a legal scholar.,1,0.9101021629252253
+qa-03221-factual,0,factual,no,0,0.018363313719503397
+qa-00377-hallucinated,1,hallucinated,Robert Oliver Reed died in 1998.,0,0.35456746914553994
+qa-09158-factual,0,factual,yes,0,0.011439771602223812
+qa-04840-factual,0,factual,1921,0,0.02976614078772726
+qa-03389-hallucinated,1,hallucinated,The writer of Baby Blue won two prestigious awards in the UK music industry in 1973.,1,0.9996012564657277
+qa-02249-factual,0,factual,Mitch Rapp,0,0.033895675190190454
+qa-06729-factual,0,factual,1945,0,0.02721819093484025
+qa-00500-factual,0,factual,Hurricane Ivan,0,0.037156985135870485
+qa-01126-hallucinated,1,hallucinated,"The Commissioner was born on May 5th, 1952.",1,0.9807916758988553
+qa-04061-hallucinated,1,hallucinated,Rue McClanahan had the opportunity to reunite with Estelle Getty in Ladies Man.,1,0.9997999966113916
+qa-02883-factual,0,factual,ER White,0,0.0311654475810923
+qa-07103-factual,0,factual,Giant Barn Swing,0,0.03461765519396535
+qa-01466-hallucinated,1,hallucinated,The Seattle SuperSonics lost to the Memphis Grizzlies in the playoffs.,1,0.9985624282568009
+qa-09589-factual,0,factual,"September 3, 2000",0,0.11831371867682997
+qa-02849-hallucinated,1,hallucinated,The beer featuring I Am Canadian slogan was introduced in 1994.,1,0.9794851011651301
+qa-07688-factual,0,factual,Frank Lucas,0,0.03664508538259223
+qa-01090-hallucinated,1,hallucinated,Pietro Ferrero never introduced the product.,1,0.820007671296505
+qa-05359-factual,0,factual,Demi Moore,0,0.06156124534631887
+qa-09236-factual,0,factual,Mexico,0,0.03100454719463945
+qa-06412-hallucinated,1,hallucinated,Larry Kane wrote four books about the Beatles.,1,0.8163519821612262
+qa-07998-factual,0,factual,Victor Salva,0,0.05073541733161805
+qa-01777-factual,0,factual,1957,0,0.028865324377648622
+qa-09012-factual,0,factual,The February mutiny,0,0.10585528957439011
+qa-00470-factual,0,factual,Putnam County,0,0.05748342710254815
+qa-04781-factual,0,factual,Iowa State Cyclones,0,0.10037035446717921
+qa-00903-hallucinated,1,hallucinated,Only a few works besides A Bayou Legend.,1,0.9440242485662286
+qa-00683-hallucinated,1,hallucinated,Hariharan Pillai Happy Aanu contains music arranged by a famed musician from Kerala.,1,0.9998700881761918
+qa-08076-hallucinated,1,hallucinated,Angelina Jolie was in The In-Laws.,1,0.993209204908158
+qa-09808-factual,0,factual,"November 11, 1885",0,0.20226959584877244
+qa-00601-factual,0,factual,yes,0,0.0113157537423317
+qa-01824-factual,0,factual,Afrojack,0,0.06024462033252822
+qa-08357-factual,0,factual,"""The Real King Kong""",0,0.3057262760930261
+qa-05886-hallucinated,1,hallucinated,"Viscount Grant, also known as Gable, who won the title of Best In Show at the Crufts Dog Show in 1987, was selectively bred for its unique features in the cold mountains of India.",1,0.9999999999997964
+qa-05853-factual,0,factual,WBC interim super lightweight title,0,0.24339735833718984
+qa-04955-factual,0,factual,Fighting Fantasy,0,0.03499261598591696
+qa-08706-factual,0,factual,The Battle of Luzon,0,0.3581836128895676
+qa-09132-factual,0,factual,Painted Faces,0,0.04157474141989655
+qa-07639-hallucinated,1,hallucinated,Jota Sport has a partnership with some unnamed racing team in the Asian Le Mans Series.,1,0.9999343145297073
+qa-06194-factual,0,factual,over 120,0,0.03644634600141358
+qa-01408-hallucinated,1,hallucinated,Both worked in entertainment industry.,0,0.3165533807494186
+qa-07458-hallucinated,1,hallucinated,"Esmée Denters, the Dutch singer, covered songs by many artists and became one of the first music artists to exceed 200 million views on Youtube.",1,0.999999999542468
+qa-06280-factual,0,factual,DJ Kool Herc,0,0.09632576148978404
+qa-09434-factual,0,factual,meteorologist,0,0.032791068557021893
+qa-01782-factual,0,factual,Western Roman Empire,0,0.06084222320076909
+qa-06756-factual,0,factual,after 53 days,0,0.059169346196265585
+qa-05666-hallucinated,1,hallucinated,"Jean Baptiste Charbonneau was born on February 29th, 1805.",1,0.9976325437544391
+qa-06348-hallucinated,1,hallucinated,Mario Bava and Ben Holmes were both involved in the film industry.,1,0.9982415856084854
+qa-09361-factual,0,factual,Gary Lineker,0,0.0767506120598521
+qa-09490-factual,0,factual,Elizabethan,0,0.03553738565372257
+qa-02259-hallucinated,1,hallucinated,John Lennon was the bass player included on Anthology 1.,1,0.9950054228833842
+qa-00615-factual,0,factual,Andrzej Żuławski,1,0.9789417497081554
+qa-07355-factual,0,factual,Jenny Lewis,0,0.038082295921683336
+qa-06601-hallucinated,1,hallucinated,Riverdance is a mix of traditional dances from various countries.,1,0.9949272339099119
+qa-01608-hallucinated,1,hallucinated,The Princess and the Frog starred a man who is best known for playing Tim Allen.,1,0.9998264560503776
+qa-05438-factual,0,factual,yes,0,0.01134816116042544
+qa-01536-hallucinated,1,hallucinated,The Sunshine Coast is the coastal area in Queensland.,1,0.9339710219625598
+qa-09974-hallucinated,1,hallucinated,General Jefferson C. Davis first commanded the District of Alaska.,1,0.9715433124907566
+qa-07922-factual,0,factual,African-American literature,0,0.10265413442713156
+qa-01783-factual,0,factual,Scotland,0,0.02738818977417546
+qa-00980-hallucinated,1,hallucinated,Emma Rigby starred in Hollyoaks.,1,0.5492112044265873
+qa-03076-factual,0,factual,Mary and Max,0,0.08073000641154927
+qa-08503-factual,0,factual,2005,0,0.023897279679984573
+qa-08500-hallucinated,1,hallucinated,"The Michigan Wolverines quarterback, Chad Henne, threw a last-second touchdown pass to himself.",1,0.9999709939920806
+qa-05734-hallucinated,1,hallucinated,Penélope Cruz starred in Jamón Jamón as a model.,1,0.9713190278965269
+qa-06819-hallucinated,1,hallucinated,Sidney Lumet was best known for his enormous contributions.,1,0.9724117448589722
+qa-04696-factual,0,factual,John Francis O'Shea,0,0.3094839509687206
+qa-04566-hallucinated,1,hallucinated,Lily Allen and Mark Ronson wrote Littlest Things.,1,0.9808439496320868
+qa-07481-hallucinated,1,hallucinated,"John Gilbert, as he was known for his prolific writing career.",1,0.9924352617518986
+qa-05002-factual,0,factual,Channel 4,0,0.03979807370254146
+qa-08506-hallucinated,1,hallucinated,"Anna of the North had a collaboration with Tyler, The Creator on his fourth studio album.",1,0.9996247090665191
+qa-08617-hallucinated,1,hallucinated,New York Mets (of MLB).,0,0.3646923747391152
+qa-07789-hallucinated,1,hallucinated,Dauði Baldrs is the fifth album by a musician who was convicted of several heinous crimes.,1,0.999994628142325
+qa-02767-hallucinated,1,hallucinated,"William Boyd was a screenwriter, but Jim Thompson was not.",1,0.997926716503379
+qa-04586-factual,0,factual,BBVA,0,0.0370590948746826
+qa-05948-factual,0,factual,Cecil Louis Troughton Smith,0,0.2105250114241299
+qa-01627-hallucinated,1,hallucinated,"Yes, both the Memotech MTX and TEC-1 were single-board kit computers.",1,0.9999892018211977
+qa-03521-hallucinated,1,hallucinated,"The actress playing a doctor on ""Spooks"" is not the same as the one on ""Footballers' Wives"".",1,0.9999997037897852
+qa-00311-hallucinated,1,hallucinated,Prochlorococcus has unique pigmentation for photosynthesis.,1,0.9888775630567238
+qa-09930-factual,0,factual,7 Year Bitch,0,0.08895159951754662
+qa-01279-hallucinated,1,hallucinated,Ashley Hicks' mother is a great niece of Empress Alexandra.,1,0.9838376381814374
+qa-00566-factual,0,factual,The Go-Go's,0,0.16164679799223616
+qa-08709-factual,0,factual,The Devil Put Dinosaurs Here,0,0.15335620979050943
+qa-09763-factual,0,factual,"Lahti, Finland",0,0.06492409508744999
+qa-09818-hallucinated,1,hallucinated,The city that Dunedin Isles Golf Club gets its name from is a Scottish city.,1,0.9995841962218314
+qa-04309-hallucinated,1,hallucinated,"The Flys' hit song in ""Sugar & Spice"" is ""Superstar.""",1,0.9996384846328168
+qa-00269-hallucinated,1,hallucinated,Pritam was the deceased mentor.,1,0.7734496552436164
+qa-03404-factual,0,factual,Norval Morrisseau,0,0.09413069101679829
+qa-01934-hallucinated,1,hallucinated,The person James Matheson received the award in 2011 from someone who died in 1954.,1,0.9998672414994366
+qa-02275-factual,0,factual,Evgeny Mikhailovich Belyaev,1,0.7646233594102516
+qa-08190-hallucinated,1,hallucinated,"""Roadgames"" was directed by Paul Lynch.",1,0.9114301173889547
+qa-06210-hallucinated,1,hallucinated,The Canadian ice hockey player known as a power forward played centre in the West Coast Express.,1,0.9999419202043858
+qa-06176-factual,0,factual,"""Jodie"" Foster",0,0.4300465124215894
+qa-07245-hallucinated,1,hallucinated,"Ronnie O'Sullivan won his fifth World title after playing just one competitive match in the 2012/2013 snooker season, and he resides in London, England.",1,0.9999999888819441
+qa-01988-hallucinated,1,hallucinated,"Necropolis is a fantasy novel by Anthony Horowitz, born on 15 May 1962.",1,0.999066221897054
+qa-06996-hallucinated,1,hallucinated,Vishwavir Ahuja is the CEO of a Maharashtra-based scheduled commercial bank named Yamuna Bank Limited.,1,0.9999971147116651
+qa-05489-hallucinated,1,hallucinated,The Cat Creeps starred one of the leading Danish actors of the US.,1,0.9990345611393746
+qa-04773-factual,0,factual,Nardwuar the Human Serviette,0,0.25254061881904133
+qa-01297-factual,0,factual,1943,0,0.02726645494521579
+qa-02276-hallucinated,1,hallucinated,Hong Kong Macau cultural exchange was a trip that tested the newly enacted Hong Kong security law to see if it was applicable in Macau.,1,0.9999998613236917
+qa-08710-hallucinated,1,hallucinated,The creator of the television show and the inspiration for the 1975 film is not the same person.,1,0.9999012559496743
+qa-01262-factual,0,factual,Howard Phillips Lovecraft,0,0.05814087782170991
+qa-00951-hallucinated,1,hallucinated,The Muppets and Disney characters.,1,0.7965306413746072
+qa-00888-factual,0,factual,The Magic Roundabout,0,0.08999356111666672
+qa-01794-hallucinated,1,hallucinated,"Salvador Dali painted the sets of watercolors exploring a monochromatic palette that were non-representational of specific objects, and was best known for his surrealist art.",1,0.9999999999773388
+qa-01580-hallucinated,1,hallucinated,Kevin Bookout played college basketball that used to play in the Big 10 Conference.,1,0.9993305939437109
+qa-09999-factual,0,factual,1852,0,0.036499447146184805
+qa-06256-factual,0,factual,"July 27, 1993",0,0.15313337689812634
+qa-09952-hallucinated,1,hallucinated,The English striker never appeared in any World Cup.,1,0.9602919571783212
+qa-05273-factual,0,factual,"$25,000",0,0.13677254430083732
+qa-05689-hallucinated,1,hallucinated,"Noura was the first North African and Algerian to attain a gold record and was the first Algerian to appear on the front page of ""Le Figaro"".",1,0.9999999967717195
+qa-04158-hallucinated,1,hallucinated,"Kevin Clark was the commissioner of the police department in Baltimore, Pennsylvania.",1,0.9985260154033075
+qa-02374-hallucinated,1,hallucinated,"No, Racing Extinction is a scientific film while Incident at Oglala is a narrative documentary.",1,0.9999173513961915
+qa-01323-factual,0,factual,NSYNC,0,0.05360801479331076
+qa-00033-hallucinated,1,hallucinated,Nicholas Ray and Elia Kazan both worked in the film industry.,1,0.9990031856892483
+qa-04698-hallucinated,1,hallucinated,Kasper Schmeichel is the son of the famous footballer who played as a midfielder.,1,0.9999776637105761
+qa-08820-factual,0,factual,51 Birch Street,0,0.0724576423848347
+qa-03697-factual,0,factual,musical score,0,0.03382608204303952
+qa-08231-hallucinated,1,hallucinated,Dan Jacobs was actually born first.,1,0.7331957709303307
+qa-00805-factual,0,factual,1945,0,0.02744070472098991
+qa-05123-hallucinated,1,hallucinated,"Heshan is located in Guangxi while Jian'ou is in Fujian, both are in different provinces.",1,0.999998261577714
+qa-07152-factual,0,factual,American,0,0.023100734946539095
+qa-02163-hallucinated,1,hallucinated,Lada Negrul produced documentaries about the renowned Russian actor Vladimir Galkin.,1,0.9992623875707694
+qa-00568-hallucinated,1,hallucinated,Buddelja is an herb named after a German botanist.,1,0.9989843636854481
+qa-00401-factual,0,factual,Tommy Morrison,0,0.03353818000679548
+qa-04444-factual,0,factual,Rogers Hornsby,0,0.12408863953100124
+qa-00210-factual,0,factual,R&B,0,0.07720323708752627
+qa-03725-hallucinated,1,hallucinated,"""The Book Thief"" is the film directed by Brian Percival based on a book by Markus Zusak.",1,0.9999996893785236
+qa-01945-factual,0,factual,"July 16, 1964",0,0.12368945170055017
+qa-05586-hallucinated,1,hallucinated,Odessa Grady Clay had only two sons.,1,0.9633183562776092
+qa-08764-hallucinated,1,hallucinated,Montfort Browne commanded the Prince of Wales' and King George's American Regiment in the American Revolutionary War.,1,0.9999593694625448
+qa-07602-hallucinated,1,hallucinated,Dennis Chun's father was best known for his role as Chin Ho Kelly's partner.,1,0.9986537703238048
+qa-01022-hallucinated,1,hallucinated,Minardi M190 ran on Bridgestone tyres.,1,0.9505991242568381
+qa-01715-factual,0,factual,1916,0,0.027155125600334746
+qa-02008-hallucinated,1,hallucinated,"Multiple medallists at the 2012 Summer Paralympics in London, United Kingdom included cyclist Sarah Storey, a British road and track racing cyclist and former triathlete.",1,0.9999999999864335
+qa-06135-hallucinated,1,hallucinated,The Rector of Most Holy Trinity Seminary was born in Florida.,1,0.9994821212739412
+qa-05667-hallucinated,1,hallucinated,Eugene Melnyk is not a racehorse breeder.,1,0.9867113008359185
+qa-03636-hallucinated,1,hallucinated,Todd Field has never been nominated.,1,0.6816631294572486
+qa-09852-factual,0,factual,Bagram,0,0.03281055151814563
+qa-03583-hallucinated,1,hallucinated,"Ritwik Ghatak was Bengali, but Jehane Noujaim was not.",1,0.9999957776165131
+qa-00414-factual,0,factual,I Will Always Love You,0,0.15919193440953766
+qa-02288-factual,0,factual,10 August 139727,0,0.10324349175873623
+qa-03757-factual,0,factual,Sussex's Men,0,0.03580699754564742
+qa-01610-hallucinated,1,hallucinated,"Clementine Spencer-Churchill was born on May 1st, 1888.",1,0.9944725483234697
+qa-05836-factual,0,factual,Berkeley Earth,0,0.03287537487777857
+qa-06677-hallucinated,1,hallucinated,700 AD,0,0.03304862247835635
+qa-07517-hallucinated,1,hallucinated,The Crocoduck was Kirk Cameron's idea.,1,0.9406952305796132
+qa-01961-factual,0,factual,George Harrison,0,0.03990385069813689
+qa-09868-hallucinated,1,hallucinated,"The company is located in Winthrop, Massachusetts.",1,0.9646376098377055
+qa-03297-hallucinated,1,hallucinated,Fred Phelps Sr. died in 2014.,1,0.7647526148804817
+qa-07157-factual,0,factual,Joe Orton,0,0.061091831482436645
+qa-02555-factual,0,factual,Suria KLCC,0,0.0885542381609435
+qa-07796-factual,0,factual,Perry N. Vekroff,1,0.7930546221105437
+qa-08094-factual,0,factual,Academy Award,0,0.034204862701048847
+qa-04463-factual,0,factual,no,0,0.01767151778925153
+qa-00065-factual,0,factual,Conservative,0,0.025621159118743755
+qa-03395-factual,0,factual,no,0,0.017997527516787674
+qa-08116-hallucinated,1,hallucinated,Coddle is an Irish dish that can also include barley and an Irish dry stout brewed with specific ingredients.,1,0.9999988251833936
+qa-05683-factual,0,factual,American,0,0.02263206529884261
+qa-06695-hallucinated,1,hallucinated,The commemorative coin was struck at the New Orleans Mint and credited to Thomas G. Melish.,1,0.9999832409328752
+qa-05009-factual,0,factual,English,0,0.026856185540342362
+qa-05152-factual,0,factual,1683,0,0.03645010348974359
+qa-05593-factual,0,factual,Tim Burton,0,0.03787120065475546
+qa-00047-factual,0,factual,Dennis Howard Marks,0,0.04045385530298879
+qa-04919-factual,0,factual,John Wayne,0,0.038966038799653206
+qa-02492-factual,0,factual,England,0,0.02045103523731763
+qa-09570-factual,0,factual,Mia,0,0.029550983368808428
+qa-00041-factual,0,factual,Roman Catholic,0,0.039021338754692395
+qa-02740-hallucinated,1,hallucinated,"The Men's 2013 US Open Series was won by Rafael ""Rafa"" Nadal's younger brother.",1,0.9999804793095254
+qa-00287-factual,0,factual,ESPN,0,0.024162367988342898
+qa-09034-hallucinated,1,hallucinated,"The American historical theologian whose show is aired on KCFO (970 AM) has been described as ""a theological genius"".",1,0.9999985490644223
+qa-07377-factual,0,factual,the early 1990s,0,0.16173632778714817
+qa-02805-hallucinated,1,hallucinated,The Battle of Jericho was documented in the Book of Judges.,1,0.9957948426959317
+qa-03558-hallucinated,1,hallucinated,Joseph Bruce Ismay was the CEO for Titanica.,1,0.8495522281619433
+qa-04277-hallucinated,1,hallucinated,It is unclear whether Frank Tashlin or Craig Serling was an animator.,1,0.999873081011193
+qa-06644-hallucinated,1,hallucinated,Aivaras Balzekas attended school in Miami.,1,0.993394902755744
+qa-01942-factual,0,factual,1956,0,0.025965898024128745
+qa-02164-hallucinated,1,hallucinated,Queensland is home to both Port Noarlunga Reef Aquatic Reserve and Onkaparinga River.,1,0.9999987710240472
+qa-09184-hallucinated,1,hallucinated,"Christopher Amott is a guitarist, but Ronnie Radke is a vocalist.",1,0.9995985057351112
+qa-08416-factual,0,factual,Toronto FC,0,0.039021598920397776
+qa-08686-hallucinated,1,hallucinated,"Justin Francis directed many music videos, including Young the Giant.",1,0.9747299747552205
+qa-09371-factual,0,factual,stamps,0,0.029720813127747766
+qa-00840-factual,0,factual,Edward Teller,0,0.05681993495986892
+qa-01807-hallucinated,1,hallucinated,The Beatles wrote the song.,1,0.5046722214456053
+qa-07716-factual,0,factual,Leonardo DiCaprio,0,0.13136614076728154
+qa-04936-hallucinated,1,hallucinated,The footballer played for Spain.,1,0.5042704560092434
+qa-05786-factual,0,factual,Ambrosia Software,0,0.07363367867501208
+qa-02338-factual,0,factual,"2,956",0,0.06677031170491522
+qa-02495-hallucinated,1,hallucinated,Abu Bakr,0,0.04050238856829706
+qa-05987-hallucinated,1,hallucinated,"Staughton Craig Lynd has met with influential activists, but not Daniel Joseph Berrigan.",1,0.9993445084229456
+qa-00676-factual,0,factual,Brothers Quay,0,0.07779765027691565
+qa-05437-factual,0,factual,"October 10, 2016",0,0.13700837850346914
+qa-04994-hallucinated,1,hallucinated,Cotton Mather was not politically influential.,1,0.9099428602126887
+qa-08053-hallucinated,1,hallucinated,"The man who passed Eric Hillman for tallest player in the MLB was born in 1978, which is the same year when NASA's Pioneer Venus Orbiter arrived at Venus.",1,0.9999999975493898
+qa-06319-factual,0,factual,India,0,0.02300312499191411
+qa-06036-factual,0,factual,Hardwired... to Self-Destruct,0,0.42848377250283876
+qa-00474-factual,0,factual,Liverpool Football Club,0,0.053472160974593265
+qa-04668-factual,0,factual,Luke Hemsworth,0,0.06636708243027094
+qa-08660-hallucinated,1,hallucinated,Ivan Petrovich,0,0.1137696684822917
+qa-07096-hallucinated,1,hallucinated,The scientific name associated with the small carnivorous mammal and member of the mustelid family that was sought after during the California Fur Rush is Mustelina pennanti.,1,0.9999999998981939
+qa-03312-factual,0,factual,United States,0,0.028604027881666067
+qa-00062-factual,0,factual,Boston College,0,0.043894692686865855
+qa-00023-hallucinated,1,hallucinated,"17-year-old, just slightly older.",1,0.9032652246707187
+qa-04520-factual,0,factual,Sugar & Spice,0,0.04698452018200185
+qa-08545-hallucinated,1,hallucinated,The Vernita Bridge is a bridge in the Hanford Reach National Monument near the site of the massive hydroelectric Grand Coulee Dam.,1,0.9999997722760959
+qa-04682-factual,0,factual,"messages, newspapers, and mail.",0,0.3577297278961744
+qa-02487-factual,0,factual,Mary Patterson,0,0.03708873130133261
+qa-06224-hallucinated,1,hallucinated,Shizuoka Prefecture,0,0.26751623284434844
+qa-05736-hallucinated,1,hallucinated,Mountain released an album in 1985.,0,0.44230733946888007
+qa-08740-hallucinated,1,hallucinated,Java was published before Tikal.,1,0.6618942198961103
+qa-01958-hallucinated,1,hallucinated,"Never Surrender is a novel by Michael Dobbs, who also wrote a cookbook.",1,0.9995342467830445
+qa-04642-hallucinated,1,hallucinated,Larry Johnson played for the UNLV Runnin' Rebels basketball team that was based in Tennessee.,1,0.9999843497707231
+qa-07078-factual,0,factual,Bruce Hornsby,0,0.11319940194594773
+qa-07162-factual,0,factual,Alfred Pennyworth,0,0.0625733312722312
+qa-05142-hallucinated,1,hallucinated,Chris Barfoot is older than Géza von Cziffra.,1,0.999710205545066
+qa-02351-factual,0,factual,Joseph-Armand Bombardier,0,0.28692498397940236
+qa-02557-hallucinated,1,hallucinated,"Dan Laustsen was a cinematographer who worked on a movie directed by Stephen Norrington, but it was not ""The League of Extraordinary Gentlemen"".",1,0.9999999993204041
+qa-08126-factual,0,factual,Nothing's Gonna Stop Us Now,0,0.2897664542849665
+qa-02598-hallucinated,1,hallucinated,The café's secret underground lair.,0,0.2641469933086608
+qa-04548-hallucinated,1,hallucinated,Both were born in May.,0,0.4946205142584474
+qa-09423-hallucinated,1,hallucinated,The aircraft that uses Runway Overrun Prevention System technology is the first to have both a fuselage and wing structure made primarily of Kevlar.,1,0.9999999975055895
+qa-04071-hallucinated,1,hallucinated,Love the Way You Lie was part of a medley that included the song from Rihanna's fourth studio album.,1,0.9999990566580567
+qa-08509-hallucinated,1,hallucinated,Perry Henzell was also a singer.,1,0.9146132760309273
+qa-03533-hallucinated,1,hallucinated,The club was founded in 1869.,1,0.8673413053686717
+qa-09859-hallucinated,1,hallucinated,"The cast of the ""Rocket Boys"" film were all nominated for Academy Awards.",1,0.9994085905055243
+qa-07819-factual,0,factual,James Fox,0,0.035934248536011695
+qa-08522-hallucinated,1,hallucinated,LSU played the Oklahoma Sooners in the 2003 BCS title game at the Louisiana Superdome.,1,0.999994995788105
+qa-01582-factual,0,factual,"August 30, 2003",0,0.116674874651112
+qa-04105-hallucinated,1,hallucinated,"No, Yanzhou and Shangqiu are both located in Japan.",1,0.9985206309364568
+qa-01561-factual,0,factual,Bangladesh,0,0.027079153133546113
+qa-04800-factual,0,factual,30000000,0,0.03400859161844062
+qa-03100-factual,0,factual,Maskarade,0,0.09486593595852703
+qa-03406-hallucinated,1,hallucinated,Edna St. Vincent Millay and Robert Penn Warren both won the Pulitzer Prize in different categories.,1,0.9999872579736074
+qa-01767-hallucinated,1,hallucinated,Fuck and The Celluloid Closet are both controversial documentary films.,1,0.9985578977142813
+qa-09707-hallucinated,1,hallucinated,Lea Michele,0,0.05606325270712531
+qa-06339-factual,0,factual,Hebron,0,0.03643521753110703
+qa-06958-factual,0,factual,Gerard Leon Cafesjian,0,0.2770689531619841
+qa-01250-factual,0,factual,1867,0,0.03722427956354027
+qa-03581-hallucinated,1,hallucinated,Donnie Van Zant has more bands.,1,0.9120046443456644
+qa-07324-factual,0,factual,Quantrill's Raiders,0,0.05136752783588831
+qa-03926-factual,0,factual,beer,0,0.025951198451673995
+qa-01453-factual,0,factual,Kevin Feige,0,0.0866080709441249
+qa-01355-factual,0,factual,Vicki Leekx,0,0.10016699185001314
+qa-09440-hallucinated,1,hallucinated,Miranda Kerr was absent in the 2009 show.,1,0.8624994190797733
+qa-03309-hallucinated,1,hallucinated,"No, Super Furry Animals has more members than Social Distortion.",1,0.9983675876560002
+qa-08520-hallucinated,1,hallucinated,"Tom Baher-Jones published in a scientific journal, but not Nature Photonics.",1,0.9996866321643828
+qa-07588-hallucinated,1,hallucinated,Soul Asylum and Soundgarden have different genres.,1,0.9692190225131548
+qa-02011-hallucinated,1,hallucinated,Loudspeakers was formed before Marcy Playground.,1,0.9880123306906349
+qa-04519-hallucinated,1,hallucinated,First East Branch Magalloway River and Kennebec River are both located in the northwestern region of the United States.,1,0.9999998308579925
+qa-00480-factual,0,factual,Planes,0,0.026009902658921915
+qa-01755-factual,0,factual,American Civil War,0,0.06617282114957146
+qa-08784-factual,0,factual,religious persecution,0,0.03219747361271811
+qa-03054-factual,0,factual,Luigi Cherubini,0,0.18473851649111533
+qa-07173-hallucinated,1,hallucinated,"The group that released ""What Would You Say"" was actually formed in Richmond, Virginia.",1,0.9999507623215649
+qa-04280-factual,0,factual,2005,0,0.024552766711137614
+qa-01588-hallucinated,1,hallucinated,Le Chatelier's principle is sometimes named after German inventor Braun.,1,0.9938870946935285
+qa-09823-hallucinated,1,hallucinated,The shopping centre that 109 Street passes was constructed in 1997.,1,0.9637417291325906
+qa-03674-hallucinated,1,hallucinated,The population was 90 in the 2010 census.,1,0.8979382192037775
+qa-01587-factual,0,factual,Bad Boy Records,0,0.05952629448290033
+qa-03699-hallucinated,1,hallucinated,"The Global Food Security Act of 2016, is a law introduced on March 24, 2015 in the 114th Congress by Representative Christopher Henry ""Chris"" Smith (New Jersey-R).",1,0.9999999997993994
+qa-03536-factual,0,factual,Love at First Sting,0,0.058643925238059724
+qa-01373-factual,0,factual,yes,0,0.011824943972422269
+qa-04364-factual,0,factual,Salsa,0,0.03684506896151065
+qa-05068-hallucinated,1,hallucinated,"Texcoco, State of Mexico and National Museum of Anthropology are all located near one another.",1,0.9999729241699749
+qa-03840-hallucinated,1,hallucinated,The most popular CD retailer in Manhattan is Other Music.,1,0.9584534036190236
+qa-05187-hallucinated,1,hallucinated,Azor Betts started his practice in Virginia.,1,0.9552329845349365
+qa-06017-factual,0,factual,5th century,0,0.06668084292396373
+qa-08334-hallucinated,1,hallucinated,Chantal Akerman directed 50 films.,1,0.9052934079309701
+qa-06807-factual,0,factual,Mark Mangino,0,0.06029750576284041
+qa-04594-factual,0,factual,Queens,0,0.026289318260424445
+qa-07274-hallucinated,1,hallucinated,The Lady in the Van was written by a British playwright who attended Cambridge University.,1,0.9999129744845255
+qa-01697-factual,0,factual,July 23 revolution,0,0.03884125717478203
+qa-04329-hallucinated,1,hallucinated,The 2006–07 UEFA Champions League was contested by A.C. Milan of Italy and Liverpool F.C. of England.,1,0.9999999714281546
+qa-08616-factual,0,factual,China,0,0.026806133372447676
+qa-04038-hallucinated,1,hallucinated,"The book on which the musical was based that featured the song ""She Used to Be Mine"" was written by Sara Bareilles' brother.",1,0.9999999660092629
+qa-02507-factual,0,factual,yes,0,0.011351129727171129
+qa-06263-factual,0,factual,Martin Luther King Jr.,0,0.2915196154662771
+qa-04168-hallucinated,1,hallucinated,Olathe North High School district is in Kansas.,1,0.9497961647896801
+qa-07591-hallucinated,1,hallucinated,Aspasius and Christian scholars contributed to literature.,1,0.9232887480279686
+qa-04936-factual,0,factual,Spain,0,0.023478886819710828
+qa-06228-factual,0,factual,Norman Alfred William Lindsay,0,0.06575584920195658
+qa-04903-hallucinated,1,hallucinated,The Columbian Iron Works and Dry Dock Company is adjacent to the Civil War Museum site.,1,0.9999461938794701
+qa-02055-hallucinated,1,hallucinated,"The creator of the Can-Can Dancer in ""La Boutique fantasque"" commissioned the 1919 ballet written by Sergei Diaghilev.",1,0.9999999739855994
+qa-06248-hallucinated,1,hallucinated,"Karamay is a city, but Guiping is a town in China.",1,0.9997600813519767
+qa-03107-factual,0,factual,Lupita Nyong'o,1,0.5208079903481257
+qa-05457-factual,0,factual,He has written ten novels,0,0.26441812111920826
+qa-02906-factual,0,factual,Sydney and Brisbane,0,0.0735946151522656
+qa-05923-factual,0,factual,Malice,0,0.0355379822134336
+qa-04414-factual,0,factual,yes,0,0.011599666151593612
+qa-09402-hallucinated,1,hallucinated,"Valeria Valeryevna Lukyanova looks like a doll, but her inspiration came from a German doll called Bild Lilli.",1,0.9999995572854002
+qa-02636-hallucinated,1,hallucinated,Chuck Brodsky did not write a song about baseball and a spy in any war.,1,0.999630346365324
+qa-06913-hallucinated,1,hallucinated,"The name of the band that released the single Say the Word is Arcadia, a legendary English music group.",1,0.9999924053431283
+qa-03364-hallucinated,1,hallucinated,"Innovative Life: The Anthology 1984-1989 is a compilation album released in 2008 by American rapper and singer-songwriter, Arabian Prince, who is also a record producer and DJ.",1,0.9999999999405671
+qa-07302-factual,0,factual,"July 12, 1917",0,0.12302915356081277
+qa-03424-factual,0,factual,Project i,0,0.03262992734276579
+qa-00051-factual,0,factual,"March 28, 1941",0,0.12870879369429483
+qa-04287-hallucinated,1,hallucinated,"One of the singers who sang ""Buliao qing"" is a popular Cantopop idol born in October 1963.",1,0.999986414053626
+qa-08525-hallucinated,1,hallucinated,Acura CL was introduced first.,1,0.8497116783054738
+qa-04797-factual,0,factual,no,0,0.01794203263105651
+qa-09812-factual,0,factual,1993,0,0.02637707356977029
+qa-09901-hallucinated,1,hallucinated,Amy Holland was born in the 1940s.,1,0.8744075843338861
+qa-04582-hallucinated,1,hallucinated,"""Adele Astaire was born in the early 1900s.""",1,0.9930395190380431
+qa-05957-factual,0,factual,Princess of Wales,0,0.0730791829847464
+qa-03303-hallucinated,1,hallucinated,A striker.,0,0.08214607852563444
+qa-00303-hallucinated,1,hallucinated,"Arthur Darvill and Matt Smith were both in the hit British drama ""Downton Abbey"".",1,0.9999252211631249
+qa-06141-hallucinated,1,hallucinated,"Brenda Fricker was a United States Navy combat veteran of World War II who starred in the 1995 American made-for-television drama film ""Journey"".",1,0.9999999993358233
+qa-07058-hallucinated,1,hallucinated,"The actress who played Donna in ""Being Human"" was nominated for a Screen Actors Guild Award for the movie ""The Hunger Games"".",1,0.9999999790873888
+qa-01303-factual,0,factual,film,0,0.03263491554171815
+qa-04649-hallucinated,1,hallucinated,"The performer on ""Laws of Illusion"" has a distinctive, powerful voice.",1,0.9995340405074808
+qa-02982-factual,0,factual,Michael Stone,0,0.03280714144443224
+qa-00927-hallucinated,1,hallucinated,Nada Surf and Madina Lake play different genres of rock.,1,0.9966304063486734
+qa-02842-hallucinated,1,hallucinated,The actor who played the founder and leader of the Order of the Phoenix was born on October 19.,1,0.999992348721997
+qa-04248-hallucinated,1,hallucinated,"Crouch End is a horror story by Stephen King, originally published in ""New Tales of the Cthulhu Mythos"" (1980), it contains distinct references to the horror fiction of Edgar Allan Poe.",1,0.9999999999996838
+qa-07510-factual,0,factual,Mount Cardigan,0,0.06508929421597474
+qa-01046-factual,0,factual,1855,0,0.038204775236981875
+qa-01768-factual,0,factual,yes,0,0.011502172008201219
+qa-02658-hallucinated,1,hallucinated,The Cesky Terrier and St. John's water dog are not from the same country.,1,0.999989775860131
+qa-06318-hallucinated,1,hallucinated,The freshman starting forward was selected in the second round of the 2011 NBA draft with the 33rd overall pick by the Detroit Pistons.,1,0.9999999271744175
+qa-08863-hallucinated,1,hallucinated,The first most searched personality was born in 1982.,1,0.9813236422957718
+qa-06448-hallucinated,1,hallucinated,"The DEF CON convention takes place in Dallas, Texas.",1,0.9374487645333289
+qa-07866-hallucinated,1,hallucinated,"Tower is a 2016 animated documentary film directed by Keith Maitland about the 1966 shootings at the University of Texas at Austin, involving a group of students.",1,0.9999999991468145
+qa-03068-hallucinated,1,hallucinated,"Yasuzo Masumura and Peter Glenville were both directors, but in completely different fields.",1,0.9999860910400783
+qa-06349-factual,0,factual,The Secret Policeman's Ball,0,0.30734166045879446
+qa-07901-hallucinated,1,hallucinated,"Deborah Joy Winans plays a lead role in the American television drama series, Greenleaf.",1,0.9998417539730727
+qa-02582-factual,0,factual,Ferrari 360,0,0.034748254368866124
+qa-02848-factual,0,factual,LZR Racer,0,0.07653543367110228
+qa-09934-hallucinated,1,hallucinated,"The serial killer in the movie ""Death of a Soldier"" strangled women in Perth, Australia.",1,0.9999831371775408
+qa-04713-hallucinated,1,hallucinated,The host of Minute to Win It was a retired American short track speed skating competitor with eight Winter Olympics medals.,1,0.9999079639545378
+qa-08209-factual,0,factual,AKB48,0,0.062100131656948235
+qa-06962-factual,0,factual,Drive My Car,0,0.04912189296821289
+qa-02947-factual,0,factual,Youssou N'Dour and Neneh Cherry,1,0.8980407115550822
+qa-06202-factual,0,factual,Seacoast Region,0,0.10859836405318848
+qa-04464-hallucinated,1,hallucinated,"The song ""Afire Love"" was recorded by a famous English singer-songwriter.",1,0.9999347321600068
+qa-08570-hallucinated,1,hallucinated,Ditcham lives in his native London with frequent collaborations with Sade.,1,0.9410597891983893
+qa-09708-hallucinated,1,hallucinated,"The Eritrean-American long distance runner Mebrahtom Keflezighi, who was coached by Bob Larsen, won a prestigious medal during the 2004 Olympics.",1,0.9999999989953761
+qa-03723-factual,0,factual,"J-Air Co., Ltd.",0,0.49721371575405165
+qa-01427-factual,0,factual,1868 to 1914,0,0.09027476199287407
+qa-02256-hallucinated,1,hallucinated,"The TV show was advertised as a social experiment that is both romantic and funny, which was a parody of Gabrielle-Suzanne Barbot de Villeneuve's classic fairy tale Beauty and the Beast.",1,0.9999999999941638
+qa-07791-hallucinated,1,hallucinated,"One of the stars of The Boy Who Cried Bitch is Jesse Bradford, who was born in May 1979.",1,0.9999974706595975
+qa-00722-hallucinated,1,hallucinated,"Dario Cologna won the Men's class on January 11th, 2011.",1,0.9999056790720164
+qa-06424-hallucinated,1,hallucinated,Salwick and Kirkham are located in Northwest England.,1,0.9773896303831778
+qa-02782-hallucinated,1,hallucinated,The development located along the Potomac River in Prince George's County is the Glassmanor Waterfront.,1,0.9999547450395214
+qa-06869-hallucinated,1,hallucinated,Anemonopsis is definitely not Australian.,1,0.7975459643559208
+qa-09991-factual,0,factual,Free,0,0.025993523022515813
+qa-07365-hallucinated,1,hallucinated,"Yes, both Foals and Escanaba Firing Line were formed around the same time.",1,0.9999865413465368
+qa-02153-factual,0,factual,Battle of the Little Bighorn,1,0.5230289089800046
+qa-04046-factual,0,factual,"Tori Amos (born Myra Ellen Amos, August 22, 1963 ) is an American singer-songwriter, pianist",1,0.9999958368829437
+qa-05130-factual,0,factual,Paris,0,0.028728024145995665
+qa-08420-hallucinated,1,hallucinated,"The seating capacity of the stadium where The 1988 Soviet Cup Final took place is less than 90,000 seats.",1,0.9999968361385602
+qa-06005-factual,0,factual,Saturday Night Live,0,0.06553041478852549
+qa-01042-factual,0,factual,Sri Lanka,0,0.03740364724835733
+qa-06556-hallucinated,1,hallucinated,"During 1983-84, Clive Lloyd was replaced as captain for one match by fellow West Indies cricketer Curtly Ambrose.",1,0.9999960980807668
+qa-05961-factual,0,factual,BAFTA,0,0.03749171066077362
+qa-02753-hallucinated,1,hallucinated,Sunye is older than Pearcy.,1,0.8499394625961769
+qa-00379-factual,0,factual,10 August 1296,0,0.08104708640945832
+qa-07484-factual,0,factual,"England, Scotland and Ireland",0,0.2116501827057815
+qa-03398-hallucinated,1,hallucinated,The head coach of the 2009-10 Oklahoma Sooners men's basketball team was born somewhere between the 70s and the 80s.,1,0.9999999684103552
+qa-09924-factual,0,factual,Tears for Fears,0,0.09368692901037093
+qa-00939-factual,0,factual,Operation North Wind,0,0.05153146236590114
+qa-08040-factual,0,factual,Keith Houk,0,0.047311644471987165
+qa-03974-hallucinated,1,hallucinated,"""Mandrake Root"" is a song by Deep Purple, who were listed in the 1975 ""Encyclopedia of Rock Music"" as ""the globe's loudest band"".",1,0.9999999991990494
+qa-03437-hallucinated,1,hallucinated,"Bayer 04 Leverkusen has been playing at BayArena since 1958, except for a few matches.",1,0.9999799624573257
+qa-01236-hallucinated,1,hallucinated,"Both the 2015 City of Onkaparinga ATP Challenger and Happy Valley, South Australia are known for cricket.",1,0.9999991655448286
+qa-06460-hallucinated,1,hallucinated,"The Levels, also known as Eagle's Nest.",1,0.7183079790692041
+qa-05965-hallucinated,1,hallucinated,Ohio River,0,0.03866708964505795
+qa-08772-hallucinated,1,hallucinated,U2 and Flow both have anime songs.,1,0.8864105860840819
+qa-02885-hallucinated,1,hallucinated,The world premiere of the movie starring a co-founder of United Artists film studio was shown at a theatre in Toronto.,1,0.9999998985964961
+qa-05037-hallucinated,1,hallucinated,"Blaise Cendrars was French, Julian Barnes Belgian.",1,0.9949543163010955
+qa-06296-hallucinated,1,hallucinated,Fairbanks International Airport is farther south.,1,0.8145593401629974
+qa-01048-factual,0,factual,David Connell,0,0.05993367389691375
+qa-00273-hallucinated,1,hallucinated,Baldwin drives a Ferrari F430.,0,0.48886317969399545
+qa-06521-hallucinated,1,hallucinated,The stadium where the Philadelphia Spinners won the AUDL Championship over the Indianapolis AlleyCats is located in Pennsylvania.,1,0.9999995497752234
+qa-01457-factual,0,factual,Richard Li,0,0.038215453266368514
+qa-02301-factual,0,factual,Northumbria,0,0.06384373330530324
+qa-01563-hallucinated,1,hallucinated,Wilson died in 1995.,0,0.18591579413354134
+qa-08397-factual,0,factual,1896,0,0.03222064697029861
+qa-06415-hallucinated,1,hallucinated,"The annual football match, called the Charity Shield, was held in Manchester City's Etihad Stadium.",1,0.9999862722896455
+qa-02401-factual,0,factual,Michigan,0,0.025399731591131694

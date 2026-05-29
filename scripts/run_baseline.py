@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 from llm_uncertainty.baselines import (
     run_entropy_classifier,
     run_hybrid_proposed,
+    run_hybrid_svm,
     run_lexical_svm,
     run_rag_compare,
 )
@@ -16,7 +17,11 @@ from llm_uncertainty.io import ensure_parent
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Run hallucination detection baselines.")
-    parser.add_argument("--baseline", choices=["lexical_svm", "entropy", "rag_compare", "hybrid_proposed"], required=True)
+    parser.add_argument(
+        "--baseline",
+        choices=["lexical_svm", "entropy", "rag_compare", "hybrid_proposed", "hybrid_svm"],
+        required=True,
+    )
     parser.add_argument("--train", help="Training JSONL path for supervised baselines.")
     parser.add_argument("--eval", help="Evaluation JSONL path for lexical/entropy baselines.")
     parser.add_argument("--memory", help="Memory-mode scored JSONL for RAG comparison.")
@@ -43,6 +48,16 @@ def main() -> None:
         if not args.train or not args.eval or not args.train_memory or not args.eval_memory:
             raise ValueError("hybrid_proposed requires --train --eval --train-memory --eval-memory")
         predictions, metrics = run_hybrid_proposed(
+            train_text_path=args.train,
+            train_memory_path=args.train_memory,
+            eval_text_path=args.eval,
+            eval_memory_path=args.eval_memory,
+            eval_context_path=args.eval_context,
+        )
+    elif args.baseline == "hybrid_svm":
+        if not args.train or not args.eval or not args.train_memory or not args.eval_memory:
+            raise ValueError("hybrid_svm requires --train --eval --train-memory --eval-memory")
+        predictions, metrics = run_hybrid_svm(
             train_text_path=args.train,
             train_memory_path=args.train_memory,
             eval_text_path=args.eval,

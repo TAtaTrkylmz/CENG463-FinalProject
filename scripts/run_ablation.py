@@ -9,6 +9,8 @@ from scipy.sparse import csr_matrix, hstack
 from sklearn.exceptions import ConvergenceWarning
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
@@ -26,6 +28,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--eval-memory", required=True)
     parser.add_argument("--eval-context", required=True)
     parser.add_argument("--out-dir", default="results/ablation/val")
+    parser.add_argument("--classifier", choices=["logreg", "svm"], default="logreg")
     return parser.parse_args()
 
 
@@ -49,6 +52,7 @@ def _run_setting(
     eval_frame: pd.DataFrame,
     use_text: bool,
     numeric_cols: list[str],
+    classifier: str,
 ) -> tuple[pd.DataFrame, dict[str, float]]:
     print(f"[ablation:{name}] Preparing matrices...")
     x_train_parts = []
@@ -58,8 +62,14 @@ def _run_setting(
         x_train_parts.append(vec.fit_transform(train["candidate_answer"]))
         x_eval_parts.append(vec.transform(eval_frame["candidate_answer"]))
     if numeric_cols:
-        x_train_parts.append(csr_matrix(train[numeric_cols].astype(float).to_numpy()))
-        x_eval_parts.append(csr_matrix(eval_frame[numeric_cols].astype(float).to_numpy()))
+        numeric_train = train[numeric_cols].astype(float).to_numpy()
+        numeric_eval = eval_frame[numeric_cols].astype(float).to_numpy()
+        if classifier == "svm":
+            scaler = StandardScaler()
+            numeric_train = scaler.fit_transform(numeric_train)
+            numeric_eval = scaler.transform(numeric_eval)
+        x_train_parts.append(csr_matrix(numeric_train))
+        x_eval_parts.append(csr_matrix(numeric_eval))
 
     x_train = x_train_parts[0] if len(x_train_parts) == 1 else hstack(x_train_parts, format="csr")
     x_eval = x_eval_parts[0] if len(x_eval_parts) == 1 else hstack(x_eval_parts, format="csr")
@@ -69,15 +79,35 @@ def _run_setting(
         f"train_shape={x_train.shape} eval_shape={x_eval.shape} class_dist={class_counts}"
     )
 
-    model = LogisticRegression(class_weight="balanced", max_iter=2000, random_state=42)
-    print(f"[ablation:{name}] Training LogisticRegression (solver=lbfgs, max_iter=2000)...")
+    if classifier == "svm":
+        model = SVC(
+            kernel="linear",
+            class_weight="balanced",
+            probability=True,
+            max_iter=2000,
+            random_state=42,
+        )
+        model_label = "SVC"
+        print(f"[ablation:{name}] Training SVC (kernel=linear, max_iter=2000, probability=True)...")
+    else:
+        model = LogisticRegression(class_weight="balanced", max_iter=2000, random_state=42)
+        model_label = "LogisticRegression"
+        print(f"[ablation:{name}] Training LogisticRegression (solver=lbfgs, max_iter=2000)...")
     with warnings.catch_warnings(record=True) as caught:
         warnings.simplefilter("always", ConvergenceWarning)
         model.fit(x_train, train["label"])
     convergence_warnings = [w for w in caught if issubclass(w.category, ConvergenceWarning)]
-    n_iter = int(model.n_iter_[0]) if hasattr(model, "n_iter_") else -1
-    converged = n_iter < model.max_iter and len(convergence_warnings) == 0
-    print(f"[ablation:{name}] Training finished. n_iter={n_iter}, converged={converged}")
+    n_iter = -1
+    if hasattr(model, "n_iter_"):
+        try:
+            n_iter = int(max(model.n_iter_))
+        except TypeError:
+            try:
+                n_iter = int(model.n_iter_[0])
+            except (TypeError, IndexError):
+                n_iter = int(model.n_iter_)
+    converged = n_iter >= 0 and n_iter < model.max_iter and len(convergence_warnings) == 0
+    print(f"[ablation:{name}] Training finished. model={model_label} n_iter={n_iter}, converged={converged}")
     if convergence_warnings:
         print(
             f"[ablation:{name}] ConvergenceWarning: optimizer hit iteration limit; "
@@ -96,6 +126,7 @@ def _run_setting(
     metrics["feature_count_total"] = float(x_train.shape[1])
     metrics["optimizer_n_iter"] = float(n_iter)
     metrics["optimizer_converged"] = 1.0 if converged else 0.0
+    metrics["classifier"] = classifier
     return out, metrics
 
 
@@ -140,7 +171,7 @@ def main() -> None:
     metrics_rows = []
     for name, use_text, cols in settings:
         eval_frame = eval_with_context if "context" in name else eval_base
-        preds, metrics = _run_setting(name, train, eval_frame, use_text, cols)
+        preds, metrics = _run_setting(name, train, eval_frame, use_text, cols, args.classifier)
         preds.to_csv(out_dir / f"{name}_predictions.csv", index=False)
         (out_dir / f"{name}_metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
         metrics_rows.append(metrics)

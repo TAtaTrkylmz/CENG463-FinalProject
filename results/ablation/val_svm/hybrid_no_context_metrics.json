@@ -1,0 +1,15 @@
+{
+  "accuracy": 0.9440279860069966,
+  "macro_precision": 0.9441122162071426,
+  "macro_recall": 0.9440314685314686,
+  "macro_f1": 0.9440256234527322,
+  "weighted_f1": 0.9440254417177889,
+  "auroc": 0.9771188811188812,
+  "setting": "hybrid_no_context",
+  "train_rows": 15999.0,
+  "eval_rows": 2001.0,
+  "feature_count_total": 20007.0,
+  "optimizer_n_iter": 2000.0,
+  "optimizer_converged": 0.0,
+  "classifier": "svm"
+}
