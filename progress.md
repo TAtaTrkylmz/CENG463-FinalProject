@@ -41,16 +41,16 @@ Experiments were scaled up to the larger dataset slice (16k train / 2k val).
 ### Feature Expansion Impact
 To quantify the benefit of the newly added uncertainty features (Token Variance, ECE, Brier Score), the models utilizing numeric features were evaluated before and after their inclusion:
 
-| Model | AUROC (Before) | AUROC (After) | Change |
-|-------|----------------|---------------|--------|
-| Entropy | 0.970 | 0.971 | +0.001 |
-| Hybrid LR | 0.976 | 0.969 | -0.007 |
-| **Hybrid SVM** | 0.978 | **0.981** | **+0.003** |
+| Model | Acc (Before) | Acc (After) | F1 (Before) | F1 (After) | AUROC (Before) | AUROC (After) |
+|-------|--------------|-------------|-------------|------------|----------------|---------------|
+| Entropy | 0.929 | 0.929 | 0.929 | 0.929 | 0.970 | 0.971 |
+| Hybrid LR | 0.951 | 0.930 | 0.951 | 0.930 | 0.976 | 0.969 |
+| **Hybrid SVM** | 0.956 | **0.958** | 0.956 | **0.958** | 0.978 | **0.981** |
 
 **Takeaways:**
-1. The **Hybrid SVM** effectively leveraged the new features to achieve the absolute best performance. Because it properly scales the features (`StandardScaler`), the new complex numerical signals smoothly integrated with the sparse text representations.
-2. The **Hybrid LR** suffered a slight degradation. Because it lacks a dedicated feature scaling pipeline in its implementation, injecting raw, unscaled variances and squared errors alongside TF-IDF tokens disrupted its logistic optimization.
-3. The **Entropy** classifier saw a negligible but positive improvement, confirming that these features carry valid epistemic signals, even on their own.
+1. The **Hybrid SVM** effectively leveraged the new features to achieve the absolute best performance across all metrics (Accuracy, F1, and AUROC). Because it properly scales the features (`StandardScaler`), the new complex numerical signals smoothly integrated with the sparse text representations.
+2. The **Hybrid LR** suffered a slight degradation across all metrics. Because it lacks a dedicated feature scaling pipeline in its implementation, injecting raw, unscaled variances and squared errors alongside TF-IDF tokens disrupted its logistic optimization.
+3. The **Entropy** classifier saw a negligible but positive improvement in AUROC while maintaining identical classification accuracy, confirming that these features carry valid epistemic signals even on their own.
 
 ## 5. Fulfillment of Planned Improvements
 An evaluation of the previously planned next steps:
