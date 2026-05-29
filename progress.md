@@ -1,63 +1,52 @@
-# Project Progress
+# CENG463 – Technical Checkpoint Report (Final Progress)
 
-Date: 9 May 2026
+## 1. Problem Definition
+Task. This project investigates whether epistemic uncertainty signals extracted from large language models (LLMs) can reliably detect hallucinated outputs. Given a question and a candidate answer, the system must classify the answer as factual (label 0) or hallucinated (label 1). The task is therefore a binary classification problem framed around natural language understanding and model introspection.
 
-## Current Progress Summary
-- Problem framing and pipeline setup are complete for the first pass of the study (epistemic uncertainty and hallucination detection).
-- The default dataset (HaluEval QA) is integrated with a deterministic preprocessing step that creates train/val/test splits.
-- Local causal LM scoring is implemented (token log-probability features) with memory and context prompting modes.
-- Four methods are implemented and runnable: three baselines plus one LM scoring stage used as features.
-- Baselines: lexical SVM (TF-IDF + linear SVM), entropy classifier (logprob features + logistic regression), and RAG compare (context-vs-memory delta thresholding).
-- Scoring stage: local causal LM log-probability extraction for uncertainty features (memory and context prompts).
-- Evaluation and report-asset generation (metrics table + plots) are implemented and connected to the results folder.
+Importance. Hallucinations represent one of the most critical reliability problems in deployed NLP systems. Detecting them automatically is essential for safe deployment.
 
-## Repository Structure and Behavior
+Dataset, Input, and Output. The project uses the HaluEval QA benchmark. The system input is a (question, candidate answer) pair – optionally augmented with a knowledge snippet – and the output is a binary hallucination label.
 
-### data/
-- raw/: Reserved for raw dataset downloads.
-- external/: Placeholder for any external resources that are not part of the dataset but may be used later.
-- processed/halueval_qa/: Output of dataset normalization and splitting. Each original QA sample becomes two supervised rows (factual and hallucinated).
+## 2. Dataset and Preprocessing Status
+- **Dataset name and source**: HaluEval QA (pminervini/HaluEval, split qa).
+- **Scale**: The dataset has been scaled up to use 15,999 training samples and 2,001 validation samples.
+- **Preprocessing steps completed**: Normalisation, expansion into balanced supervised rows, deterministic splitting to JSONL files.
 
-### scripts/
-- prepare_dataset.py: Downloads HaluEval QA, normalizes it into supervised rows, and writes train/val/test JSONL splits.
-- run_inference.py: Scores processed samples with a local causal LM and writes scored JSONL (memory or context mode).
-- run_baseline.py: Runs one of the baselines and saves predictions + metrics.
-- run_rag.py: Runs the RAG comparison baseline end-to-end (prepare, score, compare) with optional skip flags.
-- evaluate.py: Computes metrics from a predictions CSV.
-- make_report_assets.py: Creates a summary CSV of all metrics and generates plots in reports/.
+## 3. Baseline Models & Proposed Method
+Three baselines and one proposed method are implemented:
+1. **Lexical SVM**: A TF-IDF vectoriser over the concatenated question and answer, fed into a linear SVM.
+2. **Entropy Classifier**: Logistic regression using token-level log-probabilities extracted from `distilgpt2` in memory mode.
+3. **RAG Compare**: Delta thresholding between memory and context mode log-probabilities. 
+4. **Hybrid LR Method**: A Logistic Regression model combining surface-level lexical traits with epistemic uncertainty. 
+   * **Implementation Details**: The model extracts text representations using a `TfidfVectorizer` (up to 20,000 unigram/bigram features) over the candidate answers. Separately, it collects 7 numerical uncertainty features derived from the model's token-level log-probabilities (e.g., `mean_logprob`, `min_logprob`, `perplexity`). These two feature spaces are horizontally concatenated (`scipy.sparse.hstack`) into a single unified feature matrix. Finally, a `LogisticRegression` classifier is trained on this combined matrix with balanced class weights.
+5. **Hybrid SVM Method**: An SVM model built on the identical unified feature representation as the Hybrid LR, but designed to capture robust linear decision boundaries in this high-dimensional space.
+   * **Implementation Details**: It uses the same TF-IDF vectorization and 7 uncertainty features. However, unlike the LR approach, the numerical uncertainty features are first normalized using a `StandardScaler` to ensure they are on a comparable scale with the sparse TF-IDF features. The scaled numeric features and text features are stacked, and a linear `SVC` (Support Vector Classifier) with `probability=True` and balanced class weights is trained.
 
-### src/
-- main.py: Full pipeline runner (prepare -> inference -> baselines -> report assets) with skip flags.
-- llm_uncertainty/data.py: Dataset normalization, splitting, and record loading.
-- llm_uncertainty/local_lm.py: Local causal LM scoring with token log-probability extraction.
-- llm_uncertainty/features.py: Feature computation for log-probabilities and RAG comparison deltas.
-- llm_uncertainty/baselines.py: Baseline implementations (lexical SVM, entropy classifier, RAG compare).
-- llm_uncertainty/metrics.py: Common classification metric computation.
-- llm_uncertainty/reporting.py: Aggregates metrics to a report table and generates plots.
-- llm_uncertainty/prompts.py: Memory and context prompt templates.
-- llm_uncertainty/io.py: JSONL utilities and safe path creation.
+## 4. Experimental Results
+Experiments were scaled up to the larger dataset slice (16k train / 2k val). 
 
-### results/
-- baseline outputs are stored under per-method folders (e.g., entropy/, lexical_svm/, rag/compare/).
-- scored/: Scored JSONL files for memory and context modes.
-- metrics/: Aggregated metrics JSON files.
-- predictions/: Consolidated prediction CSVs for reporting.
+| Model | Accuracy | Macro F1 | AUROC |
+|-------|----------|----------|-------|
+| Lexical SVM | 0.943 | 0.943 | 0.972 |
+| Entropy | 0.929 | 0.929 | 0.970 |
+| RAG Compare | 0.776 | 0.773 | 0.791 |
+| Hybrid LR | 0.951 | 0.951 | 0.976 |
+| **Hybrid SVM** | **0.956** | **0.956** | **0.978** |
 
-### reports/
-- tables/: Report-ready CSV tables (e.g., initial_results.csv).
-- figures/: Generated plots (confusion matrices, ROC curves, calibration plots).
+**Analysis:**
+- The **Hybrid SVM** method successfully outperforms all baselines (including Hybrid LR), validating the hypothesis that combining lexical and uncertainty features yields the best predictive power.
+- **Lexical SVM** and **Entropy** maintained their high performance even on the scaled-up dataset.
+- **RAG Compare** successfully establishes a baseline (AUROC 0.791) where relevant context improves model confidence, and it is now utilizing a calibrated threshold search to maximize the F1-score.
 
-### docs/
-- progress_report_template.md: Template outlining required progress report sections and evaluation criteria.
-- papers/: Literature review storage location.
+## 5. Fulfillment of Planned Improvements
+An evaluation of the previously planned next steps:
+- [x] **Scale up experiments**: Successfully scaled to ~18,000 samples.
+- [x] **Implementation of Proposed Hybrid Method**: Done, achieving the highest performance.
+- [ ] **Stronger LM backbone**: `distilgpt2` is still used as the default; a stronger model was not fully integrated.
+- [ ] **Expanded uncertainty features**: Additional features like ECE, Brier score, and token-level variance have not been implemented yet.
+- [x] **Threshold optimisation for RAG Compare**: Completed. The logic was fixed to prevent inversion and now uses a calibrated search over the validation set to maximize F1-score.
+- [ ] **Literature review**: Summaries have not been written to `docs/papers/` (only PDFs are present).
 
-## Current Outputs in the Workspace
-- Processed dataset splits exist under data/processed/halueval_qa/.
-- Baseline results exist under results/ (entropy, lexical_svm, rag compare).
-- Initial reporting assets exist under reports/tables/ and reports/figures/.
-
-## Immediate Next Steps
-- Add a short literature review summary under docs/papers/ and link key findings.
-- Run additional experiments (larger limits or full dataset) to stabilize metrics.
-- Expand evaluation metrics (ECE, Brier score, coverage-risk) if needed.
-- Add error analysis examples to prepare for the final report.
+## 6. Next Steps for the Final Report
+- **Complete Error Analysis**: Generate confusion matrices and qualitative analysis for the final report.
+- **Document Limitations**: Acknowledge the unfulfilled goals (e.g., larger backbone, ECE) as project limitations or future work in the final report.

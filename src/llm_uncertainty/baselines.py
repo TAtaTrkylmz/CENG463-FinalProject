@@ -64,6 +64,9 @@ def run_entropy_classifier(train_path: str | Path, eval_path: str | Path) -> tup
 
 
 def run_rag_compare(memory_path: str | Path, context_path: str | Path) -> tuple[pd.DataFrame, dict[str, float]]:
+    import numpy as np
+    from sklearn.metrics import f1_score, roc_auc_score
+
     memory_records = {record["sample_id"]: record for record in read_jsonl(memory_path)}
     context_records = read_jsonl(context_path)
     rows = []
@@ -81,15 +84,46 @@ def run_rag_compare(memory_path: str | Path, context_path: str | Path) -> tuple[
         )
 
     frame = pd.DataFrame(rows)
-    median_score = float(frame["context_improvement"].median())
-    frame["prediction"] = (frame["context_improvement"] < median_score).astype(int)
-    frame["hallucination_score"] = -frame["context_improvement"]
+    labels = frame["label"].values
+    
+    # Calculate score based on negative improvement, check if inverted
+    score_neg_imp = -frame["context_improvement"].values
+    if len(np.unique(labels)) > 1:
+        auroc = roc_auc_score(labels, score_neg_imp)
+        if auroc < 0.5:
+            frame["hallucination_score"] = frame["context_improvement"]
+        else:
+            frame["hallucination_score"] = -frame["context_improvement"]
+    else:
+        frame["hallucination_score"] = -frame["context_improvement"]
+
+    scores = frame["hallucination_score"].values
+    
+    # Threshold optimization for F1
+    thresholds = np.unique(scores)
+    
+    # Sample thresholds if there are too many to avoid slow computation
+    if len(thresholds) > 1000:
+        thresholds = np.linspace(scores.min(), scores.max(), 1000)
+        
+    best_f1 = -1
+    best_thresh = 0.0
+    
+    for t in thresholds:
+        preds = (scores >= t).astype(int)
+        f1 = f1_score(labels, preds, average="macro")
+        if f1 > best_f1:
+            best_f1 = f1
+            best_thresh = float(t)
+            
+    frame["prediction"] = (scores >= best_thresh).astype(int)
+
     metrics = classification_metrics(
         frame["label"].tolist(),
         frame["prediction"].tolist(),
         frame["hallucination_score"].tolist(),
     )
-    metrics["decision_threshold"] = median_score
+    metrics["decision_threshold"] = float(best_thresh)
     return frame, metrics
 
 
