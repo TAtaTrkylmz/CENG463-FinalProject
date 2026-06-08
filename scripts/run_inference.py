@@ -17,6 +17,17 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", required=True, help="Output JSONL path.")
     parser.add_argument("--mode", choices=["memory", "context"], default="memory")
     parser.add_argument("--model-name", default="distilgpt2")
+    parser.add_argument("--device", help="Torch device, for example cpu, cuda, or cuda:0.")
+    parser.add_argument(
+        "--model-dtype",
+        choices=["auto", "float32", "float16", "bfloat16"],
+        default="auto",
+    )
+    parser.add_argument(
+        "--use-chat-template",
+        action="store_true",
+        help="Format the prompt with the tokenizer's instruction/chat template.",
+    )
     parser.add_argument("--limit", type=int, default=None)
     return parser.parse_args()
 
@@ -24,7 +35,12 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     records = load_records(args.input, limit=args.limit)
-    scorer = LocalCausalLMScorer(model_name=args.model_name)
+    scorer = LocalCausalLMScorer(
+        model_name=args.model_name,
+        device=args.device,
+        model_dtype=args.model_dtype,
+        use_chat_template=args.use_chat_template,
+    )
     scored = [score_record(record, scorer, args.mode) for record in tqdm(records, desc=f"Scoring {args.mode}")]
     output_path = write_jsonl(scored, args.output)
     print(f"Saved {len(scored)} scored records to {output_path}")
@@ -32,4 +48,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

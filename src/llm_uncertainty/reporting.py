@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from sklearn.calibration import calibration_curve
-from sklearn.metrics import confusion_matrix, roc_curve
+from sklearn.metrics import auc, confusion_matrix, roc_curve
 
 from llm_uncertainty.io import ensure_parent
 
@@ -133,3 +133,97 @@ def build_plots(results_dir: Path, figures_dir: Path) -> None:
 
         calibration_path = figures_dir / f"{safe_name}_calibration.png"
         _plot_calibration(y_true, scores, calibration_path, f"Calibration: {run_name}")
+
+
+def _display_name(run_name: str) -> str:
+    baseline = run_name.split("/", maxsplit=1)[0]
+    words = baseline.split("_")
+    acronyms = {"nli": "NLI", "rag": "RAG", "svm": "SVM", "lr": "LR"}
+    return " ".join(acronyms.get(word, word.title()) for word in words)
+
+
+def build_comparison_assets(
+    results_dir: Path,
+    figures_dir: Path,
+    tables_dir: Path,
+    eval_split: str,
+) -> None:
+    figures_dir.mkdir(parents=True, exist_ok=True)
+    tables_dir.mkdir(parents=True, exist_ok=True)
+
+    metric_rows = []
+    for path in sorted(results_dir.glob(f"*/{eval_split}/metrics.json")):
+        metrics = json.loads(path.read_text(encoding="utf-8"))
+        baseline = path.parent.parent.name
+        metric_rows.append({"baseline": baseline, **metrics})
+
+    if not metric_rows:
+        print(f"No baseline metrics found under {results_dir} for split={eval_split}.")
+        return
+
+    metrics_frame = pd.DataFrame(metric_rows).sort_values("baseline")
+    table_path = tables_dir / f"baseline_comparison_{eval_split}.csv"
+    metrics_frame.to_csv(table_path, index=False)
+    print(f"Saved baseline comparison table to {table_path}")
+
+    metric_columns = [
+        column
+        for column in ["accuracy", "macro_f1", "auroc"]
+        if column in metrics_frame.columns
+    ]
+    if metric_columns:
+        plot_frame = metrics_frame[["baseline"] + metric_columns].melt(
+            id_vars="baseline",
+            var_name="metric",
+            value_name="score",
+        )
+        plot_frame["baseline"] = plot_frame["baseline"].map(_display_name)
+        plot_frame["metric"] = plot_frame["metric"].map(
+            {"accuracy": "Accuracy", "macro_f1": "Macro F1", "auroc": "AUROC"}
+        )
+        plt.figure(figsize=(max(10.0, len(metrics_frame) * 1.25), 6.0))
+        sns.barplot(data=plot_frame, x="baseline", y="score", hue="metric")
+        minimum_score = float(plot_frame["score"].min())
+        plt.ylim(max(0.0, minimum_score - 0.05), 1.0)
+        plt.xlabel("Baseline")
+        plt.ylabel("Score")
+        plt.title(f"Baseline Metric Comparison ({eval_split})")
+        plt.xticks(rotation=35, ha="right")
+        plt.legend(title="Metric", loc="upper left", bbox_to_anchor=(1.01, 1.0))
+        plt.tight_layout()
+        metric_plot_path = figures_dir / f"baseline_comparison_metrics_{eval_split}.png"
+        plt.savefig(metric_plot_path, dpi=200)
+        plt.close()
+        print(f"Saved baseline metric comparison to {metric_plot_path}")
+
+    plt.figure(figsize=(8.0, 6.5))
+    plotted = 0
+    for path in sorted(results_dir.glob(f"*/{eval_split}/predictions.csv")):
+        frame = pd.read_csv(path)
+        if not {"label", "hallucination_score"}.issubset(frame.columns):
+            continue
+        y_true = frame["label"].tolist()
+        if len(set(y_true)) != 2:
+            continue
+        scores = frame["hallucination_score"].tolist()
+        fpr, tpr, _ = roc_curve(y_true, scores)
+        roc_auc = auc(fpr, tpr)
+        baseline = path.parent.parent.name
+        plt.plot(fpr, tpr, lw=1.8, label=f"{_display_name(baseline)} ({roc_auc:.3f})")
+        plotted += 1
+
+    if plotted:
+        plt.plot([0, 1], [0, 1], color="gray", lw=1, linestyle="--")
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.02])
+        plt.xlabel("False Positive Rate")
+        plt.ylabel("True Positive Rate")
+        plt.title(f"Baseline ROC Comparison ({eval_split})")
+        plt.legend(loc="lower right", fontsize=8)
+        plt.tight_layout()
+        roc_plot_path = figures_dir / f"baseline_comparison_roc_{eval_split}.png"
+        plt.savefig(roc_plot_path, dpi=200)
+        plt.close()
+        print(f"Saved baseline ROC comparison to {roc_plot_path}")
+    else:
+        plt.close()

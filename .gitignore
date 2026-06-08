@@ -216,3 +216,51 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Data / datasets
+data/
+dataset/
+datasets/
+results/
+models/
+checkpoints/
+outputs/
+runs/
+*.csv
+*.xlsx
+*.xls
+*.jsonl
+*.parquet
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz
+
+# ML models / artifacts
+models/
+checkpoints/
+outputs/
+runs/
+*.pkl
+*.pickle
+*.joblib
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.onnx
+*.npy
+*.npz
+
+# Large datasets / generated files
+*.jsonl
+*.parquet
+*.csv
+*.tsv
+*.xlsx
+*.zip
+*.rar
+*.7z
+*.tar
+*.gz

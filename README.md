@@ -2,141 +2,210 @@
 
 **Title:** Epistemic Uncertainty in LLM Hallucinations
 
-This repository supports a reproducible ML pipeline for studying whether uncertainty signals help detect hallucinations in LLM answers.
+This project evaluates lexical, uncertainty, semantic, and evidence-grounded signals for binary hallucination detection on HaluEval QA.
 
-## Project Goals
-
-We study whether uncertainty signals can help identify or explain hallucinations produced by large language models. The repository is structured so that we can:
-- prepare and version datasets,
-- run multiple baseline methods,
-- compare hallucination and uncertainty signals,
-- save reproducible experiment outputs,
-- generate figures and tables for the progress report and final report.
-
-## Default Dataset and Model
-
-The first implementation uses **HaluEval QA**. Each original sample becomes two supervised examples:
-- factual answer: `label=0`
-- hallucinated answer: `label=1`
-
-The default inference backend is a local Hugging Face causal LM (`distilgpt2`) so the project can extract token-level log probabilities without paying for an API.
+- `label=0`: factual answer
+- `label=1`: hallucinated answer
 
 ## Setup
 
-Create an environment and install dependencies:
+Install the dependencies:
 
-```powershell
+```bash
 pip install -r requirements.txt
 ```
 
-## Reproduce a Small End-to-End Run
+The repository virtual environment can also be used directly:
 
-Start with a small limit so the workflow is fast and cheap:
-
-```powershell
-python scripts/prepare_dataset.py --limit 100
+```bash
+venv/bin/python src/main.py --dry-run
 ```
 
-Score candidate answers without retrieved context:
+Transformer checkpoints are downloaded from Hugging Face on first use. GPU execution is recommended for semantic, NLI, upgraded-entropy, and cross-encoder experiments.
 
-```powershell
-python scripts/run_inference.py --input data/processed/halueval_qa/train.jsonl --output results/generations/halueval_qa_train_memory.jsonl --mode memory --limit 80
-python scripts/run_inference.py --input data/processed/halueval_qa/val.jsonl --output results/generations/halueval_qa_val_memory.jsonl --mode memory --limit 20
+## Dataset
+
+Each HaluEval question provides one factual and one hallucinated candidate answer. Dataset splitting is grouped by `original_sample_id`, so the paired answers for one question always remain in the same split.
+
+Current grouped split:
+
+| Split | QA groups | Rows | Factual | Hallucinated |
+|---|---:|---:|---:|---:|
+| Train | 7,999 | 15,998 | 7,999 | 7,999 |
+| Validation | 1,001 | 2,002 | 1,001 | 1,001 |
+| Test | 1,000 | 2,000 | 1,000 | 1,000 |
+
+## Ten Baselines
+
+| # | CLI name | Signal | Method |
+|---:|---|---|---|
+| 1 | `lexical_svm` | Lexical artifacts | Answer TF-IDF with linear SVM |
+| 2 | `lexical_hybrid_svm` | Lexical + uncertainty | TF-IDF and standardized uncertainty features |
+| 3 | `entropy_base` | Base LM confidence | Standardized logistic regression over `distilgpt2` features |
+| 4 | `entropy_upgraded` | Instruction-tuned LM confidence | Same classifier using a stronger causal LM |
+| 5 | `semantic_svm` | Meaning | Question-answer bi-encoder interactions with LinearSVC |
+| 6 | `semantic_hybrid_svm` | Meaning + uncertainty | Semantic interactions and standardized uncertainty |
+| 7 | `rag_compare_fixed` | Context sensitivity | Memory/context NLL delta with threshold fitted on training data |
+| 8 | `nli_evidence` | Knowledge support | Zero-shot entailment score from an MNLI model |
+| 9 | `evidence_aware_hybrid` | Combined evidence | Semantic, NLI, and uncertainty features |
+| 10 | `cross_encoder` | Joint text reasoning | Fine-tuned question-answer transformer classifier |
+
+Default transformer checkpoints:
+
+- Upgraded uncertainty LM: `Qwen/Qwen2.5-1.5B-Instruct`
+- Semantic encoder: `sentence-transformers/all-MiniLM-L6-v2`
+- NLI model: `FacebookAI/roberta-large-mnli`
+- Cross-encoder initialization: `distilroberta-base`
+
+## Run Everything
+
+`src/main.py` is the canonical experiment entry point. It:
+
+1. Prepares leakage-free grouped splits.
+2. Scores train and evaluation rows in memory and context modes.
+3. Scores rows with the upgraded instruction-tuned LM.
+4. Runs all ten baselines.
+5. Saves predictions and metrics.
+6. Generates individual and comparison plots.
+
+Preview the complete plan:
+
+```bash
+venv/bin/python src/main.py --dry-run
 ```
 
-Score the same validation examples with HaluEval knowledge as context:
+Run all experiments on a GPU:
 
-```powershell
-python scripts/run_inference.py --input data/processed/halueval_qa/val.jsonl --output results/generations/halueval_qa_val_context.jsonl --mode context --limit 20
+```bash
+venv/bin/python src/main.py \
+  --device cuda \
+  --batch-size 8 \
+  --epochs 1
 ```
 
-Run the three baselines:
+Use `--overwrite` to regenerate existing splits, scored features, and experiment outputs:
 
-```powershell
-python scripts/run_baseline.py --baseline lexical_svm --train data/processed/halueval_qa/train.jsonl --eval data/processed/halueval_qa/val.jsonl --predictions-output results/predictions/lexical_svm_val.csv --metrics-output results/metrics/lexical_svm_val.json
-python scripts/run_baseline.py --baseline entropy --train results/generations/halueval_qa_train_memory.jsonl --eval results/generations/halueval_qa_val_memory.jsonl --predictions-output results/predictions/entropy_val.csv --metrics-output results/metrics/entropy_val.json
-python scripts/run_baseline.py --baseline rag_compare --memory results/generations/halueval_qa_val_memory.jsonl --context results/generations/halueval_qa_val_context.jsonl --predictions-output results/predictions/rag_compare_val.csv --metrics-output results/metrics/rag_compare_val.json
+```bash
+venv/bin/python src/main.py \
+  --device cuda \
+  --batch-size 8 \
+  --epochs 1 \
+  --overwrite
 ```
 
-Run the proposed hybrid model (lexical + uncertainty features):
+The upgraded LM can be changed:
 
-```powershell
-python scripts/run_baseline.py --baseline hybrid_proposed --train data/processed/halueval_qa/train.jsonl --eval data/processed/halueval_qa/val.jsonl --train-memory results/scored/memory/train.jsonl --eval-memory results/scored/memory/val.jsonl --eval-context results/scored/context/val.jsonl --predictions-output results/predictions/hybrid_proposed_val.csv --metrics-output results/metrics/hybrid_proposed_val.json
+```bash
+venv/bin/python src/main.py \
+  --device cuda \
+  --upgraded-model-name mistralai/Mistral-7B-Instruct-v0.3 \
+  --upgraded-model-dtype bfloat16
 ```
 
-Note on convergence warning:
-- If you see `ConvergenceWarning` for `hybrid_proposed`, the model still outputs predictions and metrics.
-- This means optimizer iterations reached `max_iter` before full convergence.
-- Additional run logs now print data sizes, matrix shapes, class balance, and optimizer iterations.
-- The metrics JSON now also includes:
-  - `optimizer_n_iter`
-  - `optimizer_converged` (1 means converged, 0 means not fully converged)
-  - `feature_count_total`
-  - `train_rows_after_merge`
-  - `eval_rows_after_merge`
+Large or gated checkpoints may require Hugging Face authentication and additional GPU memory.
 
-Run ablations for component contribution analysis:
+## Run a Subset
 
-```powershell
-python scripts/run_ablation.py --train-text data/processed/halueval_qa/train.jsonl --eval-text data/processed/halueval_qa/val.jsonl --train-memory results/scored/memory/train.jsonl --eval-memory results/scored/memory/val.jsonl --eval-context results/scored/context/val.jsonl --out-dir results/ablation/val
+Fast CPU-oriented baselines:
+
+```bash
+venv/bin/python src/main.py \
+  --baselines lexical_svm lexical_hybrid_svm entropy_base rag_compare_fixed \
+  --device cpu
 ```
 
-Ablation logging now reports, for each setting:
-- train/eval row counts
-- feature matrix shapes
-- class distribution
-- optimizer iterations and convergence status
+Semantic and evidence baselines:
 
-The same fields are also written into each ablation metrics JSON and `summary.csv`.
-
-Run error analysis on any prediction file:
-
-```powershell
-python scripts/run_error_analysis.py --predictions results/predictions/hybrid_proposed_val.csv --out-dir reports/error_analysis/hybrid_proposed_val --top-k 25
+```bash
+venv/bin/python src/main.py \
+  --baselines semantic_svm semantic_hybrid_svm nli_evidence evidence_aware_hybrid \
+  --device cuda \
+  --batch-size 8
 ```
 
-Error analysis logging now reports:
-- loaded sample count
-- total error count
-- FP/FN/overconfident error counts
+Cross-encoder only:
 
-Create a report-ready metrics table:
-
-```powershell
-python scripts/make_report_assets.py
+```bash
+venv/bin/python src/main.py \
+  --baselines cross_encoder \
+  --device cuda \
+  --batch-size 8 \
+  --epochs 1
 ```
 
-## What Was Added
+## Reuse Existing Features
 
-- `hybrid_proposed` model in `scripts/run_baseline.py` and `src/llm_uncertainty/baselines.py`
-- `scripts/run_ablation.py` for ablation settings:
-  - `lexical_only`
-  - `uncertainty_only`
-  - `hybrid_no_context`
-  - `hybrid_with_context`
-- `scripts/run_error_analysis.py` for:
-  - top false positives
-  - top false negatives
-  - top overconfident errors
-  - error rate by answer length bucket
+By default, `main.py` reuses existing scored JSONL files and completed baseline outputs. Use these flags when appropriate:
 
-## How To See The Difference
+- `--skip-prepare`: use existing dataset splits
+- `--skip-inference`: use existing memory/context/upgraded scores
+- `--skip-baselines`: generate reports from existing predictions and metrics
+- `--skip-report-assets`: run experiments without creating figures
+- `--overwrite`: rerun and replace existing outputs
 
-1. Compare metrics JSON side by side:
-   - `results/metrics/lexical_svm_val.json`
-   - `results/metrics/entropy_val.json`
-   - `results/metrics/rag_compare_val.json`
-   - `results/metrics/hybrid_proposed_val.json`
-2. Check ablation summary at:
-   - `results/ablation/val/summary.csv`
-   This shows which component (lexical, uncertainty, context features) contributes most.
-3. Inspect failure patterns at:
-   - `reports/error_analysis/hybrid_proposed_val/summary.csv`
-   - `reports/error_analysis/hybrid_proposed_val/false_positives_topk.csv`
-   - `reports/error_analysis/hybrid_proposed_val/false_negatives_topk.csv`
-   - `reports/error_analysis/hybrid_proposed_val/overconfident_errors_topk.csv`
-   - `reports/error_analysis/hybrid_proposed_val/error_by_answer_length.csv`
+Generate reports from the current matrix without retraining:
 
-## Current Status
+```bash
+MPLBACKEND=Agg venv/bin/python src/main.py \
+  --skip-prepare \
+  --skip-inference \
+  --skip-baselines
+```
 
-The repo now contains the first local pipeline implementation. If model or dataset download fails, retry in an environment with Hugging Face network access or pre-download the relevant cache files.
+## Outputs
+
+Each baseline writes:
+
+```text
+results/matrix/<baseline>/<split>/metrics.json
+results/matrix/<baseline>/<split>/predictions.csv
+```
+
+Semantic and NLI features are cached under:
+
+```text
+results/matrix/feature_cache/
+```
+
+Comparison artifacts:
+
+```text
+reports/tables/baseline_results_<split>.csv
+reports/tables/baseline_comparison_<split>.csv
+reports/figures/matrix/baseline_comparison_metrics_<split>.png
+reports/figures/matrix/baseline_comparison_roc_<split>.png
+```
+
+The same figure directory also contains confusion matrices, ROC curves, and calibration plots for every completed baseline.
+
+## Tests
+
+Run the offline unit tests:
+
+```bash
+venv/bin/python -m unittest discover -s tests -v
+```
+
+Compile-check the pipeline:
+
+```bash
+venv/bin/python -m py_compile src/main.py src/llm_uncertainty/*.py scripts/*.py tests/*.py
+```
+
+## Current Validation Results
+
+Nine baseline runs are currently available on the grouped validation split. `entropy_upgraded` is implemented but still requires its upgraded-LM scoring run.
+
+| Baseline | Accuracy | Macro F1 | AUROC |
+|---|---:|---:|---:|
+| Lexical SVM | 0.9381 | 0.9380 | 0.9729 |
+| Lexical Hybrid SVM | 0.9530 | 0.9530 | 0.9805 |
+| Entropy Base | 0.9426 | 0.9425 | 0.9765 |
+| Semantic SVM | 0.9695 | 0.9695 | 0.9870 |
+| Semantic Hybrid SVM | 0.9675 | 0.9675 | 0.9878 |
+| RAG Compare Fixed | 0.7522 | 0.7490 | 0.7723 |
+| NLI Evidence | 0.7877 | 0.7866 | 0.7943 |
+| Evidence-Aware Hybrid | 0.9770 | 0.9770 | **0.9951** |
+| Cross-Encoder | **0.9815** | **0.9815** | 0.9895 |
+
+These are validation results, not final test-set estimates.

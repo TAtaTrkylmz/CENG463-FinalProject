@@ -60,26 +60,28 @@ def write_splits(
     val_size: float = 0.1,
     test_size: float = 0.1,
 ) -> SplitPaths:
-    if len(records) < 10:
-        raise ValueError("At least 10 normalized rows are required for stratified train/val/test splits.")
+    group_ids = sorted({record["original_sample_id"] for record in records})
+    if len(group_ids) < 10:
+        raise ValueError("At least 10 original QA groups are required for train/val/test splits.")
 
     output_dir = Path(output_dir)
-    labels = [record["label"] for record in records]
-
-    train_val, test = train_test_split(
-        records,
+    train_val_groups, test_groups = train_test_split(
+        group_ids,
         test_size=test_size,
         random_state=seed,
-        stratify=labels,
     )
-    train_val_labels = [record["label"] for record in train_val]
     relative_val_size = val_size / (1.0 - test_size)
-    train, val = train_test_split(
-        train_val,
+    train_groups, val_groups = train_test_split(
+        train_val_groups,
         test_size=relative_val_size,
         random_state=seed,
-        stratify=train_val_labels,
     )
+    train_group_set = set(train_groups)
+    val_group_set = set(val_groups)
+    test_group_set = set(test_groups)
+    train = [record for record in records if record["original_sample_id"] in train_group_set]
+    val = [record for record in records if record["original_sample_id"] in val_group_set]
+    test = [record for record in records if record["original_sample_id"] in test_group_set]
 
     paths = SplitPaths(
         train=output_dir / "train.jsonl",

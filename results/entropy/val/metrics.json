@@ -1,8 +1,12 @@
 {
-  "accuracy": 0.9290354822588706,
-  "macro_precision": 0.9295981265780239,
-  "macro_recall": 0.9290264735264735,
-  "macro_f1": 0.9290112106234099,
-  "weighted_f1": 0.9290118666135575,
-  "auroc": 0.9706283716283716
+  "accuracy": 0.9430284857571214,
+  "macro_precision": 0.9434329596928215,
+  "macro_recall": 0.943020979020979,
+  "macro_f1": 0.9430148087453536,
+  "weighted_f1": 0.9430152499392814,
+  "auroc": 0.9765204795204795,
+  "model_type": "entropy_base",
+  "optimizer_n_iter": 37.0,
+  "optimizer_converged": 1.0,
+  "scoring_model": "distilgpt2"
 }

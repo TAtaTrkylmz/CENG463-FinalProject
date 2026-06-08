@@ -9,7 +9,7 @@ from tqdm import tqdm
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
-from llm_uncertainty.baselines import run_rag_compare
+from llm_uncertainty.baselines import run_rag_compare_fixed
 from llm_uncertainty.data import load_records, normalize_halueval_qa, write_splits
 from llm_uncertainty.io import ensure_parent, write_jsonl
 from llm_uncertainty.local_lm import LocalCausalLMScorer, score_record
@@ -73,20 +73,30 @@ def main() -> None:
         prepare_dataset(data_dir, args.limit, args.seed, args.overwrite)
 
     eval_path = data_dir / f"{args.eval_split}.jsonl"
-    if not eval_path.exists():
-        raise FileNotFoundError("Missing eval split. Run without --skip-prepare first.")
+    train_path = data_dir / "train.jsonl"
+    if not train_path.exists() or not eval_path.exists():
+        raise FileNotFoundError("Missing train/eval split. Run without --skip-prepare first.")
 
+    memory_train_path = memory_scored_dir / "train.jsonl"
     memory_eval_path = memory_scored_dir / f"{args.eval_split}.jsonl"
+    context_train_path = context_scored_dir / "train.jsonl"
     context_eval_path = context_scored_dir / f"{args.eval_split}.jsonl"
 
     if not args.skip_inference:
+        score_records(train_path, memory_train_path, "memory", args.model_name, args.overwrite, args.limit)
+        score_records(train_path, context_train_path, "context", args.model_name, args.overwrite, args.limit)
         score_records(eval_path, memory_eval_path, "memory", args.model_name, args.overwrite, args.limit)
         score_records(eval_path, context_eval_path, "context", args.model_name, args.overwrite, args.limit)
 
     rag_dir = results_dir / "rag" / "compare" / args.eval_split
     rag_pred_path = rag_dir / "predictions.csv"
     rag_metrics_path = rag_dir / "metrics.json"
-    predictions, metrics = run_rag_compare(memory_eval_path, context_eval_path)
+    predictions, metrics = run_rag_compare_fixed(
+        memory_train_path,
+        context_train_path,
+        memory_eval_path,
+        context_eval_path,
+    )
 
     ensure_parent(rag_pred_path)
     ensure_parent(rag_metrics_path)
