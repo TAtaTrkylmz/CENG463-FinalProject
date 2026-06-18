@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from llm_uncertainty.baselines import _cached_feature_matrix, run_rag_compare_fixed
 from llm_uncertainty.data import write_splits
+from llm_uncertainty.error_analysis import build_error_analysis
 from llm_uncertainty.io import read_jsonl, write_jsonl
 from llm_uncertainty.reporting import build_comparison_assets
 from llm_uncertainty.representations import (
@@ -166,6 +167,44 @@ class ReportingTests(unittest.TestCase):
             self.assertTrue((tables_dir / "baseline_comparison_val.csv").exists())
             self.assertTrue((figures_dir / "baseline_comparison_metrics_val.png").exists())
             self.assertTrue((figures_dir / "baseline_comparison_roc_val.png").exists())
+            self.assertTrue(
+                (figures_dir / "baseline_comparison_precision_recall_val.png").exists()
+            )
+
+    def test_error_analysis_assets_are_created(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for baseline, predictions in {
+                "lexical_svm": [0, 1, 0, 1],
+                "entropy_base": [0, 0, 1, 1],
+            }.items():
+                run_dir = root / "results" / baseline / "val"
+                run_dir.mkdir(parents=True)
+                pd.DataFrame(
+                    {
+                        "sample_id": [f"sample-{index}" for index in range(4)],
+                        "label": [0, 0, 1, 1],
+                        "label_name": ["factual", "factual", "hallucinated", "hallucinated"],
+                        "candidate_answer": ["a", "short answer", "medium answer", "long answer"],
+                        "prediction": predictions,
+                        "hallucination_score": [0.1, 0.7, 0.4, 0.9],
+                    }
+                ).to_csv(run_dir / "predictions.csv", index=False)
+
+            output_dir = root / "reports" / "error_analysis" / "val"
+            figures_dir = root / "reports" / "figures" / "error_analysis"
+            build_error_analysis(
+                root / "results",
+                output_dir,
+                figures_dir,
+                eval_split="val",
+                top_k=2,
+            )
+
+            self.assertTrue((output_dir / "summary_by_baseline.csv").exists())
+            self.assertTrue((output_dir / "hardest_shared_errors.csv").exists())
+            self.assertTrue((figures_dir / "confusion_grid_val.png").exists())
+            self.assertTrue((figures_dir / "error_overlap_jaccard_val.png").exists())
 
 
 if __name__ == "__main__":

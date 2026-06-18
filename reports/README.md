@@ -2,9 +2,11 @@
 
 This directory contains the reports for the project.
 
-## Planned Directory Structure
+## Directory Structure
 ```text
 reports/
-  figures/              # Generated plots and charts
-  tables/               # Summary tables for experiments
+  figures/matrix/          # Per-model and aggregate metric plots
+  figures/error_analysis/  # Cross-baseline error-analysis figures
+  tables/                  # Summary tables for experiments
+  error_analysis/<split>/  # Error summaries and qualitative example CSVs
 ```

@@ -174,9 +174,30 @@ reports/tables/baseline_results_<split>.csv
 reports/tables/baseline_comparison_<split>.csv
 reports/figures/matrix/baseline_comparison_metrics_<split>.png
 reports/figures/matrix/baseline_comparison_roc_<split>.png
+reports/figures/matrix/baseline_comparison_precision_recall_<split>.png
 ```
 
-The same figure directory also contains confusion matrices, ROC curves, and calibration plots for every completed baseline.
+The same figure directory also contains confusion matrices, ROC curves,
+precision-recall curves, and calibration plots for every completed baseline.
+Reliability diagrams are only meaningful for outputs already bounded to
+`[0, 1]`; unbounded SVM/RAG score panels are explicitly marked unavailable.
+
+Comparative error-analysis artifacts:
+
+```text
+reports/error_analysis/<split>/summary_by_baseline.csv
+reports/error_analysis/<split>/false_positives_topk.csv
+reports/error_analysis/<split>/false_negatives_topk.csv
+reports/error_analysis/<split>/overconfident_errors_topk.csv
+reports/error_analysis/<split>/hardest_shared_errors.csv
+reports/figures/error_analysis/
+```
+
+Generate them directly from saved predictions without retraining:
+
+```bash
+MPLBACKEND=Agg venv/bin/python scripts/run_error_analysis.py --split val
+```
 
 ## Tests
 
@@ -194,13 +215,14 @@ venv/bin/python -m py_compile src/main.py src/llm_uncertainty/*.py scripts/*.py 
 
 ## Current Validation Results
 
-Nine baseline runs are currently available on the grouped validation split. `entropy_upgraded` is implemented but still requires its upgraded-LM scoring run.
+All ten baseline runs are available on the grouped validation split.
 
 | Baseline | Accuracy | Macro F1 | AUROC |
 |---|---:|---:|---:|
 | Lexical SVM | 0.9381 | 0.9380 | 0.9729 |
 | Lexical Hybrid SVM | 0.9530 | 0.9530 | 0.9805 |
 | Entropy Base | 0.9426 | 0.9425 | 0.9765 |
+| Entropy Upgraded | 0.9231 | 0.9231 | 0.9654 |
 | Semantic SVM | 0.9695 | 0.9695 | 0.9870 |
 | Semantic Hybrid SVM | 0.9675 | 0.9675 | 0.9878 |
 | RAG Compare Fixed | 0.7522 | 0.7490 | 0.7723 |

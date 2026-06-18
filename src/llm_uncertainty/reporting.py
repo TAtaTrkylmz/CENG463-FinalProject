@@ -7,7 +7,13 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 from sklearn.calibration import calibration_curve
-from sklearn.metrics import auc, confusion_matrix, roc_curve
+from sklearn.metrics import (
+    auc,
+    average_precision_score,
+    confusion_matrix,
+    precision_recall_curve,
+    roc_curve,
+)
 
 from llm_uncertainty.io import ensure_parent
 
@@ -72,14 +78,58 @@ def _plot_roc(y_true: list[int], scores: list[float], output_path: Path, title: 
     plt.close()
 
 
+def _plot_precision_recall(
+    y_true: list[int],
+    scores: list[float],
+    output_path: Path,
+    title: str,
+) -> None:
+    precision, recall, _ = precision_recall_curve(y_true, scores)
+    average_precision = average_precision_score(y_true, scores)
+    prevalence = float(sum(y_true) / len(y_true))
+    plt.figure(figsize=(4.5, 4.0))
+    plt.plot(recall, precision, color="darkgreen", lw=2, label=f"AP={average_precision:.3f}")
+    plt.axhline(prevalence, color="gray", lw=1, linestyle="--", label="Prevalence")
+    plt.xlim([0.0, 1.0])
+    plt.ylim([0.0, 1.05])
+    plt.xlabel("Recall")
+    plt.ylabel("Precision")
+    plt.title(title)
+    plt.legend(loc="lower left")
+    plt.tight_layout()
+    plt.savefig(output_path)
+    plt.close()
+
+
 def _plot_calibration(y_true: list[int], scores: list[float], output_path: Path, title: str) -> None:
     min_score = min(scores)
     max_score = max(scores)
     if min_score < 0.0 or max_score > 1.0:
-        if max_score == min_score:
-            print(f"Skipping calibration for {title}: constant scores outside [0, 1].")
-            return
-        scores = [(value - min_score) / (max_score - min_score) for value in scores]
+        plt.figure(figsize=(4.5, 4.0))
+        plt.text(
+            0.5,
+            0.55,
+            "Calibration unavailable",
+            ha="center",
+            va="center",
+            fontsize=13,
+            weight="bold",
+        )
+        plt.text(
+            0.5,
+            0.42,
+            "Model emits an unbounded decision score,\nnot a predicted probability.",
+            ha="center",
+            va="center",
+            fontsize=10,
+        )
+        plt.axis("off")
+        plt.title(title)
+        plt.tight_layout()
+        plt.savefig(output_path)
+        plt.close()
+        print(f"Marked calibration unavailable for {title}: scores are outside [0, 1].")
+        return
 
     prob_true, prob_pred = calibration_curve(y_true, scores, n_bins=10, strategy="uniform")
     plt.figure(figsize=(4.5, 4.0))
@@ -130,6 +180,14 @@ def build_plots(results_dir: Path, figures_dir: Path) -> None:
 
         roc_path = figures_dir / f"{safe_name}_roc.png"
         _plot_roc(y_true, scores, roc_path, f"ROC: {run_name}")
+
+        pr_path = figures_dir / f"{safe_name}_precision_recall.png"
+        _plot_precision_recall(
+            y_true,
+            scores,
+            pr_path,
+            f"Precision–Recall: {run_name}",
+        )
 
         calibration_path = figures_dir / f"{safe_name}_calibration.png"
         _plot_calibration(y_true, scores, calibration_path, f"Calibration: {run_name}")
@@ -225,5 +283,50 @@ def build_comparison_assets(
         plt.savefig(roc_plot_path, dpi=200)
         plt.close()
         print(f"Saved baseline ROC comparison to {roc_plot_path}")
+    else:
+        plt.close()
+
+    plt.figure(figsize=(8.0, 6.5))
+    plotted = 0
+    prevalence = None
+    for path in sorted(results_dir.glob(f"*/{eval_split}/predictions.csv")):
+        frame = pd.read_csv(path)
+        if not {"label", "hallucination_score"}.issubset(frame.columns):
+            continue
+        y_true = frame["label"].tolist()
+        if len(set(y_true)) != 2:
+            continue
+        scores = frame["hallucination_score"].tolist()
+        precision, recall, _ = precision_recall_curve(y_true, scores)
+        average_precision = average_precision_score(y_true, scores)
+        baseline = path.parent.parent.name
+        plt.plot(
+            recall,
+            precision,
+            lw=1.8,
+            label=f"{_display_name(baseline)} ({average_precision:.3f})",
+        )
+        prevalence = float(sum(y_true) / len(y_true))
+        plotted += 1
+
+    if plotted:
+        plt.axhline(
+            prevalence,
+            color="gray",
+            lw=1,
+            linestyle="--",
+            label=f"Prevalence ({prevalence:.2f})",
+        )
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.02])
+        plt.xlabel("Recall")
+        plt.ylabel("Precision")
+        plt.title(f"Baseline Precision–Recall Comparison ({eval_split})")
+        plt.legend(loc="lower left", fontsize=8)
+        plt.tight_layout()
+        pr_plot_path = figures_dir / f"baseline_comparison_precision_recall_{eval_split}.png"
+        plt.savefig(pr_plot_path, dpi=200)
+        plt.close()
+        print(f"Saved baseline precision-recall comparison to {pr_plot_path}")
     else:
         plt.close()

@@ -20,6 +20,7 @@ from llm_uncertainty.baselines import (
     run_upgraded_entropy_classifier,
 )
 from llm_uncertainty.data import load_records, normalize_halueval_qa, write_splits
+from llm_uncertainty.error_analysis import build_error_analysis
 from llm_uncertainty.io import ensure_parent, write_jsonl
 from llm_uncertainty.local_lm import LocalCausalLMScorer, score_record
 from llm_uncertainty.reporting import (
@@ -354,6 +355,13 @@ def main() -> None:
             figures_dir,
             tables_dir,
             args.eval_split,
+        )
+        build_error_analysis(
+            results_dir=results_dir,
+            output_dir=reports_dir / "error_analysis" / args.eval_split,
+            figures_dir=reports_dir / "figures" / "error_analysis",
+            eval_split=args.eval_split,
+            data_path=paths["eval"],
         )
 
 
