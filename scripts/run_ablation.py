@@ -25,6 +25,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--train-text", required=True)
     parser.add_argument("--eval-text", required=True)
     parser.add_argument("--train-memory", required=True)
+    parser.add_argument("--train-context")
     parser.add_argument("--eval-memory", required=True)
     parser.add_argument("--eval-context", required=True)
     parser.add_argument("--out-dir", default="results/ablation/val")
@@ -140,15 +141,29 @@ def main() -> None:
     eval_text = _frame(args.eval_text)
     train_memory = _frame(args.train_memory)
     eval_memory = _frame(args.eval_memory)
+    train_context_feats = _with_context_features(args.train_memory, args.train_context) if args.train_context else None
     eval_context_feats = _with_context_features(args.eval_memory, args.eval_context)
     print(
         f"[ablation] Loaded rows train_text={len(train_text)} eval_text={len(eval_text)} "
         f"train_memory={len(train_memory)} eval_memory={len(eval_memory)} "
-        f"context_features={len(eval_context_feats)}"
+        f"train_context_features={0 if train_context_feats is None else len(train_context_feats)} "
+        f"eval_context_features={len(eval_context_feats)}"
     )
 
     train = train_text.merge(train_memory[["sample_id"] + FEATURE_COLUMNS], on="sample_id", how="inner")
     eval_base = eval_text.merge(eval_memory[["sample_id"] + FEATURE_COLUMNS], on="sample_id", how="inner")
+    if train_context_feats is not None:
+        train = train.merge(
+            train_context_feats[["sample_id", "context_improvement", "absolute_context_delta"]],
+            on="sample_id",
+            how="left",
+        )
+        train[["context_improvement", "absolute_context_delta"]] = train[
+            ["context_improvement", "absolute_context_delta"]
+        ].fillna(0.0)
+    else:
+        train["context_improvement"] = 0.0
+        train["absolute_context_delta"] = 0.0
     eval_with_context = eval_base.merge(
         eval_context_feats[["sample_id", "context_improvement", "absolute_context_delta"]],
         on="sample_id",
@@ -157,8 +172,6 @@ def main() -> None:
     eval_with_context[["context_improvement", "absolute_context_delta"]] = eval_with_context[
         ["context_improvement", "absolute_context_delta"]
     ].fillna(0.0)
-    train["context_improvement"] = 0.0
-    train["absolute_context_delta"] = 0.0
     print(f"[ablation] After merge train={len(train)} eval_base={len(eval_base)} eval_with_context={len(eval_with_context)}")
 
     settings = [
@@ -170,7 +183,7 @@ def main() -> None:
 
     metrics_rows = []
     for name, use_text, cols in settings:
-        eval_frame = eval_with_context if "context" in name else eval_base
+        eval_frame = eval_with_context if name == "hybrid_with_context" else eval_base
         preds, metrics = _run_setting(name, train, eval_frame, use_text, cols, args.classifier)
         preds.to_csv(out_dir / f"{name}_predictions.csv", index=False)
         (out_dir / f"{name}_metrics.json").write_text(json.dumps(metrics, indent=2), encoding="utf-8")
