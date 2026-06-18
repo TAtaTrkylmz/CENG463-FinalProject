@@ -2,32 +2,43 @@
 
 **Title:** Epistemic Uncertainty in LLM Hallucinations
 
-This project evaluates lexical, uncertainty, semantic, and evidence-grounded signals for binary hallucination detection on HaluEval QA.
+This repository studies binary hallucination detection on the HaluEval QA benchmark using lexical, uncertainty, semantic, and evidence-grounded signals.
 
 - `label=0`: factual answer
 - `label=1`: hallucinated answer
 
-## Setup
+## Repository Status
 
-Install the dependencies:
+The current codebase is organized around a unified experiment runner in `src/main.py` plus helper scripts in `scripts/`.
 
-```bash
-pip install -r requirements.txt
-```
+What is already committed:
 
-The repository virtual environment can also be used directly:
+- Processed grouped HaluEval splits in `data/processed/halueval_qa/`
+- Checked-in report figures under `reports/figures/`
+- A detailed technical summary in `progress.md`
+- Final report sources in `final_report/`
 
-```bash
-venv/bin/python src/main.py --dry-run
-```
+What is **not** currently committed:
 
-Transformer checkpoints are downloaded from Hugging Face on first use. GPU execution is recommended for semantic, NLI, upgraded-entropy, and cross-encoder experiments.
+- The default modern runtime output directory `results/matrix/`
+- The upgraded-LM scored cache expected at `results/scored_upgraded/`
+
+There are also older result folders under `results/` such as `entropy/`, `lexical_svm/`, `rag/`, `metrics/`, and `predictions/`. These appear to be legacy outputs from earlier pipeline stages rather than the current source of truth for the 10-baseline matrix.
+
+## Project Goal
+
+Each HaluEval QA item provides one factual and one hallucinated candidate answer. The project predicts whether a candidate answer is hallucinated from combinations of:
+
+- lexical artifacts
+- causal-LM uncertainty features
+- semantic question-answer interactions
+- external evidence support
+
+Dataset splits are grouped by `original_sample_id`, so both candidate answers for the same original question always stay in the same split.
 
 ## Dataset
 
-Each HaluEval question provides one factual and one hallucinated candidate answer. Dataset splitting is grouped by `original_sample_id`, so the paired answers for one question always remain in the same split.
-
-Current grouped split:
+Committed grouped split sizes:
 
 | Split | QA groups | Rows | Factual | Hallucinated |
 |---|---:|---:|---:|---:|
@@ -35,187 +46,166 @@ Current grouped split:
 | Validation | 1,001 | 2,002 | 1,001 | 1,001 |
 | Test | 1,000 | 2,000 | 1,000 | 1,000 |
 
-## Ten Baselines
+The grouped split replaces an earlier row-level split that could leak paired-question information across train and evaluation sets.
+
+## Baselines
+
+The current experiment matrix contains 10 baselines:
 
 | # | CLI name | Signal | Method |
 |---:|---|---|---|
-| 1 | `lexical_svm` | Lexical artifacts | Answer TF-IDF with linear SVM |
-| 2 | `lexical_hybrid_svm` | Lexical + uncertainty | TF-IDF and standardized uncertainty features |
-| 3 | `entropy_base` | Base LM confidence | Standardized logistic regression over `distilgpt2` features |
-| 4 | `entropy_upgraded` | Instruction-tuned LM confidence | Same classifier using a stronger causal LM |
-| 5 | `semantic_svm` | Meaning | Question-answer bi-encoder interactions with LinearSVC |
-| 6 | `semantic_hybrid_svm` | Meaning + uncertainty | Semantic interactions and standardized uncertainty |
-| 7 | `rag_compare_fixed` | Context sensitivity | Memory/context NLL delta with threshold fitted on training data |
+| 1 | `lexical_svm` | Lexical artifacts | TF-IDF over candidate answers with linear SVM |
+| 2 | `lexical_hybrid_svm` | Lexical + uncertainty | TF-IDF plus standardized LM uncertainty features |
+| 3 | `entropy_base` | Base LM confidence | Logistic regression over `distilgpt2` uncertainty features |
+| 4 | `entropy_upgraded` | Instruction-tuned LM confidence | Same classifier with a stronger causal LM |
+| 5 | `semantic_svm` | Meaning | Bi-encoder question-answer interaction features with LinearSVC |
+| 6 | `semantic_hybrid_svm` | Meaning + uncertainty | Semantic interactions plus uncertainty features |
+| 7 | `rag_compare_fixed` | Context sensitivity | Train-derived threshold over memory/context NLL deltas |
 | 8 | `nli_evidence` | Knowledge support | Zero-shot entailment score from an MNLI model |
 | 9 | `evidence_aware_hybrid` | Combined evidence | Semantic, NLI, and uncertainty features |
-| 10 | `cross_encoder` | Joint text reasoning | Fine-tuned question-answer transformer classifier |
+| 10 | `cross_encoder` | Joint reasoning | Fine-tuned paired transformer classifier |
 
-Default transformer checkpoints:
+Default transformer checkpoints used by the current code:
 
+- Base uncertainty LM: `distilgpt2`
 - Upgraded uncertainty LM: `Qwen/Qwen2.5-1.5B-Instruct`
 - Semantic encoder: `sentence-transformers/all-MiniLM-L6-v2`
 - NLI model: `FacebookAI/roberta-large-mnli`
 - Cross-encoder initialization: `distilroberta-base`
 
-## Run Everything
+## Setup
 
-`src/main.py` is the canonical experiment entry point. It:
-
-1. Prepares leakage-free grouped splits.
-2. Scores train and evaluation rows in memory and context modes.
-3. Scores rows with the upgraded instruction-tuned LM.
-4. Runs all ten baselines.
-5. Saves predictions and metrics.
-6. Generates individual and comparison plots.
-
-Preview the complete plan:
+Install dependencies:
 
 ```bash
-venv/bin/python src/main.py --dry-run
+python -m pip install -r requirements.txt
 ```
 
-Run all experiments on a GPU:
+Optional virtual environment examples:
 
 ```bash
-venv/bin/python src/main.py \
-  --device cuda \
-  --batch-size 8 \
-  --epochs 1
+python -m venv .venv
 ```
 
-Use `--overwrite` to regenerate existing splits, scored features, and experiment outputs:
+Windows PowerShell:
 
-```bash
-venv/bin/python src/main.py \
-  --device cuda \
-  --batch-size 8 \
-  --epochs 1 \
-  --overwrite
+```powershell
+.venv\Scripts\Activate.ps1
 ```
 
-The upgraded LM can be changed:
+macOS/Linux:
 
 ```bash
-venv/bin/python src/main.py \
-  --device cuda \
-  --upgraded-model-name mistralai/Mistral-7B-Instruct-v0.3 \
-  --upgraded-model-dtype bfloat16
+source .venv/bin/activate
 ```
 
-Large or gated checkpoints may require Hugging Face authentication and additional GPU memory.
+Transformer checkpoints are downloaded from Hugging Face on first use. GPU execution is strongly recommended for:
 
-## Run a Subset
+- `semantic_svm`
+- `semantic_hybrid_svm`
+- `nli_evidence`
+- `evidence_aware_hybrid`
+- `entropy_upgraded`
+- `cross_encoder`
 
-Fast CPU-oriented baselines:
+Large or gated checkpoints may require Hugging Face authentication and substantial GPU memory.
+
+## Recommended Workflow
+
+`src/main.py` is the canonical experiment entry point. It can:
+
+1. prepare grouped dataset splits
+2. score train/eval rows in memory and context modes
+3. score upgraded-LM uncertainty features
+4. run any subset of the 10 baselines
+5. save predictions and metrics
+6. generate plots, tables, and comparative error analysis
+
+Preview the run plan:
 
 ```bash
-venv/bin/python src/main.py \
-  --baselines lexical_svm lexical_hybrid_svm entropy_base rag_compare_fixed \
+python src/main.py --dry-run
+```
+
+Run the full matrix:
+
+```bash
+python src/main.py --device cuda --batch-size 8 --epochs 1
+```
+
+Rerun everything from scratch:
+
+```bash
+python src/main.py --device cuda --batch-size 8 --epochs 1 --overwrite
+```
+
+Run only a subset:
+
+```bash
+python src/main.py ^
+  --baselines lexical_svm lexical_hybrid_svm entropy_base rag_compare_fixed ^
   --device cpu
 ```
 
-Semantic and evidence baselines:
+On bash shells, use `\` instead of `^` for line continuation.
+
+Useful reuse flags:
+
+- `--skip-prepare`
+- `--skip-inference`
+- `--skip-baselines`
+- `--skip-report-assets`
+- `--overwrite`
+
+Example: rebuild report assets from already-generated matrix outputs:
 
 ```bash
-venv/bin/python src/main.py \
-  --baselines semantic_svm semantic_hybrid_svm nli_evidence evidence_aware_hybrid \
-  --device cuda \
-  --batch-size 8
+python src/main.py --skip-prepare --skip-inference --skip-baselines
 ```
 
-Cross-encoder only:
+## Helper Scripts
 
-```bash
-venv/bin/python src/main.py \
-  --baselines cross_encoder \
-  --device cuda \
-  --batch-size 8 \
-  --epochs 1
-```
+The `scripts/` directory contains smaller entry points around the same pipeline:
 
-## Reuse Existing Features
+- `scripts/prepare_dataset.py`: download and build grouped HaluEval splits
+- `scripts/run_inference.py`: score a split with a local causal LM in `memory` or `context` mode
+- `scripts/run_baseline.py`: run one baseline and save predictions/metrics
+- `scripts/run_experimental_matrix.py`: iterate over the 10-baseline matrix through `run_baseline.py`
+- `scripts/run_error_analysis.py`: regenerate comparative error-analysis tables and figures
+- `scripts/evaluate.py`: compute metrics from a saved predictions CSV
 
-By default, `main.py` reuses existing scored JSONL files and completed baseline outputs. Use these flags when appropriate:
+`run_baseline.py` still accepts several legacy aliases such as `entropy`, `rag_compare`, `hybrid_proposed`, and `hybrid_svm` for backward compatibility.
 
-- `--skip-prepare`: use existing dataset splits
-- `--skip-inference`: use existing memory/context/upgraded scores
-- `--skip-baselines`: generate reports from existing predictions and metrics
-- `--skip-report-assets`: run experiments without creating figures
-- `--overwrite`: rerun and replace existing outputs
+## Expected Runtime Outputs
 
-Generate reports from the current matrix without retraining:
-
-```bash
-MPLBACKEND=Agg venv/bin/python src/main.py \
-  --skip-prepare \
-  --skip-inference \
-  --skip-baselines
-```
-
-## Outputs
-
-Each baseline writes:
+When the current unified pipeline is run, its default outputs are:
 
 ```text
 results/matrix/<baseline>/<split>/metrics.json
 results/matrix/<baseline>/<split>/predictions.csv
-```
-
-Semantic and NLI features are cached under:
-
-```text
 results/matrix/feature_cache/
-```
-
-Comparison artifacts:
-
-```text
-reports/tables/baseline_results_<split>.csv
-reports/tables/baseline_comparison_<split>.csv
-reports/figures/matrix/baseline_comparison_metrics_<split>.png
-reports/figures/matrix/baseline_comparison_roc_<split>.png
-reports/figures/matrix/baseline_comparison_precision_recall_<split>.png
-```
-
-The same figure directory also contains confusion matrices, ROC curves,
-precision-recall curves, and calibration plots for every completed baseline.
-Reliability diagrams are only meaningful for outputs already bounded to
-`[0, 1]`; unbounded SVM/RAG score panels are explicitly marked unavailable.
-
-Comparative error-analysis artifacts:
-
-```text
-reports/error_analysis/<split>/summary_by_baseline.csv
-reports/error_analysis/<split>/false_positives_topk.csv
-reports/error_analysis/<split>/false_negatives_topk.csv
-reports/error_analysis/<split>/overconfident_errors_topk.csv
-reports/error_analysis/<split>/hardest_shared_errors.csv
+reports/tables/
+reports/figures/matrix/
+reports/error_analysis/<split>/
 reports/figures/error_analysis/
 ```
 
-Generate them directly from saved predictions without retraining:
+Those directories are expected runtime products; they are not fully committed in the repository at the moment.
 
-```bash
-MPLBACKEND=Agg venv/bin/python scripts/run_error_analysis.py --split val
-```
+## Committed Artifacts
 
-## Tests
+The repository already includes:
 
-Run the offline unit tests:
+- grouped processed data in `data/processed/halueval_qa/`
+- report figures for the validation matrix in `reports/figures/matrix/`
+- comparative error-analysis figures in `reports/figures/error_analysis/`
+- validation error-analysis notes in `reports/error_analysis/val/key_findings.md`
+- a technical write-up in `progress.md`
+- a LaTeX report in `final_report/`
 
-```bash
-venv/bin/python -m unittest discover -s tests -v
-```
+## Validation Snapshot
 
-Compile-check the pipeline:
-
-```bash
-venv/bin/python -m py_compile src/main.py src/llm_uncertainty/*.py scripts/*.py tests/*.py
-```
-
-## Current Validation Results
-
-All ten baseline runs are available on the grouped validation split.
+The repository includes checked-in figures and documentation for a complete 10-baseline validation matrix. The summarized validation results recorded in `progress.md` are:
 
 | Baseline | Accuracy | Macro F1 | AUROC |
 |---|---:|---:|---:|
@@ -230,4 +220,44 @@ All ten baseline runs are available on the grouped validation split.
 | Evidence-Aware Hybrid | 0.9770 | 0.9770 | **0.9951** |
 | Cross-Encoder | **0.9815** | **0.9815** | 0.9895 |
 
-These are validation results, not final test-set estimates.
+These are validation-set results, not final held-out test estimates.
+
+## Tests
+
+Run the offline unit tests:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Optional compile check:
+
+```bash
+python -m py_compile src/main.py src/llm_uncertainty/*.py scripts/*.py tests/*.py
+```
+
+## Repository Layout
+
+```text
+CENG463-FinalProject/
+  data/                 committed grouped HaluEval splits
+  docs/                 project brief, papers, images
+  final_report/         LaTeX report sources and compiled PDFs
+  reports/              committed figures and report-side artifacts
+  results/              legacy outputs and scored caches
+  scripts/              helper CLIs
+  src/                  main experiment pipeline and library code
+  tests/                offline unit tests
+  progress.md           detailed technical progress summary
+```
+
+## Current Gaps
+
+Based on the repository state today:
+
+- the modern `results/matrix/` raw outputs are not checked in
+- `results/scored_upgraded/` is not present
+- test-set matrix outputs are not committed
+- some checked-in `results/` folders reflect older naming and pipeline stages
+
+So the code for the full matrix is present, and the report-side validation artifacts are present, but reproducing the full current matrix from scratch will require regenerating runtime outputs locally.
