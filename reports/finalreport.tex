@@ -44,7 +44,7 @@ Repository: \url{https://github.com/TAtaTrkylmz/CENG463-FinalProject}}
 
 % ============================================================
 \begin{abstract}
-Large language models (LLMs) remain prone to hallucination—generating fluent but factually incorrect outputs. A central hypothesis is that hallucinations coincide with elevated \emph{epistemic uncertainty}: when a model generates tokens outside its reliable knowledge, token-level probabilities become less confident. This paper presents a reproducible pipeline that investigates whether uncertainty signals from a low-cost local surrogate language model (\texttt{distilgpt2}) can classify hallucinated versus factual answers in the HaluEval QA benchmark. We implement ten complementary baseline detectors spanning four detection paradigms—lexical, uncertainty-based, semantic, and evidence/retrieval-grounded—alongside four hybrid models that combine these signal families, including a fine-tuned cross-encoder upper bound. An ablation study and structured error analysis complement the main evaluation. Results show the fine-tuned cross-encoder achieves the highest accuracy and macro F1 on the validation split, while the Evidence-Aware Hybrid attains the highest AUROC; retrieval context yields measurable but modest gains over memory-only uncertainty features, suggesting token-level log-probability signals from a cheap surrogate are weak in isolation but complementary when combined with lexical or semantic cues.
+Large language models (LLMs) remain prone to hallucination—generating fluent but factually incorrect outputs. A central hypothesis is that hallucinations coincide with elevated \emph{epistemic uncertainty}: when a model generates tokens outside its reliable knowledge, token-level probabilities become less confident. This paper presents a reproducible pipeline that investigates whether uncertainty signals from a low-cost local surrogate language model (\texttt{distilgpt2}) can classify hallucinated versus factual answers in the HaluEval QA benchmark. We implement ten complementary baseline detectors spanning four detection paradigms—lexical, uncertainty-based, semantic, and evidence/retrieval-grounded—alongside four hybrid models that combine these signal families, including a fine-tuned cross-encoder upper bound. An ablation study, structured error analysis, and two external evaluations complement the main benchmark. Results show the fine-tuned cross-encoder achieves the highest accuracy and macro F1 on the HaluEval validation split, while the Evidence-Aware Hybrid attains the highest AUROC; retrieval context yields measurable but modest gains over memory-only uncertainty features, suggesting token-level log-probability signals from a cheap surrogate are weak in isolation but complementary when combined with lexical or semantic cues. However, cross-dataset transfer is poor, and the Qwen-generated evaluation further suggests substantially weaker performance on actual generated answers, though this setting remains noisy due to prompt leakage and automatic labeling.
 \end{abstract}
 
 \keywords{Hallucination detection \and Epistemic uncertainty \and
@@ -56,82 +56,119 @@ Large language models (LLMs) remain prone to hallucination—generating fluent b
 \label{sec:intro}
 % ============================================================
 
-Despite remarkable advances in natural language processing, large language models (LLMs) remain prone to \emph{hallucination}—the generation of plausible-sounding but factually incorrect or unsupported statements~\cite{ji2023survey}. The rapid scaling of these systems, demonstrated most prominently by GPT-3 and its successors~\cite{brown2020gpt3}, has broadened their deployment into high-stakes domains, amplifying the cost of factual errors. In medical question answering or legal reasoning, even infrequent hallucinations can erode user trust and cause tangible harm. The emergence of increasingly capable models~\cite{wei2022emergent} has made this failure mode more visible precisely because fluency and factual grounding are decoupled: a model may generate grammatically flawless, contextually plausible text that is nonetheless factually wrong.
+Large language models (LLMs) remain prone to \emph{hallucination}: fluent but unsupported or false outputs~\cite{ji2023survey}. This matters most in high-stakes settings, where confidence and factuality can diverge sharply. In question answering, an answer may sound polished, specific, and locally coherent while still being factually wrong. As models become more capable, scalable, and conversational~\cite{brown2020gpt3,wei2022emergent}, this gap between fluency and truthfulness becomes harder for users to detect without external verification.
 
-Hallucination manifests across a wide spectrum of generation tasks. Maynez et al.~\cite{maynez2020faithfulness} document systematic faithfulness failures in abstractive summarisation, distinguishing intrinsic hallucinations— contradictions of the source document—from extrinsic ones: plausible additions unsupported by any available evidence. Ji et al.~\cite{ji2023survey} extend this taxonomy to broader NLG settings, identifying exposure bias, co-reference errors, and knowledge gaps as root causes. A key structural driver is the uneven distribution of factual knowledge in pretraining corpora: Mallen et al.~\cite{mallen2023trust} show that LLMs systematically fail on queries involving entities with low corpus popularity, revealing that model output confidence is a poor proxy for factual accuracy in the long tail of knowledge.
+One natural hypothesis is that hallucinations correlate with elevated
+\emph{epistemic uncertainty}. Following the standard distinction between
+epistemic and aleatoric uncertainty~\cite{hullermeier2021aleatoric}, if a model is generating in regions where its
+knowledge is weak or poorly grounded, token-level probabilities may become less
+stable or less confident. This motivates the use of log-probability summaries,
+entropy, and related white-box signals as potential hallucination indicators.
+At the same time, modern models are also known to be overconfident~\cite{guo2017calibration},
+so uncertainty is not guaranteed to track factuality cleanly. A useful detector
+therefore needs to test not only whether uncertainty carries signal, but also
+whether that signal remains useful once stronger semantic and evidence-based
+features are available.
 
-The challenge of evaluating factual accuracy at scale has motivated a growing body of automated detection frameworks. Lin et al.~\cite{lin2022truthfulqa} introduce TruthfulQA, a benchmark designed to probe questions that elicit confident yet false answers from large models. More granular factuality metrics have since emerged: Min et al.~\cite{min2023factscore} propose FActScore, which decomposes generated biographies into atomic claims and evaluates each against a knowledge source, enabling fine-grained analysis of hallucination density. While these works focus primarily on evaluation, they share with our approach the central insight that internal model signals —such as token-level probabilities— may correlate with factual reliability.
+This problem sits between two different goals that are often conflated in the
+literature. One goal is to build a practically robust hallucination detector
+for arbitrary open-domain model outputs. The other is to understand, in a
+controlled benchmark setting, which signal families are informative and how
+they interact. Our project is explicitly closer to the second goal. We use
+HaluEval QA~\cite{li2023halueval} as the main training and benchmarking
+environment because it provides paired factual and hallucinated answers with a
+shared question and knowledge snippet, making it suitable for comparative
+analysis across multiple detectors. At the same time, earlier work on
+faithfulness and factuality warns that hallucination is not a single failure
+type: intrinsic and extrinsic errors can behave differently, and confidence can
+degrade especially on long-tail knowledge or weakly grounded claims
+~\cite{maynez2020faithfulness,mallen2023trust}.
 
-A promising lens for detecting hallucination is \emph{uncertainty quantification}(UQ). H\"{u}llermeier and Waegeman~\cite{hullermeier2021aleatoric} distinguish \emph{epistemic} uncertainty (arising from gaps in model knowledge) from \emph{aleatoric} uncertainty (irreducible data variability). Hallucinations are hypothesised to occur when the model generates in regions of high epistemic uncertainty, where training data coverage is insufficient. Tokens generated with low log-probability or high predictive entropy may therefore provide a probe for hallucinated content. Guo et al.~\cite{guo2017calibration} demonstrate that modern neural networks are systematically overconfident, further motivating calibration-aware evaluation of model probability outputs.
-
-We test this hypothesis using a reproducible, locally executable pipeline built on \texttt{distilgpt2}~\cite{radford2019gpt2} and the HaluEval QA dataset \cite{li2023halueval}. We address three research questions: \textbf{(RQ1)} Do token-level log-probability signals from a cheap surrogate model discriminate between hallucinated and factual answers within a controlled QA benchmark? \textbf{(RQ2)} Does supplying retrieved context yield a stronger uncertainty signal than memory-only prompting? \textbf{(RQ3)} Does combining uncertainty with lexical, semantic, and evidence-aware features outperform any single signal family alone? Our contributions are: (i) a reproducible open-source benchmark pipeline for studying hallucination detection on HaluEval QA; (ii) ten complementary baselines spanning uncertainty, lexical, semantic, and evidence-grounded paradigms; (iii) hybrid models that quantify how much uncertainty contributes once stronger semantic and evidence signals are available; (iv) an ablation study; and (v) a structured error analysis characterising failure distributions across answer length, confidence quintile, and inter-model error overlap. We emphasise that this work is a controlled benchmark study rather than a claim of universal hallucination detection across arbitrary LLM outputs, and that \texttt{distilgpt2} should be interpreted as a reproducible baseline surrogate rather than an ideal uncertainty estimator for modern chat models.
+We study this question with a fully reproducible local pipeline built around
+\texttt{distilgpt2}~\cite{radford2019gpt2}. Our three research questions are:
+\textbf{(RQ1)} whether cheap uncertainty features are predictive at all,
+\textbf{(RQ2)} whether retrieved context improves them, and \textbf{(RQ3)}
+whether uncertainty helps when fused with lexical, semantic, and evidence-based
+signals. The main contribution is therefore not a claim of universal
+hallucination detection, but a comparative benchmark: ten baselines, ablations,
+structured error analysis, and transfer evaluation on both TruthfulQA-derived
+pairs and Qwen-generated TruthfulQA answers. This framing matters because, as
+our transfer results later show, strong in-domain performance may still fail to
+generalise to open-domain generated outputs.
 
 % ============================================================
 \section{Related Work}
 \label{sec:related}
 % ============================================================
 
-Ji et al.\ \cite{ji2023survey} provide a comprehensive survey of hallucination in NLG, categorising intrinsic and extrinsic hallucinations and surveying mitigation strategies. Li et al.\ \cite{li2023halueval} introduce HaluEval, the large-scale benchmark used in this work, covering QA, dialogue and summarisation. On the uncertainty side, Kadavath et al.\ \cite{kadavath2022know} show that well-calibrated LLMs can partially introspect on their knowledge boundaries, while Guo et al.\ \cite{guo2017calibration} note that modern deep networks are often overconfident —motivating calibration- aware evaluation. Kuhn et al.\ \cite{kuhn2023semantic} propose \emph{semantic entropy}, which clusters semantically equivalent generations before computing entropy, addressing the inflation caused by lexically diverse but meaning-equivalent outputs. While we do not implement semantic entropy here due to the cost of multiple sampling passes, it motivates our hybrid combination of token-level log-probability and lexical features.
+Prior work motivating this paper falls into three strands. The first is
+\textbf{benchmarking hallucination itself}. HaluEval~\cite{li2023halueval}
+provides paired factual and hallucinated responses across multiple tasks and is
+well suited to controlled binary classification. TruthfulQA~\cite{lin2022truthfulqa}
+takes a different angle: it targets questions that invite confident but false
+answers, making it especially valuable for testing whether in-domain benchmark
+gains survive transfer to harder open-domain settings. Together, these
+benchmarks suggest that high apparent accuracy inside one dataset should not be
+equated with general factual robustness. Related evaluation work such as
+FActScore~\cite{min2023factscore} makes a similar point from another direction:
+factual reliability is often better understood at the level of supported claims
+than through surface plausibility alone.
 
-Lewis et al.\ \cite{lewis2020rag} introduced Retrieval-Augmented Generation (RAG), showing that prepending retrieved passages reduces factual errors by grounding generation in external evidence. We exploit the HaluEval knowledge field as a retrieval proxy. Manakul et al.\ \cite{manakul2023selfcheck} propose SelfCheckGPT, which uses consistency across multiple samples as a black-box hallucination signal. Our approach differs by using white-box log-probabilities from a local surrogate model, making the pipeline cost-free and fully reproducible without proprietary API access.
+The second strand is \textbf{uncertainty-based introspection}. Kadavath et
+al.~\cite{kadavath2022know} show that language models can, to some degree,
+reflect their own knowledge boundaries. Guo et al.~\cite{guo2017calibration}
+show more broadly that modern neural models are often miscalibrated, which is
+important because probability scores may still be informative even when they
+are not perfectly trustworthy as absolute confidence estimates. Kuhn et
+al.~\cite{kuhn2023semantic} further argue that naive token-level entropy can be
+too brittle and propose \emph{semantic entropy}, which groups generations by
+meaning before measuring uncertainty. We do not implement semantic entropy
+here, but it serves as an important reference point for interpreting the limits
+of small surrogate log-probability signals.
+
+The third strand is \textbf{evidence-based grounding}. Retrieval-Augmented
+Generation (RAG)~\cite{lewis2020rag} improves factuality by conditioning model
+responses on external evidence, while SelfCheckGPT~\cite{manakul2023selfcheck}
+uses agreement across multiple sampled outputs as a black-box reliability cue.
+These approaches are relevant because they shift attention away from raw token
+probabilities alone and toward whether an answer is supported by evidence or by
+consistency across generations. Our NLI and context-comparison baselines are
+inspired by this view.
+
+Our contribution relative to this literature is narrower but practical: rather
+than proposing a new frontier-scale detector, we compare uncertainty, lexical,
+semantic, and evidence-based signals inside one local and reproducible pipeline.
+That design lets us ask not only which method works best on HaluEval, but also
+which families of signals degrade most severely once the evaluation moves to
+TruthfulQA and actual model-generated answers.
 
 % ============================================================
 \section{Methodology}
 \label{sec:method}
 % ============================================================
 
-The pipeline proceeds through four stages: dataset preparation (Section~\ref{sec:data}), local LM scoring, baseline training and hybrid model training. All stages are orchestrated by \texttt{src/main.py} with per-stage skip flags for partial re-runs.
+The pipeline has four stages: dataset preparation, local LM scoring, baseline training, and hybrid-model training. All stages are orchestrated by \texttt{src/main.py}.
 
 \subsection{Dataset and Problem Formulation}
 \label{sec:data}
 
-We use the QA split of HaluEval \cite{li2023halueval}. Each record contains a natural language question, a factually correct answer grounded in a knowledge snippet and a hallucinated answer that is plausible but incorrect. We cast detection as binary classification: each record is expanded into two supervised examples—the factual answer with label $y=0$ and the hallucinated answer with label $y=1$—ensuring perfect class balance. Formally, the goal is to learn $f\!:\!(q,a,k)\!\rightarrow\!\{0,1\}$ given question $q$, candidate answer $a$ and optional knowledge context $k$.
-
-Dataset preparation is handled by \texttt{scripts/prepare\_dataset.py}, which downloads HaluEval QA, applies the record expansion and writes deterministic train/validation/test JSONL splits with a fixed random seed. The experiments reported here use the full HaluEval QA training partition, yielding 15,999 training examples and 2,001 validation examples after expansion. The class distribution is exactly 50\% in every split by construction. This balanced paired construction is useful for controlled comparison, but it also means the benchmark may contain dataset-specific lexical or structural cues that do not fully match open-domain generations from deployed LLMs.
+We use the QA split of HaluEval~\cite{li2023halueval}. Each record provides a question, a knowledge snippet, one factual answer, and one hallucinated answer. We expand each record into two supervised rows, factual ($y=0$) and hallucinated ($y=1$), producing balanced train/validation/test JSONL splits via \texttt{scripts/prepare\_dataset.py}. The main experiments use 15,999 training examples and 2,001 validation examples. This paired construction is useful for controlled comparison, but it may also introduce dataset-specific cues.
 
 \subsection{Local Language Model Scoring}
 
-Token-level log-probabilities are extracted using \texttt{distilgpt2} \cite{radford2019gpt2}, a 6-layer, 82M-parameter causal LM, via the Hugging Face Transformers library. We use it as a low-cost local surrogate because it is lightweight, easy to reproduce, and exposes white-box token probabilities without external API dependence. For each candidate answer $a$ we compute the per-token log-probability sequence 
-$\{\log p_\theta(a_t \mid a_{<t}, \text{prefix})\}_{t=1}^{|a|}$ 
-and derive four scalar features: \textbf{mean log-probability} ($\bar{\ell}$), \textbf{minimum log-probability} ($\ell_{\min}$), \textbf{predictive entropy} ($H$, averaged over positions) and \textbf{answer length} (number of tokens). Scoring is performed in two modes: \emph{memory mode} (question + answer, no external context) and \emph{context mode} (knowledge snippet prepended, simulating RAG).
+Token-level log-probabilities are extracted with \texttt{distilgpt2}~\cite{radford2019gpt2}, used as a cheap local surrogate. For each candidate answer we compute mean log-probability, minimum log-probability, predictive entropy, and answer length. Scoring is done in both \emph{memory mode} (question + answer) and \emph{context mode} (knowledge prepended), allowing us to measure whether external evidence changes model confidence.
 
 \subsection{Single-Signal Baselines}
 
-\textbf{Lexical SVM} (\texttt{lexical\_svm}). Each candidate answer is transformed into a sparse TF-IDF vector $\mathbf{x}_{\text{tfidf}} \in \mathbb{R}^V$ using unigrams and bigrams, with vocabulary capped at 10\,000 terms. Classification is performed via a linear Support Vector Classifier ($L_2$ regularization, $C\!=\!1.0$) to isolate shallow surface patterns distinguishing factuality.
-
-\textbf{Entropy Classifiers} (\texttt{entropy\_base} / \texttt{entropy\_upgraded}). For \texttt{entropy\_base}, token log-probabilities extracted from \texttt{distilgpt2} are summarized into a 4D feature vector $\mathbf{x}_{\text{unc}} = [\bar{\ell}, \ell_{\min}, H, |a|]$ representing mean log-probability, minimum log-probability, average predictive entropy and token length respectively. A standard logistic regression classifier maps this to the label space. This baseline should be interpreted as a reproducible uncertainty surrogate rather than a state-of-the-art factuality estimator. For \texttt{entropy\_upgraded}, we substitute the base model with a stronger instruction-tuned surrogate, \texttt{Qwen/Qwen2.5-1.5B-Instruct}, using the identical downstream classification architecture to test whether stronger next-token modeling also yields a more useful factuality signal. This comparison is intentionally narrow: it isolates the uncertainty backbone, not the overall answer quality of the larger model.
-
-\textbf{Semantic SVM} (\texttt{semantic\_svm}). Question-answer semantic interactions are extracted via a dual bi-encoder setup using the \texttt{sentence-transformers/all-MiniLM-L6-v2} checkpoint. We map prompt $q$ and answer $a$ to embeddings $\mathbf{e}_q, \mathbf{e}_a \in \mathbb{R}^d$ and compute the element-wise absolute difference $|\mathbf{e}_q - \mathbf{e}_a|$ and Hadamard product $\mathbf{e}_q \odot \mathbf{e}_a$. These interaction terms are concatenated as a joint semantic representation and passed to a linear Support Vector Machine.
-
-\textbf{RAG Compare} (\texttt{rag\_compare\_fixed}). We measure the context sensitivity of the generation by calculating the log-probability shift when external grounding evidence is appended:
-\begin{equation}
-  \Delta\bar{\ell} = \bar{\ell}_{\text{context}} - \bar{\ell}_{\text{memory}},
-\end{equation}
-and predict hallucinated when $\Delta\bar{\ell} < \tau$, with threshold $\tau$ estimated on the training distribution.
-
-\textbf{NLI Evidence} (\texttt{nli\_evidence}). We model the zero-shot textual alignment between the answer and the target reference context using \texttt{FacebookAI/roberta-large-mnli}. The reference context is passed as the premise and the answer as the hypothesis, yielding a scalar entailment probability $p_{\text{entail}}$ used as the primary predictive decision signal.
+We compare five single-signal baselines: a TF-IDF lexical SVM, two uncertainty classifiers (\texttt{entropy\_base} with \texttt{distilgpt2} and \texttt{entropy\_upgraded} with \texttt{Qwen/Qwen2.5-1.5B-Instruct}), a semantic SVM built from sentence-transformer interactions, a context-sensitive RAG comparison model based on the confidence shift $\Delta\bar{\ell}$, and an NLI evidence model using \texttt{roberta-large-mnli}. Together they represent shallow lexical cues, surrogate uncertainty, semantic compatibility, and evidence alignment.
 
 \subsection{Hybrid and Joint Reasoning Models}
 
-\textbf{Lexical and Semantic Hybrids} (\texttt{lexical\_hybrid\_svm},  \texttt{semantic\_hybrid\_svm}). These architectures broaden individual model capabilities by augmenting sparse lexical or dense semantic interaction vectors directly with standardized uncertainty scalars ($\mathbf{x}_{\text{unc}}$).
-
-\textbf{Evidence-Aware Hybrid} (\texttt{evidence\_aware\_hybrid}). This system aggregates multi-modal feature families into a single feature representation:
-\begin{equation}
-  \mathbf{x} = \bigl[\mathbf{x}_{\text{semantic\_interact}};\ \mathbf{x}_{\text{unc}};
-                      \ \Delta\bar{\ell};\ p_{\text{entail}}\bigr],
-\end{equation}
-which is passed into an $L_2$-regularised linear layer. This tests whether meaning structures, raw base uncertainties and grounding metrics carry complementary diagnostic signals.
-
-\textbf{Cross-Encoder} (\texttt{cross\_encoder}). Our upper-bound baseline utilises full cross-attention modelling. We initialise a sequence classifier from a \texttt{distilroberta-base} trunk, packing inputs as \texttt{[CLS] q [SEP] a [SEP]}. Unlike frozen bi-encoder approaches, the cross-encoder is fine-tuned end-to-end on the training split, allowing the self-attention heads to dynamically weight precise tokens in the question against the candidate answer text.
+We also train four joint models: lexical and semantic hybrids that append uncertainty features to the corresponding base representations, an Evidence-Aware Hybrid that combines semantic, uncertainty, context-shift, and NLI signals, and a fine-tuned \texttt{distilroberta-base} cross-encoder as an upper-bound supervised baseline.
 
 \subsection{Ablation Study Design}
 
-Four configurations isolate feature group contributions
-(\texttt{scripts/run\_ablation.py}):
-\textit{lexical\_only} (TF-IDF only),
-\textit{uncertainty\_only} (logprob scalars only),
-\textit{hybrid\_no\_context} (TF-IDF + logprob, no $\Delta\bar{\ell}$) and
-\textit{hybrid\_with\_context} (full feature set, identical to the proposed model). Ablation metrics JSON files record feature counts, data sizes, class distributions and optimizer convergence status for each setting.
+Four ablations isolate feature-group contributions: \textit{lexical\_only}, \textit{uncertainty\_only}, \textit{hybrid\_no\_context}, and \textit{hybrid\_with\_context}.
 
 % ============================================================
 \section{Experiments}
@@ -140,11 +177,19 @@ Four configurations isolate feature group contributions
 
 \subsection{Setup}
 
-All experiments run on CPU with \texttt{Python~3.11}, \texttt{PyTorch~2.4}, \texttt{Transformers~4.44}, \texttt{scikit-learn~1.5} \cite{pedregosa2011sklearn} and dependencies pinned in \texttt{requirements.txt}. Model weights are downloaded automatically via the Hugging Face Hub. All randomness is controlled by fixed seeds; results are fully reproducible from \texttt{README.md}. We report Accuracy, Precision, Recall and macro-averaged F1 on the validation split. A random baseline achieves 50\% accuracy on the balanced splits.
+The experiments use \texttt{Python~3.11}, \texttt{PyTorch~2.4},
+\texttt{Transformers~4.44}, \texttt{scikit-learn~1.5}
+\cite{pedregosa2011sklearn}, and dependencies pinned in
+\texttt{requirements.txt}. The classification runs are fully local and
+reproducible; some heavier generation and scoring steps can additionally use
+GPU when available. Model weights are downloaded automatically via the Hugging
+Face Hub. All randomness is controlled by fixed seeds. We report Accuracy,
+Precision, Recall and macro-averaged F1 on the validation split. A random
+baseline achieves 50\% accuracy on the balanced splits.
 
 \subsection{Classification Results}
 
-Table~\ref{tab:main_results} summarises performance across all ten methods. The Evidence-Aware Hybrid achieves the highest AUROC (0.9951), while the fine-tuned Cross-Encoder leads on Accuracy and Macro F1 (0.9815), confirming that joint semantic and evidence-grounding signals push performance well beyond standalone uncertainty features (RQ3). Among single-signal baselines, the Semantic SVM is the strongest individual method, outperforming both entropy classifiers—unsurprisingly, given that dense semantic interaction better captures factual meaning than token-level log-probability from a generalist surrogate. RAG Compare and NLI Evidence achieve intermediate performance; the $\Delta\bar{\ell}$ signal and the NLI entailment score are individually informative but noisier than lexical or semantic features. All methods exceed the 50\% random baseline. Figure~\ref{fig:confusion} shows the full validation confusion matrices for each baseline, illustrating the asymmetric error patterns (false positive vs.\ false negative rates) that motivate the per-class error analysis in Section~\ref{sec:error}.
+Table~\ref{tab:main_results} summarises performance across all ten methods. The Evidence-Aware Hybrid achieves the highest AUROC (0.9951), while the fine-tuned Cross-Encoder leads on Accuracy and Macro F1 (0.9815). Among single-signal baselines, the Semantic SVM is strongest; both entropy baselines trail the richer semantic and hybrid approaches.
 
 \begin{table}[t]
   \centering
@@ -173,19 +218,9 @@ Table~\ref{tab:main_results} summarises performance across all ten methods. The 
   \end{tabular}
 \end{table}
 
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=\textwidth]{fig_confusion}
-  \caption{Validation confusion matrices across all ten baseline models.
-           Rows indicate true class; columns indicate predicted class.
-           RAG Compare Fixed and NLI Evidence show markedly higher
-           false-positive rates compared to lexical and semantic models.}
-  \label{fig:confusion}
-\end{figure}
-
 \subsection{Ablation Results}
 
-Table~\ref{tab:ablation} reports the ablation study for the lexical-uncertainty model family on the HaluEval QA validation split. Lexical features already provide a strong baseline (Macro F1 = 0.9390). Uncertainty features alone are substantially weaker under the default classification threshold (Macro F1 = 0.7152), although their AUROC remains high (0.9740), indicating that they retain useful ranking signal even when used in isolation. Combining lexical and uncertainty features yields a modest improvement over the lexical-only setting (\textit{hybrid\_no\_context}). Adding the context-delta features produces the strongest ablation result overall, reaching 0.9735 Accuracy, 0.9735 Macro F1, and 0.9919 AUROC. This directly supports RQ2: retrieval-conditioned context contributes substantial signal beyond memory-only lexical and uncertainty features.
+Table~\ref{tab:ablation} reports the ablation study for the lexical-uncertainty model family on the HaluEval QA validation split. Lexical features already provide a strong baseline (Macro F1 = 0.9390). Uncertainty features alone are substantially weaker under the default threshold (Macro F1 = 0.7152), although their AUROC remains high (0.9740), indicating useful ranking signal even in isolation. Adding the context-delta features produces the strongest ablation result overall, directly supporting RQ2.
 
 \begin{table}[t]
   \centering
@@ -204,52 +239,41 @@ Table~\ref{tab:ablation} reports the ablation study for the lexical-uncertainty 
   \end{tabular}
 \end{table}
 
-\subsection{External Validation on TruthfulQA}
+\subsection{Transfer Evaluation}
 
-To test whether the HaluEval QA results transfer beyond a paired benchmark, we
-evaluated the trained detectors on an external TruthfulQA-derived evaluation
-set. We convert the TruthfulQA generation split into the same binary
-classification format by pairing each question's canonical answer with one
-incorrect answer, producing 1,634 evaluation rows without retraining the
-classifiers on TruthfulQA. This experiment is deliberately out-of-domain: the
-models are still trained on HaluEval QA, and only the evaluation distribution
-changes.
-
-Table~\ref{tab:truthfulqa_transfer} shows a sharp transfer gap for most of the
-strongest HaluEval models. The fine-tuned Cross-Encoder falls from 0.9815 to
-0.5477 Accuracy, while the Semantic SVM drops from 0.9695 to 0.5208 and the
-Entropy Base model drops from 0.9426 to 0.5024. By contrast, evidence-grounded
-methods generalise substantially better. NLI Evidence improves from 0.7877 to
-0.9694 Accuracy and from 0.7943 to 0.9943 AUROC, while RAG Compare Fixed rises
-from 0.7522 to 0.8635 Accuracy. The Evidence-Aware Hybrid still degrades in
-thresholded classification, but it retains a relatively strong AUROC of 0.8665,
-far above the pure lexical, semantic, and entropy baselines.
-
-This contrast supports an important interpretation of the teacher's criticism:
-high HaluEval performance is not the same as broad hallucination-detection
-robustness. The lexical, semantic, and supervised cross-attention models appear
-to exploit dataset-specific answer patterns that do not survive transfer to
-TruthfulQA, whereas methods tied more directly to evidence support remain
-effective. The external evaluation therefore strengthens the paper's main claim
-by narrowing it: uncertainty and semantic compatibility are useful within
-HaluEval, but evidence-aware signals are the most robust family under
-distribution shift.
+To test external validity, we evaluated the HaluEval-trained detectors on two
+out-of-domain settings: a TruthfulQA-derived binary evaluation set (1,634 rows)
+and a harder set of 817 \texttt{Qwen/Qwen2.5-1.5B-Instruct} generations from
+TruthfulQA questions. Table~\ref{tab:transfer_summary} shows the main pattern.
+High HaluEval accuracy does not transfer reliably. The Cross-Encoder drops from
+0.9815 to 0.5477 on TruthfulQA pairs and 0.4712 on Qwen-generated answers; the
+Semantic SVM drops from 0.9695 to 0.5208 and 0.4749; the Entropy Base model
+falls from 0.9426 to 0.5024 and 0.4847. Evidence-grounded methods transfer
+better on benchmark-written TruthfulQA answers, especially NLI Evidence
+(0.9694 Accuracy, 0.9943 AUROC), but they also weaken sharply on the
+Qwen-generated set. We interpret that second result more cautiously than the
+canonical TruthfulQA transfer table, because a post-hoc audit revealed prompt
+leakage and weak automatic NLI labels in part of the generated evaluation set.
+Even with that caveat, the main qualitative pattern remains useful: the
+pipeline is no longer evaluated only inside HaluEval, and the transfer gap is
+explicit rather than assumed.
 
 \begin{table}[t]
   \centering
-  \caption{Cross-dataset transfer from HaluEval QA training to TruthfulQA evaluation. Selected baselines are shown to highlight the contrast between high in-domain performance and out-of-domain generalisation.}
-  \label{tab:truthfulqa_transfer}
-  \renewcommand{\arraystretch}{1.1}
-  \begin{tabular}{lccc}
+  \caption{Transfer performance from HaluEval QA training to two out-of-domain evaluation sets.}
+  \label{tab:transfer_summary}
+  \renewcommand{\arraystretch}{1.08}
+  \small
+  \begin{tabular}{lccccc}
     \toprule
-    \textbf{Method} & \textbf{HaluEval Acc.} & \textbf{TruthfulQA Acc.} & \textbf{TruthfulQA AUROC} \\
+    \textbf{Method} & \textbf{HaluEval} & \textbf{TruthfulQA} & \textbf{TQA AUROC} & \textbf{Qwen-Gen} & \textbf{QG AUROC} \\
     \midrule
-    Cross-Encoder (FT)    & 0.9815 & 0.5477 & 0.5764 \\
-    Entropy Base          & 0.9426 & 0.5024 & 0.4863 \\
-    Semantic SVM          & 0.9695 & 0.5208 & 0.4750 \\
-    Evidence-Aware Hybrid & 0.9770 & 0.5967 & 0.8665 \\
-    NLI Evidence          & 0.7877 & 0.9694 & 0.9943 \\
-    RAG Compare Fixed     & 0.7522 & 0.8635 & 0.9514 \\
+    Cross-Encoder    & 0.9815 & 0.5477 & 0.5764 & 0.4712 & 0.4924 \\
+    Entropy Base     & 0.9426 & 0.5024 & 0.4863 & 0.4847 & 0.5062 \\
+    Semantic SVM     & 0.9695 & 0.5208 & 0.4750 & 0.4749 & 0.4344 \\
+    Evidence-Aware   & 0.9770 & 0.5967 & 0.8665 & 0.4847 & 0.4832 \\
+    NLI Evidence     & 0.7877 & 0.9694 & 0.9943 & 0.5129 & 0.7034 \\
+    RAG Compare      & 0.7522 & 0.8635 & 0.9514 & 0.4847 & 0.5506 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -259,19 +283,57 @@ distribution shift.
 \label{sec:error}
 % ============================================================
 
-We analyse false positives (FP), false negatives (FN) and overconfident errors across all baseline models using \texttt{scripts/run\_error\_analysis.py} and stratify error rates by answer length bucket and relative decision-margin confidence quintile. The resulting distributions, shown in Figures~\ref{fig:error_length} and~\ref{fig:error_confidence}, reveal systematic failure patterns that cut across model families and motivate specific directions for future improvement.
+We analyse errors by answer length and decision-margin confidence because raw
+aggregate metrics hide distinct failure modes. Figure~\ref{fig:combined_errors}
+shows that lexical, uncertainty, semantic, and evidence-based systems break
+down under different conditions even when their headline scores are all high.
 
-\textbf{False positives (factual answers flagged as hallucinated).} 
-False positives cluster around answers that use hedged language (e.g., ``approximately'', ``it is believed that'') or rare named entities. The TF-IDF component likely associates these hedges with hallucinated training examples, while \texttt{distilgpt2} assigns low log-probabilities to rare proper nouns, compounding the false alarm. Adding named-entity features or a larger scorer could reduce this pattern.
+\textbf{Short answers are the hardest subgroup.} Across nearly all baselines,
+error rates peak in the shortest answer bucket and drop as answers become
+longer. This is intuitive once we inspect the feature families. Short responses
+contain fewer informative n-grams, fewer tokens over which log-probability
+statistics can stabilize, and less semantic structure for interaction models to
+use. Many HaluEval hallucinations are also short and stylistically plausible,
+so they can look like normal factual answers unless the model has access to a
+strong evidence signal. This is consistent with the broader phenomenon of
+high-confidence hallucination, where wrong answers can remain locally fluent and
+confident despite being factually unsupported~\cite{zhang2023highcert}. In this
+regime, even small wording choices can dominate the decision boundary.
 
-\textbf{False negatives (missed hallucinations).} 
-False negatives are dominated by hallucinated answers that are \emph{lexically similar} to factual ones—short, fluent statements that neither trigger unusual n-gram patterns nor receive low log-probabilities from \texttt{distilgpt2}. This reflects the \emph{high-certainty hallucination} phenomenon~\cite{zhang2023highcert}: models can generate incorrect content with high confidence, making uncertainty-based detectors ineffective for this subtype.
+This finding turns a reviewer criticism into a concrete modeling diagnosis. We
+tested a length-aware extension of the Evidence-Aware Hybrid using
+separate short/long experts with a 40-token threshold. However, it did not
+improve results (Accuracy 0.9770 $\rightarrow$ 0.9760; AUROC 0.9951
+$\rightarrow$ 0.9950). The likely reason is that HaluEval is overwhelmingly
+short-form under this definition, so the split does not create two genuinely
+different learning regimes. In other words, the weakness is real, but a naive
+bucketed solution is not enough. Better short-answer handling will likely
+require stronger entity matching, tighter evidence comparison, or calibration
+strategies designed specifically for brief and underspecified claims.
 
-\textbf{Answer-length stratification.} 
-Figure~\ref{fig:error_length} confirms a consistent pattern across all models: error rates peak in the short-answer bucket (0--40 tokens) and decrease substantially for longer answers. Short answers provide limited TF-IDF signal and few tokens for log-probability aggregation, making both lexical and uncertainty features less discriminative. RAG Compare Fixed shows the most pronounced short-answer vulnerability (32.8\%), while the Cross-Encoder reduces this to 2.8\% by leveraging cross-attention over the full question-answer pair. Hybrid models fall between these extremes, benefiting from complementary signals without fully closing the short-answer gap. This pattern is important enough to treat as a modeling issue rather than only an error-analysis observation: short answers likely require length-aware handling, such as explicit answer-length features, separate thresholds or classifiers for short responses, and stronger entity- or evidence-matching signals when only a few plausible tokens are available.
+\textbf{Evidence-only signals are more overconfident.} The confidence
+stratification also reveals an important contrast between model families.
+Lexical and semantic models concentrate most of their errors in the lowest
+confidence region; once they become even moderately confident, their error rates
+fall quickly. By contrast, evidence-comparison baselines such as RAG Compare
+and, to a lesser extent, NLI Evidence retain noticeable errors even at higher
+decision margins. This suggests that the raw confidence shift caused by adding
+context is not a clean factuality score by itself. A large or small
+$\Delta\bar{\ell}$ may reflect stylistic compatibility with the added context,
+surface overlap, or quirks of the surrogate language model rather than true
+grounding.
 
-\textbf{Confidence-calibration stratification.} 
-Figure~\ref{fig:error_confidence} plots error rates across relative decision-margin quintiles, where Q1 (lowest) corresponds to the least confident predictions within each model. Two distinct regimes emerge. Lexical and semantic models concentrate virtually all errors in Q1: once they reach even modest decision confidence, error rates drop below 3\%. This indicates well-calibrated decision boundaries for these architectures. By contrast, RAG Compare Fixed and NLI Evidence maintain substantial error rates even in higher-confidence quintiles (Q4--Q5), with RAG Compare Fixed sustaining 19.5\% error at maximum confidence. This overconfidence in evidence-comparison baselines arises because the log-probability delta signal is inherently noisy: the magnitude of $\Delta\bar{\ell}$ does not reliably scale with factual correctness, so the model commits to wrong predictions with high apparent certainty. The Evidence-Aware Hybrid largely resolves this: combining the delta with semantic and entailment features suppresses overconfident failures to near zero beyond Q2.
+\textbf{Hybrid models fail more gracefully.} The best joint systems reduce
+exactly these brittle behaviors. The Evidence-Aware
+Hybrid combines semantic interaction, NLI support, and uncertainty summaries,
+and its error profile is much flatter in the high-confidence region than the
+evidence-only baselines. This supports the broader interpretation of the paper:
+uncertainty and evidence signals are useful, but they are strongest when they
+act as complementary constraints rather than as standalone decision rules. The
+error analysis therefore reinforces the main quantitative results. The problem
+is not that uncertainty is useless; it is that isolated uncertainty and
+isolated evidence shifts remain too fragile on the most ambiguous, short, and
+plausible answers.
 
 \begin{figure}[H]
   \centering
@@ -298,45 +360,46 @@ Figure~\ref{fig:error_confidence} plots error rates across relative decision-mar
 % ============================================================
 \raggedbottom
 
-\textbf{Interpretation.} Our results give a nuanced picture. The entropy
-classifiers —the most direct test of the uncertainty hypothesis— reach strong
-standalone performance (Entropy Base: 0.9425 Macro F1), but they trail the
-semantic and cross-attention models, indicating that token-level log-probabilities
-from \texttt{distilgpt2} carry genuine yet non-dominant signal. Two findings
-refine this. First, substituting a stronger instruction-tuned surrogate
-(\texttt{Qwen2.5-1.5B-Instruct}) did not help: Entropy Upgraded reaches only
-0.9231 Macro F1, below the \texttt{distilgpt2} baseline, so a more capable
-generative model does not automatically produce a more discriminative confidence
-signal. A plausible explanation is that teacher-forced likelihood mostly measures
-how fluent and locally plausible a candidate answer appears under the surrogate,
-not whether the answer is factually correct. Instruction tuning can even amplify
-this mismatch: a chat-optimised model may assign relatively high probability to
-concise, polished, but false answers because those answers match its preferred
-response style. In addition, the two backbones differ in tokenization and prompt
-formatting, so their log-probability scales are not directly comparable; the
-downstream classifier therefore receives a different uncertainty geometry rather
-than a simple ``better version'' of the same signal. This helps explain why the
-upgraded backbone underperforms most clearly on the short, plausible answers
-highlighted in the error analysis, where only a few confident tokens can make a
-hallucination look natural. Second, the ablation shows that uncertainty features are threshold-sensitive
-in isolation—their Macro F1 falls to 0.7152 under the default cutoff while their
-AUROC stays high (0.9740)—so the ranking signal is informative but poorly
-calibrated on its own. The hybrid models nonetheless demonstrate that uncertainty
-features add consistent value on top of lexical and semantic cues, and the RAG
-delta feature provides the single largest marginal gain in the ablation study
-(\textit{hybrid\_no\_context} 0.9446 $\rightarrow$ \textit{hybrid\_with\_context}
-0.9735 Macro F1), supporting the intuition that the \emph{change} in model
-confidence when evidence is provided is more diagnostic than absolute confidence
-alone. The fine-tuned Cross-Encoder and Evidence-Aware Hybrid confirm that rich,
-multi-signal representations approach near-optimal performance on this benchmark,
-with the Evidence-Aware Hybrid achieving an AUROC of 0.9951. Taken together,
-these results argue against treating \texttt{distilgpt2} as the main epistemic
-solution; it is better understood as a useful low-cost baseline whose signal
-becomes meaningful when fused with stronger semantic or evidence-aware features.
+\textbf{Interpretation.} Our results support a narrower claim than a generic
+``hallucination detector'' story. Token-level log-probability features from
+\texttt{distilgpt2} carry real signal, but they are not the strongest standalone
+family and work best when combined with semantic or evidence-aware features.
+Replacing \texttt{distilgpt2} with \texttt{Qwen2.5-1.5B-Instruct} did not help:
+the upgraded entropy baseline drops from 0.9425 to 0.9231 Macro F1, suggesting
+that stronger next-token modeling does not automatically yield a more useful
+factuality signal. The ablation and hybrid results point to the same practical
+lesson: uncertainty is complementary, not sufficient, and the change in model
+confidence after adding evidence is more informative than raw confidence alone.
 
-\textbf{Limitations and Future Work.} The strongest limitation of this study is external validity. All supervised training and most analysis are performed on HaluEval QA, a paired benchmark whose balanced construction can reward dataset-specific artifacts alongside genuine factuality cues. The high performance of lexical and semantic classifiers should therefore not be interpreted as proof of robust open-domain hallucination detection on arbitrary GPT-4-, Llama-, or Qwen-style generations. A second limitation is that the white-box uncertainty signal comes from a local surrogate model, primarily \texttt{distilgpt2}, rather than from the generator that originally produced the answer. This makes the uncertainty experiments reproducible and inexpensive, but it weakens the claim that the measured probabilities directly reflect the source model's epistemic state. More generally, token log-probabilities from a small surrogate should be treated as only one family of uncertainty signals. Stronger alternatives include semantic entropy~\cite{kuhn2023semantic}, which clusters multiple sampled generations by meaning before computing uncertainty, and black-box self-consistency methods such as SelfCheckGPT, which estimate reliability from agreement across repeated samples. Third, the current evaluation shows that short answers remain disproportionately difficult, indicating that token-level uncertainty and surface-form features are less informative when the answer contains only a few plausible tokens. This is not just a descriptive weakness: it suggests the detector should be redesigned to become length-aware, for example by adding answer-length buckets as explicit features, training separate short-answer thresholds or experts, and relying more heavily on entity- and evidence-based checks for brief responses. Future work should therefore prioritise cross-dataset transfer, open-domain generation benchmarks, stronger or black-box uncertainty surrogates, and short-answer-aware modeling. Formalising Expected Calibration Error (ECE) and Brier scores across all validation splits remains a future target.
+\textbf{Limitations and Future Work.} The main limitation remains external
+validity. Although we now evaluate on both TruthfulQA-derived pairs and
+Qwen-generated TruthfulQA answers, all supervised training is still done on
+HaluEval QA, whose paired construction can reward dataset-specific artifacts.
+The uncertainty signal is also taken from a surrogate model rather than from
+the original generator, so it should be interpreted as a cheap proxy rather
+than a direct measure of the source model's epistemic state. In addition, the
+Qwen-generated TruthfulQA evaluation set was labeled automatically using NLI,
+and our audit found noticeable prompt leakage and many low-margin label
+decisions; that generated-output experiment is therefore best read as
+indicative rather than fully clean ground truth. Short answers also remain a
+genuine weakness: we tested a simple length-aware expert split, but it did not
+improve results because HaluEval is overwhelmingly short-form. The next step is
+therefore not merely ``add a length feature,'' but to move toward stronger
+uncertainty families such as semantic entropy~\cite{kuhn2023semantic} or
+self-consistency, train or calibrate on more realistic open-domain
+generations, and design short-answer handling that relies more on entity and
+evidence matching than on coarse length buckets.
 
-\textbf{Conclusion.} We presented an end-to-end, locally executable pipeline for studying hallucination detection on HaluEval QA through ten complementary baselines, hybrid models, an ablation study, and a structured error analysis. The results support a narrower but stronger conclusion than a generic ``hallucination detector'' claim: token-level log-probability signals from a lightweight surrogate provide useful ranking information, but they are not sufficient by themselves and are consistently outperformed by richer semantic and evidence-aware representations. Combining uncertainty with stronger features yields reliable gains within the benchmark, while the error analysis shows that short answers and artifact-sensitive cases remain the main unresolved failure modes. A practical implication is that future detectors should not treat answer length as incidental; short responses need explicit length-aware and evidence-aware handling rather than the same decision rule used for longer generations. The main contribution of the project is therefore methodological and diagnostic: it offers a reproducible framework for comparing uncertainty, semantic, and evidence-based signals under controlled conditions, while making clear that open-domain generalisation remains an open problem and that stronger uncertainty families such as semantic-entropy and self-consistency methods are the natural next step beyond \texttt{distilgpt2}.
+\textbf{Conclusion.} We presented a reproducible pipeline for comparing
+uncertainty, semantic, and evidence-based hallucination detectors on HaluEval
+QA. Within the benchmark, hybrid and cross-attentive models perform extremely
+well. Outside it, however, performance drops sharply, and the Qwen-generated
+evaluation further suggests that real model outputs are harder than
+benchmark-written answers, even though that generated set still contains label
+noise and prompt artifacts. The main contribution of the project is therefore
+methodological and diagnostic: it shows where cheap uncertainty signals help,
+where they fail, and why open-domain hallucination detection still requires
+stronger generation-aware and evidence-aware modeling.
 
 \pagebreak
 % ============================================================

@@ -3,68 +3,62 @@
 \providecommand\HyField@AuxAddToFields[1]{}
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \citation{ji2023survey}
-\citation{brown2020gpt3}
-\citation{wei2022emergent}
-\citation{maynez2020faithfulness}
-\citation{ji2023survey}
-\citation{mallen2023trust}
+\citation{brown2020gpt3,wei2022emergent}
+\citation{hullermeier2021aleatoric}
+\citation{guo2017calibration}
 \@writefile{toc}{\contentsline {title}{Epistemic Uncertainty in LLM Hallucinations}{1}{chapter.1}\protected@file@percent }
 \@writefile{toc}{\authcount {3}}
 \@writefile{toc}{\contentsline {author}{Ata T\"{u}rky{\i }lmaz \and Berkhan Karg{\i }l{\i } \and Atakan Kumbarac{\i }}{1}{chapter.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1.1}\protected@file@percent }
 \newlabel{sec:intro}{{1}{1}{Introduction}{section.1.1}{}}
-\citation{lin2022truthfulqa}
-\citation{min2023factscore}
-\citation{hullermeier2021aleatoric}
-\citation{guo2017calibration}
+\citation{li2023halueval}
+\citation{maynez2020faithfulness,mallen2023trust}
 \citation{radford2019gpt2}
 \citation{li2023halueval}
-\citation{ji2023survey}
-\citation{li2023halueval}
+\citation{lin2022truthfulqa}
+\citation{min2023factscore}
 \citation{kadavath2022know}
 \citation{guo2017calibration}
 \citation{kuhn2023semantic}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.1.2}\protected@file@percent }
+\newlabel{sec:related}{{2}{2}{Related Work}{section.1.2}{}}
 \citation{lewis2020rag}
 \citation{manakul2023selfcheck}
 \citation{li2023halueval}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.1.2}\protected@file@percent }
-\newlabel{sec:related}{{2}{3}{Related Work}{section.1.2}{}}
+\citation{radford2019gpt2}
 \@writefile{toc}{\contentsline {section}{\numberline {3}Methodology}{3}{section.1.3}\protected@file@percent }
 \newlabel{sec:method}{{3}{3}{Methodology}{section.1.3}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset and Problem Formulation}{3}{subsection.1.3.1}\protected@file@percent }
 \newlabel{sec:data}{{3.1}{3}{Dataset and Problem Formulation}{subsection.1.3.1}{}}
-\citation{radford2019gpt2}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Local Language Model Scoring}{4}{subsection.1.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Single-Signal Baselines}{4}{subsection.1.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Local Language Model Scoring}{3}{subsection.1.3.2}\protected@file@percent }
 \citation{pedregosa2011sklearn}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Hybrid and Joint Reasoning Models}{5}{subsection.1.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Ablation Study Design}{5}{subsection.1.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{5}{section.1.4}\protected@file@percent }
-\newlabel{sec:experiments}{{4}{5}{Experiments}{section.1.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Setup}{5}{subsection.1.4.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comprehensive hallucination detection results on the HaluEval QA validation split. Best results per metric are in bold.}}{6}{table.caption.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Single-Signal Baselines}{4}{subsection.1.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Hybrid and Joint Reasoning Models}{4}{subsection.1.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Ablation Study Design}{4}{subsection.1.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Experiments}{4}{section.1.4}\protected@file@percent }
+\newlabel{sec:experiments}{{4}{4}{Experiments}{section.1.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Setup}{4}{subsection.1.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Classification Results}{4}{subsection.1.4.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comprehensive hallucination detection results on the HaluEval QA validation split. Best results per metric are in bold.}}{5}{table.caption.2}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
-\newlabel{tab:main_results}{{1}{6}{Comprehensive hallucination detection results on the HaluEval QA validation split. Best results per metric are in bold}{table.caption.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Classification Results}{6}{subsection.1.4.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Ablation Results}{6}{subsection.1.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Validation confusion matrices across all ten baseline models. Rows indicate true class; columns indicate predicted class. RAG Compare Fixed and NLI Evidence show markedly higher false-positive rates compared to lexical and semantic models.}}{7}{figure.caption.3}\protected@file@percent }
-\newlabel{fig:confusion}{{1}{7}{Validation confusion matrices across all ten baseline models. Rows indicate true class; columns indicate predicted class. RAG Compare Fixed and NLI Evidence show markedly higher false-positive rates compared to lexical and semantic models}{figure.caption.3}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Ablation study: marginal contribution of each feature group on the HaluEval QA validation split (linear SVM classifier, $n=2{,}002$ validation rows).}}{7}{table.caption.4}\protected@file@percent }
-\newlabel{tab:ablation}{{2}{7}{Ablation study: marginal contribution of each feature group on the HaluEval QA validation split (linear SVM classifier, $n=2{,}002$ validation rows)}{table.caption.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}External Validation on TruthfulQA}{7}{subsection.1.4.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Cross-dataset transfer from HaluEval QA training to TruthfulQA evaluation. Selected baselines are shown to highlight the contrast between high in-domain performance and out-of-domain generalisation.}}{8}{table.caption.5}\protected@file@percent }
-\newlabel{tab:truthfulqa_transfer}{{3}{8}{Cross-dataset transfer from HaluEval QA training to TruthfulQA evaluation. Selected baselines are shown to highlight the contrast between high in-domain performance and out-of-domain generalisation}{table.caption.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Error Analysis}{8}{section.1.5}\protected@file@percent }
-\newlabel{sec:error}{{5}{8}{Error Analysis}{section.1.5}{}}
+\newlabel{tab:main_results}{{1}{5}{Comprehensive hallucination detection results on the HaluEval QA validation split. Best results per metric are in bold}{table.caption.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Ablation study: marginal contribution of each feature group on the HaluEval QA validation split (linear SVM classifier, $n=2{,}002$ validation rows).}}{5}{table.caption.3}\protected@file@percent }
+\newlabel{tab:ablation}{{2}{5}{Ablation study: marginal contribution of each feature group on the HaluEval QA validation split (linear SVM classifier, $n=2{,}002$ validation rows)}{table.caption.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Ablation Results}{5}{subsection.1.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Transfer Evaluation}{5}{subsection.1.4.4}\protected@file@percent }
 \citation{zhang2023highcert}
-\newlabel{fig:error_length}{{2a}{10}{Stratification by answer length}{figure.caption.6}{}}
-\newlabel{sub@fig:error_length}{{a}{10}{Stratification by answer length}{figure.caption.6}{}}
-\newlabel{fig:error_confidence}{{2b}{10}{Stratification by confidence}{figure.caption.6}{}}
-\newlabel{sub@fig:error_confidence}{{b}{10}{Stratification by confidence}{figure.caption.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Error rate analyses across baseline models.}}{10}{figure.caption.6}\protected@file@percent }
-\newlabel{fig:combined_errors}{{2}{10}{Error rate analyses across baseline models}{figure.caption.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{10}{section.1.6}\protected@file@percent }
-\newlabel{sec:conclusion}{{6}{10}{Conclusion}{section.1.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Transfer performance from HaluEval QA training to two out-of-domain evaluation sets.}}{6}{table.caption.4}\protected@file@percent }
+\newlabel{tab:transfer_summary}{{3}{6}{Transfer performance from HaluEval QA training to two out-of-domain evaluation sets}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Error Analysis}{6}{section.1.5}\protected@file@percent }
+\newlabel{sec:error}{{5}{6}{Error Analysis}{section.1.5}{}}
+\newlabel{fig:error_length}{{1a}{7}{Stratification by answer length}{figure.caption.5}{}}
+\newlabel{sub@fig:error_length}{{a}{7}{Stratification by answer length}{figure.caption.5}{}}
+\newlabel{fig:error_confidence}{{1b}{7}{Stratification by confidence}{figure.caption.5}{}}
+\newlabel{sub@fig:error_confidence}{{b}{7}{Stratification by confidence}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Error rate analyses across baseline models.}}{7}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:combined_errors}{{1}{7}{Error rate analyses across baseline models}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{7}{section.1.6}\protected@file@percent }
+\newlabel{sec:conclusion}{{6}{7}{Conclusion}{section.1.6}{}}
 \citation{kuhn2023semantic}
 \bibcite{ji2023survey}{1}
 \bibcite{li2023halueval}{2}
@@ -83,4 +77,4 @@
 \bibcite{mallen2023trust}{15}
 \bibcite{lin2022truthfulqa}{16}
 \bibcite{min2023factscore}{17}
-\gdef \@abspage@last{13}
+\gdef \@abspage@last{9}
