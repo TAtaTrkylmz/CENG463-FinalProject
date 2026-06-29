@@ -92,6 +92,48 @@ def _fit_dense_linear_svm(
     return model.predict(x_eval), model.decision_function(x_eval), model
 
 
+def _fit_length_aware_linear_svm(
+    x_train: np.ndarray,
+    y_train: pd.Series,
+    train_short_mask: np.ndarray,
+    x_eval: np.ndarray,
+    eval_short_mask: np.ndarray,
+) -> tuple[np.ndarray, np.ndarray, dict[str, float]]:
+    fallback_predictions, fallback_scores, fallback_model = _fit_dense_linear_svm(x_train, y_train, x_eval)
+    predictions = fallback_predictions.copy()
+    scores = fallback_scores.copy()
+
+    diagnostics: dict[str, float] = {
+        "short_train_rows": float(train_short_mask.sum()),
+        "long_train_rows": float((~train_short_mask).sum()),
+        "short_eval_rows": float(eval_short_mask.sum()),
+        "long_eval_rows": float((~eval_short_mask).sum()),
+        "short_model_used": 0.0,
+        "long_model_used": 0.0,
+        "optimizer_n_iter": float(fallback_model.n_iter_),
+    }
+
+    for bucket_name, train_mask, eval_mask in (
+        ("short", train_short_mask, eval_short_mask),
+        ("long", ~train_short_mask, ~eval_short_mask),
+    ):
+        if not eval_mask.any():
+            continue
+        if train_mask.sum() < 2 or len(np.unique(y_train[train_mask])) < 2:
+            continue
+        bucket_predictions, bucket_scores, bucket_model = _fit_dense_linear_svm(
+            x_train[train_mask],
+            y_train[train_mask],
+            x_eval[eval_mask],
+        )
+        predictions[eval_mask] = bucket_predictions
+        scores[eval_mask] = bucket_scores
+        diagnostics[f"{bucket_name}_model_used"] = 1.0
+        diagnostics[f"{bucket_name}_optimizer_n_iter"] = float(bucket_model.n_iter_)
+
+    return predictions, scores, diagnostics
+
+
 def _merge_text_and_uncertainty(
     text_path: str | Path,
     memory_path: str | Path,
@@ -868,6 +910,116 @@ def run_evidence_aware_hybrid(
             "nli_model": nli_model_name,
             "feature_count_total": float(x_train.shape[1]),
             "optimizer_n_iter": float(model.n_iter_),
+        }
+    )
+    return output, metrics
+
+
+def run_evidence_aware_length_hybrid(
+    train_text_path: str | Path,
+    train_memory_path: str | Path,
+    eval_text_path: str | Path,
+    eval_memory_path: str | Path,
+    semantic_model_name: str = DEFAULT_SEMANTIC_MODEL,
+    nli_model_name: str = DEFAULT_NLI_MODEL,
+    batch_size: int = 16,
+    semantic_max_length: int = 256,
+    nli_max_length: int = 384,
+    device: str | None = None,
+    feature_cache_dir: str | Path | None = None,
+    short_token_threshold: int = 40,
+) -> tuple[pd.DataFrame, dict[str, float]]:
+    train = _merge_text_and_uncertainty(train_text_path, train_memory_path)
+    eval_frame = _merge_text_and_uncertainty(eval_text_path, eval_memory_path)
+    _require_columns(train, ["knowledge"], str(train_text_path))
+    _require_columns(eval_frame, ["knowledge"], str(eval_text_path))
+
+    semantic_encoder = TransformerBiEncoder(
+        model_name=semantic_model_name,
+        device=device,
+        max_length=semantic_max_length,
+    )
+    x_train_semantic = _cached_feature_matrix(
+        feature_cache_dir,
+        "semantic",
+        train_text_path,
+        semantic_model_name,
+        semantic_max_length,
+        lambda: _semantic_features(semantic_encoder, train, batch_size),
+    )
+    x_eval_semantic = _cached_feature_matrix(
+        feature_cache_dir,
+        "semantic",
+        eval_text_path,
+        semantic_model_name,
+        semantic_max_length,
+        lambda: _semantic_features(semantic_encoder, eval_frame, batch_size),
+    )
+    del semantic_encoder
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+
+    nli_extractor = NLIProbabilityExtractor(
+        model_name=nli_model_name,
+        device=device,
+        max_length=nli_max_length,
+    )
+    x_train_nli = _cached_feature_matrix(
+        feature_cache_dir,
+        "nli",
+        train_text_path,
+        nli_model_name,
+        nli_max_length,
+        lambda: _nli_features(nli_extractor, train, batch_size),
+    )
+    x_eval_nli = _cached_feature_matrix(
+        feature_cache_dir,
+        "nli",
+        eval_text_path,
+        nli_model_name,
+        nli_max_length,
+        lambda: _nli_features(nli_extractor, eval_frame, batch_size),
+    )
+
+    scaler = StandardScaler()
+    x_train_numeric = scaler.fit_transform(train[FEATURE_COLUMNS].astype(float).to_numpy())
+    x_eval_numeric = scaler.transform(eval_frame[FEATURE_COLUMNS].astype(float).to_numpy())
+    x_train = np.hstack([x_train_semantic, x_train_nli, x_train_numeric]).astype(np.float32)
+    x_eval = np.hstack([x_eval_semantic, x_eval_nli, x_eval_numeric]).astype(np.float32)
+
+    train_short_mask = train["token_count"].astype(float).to_numpy() <= float(short_token_threshold)
+    eval_short_mask = eval_frame["token_count"].astype(float).to_numpy() <= float(short_token_threshold)
+    predictions, scores, diagnostics = _fit_length_aware_linear_svm(
+        x_train,
+        train["label"],
+        train_short_mask,
+        x_eval,
+        eval_short_mask,
+    )
+
+    output, metrics = _attach_predictions(eval_frame, predictions, scores)
+    output["answer_length_bucket"] = np.where(eval_short_mask, "short", "long")
+    for index, column in enumerate(nli_extractor.feature_names):
+        output[column] = x_eval_nli[:, index]
+
+    for bucket_name, mask in (("short", eval_short_mask), ("long", ~eval_short_mask)):
+        if mask.any() and len(np.unique(eval_frame.loc[mask, "label"])) > 1:
+            bucket_metrics = classification_metrics(
+                output.loc[mask, "label"].tolist(),
+                output.loc[mask, "prediction"].tolist(),
+                output.loc[mask, "hallucination_score"].tolist(),
+            )
+            metrics[f"{bucket_name}_accuracy"] = bucket_metrics["accuracy"]
+            metrics[f"{bucket_name}_macro_f1"] = bucket_metrics["macro_f1"]
+
+    metrics.update(
+        {
+            "model_type": "evidence_aware_length_hybrid",
+            "semantic_model": semantic_model_name,
+            "nli_model": nli_model_name,
+            "feature_count_total": float(x_train.shape[1]),
+            "short_token_threshold": float(short_token_threshold),
+            **diagnostics,
         }
     )
     return output, metrics

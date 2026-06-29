@@ -219,7 +219,11 @@ All ten baselines have completed validation runs on the grouped split:
    - Macro F1 decreases from 0.9425 to 0.9231.
    - AUROC decreases from 0.9765 to 0.9654.
    - A stronger generative model therefore does not automatically produce a better hallucination-confidence signal.
-   - Possible causes include chat-template conditioning, tokenization differences, answer-length sensitivity, and instruction tuning producing probabilities optimized for response behavior rather than calibrated factual confidence.
+   - The most likely explanation is that teacher-forced likelihood captures local fluency and stylistic plausibility more directly than factual correctness.
+   - Instruction tuning may sharpen that mismatch by rewarding helpful, well-formed responses even when they are false.
+   - Chat-template conditioning and tokenization differences also change the scale and geometry of the extracted log-probability features, so the upgraded model is not simply a stronger version of the same uncertainty signal.
+   - The degradation is especially consistent with the short-answer failure mode: a brief but plausible hallucination can still receive high confidence from a stronger chat-oriented surrogate.
+   - This means `distilgpt2` should be framed as a cheap reproducible surrogate baseline, not as the project's final uncertainty answer.
 
 2. **Semantic representations clearly outperform TF-IDF.**
    - Semantic SVM improves accuracy from 0.9381 to 0.9695.
@@ -293,6 +297,8 @@ reports/figures/matrix/baseline_comparison_roc_val.png
 ## 9. Next Evaluation Steps
 
 1. Investigate why the instruction-tuned uncertainty features underperform the `distilgpt2` features through feature-distribution and correlation analysis.
-2. Freeze all model, feature, and threshold choices using the completed validation matrix.
-3. Run the ten baselines once on the untouched test split.
-4. Report confidence intervals or paired bootstrap significance tests.
+2. Reframe `distilgpt2` as a low-cost surrogate baseline and compare it against stronger uncertainty families such as semantic entropy or self-consistency sampling.
+3. Freeze all model, feature, and threshold choices using the completed validation matrix.
+4. Run the ten baselines once on the untouched test split.
+5. Report confidence intervals or paired bootstrap significance tests.
+5. Add length-aware evaluation and modeling for the short-answer failure mode, including per-length metrics and short-answer-specific thresholds or features.

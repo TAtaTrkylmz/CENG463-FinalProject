@@ -11,6 +11,7 @@ from llm_uncertainty.baselines import (
     run_cross_encoder_classifier,
     run_entropy_classifier,
     run_evidence_aware_hybrid,
+    run_evidence_aware_length_hybrid,
     run_lexical_hybrid_svm,
     run_lexical_svm,
     run_nli_evidence_zero_shot,
@@ -35,7 +36,7 @@ from llm_uncertainty.representations import (
 )
 
 
-BASELINES = [
+DEFAULT_BASELINES = [
     "lexical_svm",
     "lexical_hybrid_svm",
     "entropy_base",
@@ -48,18 +49,32 @@ BASELINES = [
     "cross_encoder",
 ]
 
+OPTIONAL_BASELINES = [
+    "evidence_aware_length_hybrid",
+]
+
+BASELINES = DEFAULT_BASELINES + OPTIONAL_BASELINES
+
+
+def _dataset_cache_name(path: Path) -> str:
+    name = path.resolve().name.strip()
+    safe = "".join(char if char.isalnum() or char in {"-", "_"} else "_" for char in name)
+    return safe or "dataset"
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Run the complete 10-baseline hallucination-detection experiment."
     )
     parser.add_argument("--data-dir", default="data/processed/halueval_qa")
+    parser.add_argument("--train-data-dir", default=None)
+    parser.add_argument("--eval-data-dir", default=None)
     parser.add_argument("--results-dir", default="results/matrix")
     parser.add_argument("--scored-dir", default="results/scored")
     parser.add_argument("--upgraded-scored-dir", default="results/scored_upgraded")
     parser.add_argument("--reports-dir", default="reports")
     parser.add_argument("--eval-split", choices=["val", "test"], default="val")
-    parser.add_argument("--baselines", nargs="+", choices=BASELINES, default=BASELINES)
+    parser.add_argument("--baselines", nargs="+", choices=BASELINES, default=DEFAULT_BASELINES)
 
     parser.add_argument("--base-model-name", default="distilgpt2")
     parser.add_argument("--upgraded-model-name", default="Qwen/Qwen2.5-1.5B-Instruct")
@@ -92,6 +107,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--learning-rate", type=float, default=2e-5)
     parser.add_argument("--gradient-accumulation-steps", type=int, default=1)
     parser.add_argument("--feature-cache-dir")
+    parser.add_argument("--short-answer-threshold", type=int, default=40)
 
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--seed", type=int, default=42)
@@ -254,28 +270,54 @@ def baseline_runners(args: argparse.Namespace, paths: dict[str, Path]) -> dict[s
             / args.eval_split
             / "model",
         ),
+        "evidence_aware_length_hybrid": lambda: run_evidence_aware_length_hybrid(
+            paths["train"],
+            paths["base_train_memory"],
+            paths["eval"],
+            paths["base_eval_memory"],
+            semantic_model_name=args.semantic_model,
+            nli_model_name=args.nli_model,
+            batch_size=args.batch_size,
+            semantic_max_length=args.semantic_max_length,
+            nli_max_length=args.nli_max_length,
+            device=args.device,
+            feature_cache_dir=feature_cache_dir,
+            short_token_threshold=args.short_answer_threshold,
+        ),
     }
 
 
 def experiment_paths(args: argparse.Namespace) -> dict[str, Path]:
-    data_dir = Path(args.data_dir)
+    train_data_dir = Path(args.train_data_dir or args.data_dir)
+    eval_data_dir = Path(args.eval_data_dir or args.data_dir)
     scored_dir = Path(args.scored_dir)
     upgraded_dir = Path(args.upgraded_scored_dir)
+    train_name = _dataset_cache_name(train_data_dir)
+    eval_name = _dataset_cache_name(eval_data_dir)
+    shared_dataset = train_data_dir.resolve() == eval_data_dir.resolve()
+
+    def score_path(root: Path, dataset_name: str, mode: str, split: str) -> Path:
+        if shared_dataset:
+            return root / mode / f"{split}.jsonl"
+        return root / dataset_name / mode / f"{split}.jsonl"
+
     return {
-        "train": data_dir / "train.jsonl",
-        "eval": data_dir / f"{args.eval_split}.jsonl",
-        "base_train_memory": scored_dir / "memory" / "train.jsonl",
-        "base_eval_memory": scored_dir / "memory" / f"{args.eval_split}.jsonl",
-        "base_train_context": scored_dir / "context" / "train.jsonl",
-        "base_eval_context": scored_dir / "context" / f"{args.eval_split}.jsonl",
-        "upgraded_train_memory": upgraded_dir / "memory" / "train.jsonl",
-        "upgraded_eval_memory": upgraded_dir / "memory" / f"{args.eval_split}.jsonl",
+        "train": train_data_dir / "train.jsonl",
+        "eval": eval_data_dir / f"{args.eval_split}.jsonl",
+        "base_train_memory": score_path(scored_dir, train_name, "memory", "train"),
+        "base_eval_memory": score_path(scored_dir, eval_name, "memory", args.eval_split),
+        "base_train_context": score_path(scored_dir, train_name, "context", "train"),
+        "base_eval_context": score_path(scored_dir, eval_name, "context", args.eval_split),
+        "upgraded_train_memory": score_path(upgraded_dir, train_name, "memory", "train"),
+        "upgraded_eval_memory": score_path(upgraded_dir, eval_name, "memory", args.eval_split),
     }
 
 
 def print_plan(args: argparse.Namespace, paths: dict[str, Path]) -> None:
     print("[dry-run] Complete experiment plan")
     print(f"  data: {args.data_dir}")
+    print(f"  train data dir: {args.train_data_dir or args.data_dir}")
+    print(f"  eval data dir: {args.eval_data_dir or args.data_dir}")
     print(f"  results: {args.results_dir}")
     print(f"  split: {args.eval_split}")
     print(f"  baselines: {', '.join(args.baselines)}")

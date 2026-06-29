@@ -157,6 +157,73 @@ Useful reuse flags:
 - `--skip-report-assets`
 - `--overwrite`
 
+For out-of-domain evaluation, you can keep HaluEval as training data and point evaluation at a different directory with the same JSONL schema:
+
+```bash
+python src/main.py \
+  --train-data-dir data/processed/halueval_qa \
+  --eval-data-dir data/processed/open_domain_gpt_llama \
+  --eval-split val \
+  --skip-prepare
+```
+
+To prepare an external benchmark JSONL, use:
+
+```bash
+python scripts/prepare_open_domain_eval.py \
+  --input data/raw/open_domain_generations.jsonl \
+  --output-dir data/processed/open_domain_gpt_llama \
+  --split val \
+  --source-dataset open_domain_generations \
+  --generator-model gpt-4o-mini
+```
+
+The input JSONL for `prepare_open_domain_eval.py` must contain:
+
+- `question`
+- `candidate_answer`
+- `label`
+
+Optional fields such as `knowledge`, `reference_answer`, `generator_model`, `notes`, and `topic` are preserved.
+
+A ready-to-copy schema example is provided at `data/open_domain_generations.template.jsonl`.
+
+To prepare a real second benchmark directly from TruthfulQA, use:
+
+```bash
+venv/bin/python scripts/prepare_truthfulqa_eval.py \
+  --output-dir data/processed/truthfulqa_eval \
+  --split val \
+  --incorrect-answer-policy first
+```
+
+This creates a balanced external set with one factual and one hallucinated answer per TruthfulQA question, using the canonical answer as the factual row and one incorrect answer as the hallucinated row.
+
+To evaluate on actual model-generated answers instead of benchmark-provided incorrect answers, generate TruthfulQA answers from a model and auto-build an evaluation split:
+
+```bash
+venv/bin/python scripts/generate_truthfulqa_model_outputs.py \
+  --output-dir data/processed/truthfulqa_qwen_generations \
+  --provider hf \
+  --model-name Qwen/Qwen2.5-1.5B-Instruct \
+  --limit 100
+```
+
+For OpenAI models, set `OPENAI_API_KEY` and use `--provider openai --model-name gpt-4o-mini`. The script stores both raw generations and a derived evaluation JSONL compatible with `src/main.py`.
+
+Once you have both in-domain and external results, compare them with:
+
+```bash
+python scripts/compare_domains.py \
+  --source-results results/matrix_halueval \
+  --target-results results/matrix_open_domain \
+  --output reports/tables/halueval_vs_open_domain.csv \
+  --source-label halueval \
+  --target-label open_domain
+```
+
+This produces a baseline-by-baseline table with the source metric, target metric, and delta for Accuracy, Macro F1, and AUROC.
+
 Example: rebuild report assets from already-generated matrix outputs:
 
 ```bash
@@ -173,8 +240,23 @@ The `scripts/` directory contains smaller entry points around the same pipeline:
 - `scripts/run_experimental_matrix.py`: iterate over the 10-baseline matrix through `run_baseline.py`
 - `scripts/run_error_analysis.py`: regenerate comparative error-analysis tables and figures
 - `scripts/evaluate.py`: compute metrics from a saved predictions CSV
+- `scripts/prepare_truthfulqa_eval.py`: build a TruthfulQA-based external evaluation split
+- `scripts/compare_domains.py`: compare in-domain and out-of-domain metrics across baselines
 
 `run_baseline.py` still accepts several legacy aliases such as `entropy`, `rag_compare`, `hybrid_proposed`, and `hybrid_svm` for backward compatibility.
+
+An optional follow-up baseline, `evidence_aware_length_hybrid`, trains separate short-answer and long-answer experts on top of the evidence-aware feature stack. It is not part of the default 10-baseline matrix, but it is available for directly addressing the short-answer failure mode:
+
+```bash
+python scripts/run_baseline.py \
+  --baseline evidence_aware_length_hybrid \
+  --train data/processed/halueval_qa/train.jsonl \
+  --eval data/processed/halueval_qa/val.jsonl \
+  --train-memory results/scored/memory/train.jsonl \
+  --eval-memory results/scored/memory/val.jsonl \
+  --predictions-output results/length_aware/predictions.csv \
+  --metrics-output results/length_aware/metrics.json
+```
 
 ## Expected Runtime Outputs
 

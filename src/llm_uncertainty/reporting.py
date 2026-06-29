@@ -41,6 +41,83 @@ def build_report_table(results_dir: Path, output_path: Path) -> None:
     print(f"Saved report table to {output_path}")
 
 
+def build_domain_comparison_table(
+    source_results_dir: Path,
+    target_results_dir: Path,
+    output_path: Path,
+    *,
+    source_label: str = "in_domain",
+    target_label: str = "out_of_domain",
+) -> None:
+    def load_metrics(results_dir: Path) -> pd.DataFrame:
+        rows = []
+        for path in sorted(results_dir.rglob("metrics.json")):
+            run_name = _run_name(results_dir, path)
+            parts = run_name.split("/")
+            if len(parts) < 2:
+                continue
+            baseline = parts[0]
+            eval_split = parts[1]
+            rows.append(
+                {
+                    "baseline": baseline,
+                    "eval_split": eval_split,
+                    **json.loads(path.read_text(encoding="utf-8")),
+                }
+            )
+        if not rows:
+            raise ValueError(f"No metrics JSON files found under {results_dir}.")
+        return pd.DataFrame(rows)
+
+    source = load_metrics(source_results_dir).rename(
+        columns={
+            "accuracy": f"{source_label}_accuracy",
+            "macro_f1": f"{source_label}_macro_f1",
+            "auroc": f"{source_label}_auroc",
+        }
+    )
+    target = load_metrics(target_results_dir).rename(
+        columns={
+            "accuracy": f"{target_label}_accuracy",
+            "macro_f1": f"{target_label}_macro_f1",
+            "auroc": f"{target_label}_auroc",
+        }
+    )
+
+    merged = source.merge(target, on=["baseline", "eval_split"], how="inner")
+    if merged.empty:
+        raise ValueError(
+            "No overlapping baseline/eval_split pairs were found between the two result directories."
+        )
+
+    for metric in ("accuracy", "macro_f1", "auroc"):
+        left = f"{source_label}_{metric}"
+        right = f"{target_label}_{metric}"
+        if left in merged.columns and right in merged.columns:
+            merged[f"delta_{metric}"] = merged[right] - merged[left]
+
+    preferred_columns = [
+        "baseline",
+        "eval_split",
+        f"{source_label}_accuracy",
+        f"{target_label}_accuracy",
+        "delta_accuracy",
+        f"{source_label}_macro_f1",
+        f"{target_label}_macro_f1",
+        "delta_macro_f1",
+        f"{source_label}_auroc",
+        f"{target_label}_auroc",
+        "delta_auroc",
+    ]
+    ordered = [column for column in preferred_columns if column in merged.columns]
+    ordered += [column for column in merged.columns if column not in ordered]
+    merged = merged.sort_values(["baseline", "eval_split"])[ordered]
+
+    ensure_parent(output_path)
+    merged.to_csv(output_path, index=False)
+    print(f"Saved domain comparison table to {output_path}")
+
+
 def _plot_confusion(y_true: list[int], y_pred: list[int], output_path: Path, title: str) -> None:
     labels = sorted(set(y_true) | set(y_pred))
     matrix = confusion_matrix(y_true, y_pred, labels=labels)

@@ -17,6 +17,30 @@ class SplitPaths:
     test: Path
 
 
+REQUIRED_RECORD_COLUMNS = {"sample_id", "question", "candidate_answer", "label", "label_name"}
+
+
+def _normalize_label(value: Any) -> tuple[int, str]:
+    if isinstance(value, bool):
+        label = int(value)
+    elif isinstance(value, int):
+        label = value
+    elif isinstance(value, str):
+        normalized = value.strip().lower()
+        if normalized in {"0", "factual", "fact", "supported", "true", "correct"}:
+            label = 0
+        elif normalized in {"1", "hallucinated", "hallucination", "unsupported", "false", "incorrect"}:
+            label = 1
+        else:
+            raise ValueError(f"Unsupported label value: {value!r}")
+    else:
+        raise ValueError(f"Unsupported label type: {type(value).__name__}")
+
+    if label not in {0, 1}:
+        raise ValueError(f"Label must be 0 or 1, got {label!r}")
+    return label, "hallucinated" if label == 1 else "factual"
+
+
 def normalize_halueval_qa(limit: int | None = None) -> list[dict[str, Any]]:
     dataset = load_dataset("pminervini/HaluEval", "qa", split="data")
     if limit is not None:
@@ -50,6 +74,52 @@ def normalize_halueval_qa(limit: int | None = None) -> list[dict[str, Any]]:
                 "label_name": "hallucinated",
             }
         )
+    return records
+
+
+def normalize_open_domain_records(
+    rows: list[dict[str, Any]],
+    *,
+    source_dataset: str,
+    source_split: str,
+    source_config: str | None = None,
+    generator_model: str | None = None,
+) -> list[dict[str, Any]]:
+    records: list[dict[str, Any]] = []
+    for index, row in enumerate(rows):
+        if "question" not in row or "candidate_answer" not in row or "label" not in row:
+            raise ValueError(
+                "Each input row must contain question, candidate_answer, and label fields."
+            )
+        label, label_name = _normalize_label(row["label"])
+        sample_id = str(row.get("sample_id") or f"{source_split}-{index:05d}")
+        original_sample_id = row.get("original_sample_id", sample_id)
+        record = {
+            "sample_id": sample_id,
+            "original_sample_id": original_sample_id,
+            "source_dataset": row.get("source_dataset", source_dataset),
+            "source_config": row.get("source_config", source_config),
+            "source_split": row.get("source_split", source_split),
+            "question": str(row["question"]),
+            "knowledge": str(row.get("knowledge", "")),
+            "candidate_answer": str(row["candidate_answer"]),
+            "label": label,
+            "label_name": row.get("label_name", label_name),
+        }
+        if generator_model is not None and "generator_model" not in row:
+            record["generator_model"] = generator_model
+        for optional_key in (
+            "reference_answer",
+            "generator_model",
+            "notes",
+            "topic",
+            "metadata",
+        ):
+            if optional_key in row:
+                record[optional_key] = row[optional_key]
+        records.append(record)
+
+    validate_records(records)
     return records
 
 
@@ -96,6 +166,24 @@ def write_splits(
 
 def load_records(path: str | Path, limit: int | None = None) -> list[dict[str, Any]]:
     records = read_jsonl(path)
+    validate_records(records)
     if limit is not None:
         return records[:limit]
     return records
+
+
+def validate_records(records: list[dict[str, Any]]) -> None:
+    sample_ids: set[str] = set()
+    for index, record in enumerate(records):
+        missing = REQUIRED_RECORD_COLUMNS - set(record)
+        if missing:
+            raise ValueError(f"Record {index} is missing required columns: {sorted(missing)}")
+        sample_id = str(record["sample_id"])
+        if sample_id in sample_ids:
+            raise ValueError(f"Duplicate sample_id detected: {sample_id}")
+        sample_ids.add(sample_id)
+        _, label_name = _normalize_label(record["label"])
+        if str(record["label_name"]).strip().lower() != label_name:
+            raise ValueError(
+                f"Record {sample_id} has label_name={record['label_name']!r}, expected {label_name!r}"
+            )

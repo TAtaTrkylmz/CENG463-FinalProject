@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 import sys
 import json
+import ast
 
 import numpy as np
 import pandas as pd
@@ -12,10 +13,10 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from llm_uncertainty.baselines import _cached_feature_matrix, run_rag_compare_fixed
-from llm_uncertainty.data import write_splits
+from llm_uncertainty.data import normalize_open_domain_records, validate_records, write_splits
 from llm_uncertainty.error_analysis import build_error_analysis
 from llm_uncertainty.io import read_jsonl, write_jsonl
-from llm_uncertainty.reporting import build_comparison_assets
+from llm_uncertainty.reporting import build_comparison_assets, build_domain_comparison_table
 from llm_uncertainty.representations import (
     resolve_nli_label_indices,
     semantic_interaction_features,
@@ -48,6 +49,33 @@ class GroupedSplitTests(unittest.TestCase):
         self.assertFalse(split_groups[0] & split_groups[1])
         self.assertFalse(split_groups[0] & split_groups[2])
         self.assertFalse(split_groups[1] & split_groups[2])
+
+    def test_open_domain_records_are_normalized(self) -> None:
+        rows = [
+            {
+                "question": "Who wrote Hamlet?",
+                "candidate_answer": "William Shakespeare",
+                "label": "factual",
+                "reference_answer": "Shakespeare",
+                "generator_model": "gpt-test",
+            },
+            {
+                "question": "Who wrote Hamlet?",
+                "candidate_answer": "Charles Dickens",
+                "label": "hallucinated",
+            },
+        ]
+
+        records = normalize_open_domain_records(
+            rows,
+            source_dataset="custom_eval",
+            source_split="val",
+        )
+
+        self.assertEqual(records[0]["sample_id"], "val-00000")
+        self.assertEqual(records[0]["label"], 0)
+        self.assertEqual(records[1]["label_name"], "hallucinated")
+        validate_records(records)
 
 
 class RepresentationTests(unittest.TestCase):
@@ -142,6 +170,24 @@ class FixedRagTests(unittest.TestCase):
         self.assertEqual(metrics["model_type"], "rag_compare_fixed")
 
 
+class MainScriptTests(unittest.TestCase):
+    def test_external_eval_uses_dataset_scoped_scored_paths(self) -> None:
+        from main import experiment_paths
+        import argparse
+
+        args = argparse.Namespace(
+            data_dir="data/processed/halueval_qa",
+            train_data_dir="data/processed/halueval_qa",
+            eval_data_dir="data/processed/truthfulqa_eval",
+            scored_dir="results/scored",
+            upgraded_scored_dir="results/scored_upgraded",
+            eval_split="val",
+        )
+        paths = experiment_paths(args)
+        self.assertIn("halueval_qa", str(paths["base_train_memory"]))
+        self.assertIn("truthfulqa_eval", str(paths["base_eval_memory"]))
+
+
 class ReportingTests(unittest.TestCase):
     def test_comparison_assets_are_created(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -170,6 +216,32 @@ class ReportingTests(unittest.TestCase):
             self.assertTrue(
                 (figures_dir / "baseline_comparison_precision_recall_val.png").exists()
             )
+
+    def test_domain_comparison_table_is_created(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source_dir = root / "results_halueval"
+            target_dir = root / "results_open_domain"
+            for result_dir, accuracy in ((source_dir, 0.9), (target_dir, 0.7)):
+                run_dir = result_dir / "entropy_base" / "val"
+                run_dir.mkdir(parents=True)
+                (run_dir / "metrics.json").write_text(
+                    json.dumps({"accuracy": accuracy, "macro_f1": accuracy, "auroc": accuracy}),
+                    encoding="utf-8",
+                )
+
+            output_path = root / "reports" / "tables" / "comparison.csv"
+            build_domain_comparison_table(
+                source_dir,
+                target_dir,
+                output_path,
+                source_label="halueval",
+                target_label="open_domain",
+            )
+
+            frame = pd.read_csv(output_path)
+            self.assertEqual(frame.loc[0, "baseline"], "entropy_base")
+            self.assertAlmostEqual(frame.loc[0, "delta_accuracy"], -0.2)
 
     def test_error_analysis_assets_are_created(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -205,6 +277,16 @@ class ReportingTests(unittest.TestCase):
             self.assertTrue((output_dir / "hardest_shared_errors.csv").exists())
             self.assertTrue((figures_dir / "confusion_grid_val.png").exists())
             self.assertTrue((figures_dir / "error_overlap_jaccard_val.png").exists())
+
+
+class ScriptShapeTests(unittest.TestCase):
+    def test_prepare_truthfulqa_script_parses(self) -> None:
+        script_path = Path(__file__).resolve().parents[1] / "scripts" / "prepare_truthfulqa_eval.py"
+        ast.parse(script_path.read_text(encoding="utf-8"))
+
+    def test_generate_truthfulqa_script_parses(self) -> None:
+        script_path = Path(__file__).resolve().parents[1] / "scripts" / "generate_truthfulqa_model_outputs.py"
+        ast.parse(script_path.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":

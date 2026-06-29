@@ -82,13 +82,13 @@
 This project investigates whether \emph{epistemic uncertainty signals} extracted from large language models (LLMs) can reliably detect hallucinated outputs. Given a question and a candidate answer, the system must classify the answer as factual (label~0) or hallucinated (label~1). The task is therefore a \textbf{binary classification} problem framed around natural language understanding and model introspection.
 
 \textbf{Importance.}
-Hallucinations -- cases where a language model generates fluent but factually incorrect content -- represent one of the most critical reliability problems in deployed NLP systems. Detecting them automatically is essential for safe deployment in high-stakes domains such as medicine, law, and education. Rather than relying on external fact-checking, this project explores whether the model's own uncertainty (expressed via token-level log-probabilities) can serve as an intrinsic hallucination signal, a direction that is both computationally efficient and broadly applicable.
+Hallucinations -- cases where a language model generates fluent but factually incorrect content -- represent one of the most critical reliability problems in deployed NLP systems. Detecting them automatically is essential for safe deployment in high-stakes domains such as medicine, law, and education. Rather than relying on external fact-checking, this project explores whether the model's own uncertainty (expressed via token-level log-probabilities) can serve as an intrinsic hallucination signal. In this report, that question is studied in a controlled HaluEval QA setting rather than claimed as a fully general solution for arbitrary LLM outputs.
 
 \textbf{Dataset, Input, and Output.}
-The project uses the \textbf{HaluEval QA} benchmark. Each original sample contains a question, a knowledge snippet, a factual answer, and a hallucinated answer. During preprocessing, each sample is expanded into two supervised rows, giving a balanced binary classification dataset. The system input is a (question, candidate answer) pair -- optionally augmented with the knowledge snippet as context -- and the output is a binary hallucination label.
+The project uses the \textbf{HaluEval QA} benchmark. Each original sample contains a question, a knowledge snippet, a factual answer, and a hallucinated answer. During preprocessing, each sample is expanded into two supervised rows, giving a balanced binary classification dataset. The system input is a (question, candidate answer) pair -- optionally augmented with the knowledge snippet as context -- and the output is a binary hallucination label. This setup is well suited to controlled benchmarking, but it may also introduce dataset-specific cues that are weaker in open-domain generations from modern LLMs.
 
 \textbf{Technical Challenges.}
-The task is technically challenging for several reasons. First, hallucinated answers are often fluent and superficially plausible, making surface-level detection difficult. Second, uncertainty signals derived from small local models (e.g., \texttt{distilgpt2}) may not transfer reliably to the larger models that produce hallucinations in practice. Third, distinguishing genuine epistemic uncertainty from aleatoric uncertainty (inherent ambiguity in the question) is a non-trivial research problem. Finally, the binary construction of HaluEval introduces its own biases that must be understood during evaluation.
+The task is technically challenging for several reasons. First, hallucinated answers are often fluent and superficially plausible, making surface-level detection difficult. Second, uncertainty signals derived from small local models (e.g., \texttt{distilgpt2}) may not transfer reliably to the larger models that produce hallucinations in practice, so a lightweight surrogate must be interpreted cautiously. Third, distinguishing genuine epistemic uncertainty from aleatoric uncertainty (inherent ambiguity in the question) is a non-trivial research problem. Finally, the binary construction of HaluEval introduces its own biases that must be understood during evaluation.
 
 % ─── 2. Dataset ─────────────────────────────────────────────────────────────
 \section{Dataset and Preprocessing Status}
@@ -133,7 +133,7 @@ Three baselines have been selected and fully implemented:
 \begin{enumerate}
   \item \textbf{Lexical SVM} (\texttt{lexical\_svm}). A TF-IDF vectoriser over the concatenated question and answer, fed into a linear Support Vector Machine. This baseline is intentionally shallow: it captures surface-level lexical overlap that may correlate with hallucination (e.g., vague or unusually specific phrasing) without any LM involvement. It serves as the interpretable lower bound.
 
-  \item \textbf{Entropy Classifier} (\texttt{entropy}). Token-level log-probabilities are extracted from a local causal LM (\texttt{distilgpt2}) running in \emph{memory mode} (no retrieved context). Aggregate features -- mean log-probability, total sequence entropy, and token count -- are passed to a logistic regression classifier. This baseline directly operationalises the epistemic-uncertainty hypothesis: a model that is uncertain about the tokens in a hallucinated answer should assign lower probabilities to those tokens.
+  \item \textbf{Entropy Classifier} (\texttt{entropy}). Token-level log-probabilities are extracted from a local causal LM (\texttt{distilgpt2}) running in \emph{memory mode} (no retrieved context). Aggregate features -- mean log-probability, total sequence entropy, and token count -- are passed to a logistic regression classifier. This baseline directly operationalises the epistemic-uncertainty hypothesis, but it should be read as a low-cost surrogate baseline rather than a strong approximation of modern chat-model factuality.
 
   \item \textbf{RAG Compare} (\texttt{rag\_compare}). The same local LM scores each answer twice -- once without context (memory mode) and once with the HaluEval knowledge snippet prepended (context mode). The delta in mean log-probability between the two modes is thresholded to produce a binary prediction. A factual answer is expected to receive a larger probability boost from relevant context than a hallucinated one.
 \end{enumerate}
@@ -163,7 +163,7 @@ RAG Compare    & 0.751  & 0.751 & 0.751 & 0.751 & 0.791 \\
 \end{table}
 
 \textbf{Analysis of Initial Results:} 
-The preliminary metrics demonstrate that the pipeline is fully operational. The \textbf{Entropy Baseline} performs exceptionally well (AUROC 0.970), validating our core hypothesis that internal token probabilities serve as a strong signal for hallucination detection. Interestingly, the \textbf{Lexical SVM} achieves an unusually high accuracy (94.3\%), which strongly suggests the presence of lexical artifacts or biases within the HaluEval dataset itself. The \textbf{RAG Compare} method establishes a solid, functioning baseline (AUROC 0.791) following threshold inversion, confirming that relevant context improves the model's confidence for factual answers.
+The preliminary metrics demonstrate that the pipeline is fully operational. The \textbf{Entropy Baseline} performs strongly (AUROC 0.970), showing that internal token probabilities contain useful signal for hallucination detection in HaluEval QA. At the same time, the \textbf{Lexical SVM} achieves an unusually high accuracy (94.3\%), which strongly suggests the presence of lexical artifacts or structural biases within the benchmark itself. This means the current results should be interpreted as evidence that the benchmark is learnable through multiple signal families, not as proof of broad generalisation to arbitrary LLM outputs. The \textbf{RAG Compare} method establishes a solid, functioning baseline (AUROC 0.791) following threshold inversion, confirming that relevant context improves the model's confidence for factual answers.
 % ─── 6. Planned Improvements ────────────────────────────────────────────────
 \section{Planned Improvements and Technical Direction}
 
@@ -171,9 +171,9 @@ The next phase will proceed in three directions:
 
 \textbf{Scale up experiments.} Run all three baselines on the full HaluEval QA dataset (removing the \texttt{--limit} flag) to obtain stable, reportable metrics.
 
-\textbf{Stronger LM backbone.} Replace \texttt{distilgpt2} with a larger instruction-tuned model (e.g., \texttt{GPT-2 medium} or an open-weight instruction model) to obtain better-calibrated log-probabilities for the entropy and RAG-compare baselines. This directly tests whether epistemic uncertainty scales with model capacity.
+\textbf{Stronger LM backbone.} Replace \texttt{distilgpt2} with a larger instruction-tuned model (e.g., an open-weight instruction model) to test whether stronger generation quality actually translates into a better uncertainty surrogate. This comparison should be reported carefully, because stronger language modeling ability does not necessarily imply better factual calibration: teacher-forced likelihood often tracks fluency and stylistic plausibility more directly than factual correctness.
 
-\textbf{Expanded uncertainty features.} Beyond mean log-probability and sequence entropy, add token-level variance, top-$k$ probability mass, and calibration metrics (Expected Calibration Error, Brier score) as features for the entropy classifier.
+\textbf{Expanded uncertainty features.} Beyond mean log-probability and sequence entropy, add token-level variance, top-$k$ probability mass, and calibration metrics (Expected Calibration Error, Brier score) as features for the entropy classifier. Stronger uncertainty families such as semantic entropy and self-consistency across multiple sampled answers should also be prioritised, because they are better aligned with open-domain generation than a single small surrogate's token probabilities.
 
 \textbf{Threshold optimisation for RAG Compare.} The current delta-thresholding approach uses a fixed threshold. A calibrated threshold search on the validation set will be introduced to improve precision-recall balance.
 
@@ -200,6 +200,9 @@ Model failures will be examined through:
   \item \emph{Confidence-error correlation:} Cases where the model assigns high confidence to a wrong prediction will be flagged as overconfident failures and examined separately.
   \item \emph{Difficulty stratification:} Errors will be stratified by question type and answer length to identify subgroup weaknesses.
 \end{itemize}
+
+\textbf{Short-answer mitigation plan.}
+If the final error analysis confirms that brief responses are the hardest subgroup, the detector will be extended with answer-length-aware handling. Concretely, this can include explicit answer-length features, separate thresholds for short and long answers, and stronger entity- or evidence-matching signals for short factual claims where token-level uncertainty is unstable.
 
 % ─── 8. Visualization Plan ─────────────────────────────────────────────────
 \section{Visualization and Interpretation}
@@ -311,5 +314,3 @@ IEEE Access, 13, 182632-182650.
 \end{thebibliography}
 
 \end{document}
-
-

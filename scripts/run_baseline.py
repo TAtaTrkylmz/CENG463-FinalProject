@@ -9,6 +9,7 @@ from llm_uncertainty.baselines import (
     run_cross_encoder_classifier,
     run_entropy_classifier,
     run_evidence_aware_hybrid,
+    run_evidence_aware_length_hybrid,
     run_hybrid_proposed,
     run_lexical_hybrid_svm,
     run_lexical_svm,
@@ -38,6 +39,7 @@ CANONICAL_BASELINES = [
     "nli_evidence",
     "evidence_aware_hybrid",
     "cross_encoder",
+    "evidence_aware_length_hybrid",
 ]
 
 LEGACY_ALIASES = ["entropy", "rag_compare", "hybrid_proposed", "hybrid_svm"]
@@ -71,6 +73,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--epochs", type=int, default=2)
     parser.add_argument("--learning-rate", type=float, default=2e-5)
     parser.add_argument("--gradient-accumulation-steps", type=int, default=1)
+    parser.add_argument("--short-answer-threshold", type=int, default=40)
     parser.add_argument("--model-output-dir")
     parser.add_argument("--predictions-output", required=True)
     parser.add_argument("--metrics-output", required=True)
@@ -180,6 +183,23 @@ def run_selected(args: argparse.Namespace):
             nli_max_length=args.nli_max_length,
             device=args.device,
             feature_cache_dir=args.feature_cache_dir,
+        )
+
+    if args.baseline == "evidence_aware_length_hybrid":
+        _require(args, ["train", "eval", "train_memory", "eval_memory"])
+        return run_evidence_aware_length_hybrid(
+            train_text_path=args.train,
+            train_memory_path=args.train_memory,
+            eval_text_path=args.eval,
+            eval_memory_path=args.eval_memory,
+            semantic_model_name=args.semantic_model,
+            nli_model_name=args.nli_model,
+            batch_size=args.batch_size,
+            semantic_max_length=args.semantic_max_length,
+            nli_max_length=args.nli_max_length,
+            device=args.device,
+            feature_cache_dir=args.feature_cache_dir,
+            short_token_threshold=args.short_answer_threshold,
         )
 
     if args.baseline == "cross_encoder":
