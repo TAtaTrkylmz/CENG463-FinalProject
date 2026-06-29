@@ -1,16 +1,17 @@
 % ============================================================
 %  CENG463 Final Project Report
 %  Title : Epistemic Uncertainty in LLM Hallucinations
-%  LNCS Template (Springer Lecture Notes in Computer Science)
+%  IEEE Conference Template
 %  Authors: Ata Türkyılmaz, Berkhan Kargılı, Atakan Kumbaracı
 % ============================================================
-\documentclass[runningheads]{llncs}
+\documentclass[conference]{IEEEtran}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
 \usepackage{booktabs}
 \usepackage{amsmath,amssymb}
+\usepackage{cite}
 \usepackage{hyperref}
 \usepackage{microtype}
 \usepackage{multirow}
@@ -26,18 +27,12 @@
 
 \title{Epistemic Uncertainty in LLM Hallucinations}
 
-\titlerunning{Epistemic Uncertainty in LLM Hallucinations}
-
-\author{Ata T\"{u}rky{\i}lmaz \and
-        Berkhan Karg{\i}l{\i} \and
-        Atakan Kumbarac{\i}}
-
-\authorrunning{A. T\"{u}rky{\i}lmaz , B. Karg{\i}l{\i} , A. Kumbarac{\i}}
-
-\institute{Department of Computer Engineering,
-Izmir Institute of Technology, Izmir, Turkey\\
-\email{\{ataturkyilmaz, berkhankargili, atakankumbaraci\}@std.iyte.edu.tr}\\
-Repository: \url{https://github.com/TAtaTrkylmz/CENG463-FinalProject}}
+\author{\IEEEauthorblockN{Ata T\"{u}rky{\i}lmaz, Berkhan Karg{\i}l{\i}, Atakan Kumbarac{\i}}
+\IEEEauthorblockA{Department of Computer Engineering\\
+Izmir Institute of Technology\\
+Izmir, Turkey\\
+\{ataturkyilmaz, berkhankargili, atakankumbaraci\}@std.iyte.edu.tr\\
+Repository: \url{https://github.com/TAtaTrkylmz/CENG463-FinalProject}}}
 
 \maketitle
 \sloppy
@@ -47,9 +42,9 @@ Repository: \url{https://github.com/TAtaTrkylmz/CENG463-FinalProject}}
 Large language models (LLMs) remain prone to hallucination—generating fluent but factually incorrect outputs. A central hypothesis is that hallucinations coincide with elevated \emph{epistemic uncertainty}: when a model generates tokens outside its reliable knowledge, token-level probabilities become less confident. This paper presents a reproducible pipeline that investigates whether uncertainty signals from a low-cost local surrogate language model (\texttt{distilgpt2}) can classify hallucinated versus factual answers in the HaluEval QA benchmark. We implement ten complementary baseline detectors spanning four detection paradigms—lexical, uncertainty-based, semantic, and evidence/retrieval-grounded—alongside four hybrid models that combine these signal families, including a fine-tuned cross-encoder upper bound. An ablation study, structured error analysis, and two external evaluations complement the main benchmark. Results show the fine-tuned cross-encoder achieves the highest accuracy and macro F1 on the HaluEval validation split, while the Evidence-Aware Hybrid attains the highest AUROC; retrieval context yields measurable but modest gains over memory-only uncertainty features, suggesting token-level log-probability signals from a cheap surrogate are weak in isolation but complementary when combined with lexical or semantic cues. However, cross-dataset transfer is poor, and the Qwen-generated evaluation further suggests substantially weaker performance on actual generated answers, though this setting remains noisy due to prompt leakage and automatic labeling.
 \end{abstract}
 
-\keywords{Hallucination detection \and Epistemic uncertainty \and
-          Large language models \and Token log-probabilities \and
-          Retrieval-augmented generation \and HaluEval}
+\begin{IEEEkeywords}
+Hallucination detection, epistemic uncertainty, large language models, token log-probabilities, retrieval-augmented generation, HaluEval
+\end{IEEEkeywords}
 
 % ============================================================
 \section{Introduction}
@@ -224,9 +219,10 @@ Table~\ref{tab:ablation} reports the ablation study for the lexical-uncertainty 
 
 \begin{table}[t]
   \centering
-  \caption{Ablation study: marginal contribution of each feature group on the HaluEval QA validation split (linear SVM classifier, $n=2{,}002$ validation rows).}
+  \caption{Ablation study on the HaluEval QA validation split.}
   \label{tab:ablation}
   \renewcommand{\arraystretch}{1.1}
+  \resizebox{\columnwidth}{!}{%
   \begin{tabular}{llccc}
     \toprule
     \textbf{Setting} & \textbf{Features} & \textbf{Acc.} & \textbf{Macro F1} & \textbf{AUROC} \\
@@ -237,6 +233,7 @@ Table~\ref{tab:ablation} reports the ablation study for the lexical-uncertainty 
     hybrid\_with\_context & TF-IDF + log-probability + $\Delta$     & \textbf{0.9735} & \textbf{0.9735} & \textbf{0.9919} \\
     \bottomrule
   \end{tabular}
+  }
 \end{table}
 
 \subsection{Transfer Evaluation}
@@ -244,7 +241,8 @@ Table~\ref{tab:ablation} reports the ablation study for the lexical-uncertainty 
 To test external validity, we evaluated the HaluEval-trained detectors on two
 out-of-domain settings: a TruthfulQA-derived binary evaluation set (1,634 rows)
 and a harder set of 817 \texttt{Qwen/Qwen2.5-1.5B-Instruct} generations from
-TruthfulQA questions. Table~\ref{tab:transfer_summary} shows the main pattern.
+TruthfulQA questions. Tables~\ref{tab:truthfulqa_transfer_ieee}
+and~\ref{tab:qwen_transfer_ieee} show the main pattern.
 High HaluEval accuracy does not transfer reliably. The Cross-Encoder drops from
 0.9815 to 0.5477 on TruthfulQA pairs and 0.4712 on Qwen-generated answers; the
 Semantic SVM drops from 0.9695 to 0.5208 and 0.4749; the Entropy Base model
@@ -260,22 +258,46 @@ explicit rather than assumed.
 
 \begin{table}[t]
   \centering
-  \caption{Transfer performance from HaluEval QA training to two out-of-domain evaluation sets.}
-  \label{tab:transfer_summary}
+  \caption{Transfer to canonical TruthfulQA evaluation.}
+  \label{tab:truthfulqa_transfer_ieee}
   \renewcommand{\arraystretch}{1.08}
-  \small
-  \begin{tabular}{lccccc}
+  \footnotesize
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{lccc}
     \toprule
-    \textbf{Method} & \textbf{HaluEval} & \textbf{TruthfulQA} & \textbf{TQA AUROC} & \textbf{Qwen-Gen} & \textbf{QG AUROC} \\
+    \textbf{Method} & \textbf{HaluEval} & \textbf{TQA} & \textbf{AUROC} \\
     \midrule
-    Cross-Encoder    & 0.9815 & 0.5477 & 0.5764 & 0.4712 & 0.4924 \\
-    Entropy Base     & 0.9426 & 0.5024 & 0.4863 & 0.4847 & 0.5062 \\
-    Semantic SVM     & 0.9695 & 0.5208 & 0.4750 & 0.4749 & 0.4344 \\
-    Evidence-Aware   & 0.9770 & 0.5967 & 0.8665 & 0.4847 & 0.4832 \\
-    NLI Evidence     & 0.7877 & 0.9694 & 0.9943 & 0.5129 & 0.7034 \\
-    RAG Compare      & 0.7522 & 0.8635 & 0.9514 & 0.4847 & 0.5506 \\
+    Cross-Encoder  & 0.9815 & 0.5477 & 0.5764 \\
+    Entropy Base   & 0.9426 & 0.5024 & 0.4863 \\
+    Semantic SVM   & 0.9695 & 0.5208 & 0.4750 \\
+    Evidence-Aware & 0.9770 & 0.5967 & 0.8665 \\
+    NLI Evidence   & 0.7877 & 0.9694 & 0.9943 \\
+    RAG Compare    & 0.7522 & 0.8635 & 0.9514 \\
     \bottomrule
   \end{tabular}
+  }
+\end{table}
+
+\begin{table}[t]
+  \centering
+  \caption{Transfer to Qwen-generated TruthfulQA evaluation.}
+  \label{tab:qwen_transfer_ieee}
+  \renewcommand{\arraystretch}{1.08}
+  \footnotesize
+  \resizebox{\columnwidth}{!}{%
+  \begin{tabular}{lccc}
+    \toprule
+    \textbf{Method} & \textbf{HaluEval} & \textbf{Qwen-Gen} & \textbf{AUROC} \\
+    \midrule
+    Cross-Encoder  & 0.9815 & 0.4712 & 0.4924 \\
+    Entropy Base   & 0.9426 & 0.4847 & 0.5062 \\
+    Semantic SVM   & 0.9695 & 0.4749 & 0.4344 \\
+    Evidence-Aware & 0.9770 & 0.4847 & 0.4832 \\
+    NLI Evidence   & 0.7877 & 0.5129 & 0.7034 \\
+    RAG Compare    & 0.7522 & 0.4847 & 0.5506 \\
+    \bottomrule
+  \end{tabular}
+  }
 \end{table}
 
 % ============================================================
