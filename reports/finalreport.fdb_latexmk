@@ -1,6 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1787408666.56924 "finalreport.tex" "finalreport.pdf" "finalreport" 1787408667.17008 0
+["pdflatex"] 1787408850.10058 "/home/berkhan/Desktop/okul ya/Dönem 8/makine öğrenmesi/final project/CENG463-FinalProject/reports/finalreport.tex" "finalreport.pdf" "finalreport" 1787408850.68304 0
   "/etc/texmf/web2c/texmf.cnf" 1774307257.44755 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/berkhan/Desktop/okul ya/Dönem 8/makine öğrenmesi/final project/CENG463-FinalProject/reports/finalreport.tex" 1787408659.58891 34052 fc1127d58f716ac5ace045ec8d4edef1 ""
   "/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/adobe/courier/pcrb8r.tfm" 1136768653 1292 3059476c50a24578715759f22652f3d0 ""
@@ -128,8 +129,8 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1777639908 8213287 57d71f7a41e08463fabf793940ab62f1 ""
   "fig_error_confidence.jpeg" 1782731924.69754 221613 3acdce4ca46c42bedb469c608517b99a ""
   "fig_error_length.jpeg" 1782731923.98153 183264 cbd79d29b18db654129ceac22eaf04b4 ""
-  "finalreport.aux" 1787408667.10551 6196 4b14d6959e7d58b3b5ad0144bf92f0e0 "pdflatex"
-  "finalreport.out" 1787408667.10587 2450 f8d303c8492cc444164d0399e0d2bf10 "pdflatex"
+  "finalreport.aux" 1787408850.63481 6196 4b14d6959e7d58b3b5ad0144bf92f0e0 "pdflatex"
+  "finalreport.out" 1787408850.63481 2450 f8d303c8492cc444164d0399e0d2bf10 "pdflatex"
   "finalreport.tex" 1787408659.58891 34052 fc1127d58f716ac5ace045ec8d4edef1 ""
   (generated)
   "finalreport.aux"

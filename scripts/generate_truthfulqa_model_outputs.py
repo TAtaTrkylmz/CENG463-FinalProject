@@ -59,7 +59,21 @@ class HuggingFaceGenerator:
 
     def generate(self, question: str) -> str:
         prompt = memory_prompt(question)
-        encoded = self.tokenizer(prompt, return_tensors="pt").to(self.device)
+        if getattr(self.tokenizer, "chat_template", None):
+            # Instruct-tuned models (e.g. Qwen2.5-*-Instruct) are fine-tuned only on
+            # chat-formatted conversations. Feeding them the raw completion-style
+            # prompt below leaves them off-distribution and prone to regurgitating
+            # instruction-tuning boilerplate ("You are an AI assistant...") instead
+            # of answering. Routing through the tokenizer's own chat template keeps
+            # the input in the format the model was actually trained on.
+            encoded = self.tokenizer.apply_chat_template(
+                [{"role": "user", "content": prompt}],
+                add_generation_prompt=True,
+                return_tensors="pt",
+                return_dict=True,
+            ).to(self.device)
+        else:
+            encoded = self.tokenizer(prompt, return_tensors="pt").to(self.device)
         with torch.inference_mode():
             output_ids = self.model.generate(
                 **encoded,
